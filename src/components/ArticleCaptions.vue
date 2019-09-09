@@ -1,13 +1,13 @@
 <template>
     <div>
         <h4 >
-            <a class="article-title align-left" href="">{{articleItem.meta.title}}</a>
+            <a class="article-title align-left" href="">{{articleItem.content.title}}</a>
         </h4>
-        <div class="attr">{{ date(articleItem.version.createdAt)}}</div>
-        <div class="category">
+        <div class="attr">{{ date(articleItem.createdAt)}}</div>
+        <div class="category" v-if="articleItem.content.category">
             <span>
-                <a class="btn btn-primary ue-popup-button article-category-btn">
-                    {{articleItem.content.category.data[0].zuid}}
+                <a class="btn ue-popup-button article-category-btn" href="">
+                    {{ getCategoryName(articleItem.content.category) }} {{ category }}
                 </a>
             </span>
         </div>
@@ -21,18 +21,38 @@
 import moment from 'moment';
 import axios from 'axios';
 
-const baseURL = 'https://p1hs79r9-dev.preview.zestyio.com';
-const url = baseURL + 'articleItem.content.category.data[0].zuid';
+const baseURL = 'https://api.storyblok.com/v1/cdn/stories?version=published';
 
 export default {
     name: "ArticleCaptions",
+    data() {
+        return {
+            category: ''
+        }
+    },
     props: ['articleItem'],
     methods: {
         date: function (date) {
             return moment(date).format('Do MMMM YYYY');
         },
+        getCategoryName (uuid) {
+            const category_params = baseURL + '&token=QNx6VlHAVqJWs82bNe8Ymgtt&cv=1568013388&by_uuids=' + uuid;
+            
+            axios
+            .get(category_params)
+            .then((response) => {
+                //console.log(response.data.stories[0].name);
+                this.category = response.data.stories[0].name;
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        }
 
     },
+    created() {
+        
+    }
 }
 </script>
 
@@ -77,11 +97,14 @@ h4
 
 .article-category-btn
 {
+    color: #fff;
     padding: 5px;
     font-size: 10px;
     text-transform: none;
     border-radius: 5px;
     max-width: 100%;
+    text-decoration: none;
+    font-weight: 600;
 }
 
 .art-readmore

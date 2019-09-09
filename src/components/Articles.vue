@@ -4,8 +4,8 @@
             <h1>Articles</h1>
         </div>
         <div class="container">
-            <div v-if="articleItems.meta.totalItems > 0" >
-                <div v-for="articleItem in articleItems.data" :key="articleItem.meta.zuid" class="col-sm-4 float-left">
+            <div v-if="articleItems.stories.length >0" >
+                <div v-for="articleItem in articleItems.stories" :key="articleItem.id" class="col-sm-4 float-left">
                     <ArticleItems :articleItem="articleItem" />
                 </div>
             </div>
@@ -16,6 +16,7 @@
 <script>
 import {mapGetters} from 'vuex';
 import ArticleItems from './ArticleItems.vue';
+
 
 export default {
     name: "Articles",
@@ -28,6 +29,7 @@ export default {
     created() {
         this.$store.dispatch('getFullArticleItems');
     },
+
 }
 
 </script>

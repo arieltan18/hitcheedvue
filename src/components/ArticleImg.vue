@@ -1,6 +1,6 @@
 <template>
     <a href="" class="article-img">
-        <img class="img" :src="articleItem.content.cover.data[0].url">
+        <img class="img" :src="articleItem.content.cover">
     </a>
 </template>
 
