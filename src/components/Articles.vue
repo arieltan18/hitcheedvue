@@ -5,7 +5,7 @@
         </div>
         <div class="container">
             <div v-if="articleItems.stories.length >0" >
-                <div v-for="articleItem in articleItems.stories" :key="articleItem.id" class="col-sm-4 float-left">
+                <div v-for="articleItem in articleItems.stories" :key="articleItem.id" class="col-sm-3 float-left">
                     <ArticleItems :articleItem="articleItem" />
                 </div>
             </div>

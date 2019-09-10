@@ -11,24 +11,21 @@ const mutations = {
 }
 
 const baseURL = 'https://api.storyblok.com/v1/cdn/stories?version=published';
-const url = baseURL + '&token=QNx6VlHAVqJWs82bNe8Ymgtt&cv=1568013388&starts_with=blog';
+const url = baseURL + '&token=QNx6VlHAVqJWs82bNe8Ymgtt&starts_with=blog';
 
 
 const actions = {
     getFullArticleItems ({ commit }) {
+
+        axios.defaults.headers = {
+            'Content-Type': 'application/json',
+            'cache-control':'no-cache'
+        }
         axios.get(url).then((response) => {
             commit('UPDATE_ARTICLE_ITEMS', response.data);
-            // eslint-disable-next-line no-console
             //console.log(response.data.stories);
         });
     },
-    // getCategoryName ({ uuid }) {
-    //     const category_params = baseURL + '&token=QNx6VlHAVqJWs82bNe8Ymgtt&cv=1568013388&by_uuids=' + uuid;
-
-    //     axios.get(url).then((response) => {
-    //         return response.data.stories[0].name;
-    //     });
-    // }
 }
 
 const getters = {

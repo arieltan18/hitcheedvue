@@ -1,9 +1,9 @@
 <template>
     <div>
         <h4 >
-            <a class="article-title align-left" href="">{{articleItem.content.title}}</a>
+            <router-link class="article-title align-left" :to="slug">{{ articleItem.content.title }}</router-link>
         </h4>
-        <div class="attr">{{ date(articleItem.createdAt)}}</div>
+        <div class="attr">{{ date(articleItem.createdAt )}}</div>
         <div class="category" v-if="articleItem.content.category">
             <span>
                 <a class="btn ue-popup-button article-category-btn" href="">
@@ -12,7 +12,7 @@
             </span>
         </div>
         <div class="art-readmore">
-            <a class="readmore"> Read More <i class="fa fa-angle-right"></i></a>
+            <a class="readmore" href=""> Read More <i class="fa fa-angle-right"></i></a>
         </div>
     </div>
 </template>
@@ -31,13 +31,19 @@ export default {
         }
     },
     props: ['articleItem'],
+    computed: {
+        slug: function () {
+            const routerLink = '/articles/' + this.articleItem.slug ;
+            return routerLink;
+        }
+    },
     methods: {
         date: function (date) {
             return moment(date).format('Do MMMM YYYY');
         },
         getCategoryName (uuid) {
             const category_params = baseURL + '&token=QNx6VlHAVqJWs82bNe8Ymgtt&cv=1568013388&by_uuids=' + uuid;
-            
+
             axios
             .get(category_params)
             .then((response) => {
@@ -45,13 +51,9 @@ export default {
                 this.category = response.data.stories[0].name;
             })
             .catch(error => {
-                console.log(error);
+                //console.log(error);
             });
         }
-
-    },
-    created() {
-        
     }
 }
 </script>
@@ -68,6 +70,14 @@ h4
 {
     color: #25130e;
     text-decoration: none;
+    font-weight:700;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.article-title:hover 
+{
+    text-decoration: underline;
 }
 
 .attr
@@ -115,6 +125,14 @@ h4
 .readmore
 {
     font-weight: 700;
+    color: #000;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+.readmore:hover
+{
+    text-decoration: underline;
 }
 
 </style>
