@@ -1,12 +1,14 @@
 <template>
-    <div>
+    <div class="container">
         <div>
             <h1>Articles</h1>
         </div>
         <div class="container">
-            <div v-if="articleItems.length >0" >
-                <div v-for="articleItem in articleItems" :key="articleItem.id" class="col-sm-3 float-left">
-                    <ArticleItems :articleItem="articleItem" />
+            <div class="row col-md-12">
+                <div v-if="articleItems.length >0" >
+                    <div v-for="articleItem in articleItems" :key="articleItem.id" class="col-sm-3 float-left">
+                        <ArticleItems :articleItem="articleItem" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -28,15 +30,18 @@ export default {
         }
     },
     methods: {
-        getFullArticleItems () {
+        async getFullArticleItems () {
+            //get the current timestamp
+            const date = Date.now();
+
             const baseURL = 'https://api.storyblok.com/v1/cdn/stories?version=published';
-            const url = baseURL + '&token=QNx6VlHAVqJWs82bNe8Ymgtt&starts_with=blog';
+            const url = baseURL + '&token=QNx6VlHAVqJWs82bNe8Ymgtt&starts_with=blog' + '&cv=' + date;
 
             axios.defaults.headers = {
                 'Content-Type': 'application/json',
                 'cache-control':'no-cache'
             }
-            axios.get(url)
+            await axios.get(url)
             .then((response) => {
                 this.articleItems = response.data.stories;
             })
@@ -45,7 +50,7 @@ export default {
             });
         },
     },
-    beforeMount() 
+    mounted() 
     {
         this.getFullArticleItems();
     }

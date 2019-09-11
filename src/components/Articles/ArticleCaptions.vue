@@ -3,7 +3,7 @@
         <h4>
             <router-link class="article-title align-left" :to="slug">{{ articleItem.content.title }}</router-link>
         </h4>
-        <div class="attr">{{ date(articleItem.created_at )}}</div>
+        <div class="attr">{{ date(articleItem.first_published_at )}}</div>
         <div class="category" v-if="articleItem.content.category">
             <span>
                 <a class="btn ue-popup-button article-category-btn" href="">

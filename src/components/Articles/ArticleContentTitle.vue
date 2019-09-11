@@ -1,11 +1,11 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            
                 <h2 class="article-title">
                     <span>{{articleContent.name}}</span>
                 </h2>
-            </div>
+            
         </div>
     </div>
 </template>

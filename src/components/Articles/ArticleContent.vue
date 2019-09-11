@@ -8,8 +8,17 @@
             </div>
             
         </div>
-        <ArticleContentTitle :articleContent="articleContent" />
-        <ArticleContentBody :articleContent="articleContent" />
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <ArticleContentTitle :articleContent="articleContent" />
+                    <ArticleContentBody :articleContent="articleContent" />
+                </div>
+            </div>
+        </div>
+
+            
+
     </div>
 </template>
 
@@ -18,27 +27,32 @@ import axios from 'axios';
 import ArticleContentTitle from "./ArticleContentTitle.vue";
 import ArticleContentBody from "./ArticleContentBody.vue";
 
+
 const baseURL = 'https://api.storyblok.com/v1/cdn/stories?version=published';
 
 export default {
     name: "ArticleContent",
     components: {
         ArticleContentTitle,
-        ArticleContentBody
+        ArticleContentBody,
     },
     data() {
         return {
-            articleContent: []
+            articleContent: [],
+            professionals: []
         }
     },
     methods: {
         getArticleContents ()
         {
+            //get the current timestamp
+            const date = Date.now();
+
             const slug = this.$route.params.slug;
-            const article_params = baseURL + '&token=QNx6VlHAVqJWs82bNe8Ymgtt&cv=1568013388&starts_with=blog/' + slug;
+            const article_url = baseURL + '&token=QNx6VlHAVqJWs82bNe8Ymgtt' + '&cv=' + date + '&starts_with=blog/' + slug;
             
             axios
-            .get(article_params)
+            .get(article_url)
             .then((response) => {
                 this.articleContent = response.data.stories[0];
             })
@@ -50,7 +64,7 @@ export default {
     beforeMount() 
     {
         this.getArticleContents();
-    }
+    },
 
 }
 </script>
@@ -88,4 +102,15 @@ h1
 {
     background-color: #f2f2f2;
 }
+
+.featured-product
+{
+    text-align: center;
+    margin-top: 10px;
+    font-family: 'Open Sans';
+    font-size: 30px;
+    line-height: 30px;
+    color: #25130e;
+}
+
 </style>

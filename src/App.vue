@@ -5,14 +5,8 @@
 </template>
 
 <script>
-import Articles from './components/Articles.vue'
-
-
 export default {
   name: 'app',
-  components: {
-    Articles
-  }
 }
 </script>
 
