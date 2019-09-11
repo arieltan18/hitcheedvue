@@ -50,10 +50,10 @@ export default {
                 this.category = response.data.stories[0].name;
             })
             .catch(error => {
-                console.log(error);
+                console.log(error.response);
             });
         }
-    }
+    },
 }
 </script>
 
