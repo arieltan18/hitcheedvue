@@ -2,8 +2,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <div class="article-date">{{ date(articleContent.createdAt )}}</div>
-                <div v-html=articleContent.content.body></div>
+                <div class="article-date">{{ date(articleContent.created_at )}}</div>
+                <vue-simple-markdown :source="articleContent.content.body"></vue-simple-markdown>
             </div>
         </div>
     </div>
@@ -15,12 +15,6 @@ import moment from 'moment';
 export default {
     name: "ArticleContentBody",
     props: ['articleContent'],
-    data() {
-        return {
-            //body: this.articleContent.content.body,
-
-        }
-    },
     methods: {
         date: function (date) {
             return moment(date).format('MMM d, YYYY');

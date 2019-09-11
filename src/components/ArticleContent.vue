@@ -40,12 +40,10 @@ export default {
             axios
             .get(article_params)
             .then((response) => {
-                console.log(response.data.stories[0]);
-                
                 this.articleContent = response.data.stories[0];
             })
             .catch(error => {
-                //console.log(error);
+                console.log(error);
             });
         }
     },

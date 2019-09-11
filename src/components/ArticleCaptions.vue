@@ -1,9 +1,9 @@
 <template>
-    <div>
-        <h4 >
+    <div class="text-left p-md-2">
+        <h4>
             <router-link class="article-title align-left" :to="slug">{{ articleItem.content.title }}</router-link>
         </h4>
-        <div class="attr">{{ date(articleItem.createdAt )}}</div>
+        <div class="attr">{{ date(articleItem.created_at )}}</div>
         <div class="category" v-if="articleItem.content.category">
             <span>
                 <a class="btn ue-popup-button article-category-btn" href="">
@@ -12,7 +12,7 @@
             </span>
         </div>
         <div class="art-readmore">
-            <a class="readmore" href=""> Read More <i class="fa fa-angle-right"></i></a>
+            <router-link class="readmore" :to="slug"> Read More <i class="fa fa-angle-right"></i></router-link>
         </div>
     </div>
 </template>
@@ -47,11 +47,10 @@ export default {
             axios
             .get(category_params)
             .then((response) => {
-                //console.log(response.data.stories[0].name);
                 this.category = response.data.stories[0].name;
             })
             .catch(error => {
-                //console.log(error);
+                console.log(error);
             });
         }
     }

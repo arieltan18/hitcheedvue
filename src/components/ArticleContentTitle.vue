@@ -14,7 +14,6 @@
 export default {
     name: "ArticleContentTitle",
     props: ['articleContent']
-    
 
 }
 </script>
