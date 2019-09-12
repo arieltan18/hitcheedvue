@@ -5,16 +5,18 @@
 </template>
 
 <script>
-    export default {
-        name: "ArticleImg",
-        props: ['articleItem'],
-        computed: {
+
+export default {
+    name: "ArticleImg",
+    props: ['articleItem'],
+    computed: {
         slug: function () {
             const routerLink = '/articles/' + this.articleItem.slug ;
             return routerLink;
         }
     },
-    }
+}
+
 </script>
 
 <style scoped>

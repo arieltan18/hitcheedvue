@@ -1,13 +1,13 @@
 <template>
     <div class="text-left p-md-2">
         <h4>
-            <router-link class="article-title align-left" :to="slug">{{ articleItem.content.title }}</router-link>
+            <router-link class="article-title align-left" :to="slug">{{ articleItem.name }}</router-link>
         </h4>
         <div class="attr">{{ date(articleItem.first_published_at )}}</div>
-        <div class="category" v-if="articleItem.content.category">
-            <span>
-                <a class="btn ue-popup-button article-category-btn" href="">
-                    {{ getCategoryName(articleItem.content.category) }} {{ category }}
+        <div class="tag" v-if="articleItem.tag_list">
+            <span v-for="tag in articleItem.tag_list" :key="tag" class="mr-2">
+                <a class="btn ue-popup-button article-tag-btn" href="">
+                    {{ tag }}
                 </a>
             </span>
         </div>
@@ -19,17 +19,9 @@
 
 <script>
 import moment from 'moment';
-import axios from 'axios';
-
-const baseURL = 'https://api.storyblok.com/v1/cdn/stories?version=published';
 
 export default {
     name: "ArticleCaptions",
-    data() {
-        return {
-            category: ''
-        }
-    },
     props: ['articleItem'],
     computed: {
         slug: function () {
@@ -40,18 +32,6 @@ export default {
     methods: {
         date: function (date) {
             return moment(date).format('Do MMMM YYYY');
-        },
-        getCategoryName (uuid) {
-            const category_params = baseURL + '&token=QNx6VlHAVqJWs82bNe8Ymgtt&cv=1568013388&by_uuids=' + uuid;
-
-            axios
-            .get(category_params)
-            .then((response) => {
-                this.category = response.data.stories[0].name;
-            })
-            .catch(error => {
-                console.log(error.response);
-            });
         }
     },
 }
@@ -104,7 +84,7 @@ h4
     margin-top: 3%;
 }
 
-.article-category-btn
+.article-tag-btn
 {
     color: #fff;
     padding: 5px;

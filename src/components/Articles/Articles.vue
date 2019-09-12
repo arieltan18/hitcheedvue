@@ -1,14 +1,14 @@
 <template>
-    <div class="container">
-        <div>
-            <h1>Articles</h1>
-        </div>
+    <div class="container-fluid mb-5" v-if="articleItems.length >0" >
         <div class="container">
-            <div class="row col-md-12">
-                <div v-if="articleItems.length >0" >
-                    <div v-for="articleItem in articleItems" :key="articleItem.id" class="col-sm-3 float-left">
-                        <ArticleItems :articleItem="articleItem" />
-                    </div>
+            <div class="row mb-4">
+                <div class="col-sm-12 text-center">
+                    <h1>Articles</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div v-for="articleItem in articleItems" :key="articleItem.id" class="col-md-3 float-left">
+                    <ArticleItems :articleItem="articleItem" />
                 </div>
             </div>
         </div>
@@ -30,18 +30,18 @@ export default {
         }
     },
     methods: {
-        async getFullArticleItems () {
+         getFullArticleItems () {
             //get the current timestamp
             const date = Date.now();
 
             const baseURL = 'https://api.storyblok.com/v1/cdn/stories?version=published';
-            const url = baseURL + '&token=QNx6VlHAVqJWs82bNe8Ymgtt&starts_with=blog' + '&cv=' + date;
+            const url = baseURL + '&token=redXm4rXjmjvRpRzJE6lFQtt&starts_with=blog' + '&cv=' + date;
 
             axios.defaults.headers = {
                 'Content-Type': 'application/json',
                 'cache-control':'no-cache'
             }
-            await axios.get(url)
+            axios.get(url)
             .then((response) => {
                 this.articleItems = response.data.stories;
             })
@@ -63,5 +63,10 @@ h1 {
     font-family: 'Cormorant Garamond';
     font-weight: normal;
     font-size: 36px;
+}
+
+.text-center
+{
+    text-align: center;
 }
 </style>

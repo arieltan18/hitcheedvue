@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import ArticleContent from '../components/Articles/ArticleContent'
 import Home from '../components/Home'
+import ArticleContent from '../components/Articles/ArticleContent'
+import ProfessionalContent from '../components/Professionals/ProfessionalContent'
 
 Vue.use(VueRouter);
 
@@ -17,5 +18,9 @@ export default new VueRouter({
             path: '/articles/:slug', 
             component: ArticleContent
         },
+        {
+            path: '/professionals/:slug',
+            component: ProfessionalContent
+        }
     ]
 })

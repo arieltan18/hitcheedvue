@@ -1,14 +1,14 @@
 <template>
-    <div class="container">
-        <div>
-            <h1>Professionals</h1>
-        </div>
+    <div class="container-fluid mb-5" v-if="professionals.length >0" >
         <div class="container">
-            <div class="row col-md-12">
-                <div v-if="professionals.length >0" >
-                    <div v-for="professional in professionals" :key="professional.id" class="col-sm-4 clear-both float-left">
-                        <ProfessionalList :professional="professional" />
-                    </div>
+            <div class="row mb-2">
+                <div class="col-sm-12 text-center">
+                    <h1>Professionals</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div v-for="professional in professionals" :key="professional.id" class="col-md-4 professional-padding">
+                    <ProfessionalList :professional="professional" />
                 </div>
             </div>
         </div>
@@ -42,7 +42,7 @@ export default {
             }
             await axios.get(api,{crossDomain: true})
             .then((response) => {
-                console.log(response.data.data);
+                //console.log(response.data.data);
                 this.professionals = response.data.data;
             })
             .catch(error => {
@@ -63,5 +63,16 @@ h1 {
     font-family: 'Cormorant Garamond';
     font-weight: normal;
     font-size: 36px;
+}
+
+.professional-padding
+{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.text-center
+{
+    text-align: center;
 }
 </style>

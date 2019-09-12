@@ -49,7 +49,7 @@ export default {
             const date = Date.now();
 
             const slug = this.$route.params.slug;
-            const article_url = baseURL + '&token=QNx6VlHAVqJWs82bNe8Ymgtt' + '&cv=' + date + '&starts_with=blog/' + slug;
+            const article_url = baseURL + '&token=redXm4rXjmjvRpRzJE6lFQtt' + '&cv=' + date + '&starts_with=blog/' + slug;
             
             axios
             .get(article_url)
