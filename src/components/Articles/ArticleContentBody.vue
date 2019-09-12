@@ -1,8 +1,8 @@
 <template>
     <div class="container">
         <div class="row">
-                <div class="article-date">{{ date(articleContent.first_published_at )}}</div>
-                <vue-simple-markdown :source="articleContent.content.body"></vue-simple-markdown>
+            <div class="article-date">{{ date(articleContent.first_published_at )}}</div>
+            <vue-simple-markdown :source="articleContent.content.body"></vue-simple-markdown>
         </div>
     </div>
 </template>

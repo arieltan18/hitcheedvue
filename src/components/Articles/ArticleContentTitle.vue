@@ -1,9 +1,9 @@
 <template>
     <div class="container">
         <div class="row">
-                <h2 class="article-title">
-                    <span>{{articleContent.name}}</span>
-                </h2>
+            <h2 class="article-title">
+                <span>{{articleContent.name}}</span>
+            </h2>
         </div>
     </div>
 </template>

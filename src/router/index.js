@@ -19,6 +19,7 @@ export default new VueRouter({
             component: ArticleContent
         },
         {
+            name: 'professional',
             path: '/professionals/:slug',
             component: ProfessionalContent
         }

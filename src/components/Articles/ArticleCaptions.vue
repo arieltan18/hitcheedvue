@@ -1,7 +1,7 @@
 <template>
     <div class="text-left p-md-2">
         <h4>
-            <router-link class="article-title align-left" :to="slug">{{ articleItem.name }}</router-link>
+            <router-link class="article-title align-left" :to="slug" >{{ articleItem.name }}</router-link>
         </h4>
         <div class="attr">{{ date(articleItem.first_published_at )}}</div>
         <div class="tag" v-if="articleItem.tag_list">

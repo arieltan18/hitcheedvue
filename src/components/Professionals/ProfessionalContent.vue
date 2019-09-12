@@ -1,36 +1,102 @@
 <template>
     <div>
         <div class="container-fluid bg-color">
-            <div class="container">
-                <div class="article-header"> 
-                    <h1>Professionals</h1>
-                </div>
-            </div>
-            
-        </div>
-        <div class="container">
             <div class="row">
-                <div class="col-md-8">
-
+                <img class="top-image" :src="professionalContent.cover_image">
+            </div>
+        </div>
+        <div class="container-fluid padding">
+            <div class="row">
+                <div class="col-md-8 professional-content">
+                    <h3>About this Professional</h3>
+                    <div v-html="professionalContent.description"></div>
+                    <p v-if="professionalContent.address || professionalContent.country">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        Location: {{ professionalContent.address ? professionalContent.address : professionalContent.country }}
+                    </p>
+                    <ProfessionalProjects />
                 </div>
+                <ProfessionalReviews :professionalContent="professionalContent" :reviews="reviews" />
             </div>
         </div>
             
-
     </div>
 </template>
 
 <script>
+import axios from 'axios';
+import ProfessionalReviews from './ProfessionalReviews';
+import ProfessionalProjects from './ProfessionalProjects';
 
 export default {
     name: "ProfessionalContent",
-    props: ['professionals']
+    components: {
+        ProfessionalReviews,
+        ProfessionalProjects
+    },
+    data() {
+        return {
+            professional_id: '',
+            professionalContent: [],
+            projects: [],
+            reviews: []
+        }
+    },
+    created() {
+        if(this.$route.query.id) {
+            this.professional_id = this.$route.query.id;
+        }
+    },
+    methods: {
+        getProfessionalContent () {
+            const url = "https://laravel.hitcheed.com/api/v1/professionals/" + this.professional_id;
 
+            axios.defaults.headers = {
+                'Content-Type': 'application/json',
+                'cache-control': 'no-cache'
+            }
+            axios.get(url)
+            .then((response) => {
+                this.professionalContent = response.data.professional;
+                this.projects = response.data.projects;
+                this.reviews = response.data.reviews;
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        }
+    },
+    mounted() {
+        this.getProfessionalContent();
+    }
 }
 </script>
 
 
 <style scoped>
+.top-img
+{
+    width: 100%;
+}
 
+.padding
+{
+    padding: 3%;
+}
 
+h3
+{
+    font-weight: 500;
+    font-family: 'Cormorant Garamond';
+    font-size: 40px;
+    line-height: 30px;
+    color: #25130e;
+    margin: 30px 0;
+}
+
+.professional-content
+{
+    text-align: left;
+}
 </style>

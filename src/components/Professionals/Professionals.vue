@@ -7,7 +7,7 @@
                 </div>
             </div>
             <div class="row">
-                <div v-for="professional in professionals" :key="professional.id" class="col-md-4 professional-padding">
+                <div v-for="professional in professionals" :key="professional.id" class="col-md-4 professional-padding mb-4">
                     <ProfessionalList :professional="professional" />
                 </div>
             </div>
