@@ -14,7 +14,7 @@
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         Location: {{ professionalContent.address ? professionalContent.address : professionalContent.country }}
                     </p>
-                    <ProfessionalProjects />
+                    <ProfessionalProjects :projects="projects"></ProfessionalProjects>
                 </div>
                 <ProfessionalReviews :professionalContent="professionalContent" :reviews="reviews" />
             </div>
