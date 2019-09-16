@@ -16,7 +16,7 @@
                     </p>
                     <ProfessionalProjects :projects="projects"></ProfessionalProjects>
                 </div>
-                <ProfessionalReviews :professionalContent="professionalContent" :reviews="reviews" />
+                <ProfessionalReviews :professionalContent="professionalContent" :reviews="reviews" :totalReviews="professionalContent.review_count" />
             </div>
         </div>
             
@@ -43,13 +43,12 @@ export default {
         }
     },
     created() {
-        if(this.$route.query.id) {
-            this.professional_id = this.$route.query.id;
-        }
+        this.professional_id = this.$route.params.id;
     },
     methods: {
         getProfessionalContent () {
-            const url = "https://laravel.hitcheed.com/api/v1/professionals/" + this.professional_id;
+            //const url = "https://laravel.hitcheed.com/api/v1/professionals/" + this.professional_id;
+            const url = "http://hitcheedlaravel.test/api/v1/professionals/" + this.professional_id;
 
             axios.defaults.headers = {
                 'Content-Type': 'application/json',

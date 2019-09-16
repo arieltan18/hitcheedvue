@@ -21,12 +21,12 @@ export default new VueRouter({
         },
         {
             name: 'professional',
-            path: '/professionals/:slug',
+            path: '/professionals/:slug/:id',
             component: ProfessionalContent
         },
         {
-            name: 'projects',
-            path: '/projects/:slug',
+            name: 'project',
+            path: '/projects/:slug/:id',
             component: ProjectContent
         }
     ]

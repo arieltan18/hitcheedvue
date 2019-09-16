@@ -1,6 +1,6 @@
 <template>
     <div>
-        <router-link class="professional-img" :to="{path:slug , query: { id: professional.id }}">
+        <router-link class="professional-img" :to="{ name: 'professional', params: { slug: slug, id: professional.id }}">
             <img class="ar-image" :src="professional.around_image" alt="professional">
         </router-link>
         <div class="bottom-centered text-center">
@@ -22,7 +22,7 @@ export default {
     props: ['professional'],
     computed: {
         slug: function () {
-            const routerLink = '/professionals/' + this.professional.slug;
+            const routerLink = this.professional.slug;
             return routerLink;
         }
     }

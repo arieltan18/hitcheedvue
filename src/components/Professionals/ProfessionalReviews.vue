@@ -5,10 +5,10 @@
             <h4 class="text-center professional-name">
                 {{ professionalContent.name }}
             </h4>
-            <p class="review-rating-text text-center" v-if="reviews.length > 0">{{ reviews.length }} Reviews  
-                <span class="rating-star fa fa-star"></span>
-                <span class="rating-star fa fa-star"></span>
-                <span class="rating-star fa fa-star"></span>
+            <p class="review-rating-text text-center" v-if="reviews.length > 0">{{ totalReviews }} Reviews 
+                <span v-for="(value, index) in rating" :key="index">
+                    <span class="rating-star fa fa-star"></span>
+                </span>
             </p>
         </div>
         <h3>Reviews</h3>
@@ -25,20 +25,22 @@ export default {
     components: {
         ProfessionalSingleReview
     },
-    // data() {
-    //     return {
-    //         rating:'',
-    //     }
-    // },
+    data() {
+        return {
+            rating: {
+                type: Number,
+                default: 0,
+            }
+        }
+    },
     props: [
         'professionalContent',
-        'reviews'
+        'reviews',
+        'totalReviews'
     ],
-    // computed: {
-    //     getRating: function() {
-    //         //this.rating = this.reviews.rating;
-    //     }
-    // }
+    created() {
+        this.rating.default = this.reviews.rating;
+    }
 }
 </script>
 

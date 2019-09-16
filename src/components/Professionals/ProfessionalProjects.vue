@@ -4,14 +4,14 @@
         <div class="row">
             <div class="col-sm-4" v-for="project in projects" :key="project.id">
                 <div class="thumbnail">
-                    <a href="">
+                    <router-link :to="{ name: 'project', params: { slug: project.slug, id: project.id }}">
                         <div class="image-holder">
                             <img alt="project.name" style="height:auto;" :src="project.image">
                         </div>
                         <div class="caption text-center">
                             <p class="font-weight-bold">{{project.name}}</p>
                         </div>
-                    </a>
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+
 export default {
     name: "ProfessionalProjects",
     props: [
