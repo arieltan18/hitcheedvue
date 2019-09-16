@@ -42,14 +42,11 @@ export default {
             reviews: []
         }
     },
-    created() {
-        this.professional_id = this.$route.params.id;
-    },
     methods: {
         getProfessionalContent () {
             //const url = "https://laravel.hitcheed.com/api/v1/professionals/" + this.professional_id;
             const url = "http://hitcheedlaravel.test/api/v1/professionals/" + this.professional_id;
-
+            console.log('hey');
             axios.defaults.headers = {
                 'Content-Type': 'application/json',
                 'cache-control': 'no-cache'
@@ -59,7 +56,7 @@ export default {
                 this.professionalContent = response.data.professional;
                 this.projects = response.data.projects;
                 this.reviews = response.data.reviews;
-                console.log(response.data);
+                //console.log(response.data);
             })
             .catch(error => {
                 console.log(error);
@@ -67,7 +64,14 @@ export default {
         }
     },
     mounted() {
+        this.professional_id = this.$route.params.id;
         this.getProfessionalContent();
+        
+    },
+    beforeRouteUpdate(to,from,next) {
+        this.professional_id = to.params.id;
+        this.getProfessionalContent();
+        next();
     }
 }
 </script>

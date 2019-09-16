@@ -61,16 +61,23 @@ export default {
                 this.otherProjects = response.data.other_projects;
                 this.totalReviews = response.data.total_reviews;
                 this.reviews = response.data.reviews;
-                console.log(response.data);
+                //console.log(response.data);
             })
             .catch(error => {
                 console.log(error);
             });
         }
     },
-    mounted() {
+    beforeMount() {
+        this.project_id = this.$route.params.id;
         this.getProjectContent();
+    },
+    beforeRouteUpdate(to,from,next) {
+        this.project_id = to.params.id;
+        this.getProjectContent();
+        next();
     }
+
 }
 </script>
 
