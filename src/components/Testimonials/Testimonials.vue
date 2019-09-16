@@ -6,17 +6,15 @@
                     <h1>Testimonials</h1>
                 </div>
             </div>
-            <div class="row">
-                <div class="mb-4" v-for="testimonial in testimonials" :key="testimonial.id">
-                    <div class="col-mb-8">
+            <div class="row mb-4" v-for="testimonial in testimonials" :key="testimonial.id">
+                    <div class="col-md-8 testimonial-body">
                         {{ testimonial.body_text }}
                     </div>
-                    <div class="col-mb-2 testimonial-avatar-div text-center">
+                    <div class="col-sm-4 testimonial-avatar-div text-center">
                         <img v-if="testimonial.profile_image" class="testimonial-avatar" :src="testimonial.profile_image">
                         <img v-else class="testimonial-avatar" :src="image_src">
                         <div class="testimonial-name text-center">{{ testimonial.name }}</div>
                     </div>
-                </div>
             </div>
         </div>
     </div>
@@ -71,6 +69,13 @@ h1 {
 .text-center
 {
     text-align: center;
+}
+
+.testimonial-div
+{
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
 }
 
 .testimonial-avatar
