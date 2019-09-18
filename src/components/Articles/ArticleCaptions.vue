@@ -6,9 +6,9 @@
         <div class="attr">{{ date(articleItem.first_published_at )}}</div>
         <div class="tag" v-if="articleItem.tag_list">
             <span v-for="tag in articleItem.tag_list" :key="tag" class="mr-2">
-                <a class="btn ue-popup-button article-tag-btn" href="">
+                <router-link class="btn ue-popup-button article-tag-btn" :to="{ name: 'articlesTag', query: { tag: tag }}">
                     {{ tag }}
-                </a>
+                </router-link>
             </span>
         </div>
         <div class="art-readmore">

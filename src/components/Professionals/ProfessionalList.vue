@@ -1,11 +1,16 @@
 <template>
     <div>
         <router-link class="professional-img" :to="{ name: 'professional', params: { slug: slug, id: professional.id }}">
-            <img class="ar-image" :src="professional.around_image" alt="professional">
+            <img class="ar-image mb-2" :src="professional.around_image" alt="professional">
         </router-link>
-        <div class="bottom-centered text-center">
+        <!-- <div class="bottom-centered text-center">
             <h2>{{ professional.country }}</h2>
             <p>{{ professional.name }}</p>
+        </div> -->
+        <div class="bottom-centered text-center">
+            <h2>{{ professional.name }}</h2>
+            <hr>
+            <p>{{ professional.price_text }}</p>
         </div>
     </div>
 </template>
@@ -49,19 +54,13 @@ export default {
     z-index: -1;
 }
 
-.bottom-centered
-{
-    position: absolute;
-    top: 85%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
 
 .bottom-centered h2
 {
-    font-size: 27px;
+    font-size: 25px;
     font-family: 'Cormorant Garamond';
-    color: #fff;
+    color: #25130e;
+    font-weight: normal;
 }
 
 .text-center
@@ -69,15 +68,12 @@ export default {
     text-align: center;
 }
 
-.bottom-centered p
-{
-    color: #fff;
-    text-transform: uppercase;
-}
-
 p
 {
     font-family: 'Open Sans';
+    color: #25130e;
+    margin: 5px 0;
+    text-transform: none;
 }
 </style>
 

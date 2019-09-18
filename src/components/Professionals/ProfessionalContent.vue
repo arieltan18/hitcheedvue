@@ -19,7 +19,6 @@
                 <ProfessionalReviews :professionalContent="professionalContent" :reviews="reviews" :totalReviews="professionalContent.review_count" />
             </div>
         </div>
-            
     </div>
 </template>
 
@@ -43,10 +42,11 @@ export default {
         }
     },
     methods: {
-        getProfessionalContent () {
-            //const url = "https://laravel.hitcheed.com/api/v1/professionals/" + this.professional_id;
-            const url = "http://hitcheedlaravel.test/api/v1/professionals/" + this.professional_id;
-            console.log('hey');
+        getProfessionalContent () 
+        {
+            const url = "https://laravel.hitcheed.com/api/v1/professionals/" + this.professional_id;
+            //const url = "http://hitcheedlaravel.test/api/v1/professionals/" + this.professional_id;
+            
             axios.defaults.headers = {
                 'Content-Type': 'application/json',
                 'cache-control': 'no-cache'
@@ -66,7 +66,6 @@ export default {
     mounted() {
         this.professional_id = this.$route.params.id;
         this.getProfessionalContent();
-        
     },
     beforeRouteUpdate(to,from,next) {
         this.professional_id = to.params.id;

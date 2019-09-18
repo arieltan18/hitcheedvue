@@ -6,7 +6,7 @@
                 {{ professionalContent.name }}
             </h4>
             <p class="review-rating-text text-center" v-if="reviews.length > 0">{{ totalReviews }} Reviews 
-                <span v-for="(value, index) in rating" :key="index">
+                <span v-for="(value, index) in this.professionalContent.rating" :key="index">
                     <span class="rating-star fa fa-star"></span>
                 </span>
             </p>
@@ -25,22 +25,11 @@ export default {
     components: {
         ProfessionalSingleReview
     },
-    data() {
-        return {
-            rating: {
-                type: Number,
-                default: 0,
-            }
-        }
-    },
     props: [
         'professionalContent',
         'reviews',
         'totalReviews'
     ],
-    created() {
-        this.rating.default = this.reviews.rating;
-    }
 }
 </script>
 

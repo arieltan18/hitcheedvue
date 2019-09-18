@@ -3,7 +3,7 @@
         <div class="media">
             <h4>{{ review.name }}</h4>
             <div class="rating-stars">
-                <span v-for="(value, index) in rating" :key="index">
+                <span v-for="(value, index) in parseInt(this.review.rating)" :key="index">
                     <span class="rating-star fa fa-star"></span>
                 </span>
             </div>
@@ -18,20 +18,9 @@
 <script>
 export default {
     name: 'ProfessionalSingleReview',
-    data() {
-        return {
-            rating: {
-                type: Number,
-                default: 0,
-            }
-        }
-    },
     props: [
         'review'
-    ],
-    created() {
-        this.rating.default = this.review.rating;
-    }
+    ]
 }
 </script>
 

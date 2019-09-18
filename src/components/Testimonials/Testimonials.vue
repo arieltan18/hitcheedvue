@@ -34,13 +34,12 @@ export default {
     methods: {
         async getTestimonialList () 
         {
-            //const api = "https://laravel.hitcheed.com/api/v1/testimonials";
-            const api = 'http://hitcheedlaravel.test/api/v1/testimonials';
+            const api = "https://laravel.hitcheed.com/api/v1/testimonials";
+            //const api = 'http://hitcheedlaravel.test/api/v1/testimonials';
 
             axios.defaults.headers = {
                 'Content-Type': 'application/json',
                 'cache-control':'no-cache',
-
             }
             await axios.get(api,{crossDomain: true})
             .then((response) => {

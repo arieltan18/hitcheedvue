@@ -26,7 +26,7 @@ export default {
     },
     data() {
         return {
-            articleItems: []
+            articleItems: [],
         }
     },
     methods: {
@@ -49,10 +49,45 @@ export default {
                 console.log(error);
             });
         },
+        getTagFilteredArticleItems (tag) {
+            //get the current timestamp
+            const date = Date.now();
+
+            const baseURL = 'https://api.storyblok.com/v1/cdn/stories?version=published';
+            const url = baseURL + '&token=redXm4rXjmjvRpRzJE6lFQtt&starts_with=blog' + '&cv=' + date + '&with_tag=' + encodeURIComponent(tag);
+            
+            axios.defaults.headers = {
+                'Content-Type': 'application/json',
+                'cache-control':'no-cache'
+            }
+            axios.get(url)
+            .then((response) => {
+                this.articleItems = response.data.stories;
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        },
     },
     mounted() 
     {
-        this.getFullArticleItems();
+        if(!this.$route.query.tag)
+        {
+            this.getFullArticleItems();
+        }
+    },
+    beforeRouteEnter (to, from, next) 
+    {
+        next(vm => {
+            // access to component instance via `vm`
+            vm.getTagFilteredArticleItems(to.query.tag);
+        })
+        next();
+    },
+    beforeRouteUpdate (to, from, next)
+    {
+        this.getTagFilteredArticleItems(to.query.tag);
+        next();
     }
 }
 

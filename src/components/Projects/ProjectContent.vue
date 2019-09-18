@@ -1,8 +1,15 @@
 <template>
     <div>
         <div class="container-fluid bg-color">
-            <div class="row">
-                <img class="top-image" >
+            <div class="multiple-items project-slider" >
+                <Carousel :perPageCustom="[[768, 3], [1024, 4]]" :scrollPerPage="true" :navigationEnabled="true"  :minSwipeDistance="1" 
+                    :navigation-next-label="navigationNext" :navigation-prev-label="navigationPrev">
+                <slide v-for="(projectImage,index) in projectImages" :key="index">
+                    <a href="">
+                        <img class="mr-3" :src="projectImage.slug" style="height:480px;" />
+                    </a>
+                </slide>
+                </Carousel>
             </div>
         </div>
         <div class="container-fluid padding">
@@ -27,20 +34,26 @@
 import axios from 'axios';
 import ProfessionalReviews from '../Professionals/ProfessionalReviews';
 import ProfessionalProjects from '../Professionals/ProfessionalProjects';
+import { Carousel, Slide } from 'vue-carousel';
+//import carousel from 'vue-owl-carousel'
 
 export default {
     name: "ProjectContent",
     components: {
         ProfessionalReviews,
-        ProfessionalProjects
+        ProfessionalProjects,
+        Carousel,
+        Slide
     },
     data() {
         return {
             project_id: '',
+            projectImages: [],
             projectContent: [],
             otherProjects: [],
             reviews: [],
-            totalReviews: ''
+            totalReviews: '',
+            
         }
     },
     created() {
@@ -58,24 +71,33 @@ export default {
             axios.get(url)
             .then((response) => {
                 this.projectContent = response.data.project;
+                this.projectImages = response.data.project_images;
                 this.otherProjects = response.data.other_projects;
                 this.totalReviews = response.data.total_reviews;
                 this.reviews = response.data.reviews;
-                //console.log(response.data);
+                console.log(this.projectImages);
             })
             .catch(error => {
                 console.log(error);
             });
-        }
+        },
+
     },
     beforeMount() {
         this.project_id = this.$route.params.id;
         this.getProjectContent();
     },
+    mounted() {
+        console.log(this.$options.name+' component successfully mounted');
+    },
     beforeRouteUpdate(to,from,next) {
         this.project_id = to.params.id;
         this.getProjectContent();
         next();
+    },
+    computed: {
+        navigationNext: function() { return `<i class="fas fa-chevron-right"></i>` },
+        navigationPrev: function() { return `<i class="fas fa-chevron-left"></i>` },
     }
 
 }
@@ -106,5 +128,21 @@ h3
 .project-content
 {
     text-align: left;
+}
+
+.project-slider
+{
+    min-height: 300px;
+}
+
+.slider-pro
+{
+    position: relative;
+    box-sizing: content-box;
+}
+
+.sp-slides-container
+{
+    position: relative;
 }
 </style>
