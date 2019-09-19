@@ -4,11 +4,11 @@
             <div class="multiple-items project-slider" >
                 <Carousel :perPageCustom="[[768, 3], [1024, 4]]" :scrollPerPage="true" :navigationEnabled="true"  :minSwipeDistance="1" 
                     :navigation-next-label="navigationNext" :navigation-prev-label="navigationPrev">
-                <slide v-for="(projectImage,index) in projectImages" :key="index">
-                    <a href="">
-                        <img class="mr-3" :src="projectImage.slug" style="height:480px;" />
-                    </a>
-                </slide>
+                    <slide v-for="(projectImage,index) in projectImages" :key="index">
+                        <a href="">
+                            <img class="mr-3" :src="projectImage.slug" style="height:480px;" />
+                        </a>
+                    </slide>
                 </Carousel>
             </div>
         </div>
