@@ -1,15 +1,18 @@
 <template>
     <div>
-        <div class="container-fluid bg-color">
+        <div class="container-fluid bg-color container-width">
             <div class="multiple-items project-slider" >
-                <Carousel :perPageCustom="[[768, 3], [1024, 4]]" :scrollPerPage="true" :navigationEnabled="true"  :minSwipeDistance="1" 
+                <!-- <Carousel :perPageCustom="[[768, 3], [1024, 4]]" :scrollPerPage="true" :navigationEnabled="true"  :minSwipeDistance="1" 
                     :navigation-next-label="navigationNext" :navigation-prev-label="navigationPrev">
                     <slide v-for="(projectImage,index) in projectImages" :key="index">
                         <a href="">
                             <img class="mr-3" :src="projectImage.slug" style="height:480px;" />
                         </a>
                     </slide>
-                </Carousel>
+                </Carousel> -->
+                <vueper-slides class="no-shadow" :visible-slides="3" slide-multiple :slide-ratio="1/4" :dragging-distance="200" :breakpoints="{ 800: { visibleSlides: 2 } }">
+                    <vueper-slide class="mr-4" v-for="(image, i) in projectImages" :key="i" :image="image.slug"></vueper-slide>
+                </vueper-slides>
             </div>
         </div>
         <div class="container-fluid padding">
@@ -34,16 +37,20 @@
 import axios from 'axios';
 import ProfessionalReviews from '../Professionals/ProfessionalReviews';
 import ProfessionalProjects from '../Professionals/ProfessionalProjects';
-import { Carousel, Slide } from 'vue-carousel';
+//import { Carousel, Slide } from 'vue-carousel';
 //import carousel from 'vue-owl-carousel'
+import { VueperSlides, VueperSlide } from 'vueperslides'
+import 'vueperslides/dist/vueperslides.css'
 
 export default {
     name: "ProjectContent",
     components: {
         ProfessionalReviews,
         ProfessionalProjects,
-        Carousel,
-        Slide
+        VueperSlides, 
+        VueperSlide
+        // Carousel,
+        // Slide
     },
     data() {
         return {
@@ -53,7 +60,6 @@ export default {
             otherProjects: [],
             reviews: [],
             totalReviews: '',
-            
         }
     },
     created() {
@@ -144,5 +150,10 @@ h3
 .sp-slides-container
 {
     position: relative;
+}
+
+.container-width
+{
+    width: 98%;
 }
 </style>
