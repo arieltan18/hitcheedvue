@@ -27,7 +27,6 @@ export default {
     data() {
         return {
             articleItems: [],
-            api: process.env.STORYBLOK_API
         }
     },
     methods: {
@@ -35,7 +34,8 @@ export default {
             //get the current timestamp
             const date = Date.now();
 
-            const url = process.env.STORYBLOK_API + '&starts_with=blog' + '&cv=' + date;
+            const baseURL = 'https://api.storyblok.com/v1/cdn/stories?version=published';
+            const url = baseURL + '&token=redXm4rXjmjvRpRzJE6lFQtt&starts_with=blog' + '&cv=' + date;
 
             axios.defaults.headers = {
                 'Content-Type': 'application/json',
@@ -43,7 +43,6 @@ export default {
             }
             axios.get(url)
             .then((response) => {
-                console.log(process.env.STORYBLOK_API);
                 this.articleItems = response.data.stories;
             })
             .catch(error => {
@@ -54,7 +53,8 @@ export default {
             //get the current timestamp
             const date = Date.now();
 
-            const url = process.env.STORYBLOK_API + '&starts_with=blog' + '&cv=' + date + '&with_tag=' + encodeURIComponent(tag);
+            const baseURL = 'https://api.storyblok.com/v1/cdn/stories?version=published';
+            const url = baseURL + '&token=redXm4rXjmjvRpRzJE6lFQtt&starts_with=blog' + '&cv=' + date + '&with_tag=' + encodeURIComponent(tag);
 
             axios.defaults.headers = {
                 'Content-Type': 'application/json',
@@ -71,7 +71,6 @@ export default {
     },
     mounted() 
     {
-        console.log(process.env.STORYBLOK_API);
         if(!this.$route.query.tag)
         {
             this.getFullArticleItems();
