@@ -34,8 +34,7 @@ export default {
             //get the current timestamp
             const date = Date.now();
 
-            const baseURL = 'https://api.storyblok.com/v1/cdn/stories?version=published';
-            const url = baseURL + '&token=redXm4rXjmjvRpRzJE6lFQtt&starts_with=blog' + '&cv=' + date;
+            const url = process.env.VUE_APP_STORYBLOK_API + '&starts_with=blog&cv=' + date;
 
             axios.defaults.headers = {
                 'Content-Type': 'application/json',
@@ -53,8 +52,7 @@ export default {
             //get the current timestamp
             const date = Date.now();
 
-            const baseURL = 'https://api.storyblok.com/v1/cdn/stories?version=published';
-            const url = baseURL + '&token=redXm4rXjmjvRpRzJE6lFQtt&starts_with=blog' + '&cv=' + date + '&with_tag=' + encodeURIComponent(tag);
+            const url = process.env.VUE_APP_STORYBLOK_API + '&starts_with=blog&cv=' + date + '&with_tag=' + encodeURIComponent(tag);
 
             axios.defaults.headers = {
                 'Content-Type': 'application/json',
@@ -75,6 +73,7 @@ export default {
         {
             this.getFullArticleItems();
         }
+        
     },
     beforeRouteEnter (to, from, next) 
     {

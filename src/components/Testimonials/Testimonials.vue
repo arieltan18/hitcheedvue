@@ -34,7 +34,7 @@ export default {
     methods: {
         async getTestimonialList () 
         {
-            const api = "https://laravel.hitcheed.com/api/v1/testimonials";
+            const api = process.env.VUE_APP_HITCHEED_API + "/v1/testimonials";
             //const api = 'http://hitcheedlaravel.test/api/v1/testimonials';
 
             axios.defaults.headers = {

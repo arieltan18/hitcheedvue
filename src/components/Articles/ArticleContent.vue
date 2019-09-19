@@ -27,9 +27,6 @@ import axios from 'axios';
 import ArticleContentTitle from "./ArticleContentTitle.vue";
 import ArticleContentBody from "./ArticleContentBody.vue";
 
-
-const baseURL = 'https://api.storyblok.com/v1/cdn/stories?version=published';
-
 export default {
     name: "ArticleContent",
     components: {
@@ -49,7 +46,7 @@ export default {
             const date = Date.now();
 
             const slug = this.$route.params.slug;
-            const article_url = baseURL + '&token=redXm4rXjmjvRpRzJE6lFQtt' + '&cv=' + date + '&starts_with=blog/' + slug;
+            const article_url = process.env.VUE_APP_STORYBLOK_API + '&cv=' + date + '&starts_with=blog/' + slug;
             
             axios
             .get(article_url)

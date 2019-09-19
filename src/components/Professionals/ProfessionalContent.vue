@@ -44,7 +44,7 @@ export default {
     methods: {
         getProfessionalContent () 
         {
-            const url = "https://laravel.hitcheed.com/api/v1/professionals/" + this.professional_id;
+            const url = process.env.VUE_APP_HITCHEED_API + "/v1/professionals/" + this.professional_id;
             //const url = "http://hitcheedlaravel.test/api/v1/professionals/" + this.professional_id;
             
             axios.defaults.headers = {

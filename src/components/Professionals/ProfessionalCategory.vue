@@ -39,7 +39,7 @@ export default {
     methods: {
         async getProfessionalList () {
 
-            const api = 'https://laravel.hitcheed.com/api/v1/professionals/category/' + this.$route.params.id;
+            const api = process.env.VUE_APP_HITCHEED_API + '/v1/professionals/category/' + this.$route.params.id;
             //const api = 'http://hitcheedlaravel.test/api/v1/professionals/category/' + this.$route.params.id;
 
             axios.defaults.headers = {

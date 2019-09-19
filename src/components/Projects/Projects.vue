@@ -29,7 +29,7 @@ export default {
     methods: {
         async getProjectList () {
 
-            const api = "https://laravel.hitcheed.com/api/v1/Projects";
+            const api = process.env.VUE_APP_HITCHEED_API + "/v1/Projects";
             //const api = 'http://hitcheedlaravel.test/api/v1/Projects';
 
             axios.defaults.headers = {

@@ -34,9 +34,9 @@ export default {
     methods: {
         async getProfessionalList () {
 
-            const hotelsAPI = 'https://laravel.hitcheed.com/api/v1/professionals/category/1';
-            const bridalStudiosAPI = 'https://laravel.hitcheed.com/api/v1/professionals/category/2';
-            const photographersAPI = 'https://laravel.hitcheed.com/api/v1/professionals/category/5';
+            const hotelsAPI = process.env.VUE_APP_HITCHEED_API + '/v1/professionals/category/1';
+            const bridalStudiosAPI = process.env.VUE_APP_HITCHEED_API + '/v1/professionals/category/2';
+            const photographersAPI = process.env.VUE_APP_HITCHEED_API + '/v1/professionals/category/5';
 
             // const hotelsAPI = 'http://hitcheedlaravel.test/api/v1/professionals/category/1';
             // const bridalStudiosAPI = 'http://hitcheedlaravel.test/api/v1/professionals/category/2';

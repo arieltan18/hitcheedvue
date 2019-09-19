@@ -61,7 +61,7 @@ export default {
     },
     methods: {
         getProjectContent () {
-            const url = "https://laravel.hitcheed.com/api/v1/projects/" + this.project_id;
+            const url =  process.env.VUE_APP_HITCHEED_API  + "/v1/projects/" + this.project_id;
             //const url = "http://hitcheedlaravel.test/api/v1/projects/" + this.project_id;
 
             axios.defaults.headers = {
