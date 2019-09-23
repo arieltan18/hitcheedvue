@@ -49,30 +49,32 @@ const actions = {
     },
     destroyToken(context)
     {
-        axios.defaults.headers.common['Authorization'] = 'Bearer' + context.state.token
+        //axios.defaults.headers.common['Authorization'] = 'Bearer' + context.state.token
 
         if(context.getters.loggedIn)
         {
-            const logoutURL = process.env.VUE_APP_HITCHEED_API + "/v1/logout";
+            localStorage.removeItem('access_token');
+            context.commit('destroyToken');
+            // const logoutURL = process.env.VUE_APP_HITCHEED_API + "/v1/logout";
 
-            axios.defaults.headers = {
-                'Content-Type': 'application/json',
-                'cache-control': 'no-cache'
-            }
+            // axios.defaults.headers = {
+            //     'Content-Type': 'application/json',
+            //     'cache-control': 'no-cache'
+            // }
     
-            return new Promise((resolve, reject) => {
-                axios.post(logoutURL).then(response => {
+            // return new Promise((resolve, reject) => {
+            //     axios.post(logoutURL).then(response => {
 
-                    localStorage.removeItem('access_token');
-                    context.commit('destroyToken');
-                    resolve(response);
+            //         localStorage.removeItem('access_token');
+            //         context.commit('destroyToken');
+            //         resolve(response);
                     
-                }).catch(error => {
-                    localStorage.removeItem('access_token');
-                    context.commit('destroyToken');
-                    reject(error);
-                });
-            })
+            //     }).catch(error => {
+            //         localStorage.removeItem('access_token');
+            //         context.commit('destroyToken');
+            //         reject(error);
+            //     });
+            // })
         }
     },
     retrieveToken(context, credentials )
