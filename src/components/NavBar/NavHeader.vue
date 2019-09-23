@@ -16,7 +16,7 @@
                                     id="dropdown-form-signup-username"
                                     size="sm"
                                     placeholder="Username"
-                                    v-model="registerInput.username"
+                                    v-model="registerInput.name"
                                 ></b-form-input>
                                 </b-form-group>
                                 <b-form-group label="Email" label-for="dropdown-form-email" @submit.stop.prevent>
@@ -47,11 +47,11 @@
                                     v-model="registerInput.c_password"
                                 ></b-form-input>
                                 </b-form-group>
-                                <b-button variant="primary" size="sm" @click="signUp">Sign Up</b-button>
+                                <b-button variant="primary" size="sm" @click="submitRegister">Sign Up</b-button>
                                 <div class="response-msg">{{ response }}</div>
                             </b-dropdown-form>
                         </b-dropdown>
-                        <b-dropdown id="dropdown-form" ref="dropdown" class="m-2" variant="black" no-caret>
+                        <b-dropdown id="dropdown-form" ref="dropdown" class="m-2" variant="black" no-caret v-if="!loggedIn">
                             <template v-slot:button-content>
                                 <span class="login-dropdown">Login</span>
                             </template>
@@ -82,6 +82,7 @@
                             <b-dropdown-item-button>New around here? Sign up</b-dropdown-item-button>
                             <b-dropdown-item-button>Forgot Password?</b-dropdown-item-button>
                         </b-dropdown>
+                    <b-navbar-nav v-if="loggedIn">Logout</b-navbar-nav>
                     </b-navbar-nav>
                 </b-navbar-nav>
             </div>
@@ -90,8 +91,6 @@
 </template>
 
 <script>
-import axios from 'axios';
-
 export default {
     name: 'NavHeader',
     data() {
@@ -111,41 +110,32 @@ export default {
             response: ''
         }
     },
+    created() {
+        this.$store.dispatch('destroyToken')
+        .then(response => {
+            console.log(response);
+        })
+    },
+    computed: {
+        loggedIn() {
+            return this.$store.getters.loggedIn;
+        }
+    },
     methods: {
-        signUp() 
+        submitRegister() 
         {
             if(this.password !== this.c_password)
             {
                 this.response = "Your password is not match!";
+                console.log( "Your password is not match!");
             }
             else
             {
-                const signUpURL = process.env.VUE_APP_HITCHEED_API + "/v1/register";
-
-                axios.defaults.headers = {
-                    'Content-Type': 'application/json',
-                    'cache-control': 'no-cache'
-                }
-                axios.post(signUpURL, this.registerInput
-                ).then(response => {
-                    //let token  = response.data.success.token;
-
-                    // store.commit('loginUser')
-                    //localStorage.setItem('token', token);
-                    console.log(this.registerInput );
-                    this.response = "Successfully Register";
-                    
-                }).catch(error => {
-                    console.log(error);
+                this.$store.dispatch('registerUser', this.registerInput)
+                .then(response => {
+                    console.log(response);
                 });
 
-                // axios({ 
-                //     method: "POST", "url": process.env.VUE_APP_HITCHEED_API + "/v1/register", "data": this.input, "headers": { "content-type": "application/json" } })
-                //     .then(result => {
-                //         this.response = result.data;
-                //     }, error => {
-                //         console.error(error);
-                //     });
             }
         },
         submitLogin() 
