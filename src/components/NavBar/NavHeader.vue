@@ -17,7 +17,7 @@
                                 SIGN UP WITH EMAIL
                             </b-link>
                         </b-modal>
-                        <b-modal id="signup-email" title="SIGN UP WITH EMAIL" centered hide-footer no-stacking>
+                        <b-modal id="signup-email" title="SIGN UP WITH EMAIL" centered hide-footer no-stacking @hide="clearResponse">
                             <form class="contact-form" method="POST">
                                 <h5 class="text-center">SIGN UP HITCHEED</h5>
                                 <b-form-input
@@ -46,6 +46,7 @@
                                     type="password"
                                     v-model="registerInput.c_password"
                                 ></b-form-input>
+                                <p class="error-msg text-center" v-for="(value,index) in response" :key="index">{{ value }}</p>
                                 <p class="condition text-center">By signing up, I agree to Hicheed's Privacy Policy</p>
                                 <b-button class="forget-btn" variant="primary" size="sm" @click="submitRegister">Sign Up</b-button>
                             </form>
@@ -144,7 +145,7 @@ export default {
                 email: ""
             },
             loginError: false,
-            response: ''
+            response: []
         }
     },
     created() {
@@ -158,10 +159,26 @@ export default {
     methods: {
         submitRegister() 
         {
-            if(this.password !== this.c_password)
+            if(this.registerInput.name == "")
             {
-                this.response = "Your password is not match!";
-                console.log( "Your password is not match!");
+                this.response.push("Username can't be blank");
+            }
+            if(this.registerInput.email == "")
+            {
+                this.response.push("Email can't be blank");
+            }
+            if(this.registerInput.password == "")
+            {
+                this.response.push("Password can't be blank");
+            }
+            if(this.registerInput.c_password == "")
+            {
+                this.response.push("Password Confirmation can't be blank");
+            }
+            
+            if(this.registerInput.password !== this.registerInput.c_password)
+            {
+                this.response.push("Your password is not match!");
             }
             else
             {
@@ -189,6 +206,10 @@ export default {
             .then(response => {
                 console.log(response);
             })
+        },
+        clearResponse()
+        {
+            this.response = [];
         }
     }
 }
@@ -349,13 +370,20 @@ export default {
     line-height: 20px;
 }
 
-.profile-dropdown-menu .dropdown-item
+.profile-dropdown-menu
 {
     color: #000;
     font-size: 14px;
-    font-weight: 900;
+    font-weight: bold !important;
     text-transform: uppercase;
     text-align: center;
     text-decoration: none;
+}
+
+.error-msg
+{
+    color: #eb6867;
+    font-size:14px;
+    margin-bottom: 0px;
 }
 </style>

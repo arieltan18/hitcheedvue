@@ -2,39 +2,26 @@
     <div>
         <b-navbar >
             <div class="container nav-bar">
-                <b-navbar-brand class="logo-brand" href="#">
+                <b-navbar-brand class="logo-brand" href="/">
                     <img alt="Hitcheed Private Limited [SG]" :src="logo" height="38px;"/>
                 </b-navbar-brand>
-                <!-- <b-navbar-nav class="mr-auto nav-link">
-                    <b-dropdown variant="white">
-                        <template v-slot:button-content class="nav-dropdown">
-                            <span class="browse-nav">Browse</span>
-                        </template>
-                        <b-navbar-nav class="mr-auto nav-link">
-                            <b-dropdown variant="white" no-caret>
-                                <template v-slot:button-content class="nav-dropdown">
-                                    <span class="browse-nav">Singapore</span>
-                                </template>
-                            </b-dropdown>
-                            <b-dropdown variant="white" no-caret>
-                                <template v-slot:button-content class="nav-dropdown">
-                                    <span class="browse-nav">Other Country</span>
-                                </template>
-                            </b-dropdown>
-
-                        </b-navbar-nav>
-                    </b-dropdown>
-                    <b-nav-item href="#">Articles</b-nav-item>
-                </b-navbar-nav> -->
                 <div class="navbar-nav">
-                    <div class="nav-bar-link nav-bar-dropdown">
-                        <a class="browse-menu-link" href="">Browse<span class="caret"></span></a>
+                    <div class="nav-bar-link nav-bar-dropdown" @mouseover="hover = true">
+                        <div class="browse-menu-link" @click="hover=true">Browse<span class="caret"></span></div>
                     </div>
-                    <div class="dropdown-content">
-                        <div class="nav-country">Singapore</div>
-                        <div class="nav-country">Other Country</div>
+                    <div class="dropdown-content" v-if="hover" @mouseleave="hover = false">
+                        <div class="row country-nav">
+                            <div class="col-sm-4"></div>
+                            <div class="country-text col-sm-2">Singapore</div>
+                            <div class="country-text col-sm-2">Other Country</div>
+                            <div class="col-sm-4"></div>
+                        </div>
+                        <hr>
+                        <div class="dropdown-country-content">
+                            
+                        </div>
                     </div>
-                    <div class="nav-bar-link msg-link">Messages</div>
+                    <div v-if="loggedIn" class="nav-bar-link">Messages</div>
                     <div class="nav-bar-link">Articles</div>
                 </div>
                 <b-nav-form class="ml-auto">
@@ -51,8 +38,17 @@ export default {
     name: 'NavBar',
     data() {
         return {
-            logo: '/logo-5a97df3649b490ac45e1ce37411c365f11a95fc5239008a885742ed20ed69c26.png'
+            logo: '/logo-5a97df3649b490ac45e1ce37411c365f11a95fc5239008a885742ed20ed69c26.png',
+            hover: false,
         }
+    },
+    computed: {
+        loggedIn() {
+            return this.$store.getters.loggedIn;
+        }
+    },
+    methods: {
+
     }
 }
 </script>
@@ -126,11 +122,6 @@ export default {
     border-left: 4px solid transparent;
 }
 
-.msg-link
-{
-    display: none;
-}
-
 .nav-bar-link
 {
     font-size: 13px;
@@ -150,7 +141,6 @@ export default {
 
 .dropdown-content
 {
-    display: none;
     width:100%;
     position: absolute;
     background-color: #ffffff;
@@ -178,5 +168,29 @@ export default {
 .browse-menu-link:hover .dropdown-content 
 {
     display: block;
+}
+
+.search-icon
+{
+    position: relative;
+    right: 34px;
+}
+
+.country-nav
+{
+    margin-right: -10px;
+    margin-left: -10px;
+    height: 40px;
+}
+
+.country-text
+{
+    line-height: 3em;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: #25130e !important;
+    font-weight: 700;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
 }
 </style>
