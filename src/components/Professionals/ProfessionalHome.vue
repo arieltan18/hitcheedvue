@@ -1,16 +1,6 @@
 <template>
     <div class="container-fluid mb-5" v-if="professionals.length >0" >
         <div class="container" v-for="(value, index) in professionals" :key="index">
-            <!-- <div class="row mb-2">
-                <div class="col-sm-12 text-center">
-                    <h1>Professionals</h1>
-                </div>
-            </div>
-            <div class="row">
-                <div v-for="professional in professionals" :key="professional.id" class="col-md-4 professional-padding mb-4">
-                    <ProfessionalList :professional="professional" />
-                </div>
-            </div> -->
             <ProfessionalCategory :professionalCategories="value"/>
         </div>
     </div>

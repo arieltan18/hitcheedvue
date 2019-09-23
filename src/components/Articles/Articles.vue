@@ -3,7 +3,9 @@
         <div class="container">
             <div class="row mb-4">
                 <div class="col-sm-12 text-center">
-                    <h1>Articles</h1>
+                    <router-link :to="{ name: 'articlesHome'}" class="header-link">
+                        <h1>Articles</h1>
+                    </router-link>
                 </div>
             </div>
             <div class="row">
@@ -102,5 +104,11 @@ h1 {
 .text-center
 {
     text-align: center;
+}
+
+.header-link
+{
+    text-decoration: none;
+    color: black;
 }
 </style>

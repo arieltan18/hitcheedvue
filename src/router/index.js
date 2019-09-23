@@ -28,6 +28,11 @@ export default new VueRouter({
             component: Articles
         },
         {
+            name: 'articlesHome',
+            path: '/all/articles',
+            component: Articles
+        },
+        {
             name: 'professional',
             path: '/professionals/:slug/:id',
             component: ProfessionalContent
