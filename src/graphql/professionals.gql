@@ -1,0 +1,12 @@
+query ProfessionalsQuery {
+    professionals_paginate(first: 10, page: 1) {
+        data {
+            id
+            name
+            slug
+            cover_image
+            around_image
+            profile_image
+        }
+    }
+  }

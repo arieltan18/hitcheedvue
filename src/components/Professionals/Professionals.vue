@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid mb-5" v-if="professionals.length >0" >
+    <div class="container-fluid mb-5" v-if="professionals.data">
         <div class="container">
             <div class="row mb-2">
                 <div class="col-sm-12 text-center">
@@ -9,7 +9,7 @@
                 </div>
             </div>
             <div class="row">
-                <div v-for="professional in professionals" :key="professional.id" class="col-md-4 professional-padding mb-4">
+                <div v-for="professional in professionals.data" :key="professional.id" class="col-md-4 professional-padding mb-4">
                     <ProfessionalList :professional="professional" />
                 </div>
             </div>
@@ -19,43 +19,55 @@
 
 <script>
 import ProfessionalList from './ProfessionalList.vue';
-import axios from 'axios';
+import gql from 'graphql-tag'
+
 
 export default {
     name: "Professionals",
     components: {
         ProfessionalList
     },
-    data() {
-        return {
-            professionals: []
-        }
-    },
-    methods: {
-        async getProfessionalList () {
-
-            const api = process.env.VUE_APP_HITCHEED_API + "/v1/professionals";
-            //const api = 'http://hitcheedlaravel.test/api/v1/professionals';
-
-            axios.defaults.headers = {
-                'Content-Type': 'application/json',
-                'cache-control':'no-cache',
-
+    apollo: {
+        professionals: gql`
+        query {
+            professionals:professionals_paginate(first: 10) {
+            data {
+                    id
+                    name
+                    slug
+                    cover_image
+                    around_image
+                    profile_image
+                }
             }
-            await axios.get(api,{crossDomain: true})
-            .then((response) => {
-                //console.log(response.data.data);
-                this.professionals = response.data.data;
-            })
-            .catch(error => {
-                console.log(error);
-            });
-        },
+        }
+        `
     },
-    mounted() 
-    {
-        this.getProfessionalList();
-    }
+    // methods: {
+    //     async getProfessionalList () {
+
+    //         const api = process.env.VUE_APP_HITCHEED_API + "/v1/professionals";
+    //         //const api = 'http://hitcheedlaravel.test/api/v1/professionals';
+
+    //         axios.defaults.headers = {
+    //             'Content-Type': 'application/json',
+    //             'cache-control':'no-cache',
+
+    //         }
+    //         await axios.get(api,{crossDomain: true})
+    //         .then((response) => {
+    //             //console.log(response.data.data);
+    //             this.professionals = response.data.data;
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //         });
+    //     },
+    // },
+    // mounted() 
+    // {
+    //     this.getProfessionalList();
+    // }
 }
 
 </script>
