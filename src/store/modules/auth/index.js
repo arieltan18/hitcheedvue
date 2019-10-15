@@ -41,8 +41,8 @@ const actions = {
             context.commit('registerUser',token);
             console.log(response.data);
             console.log("Successfully Register");
-            this.response = "Successfully Register";
             
+            return response
         }).catch(error => {
             console.log(error);
         });
