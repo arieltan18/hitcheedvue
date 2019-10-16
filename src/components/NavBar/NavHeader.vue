@@ -61,6 +61,7 @@
                                 <b-link class="login-link-text text-uppercase" variant="black" v-b-modal.login>Log In</b-link>
                             </p>
                         </b-modal>
+                        <hr style="width: 1px; height: 20px; display: inline-block;border-right: 1px solid #ffffff;">
                         <b-button class="nav-text" variant="black" v-b-modal.login>Login</b-button>
                         <b-modal id="login" title="LOGIN" centered hide-footer ok-only no-stacking>
                             <div class="centered-modal">
@@ -256,18 +257,20 @@ export default {
 <style scoped>
 .header-top
 {
-    background-color: #25130e !important;
-    height: 38px;
+    /* background-color: #25130E !important; */
+    height: 45px;
+    border-bottom: 1px solid #ffffff;
 }
 
 .nav-text
 {
     color:white !important;
-    font-size:16px;
+    font-size:12px;
     font-weight: bold;
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
     line-height: 20px;
     text-transform: uppercase;
+    font-family: 'Open Sans'
 }
 
 .centered-modal
