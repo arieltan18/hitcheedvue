@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-navbar class="header-top" >
+        <b-navbar :class="[this.$route.path=='/' ? whiteClass : brownClass ]" >
             <div class="container">
                 <b-navbar-nav class="ml-auto">
                     <b-navbar-nav v-if="!loggedIn">
@@ -155,7 +155,9 @@ export default {
                 email: ""
             },
             loginError: false,
-            response: []
+            response: [],
+            whiteClass: 'white-header-top',
+            brownClass: 'brown-header-top'
         }
     },
     components: {
@@ -255,13 +257,17 @@ export default {
 </script>
 
 <style scoped>
-.header-top
+.white-header-top
 {
     /* background-color: #25130E !important; */
     height: 45px;
     border-bottom: 1px solid #ffffff;
 }
-
+.brown-header-top
+{
+    background-color: #25130E !important;
+    height: 45px;
+}
 .nav-text
 {
     color:white !important;

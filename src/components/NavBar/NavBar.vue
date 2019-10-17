@@ -3,10 +3,10 @@
         <b-navbar >
             <div class="container nav-bar">
                 <b-navbar-brand class="logo-brand" href="/">
-                    <img alt="Hitcheed Private Limited [SG]" src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/logo/logo_White.png" height="38px;"/>
+                    <img alt="Hitcheed Private Limited [SG]" :src="[this.$route.path =='/' ? whiteLogo : blackLogo]" height="38px;"/>
                 </b-navbar-brand>
                 <div class="navbar-nav">
-                    <div class="nav-bar-link nav-bar-dropdown" @mouseover="hover = true">
+                    <div class="nav-bar-link nav-bar-dropdown" @mouseover="hover = true" :style="[ this.$route.path=='/' ? whiteStyle : blackStyle ]">
                         <div class="browse-menu-link" @click="hover=true">Browse</div>
                     </div>
                     <div class="dropdown-content" v-if="hover" @mouseleave="hover = false">
@@ -21,9 +21,9 @@
                             
                         </div>
                     </div>
-                    <div v-if="loggedIn" class="nav-bar-link">Messages</div>
-                    <div class="nav-bar-link">Articles</div>
-                    <div class="nav-bar-link">Events & Promotions</div>
+                    <div v-if="loggedIn" class="nav-bar-link" :style="[ this.$route.path=='/' ? whiteStyle : blackStyle ]">Messages</div>
+                    <div class="nav-bar-link" :style="[ this.$route.path=='/' ? whiteStyle : blackStyle ]">Articles</div>
+                    <div class="nav-bar-link" :style="[ this.$route.path=='/' ? whiteStyle : blackStyle ]">Events & Promotions</div>
                 </div>
                 <b-nav-form class="ml-auto">
                     <!-- <b-form-input size="sm" class="mr-sm-2 keyword-field search-width" placeholder="Search Vendors, Inspirations..."></b-form-input> -->
@@ -41,6 +41,14 @@ export default {
         return {
             logo: '/logo-5a97df3649b490ac45e1ce37411c365f11a95fc5239008a885742ed20ed69c26.png',
             hover: false,
+            whiteLogo: 'https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/logo/logo_White.png',
+            blackLogo: 'https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/logo/logo.png',
+            whiteStyle: {
+                color: '#ffffff' 
+            },
+            blackStyle: {
+                color: '#26140E'
+            }
         }
     },
     computed: {
@@ -122,13 +130,11 @@ export default {
     border-right: 4px solid transparent;
     border-left: 4px solid transparent;
 }
-
 .nav-bar-link
 {
     font-size: 13px;
     letter-spacing: 1.2px;
     text-transform: uppercase;
-    color: #ffffff !important;
     font-weight: 600;
     padding: 10px 30px;
     cursor: pointer;
@@ -164,7 +170,6 @@ export default {
 .browse-menu-link
 {
     text-decoration: none;
-    color: #ffffff;
 }
 
 .browse-menu-link:hover .dropdown-content 
@@ -194,5 +199,13 @@ export default {
     font-weight: 700;
     font-family: 'Open Sans', sans-serif;
     text-transform: uppercase;
+}
+.black-text
+{
+    color: #26140E !important;
+}
+.white-text
+{
+    color: #ffffff;
 }
 </style>

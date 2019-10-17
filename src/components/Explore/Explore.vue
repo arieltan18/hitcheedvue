@@ -68,6 +68,7 @@ h1
     font-family: 'Cormorant Garamond';
     font-size: 30px;
     margin-bottom: 30px;
+    color: #26140E;
 }
 .category-text
 {

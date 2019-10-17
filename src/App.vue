@@ -1,9 +1,8 @@
 <template>
   <div id="app">
-    <div class="hero-image">
-      <NavHeader></NavHeader>
-      <NavBar></NavBar>
-    </div>
+    <HeroImage v-if="this.$route.path=='/'" />
+    <NavHeader v-if="this.$route.path!='/'"></NavHeader>
+    <NavBar v-if="this.$route.path!='/'"></NavBar>
     <router-view/>
   </div>
 </template>
@@ -11,17 +10,19 @@
 <script>
 import NavHeader from './components/NavBar/NavHeader.vue';
 import NavBar from './components/NavBar/NavBar.vue';
+import HeroImage from './components/HeroImage/HeroImage.vue';
 
 export default {
   name: 'app',
   components: {
+    HeroImage,
     NavHeader,
     NavBar
-  }
+  },  
 }
 </script>
 
-<style>
+<style scoped>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -34,14 +35,6 @@ div
 {
     display: block;
 }
-
-.hero-image
-{
-  background:  linear-gradient(0deg, #FFFFFF00 50%, #160d0975 100%, transparent) ,url('https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/hero-image/foto-pettine-756112-unsplash.png') no-repeat scroll center center / cover;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100vh;
-}
 </style>
+
+
