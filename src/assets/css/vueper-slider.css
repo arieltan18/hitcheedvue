@@ -1,0 +1,30 @@
+
+.vueperslide__content-wrapper:not(.vueperslide__content-wrapper--outside-top):not(.vueperslide__content-wrapper--outside-bottom) 
+{
+	top: 94%!important;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	text-align: center
+}
+
+.vueperslides__inner 
+{
+    margin: auto;
+    width: 87%;
+    align-items: center;
+}
+
+.vueperslides__arrows--outside .vueperslides__arrow--prev
+{
+    left: -60px !important;
+    box-shadow: none;
+    outline: none;
+}
+
+.vueperslides__arrows--outside .vueperslides__arrow--next
+{
+    right: -60px !important;
+    box-shadow: none;
+    outline: none;
+}

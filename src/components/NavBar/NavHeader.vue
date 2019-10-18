@@ -433,4 +433,10 @@ export default {
     font-size:14px;
     margin-bottom: 0px;
 }
+
+button:focus, button:active
+{
+    outline: none !important;
+    box-shadow: none !important;
+}
 </style>
