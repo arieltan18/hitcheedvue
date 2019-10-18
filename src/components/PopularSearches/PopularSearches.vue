@@ -11,56 +11,115 @@
                     <ul class="nav nav-tabs nav-fill justify-content-center" id="nav-tab" role="tablist">
                         <li>
                             <a class="nav-item nav-link active" id="nav-hotels-tab" data-toggle="tab" href="#nav-hotels" role="tab" aria-controls="nav-hotels" aria-selected="true">
-                                <span class="nav-text-link">HOTELS</span>
+                                <span class="nav-text-link">Hotels</span>
                             </a>
                         </li>
                         <li>
-                            <a class="nav-item nav-link" id="nav-venues-tab" data-toggle="tab" href="#nav-venues" role="tab" aria-controls="nav-profile" aria-selected="false">
-                                <span class="nav-text-link">VENUES</span>
+                            <a class="nav-item nav-link" id="nav-venues-tab" data-toggle="tab" href="#nav-venues" role="tab" aria-controls="nav-venues" aria-selected="false">
+                                <span class="nav-text-link">Venues</span>
                             </a>
                         </li>
                         <li>
-                            <a class="nav-item nav-link" id="nav-bridal-tab" data-toggle="tab" href="#nav-bridal" role="tab" aria-controls="nav-bridal" aria-selected="false">
-                                <span class="nav-text-link">BRIDAL STUDIOS</span>
+                            <a class="nav-item nav-link" id="nav-bridals-tab" data-toggle="tab" href="#nav-bridals" role="tab" aria-controls="nav-bridals" aria-selected="false">
+                                <span class="nav-text-link">Bridal Studios</span>
                             </a>
                         </li>
                         <li>
                             <a class="nav-item nav-link" id="nav-photographers-tab" data-toggle="tab" href="#nav-photographers" role="tab" aria-controls="nav-photographers" aria-selected="false">
-                                <span class="nav-text-link">PHOTOGRAPHERS</span>
+                                <span class="nav-text-link">Photographers</span>
                             </a>
                         </li>
                         <li>
                             <a class="nav-item nav-link" id="nav-others-tab" data-toggle="tab" href="#nav-others" role="tab" aria-controls="nav-others" aria-selected="false">
-                               <span class="nav-text-link">OTHER COUNTRIES</span>
+                               <span class="nav-text-link">Other Countries</span>
                             </a>
                         </li>
                     </ul>
                 </nav>
-                <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                <div class="tab-content popular-searches py-3 px-3 px-sm-0" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-hotels" role="tabpanel" aria-labelledby="nav-hotels-tab">
-                        <vueper-slides class="no-shadow" :visible-slides="3" slide-multiple :slide-ratio="1/4" :dragging-distance="70" :bullets="false" arrows-outside="true" :fixedHeight="true" :breakpoints="{ 800: { visibleSlides: 2 } }">
+                        <vueper-slides class="no-shadow" :visible-slides="3" :slide-multiple="true" :slide-ratio="1/4" :dragging-distance="200" :bullets="false" :arrows-outside="true" :fixedHeight="true" :breakpoints="{ 800: { visibleSlides: 2 } }">
                             <v-icon slot="arrowLeft" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group29.svg" alt="left-arrow" width="25px"></v-icon>
                             <v-icon slot="arrowRight" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group28.svg" alt="right-arrow" width="25px;"></v-icon>
                             <vueper-slide class="mr-4" v-for="hotel in hotels" :key="hotel.id" :image="hotel.around_image" >
                                 <div slot="slideContent">
-                                        <div class="slider-white-box">{{ hotel.name }}</div>
-                                    </div>
+                                    <div class="slider-white-box">{{ hotel.name }}</div>
+                                </div>
                             </vueper-slide>
                         </vueper-slides>
+                        <div class="text-center mt-5">
+                            <div class="link">
+                                <a class="link-text" href="">See All Hotels</a>
+                            </div>
+                        </div>
                     </div>
                     <div class="tab-pane fade" id="nav-venues" role="tabpanel" aria-labelledby="nav-venues-tab">
                         <vueper-slides class="no-shadow" :visible-slides="3" slide-multiple :slide-ratio="1/4" :dragging-distance="70" :bullets="false" :arrows-outside="true" :fixedHeight="true" :breakpoints="{ 800: { visibleSlides: 2 } }">
-                            <v-icon slot="arrowLeft" style="background-color:black;" medium><img src="https://hitcheed-rsvp.s3-ap-southeast-1.amazonaws.com/img/july/left-arrow.png"></v-icon>
-                            <v-icon slot="arrowRight" style="background-color:black;" medium><img src="https://hitcheed-rsvp.s3-ap-southeast-1.amazonaws.com/img/july/right-arrow.png" width="70px"></v-icon>
+                            <v-icon slot="arrowLeft" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group29.svg" alt="left-arrow" width="25px"></v-icon>
+                            <v-icon slot="arrowRight" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group28.svg" alt="right-arrow" width="25px;"></v-icon>
                             <vueper-slide class="mr-4" v-for="venue in venues" :key="venue.id" :image="venue.around_image" >
                                 <div slot="slideContent">
-                                        <div class="slider-white-box">{{ venue.name }}</div>
-                                    </div>
+                                    <div class="slider-white-box">{{ venue.name }}</div>
+                                </div>
                             </vueper-slide>
                         </vueper-slides>
+                        <div class="text-center mt-5">
+                            <div class="link">
+                                <a class="link-text" href="">See All Venues</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-bridals" role="tabpanel" aria-labelledby="nav-bridals-tab">
+                        <vueper-slides class="no-shadow" :visible-slides="3" slide-multiple :slide-ratio="1/4" :dragging-distance="70" :bullets="false" :arrows-outside="true" :fixedHeight="true" :breakpoints="{ 800: { visibleSlides: 2 } }">
+                            <v-icon slot="arrowLeft" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group29.svg" alt="left-arrow" width="25px"></v-icon>
+                            <v-icon slot="arrowRight" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group28.svg" alt="right-arrow" width="25px;"></v-icon>
+                            <vueper-slide class="mr-4" v-for="bridal in bridals" :key="bridal.id" :image="bridal.around_image" >
+                                <div slot="slideContent">
+                                    <div class="slider-white-box">{{ bridal.name }}</div>
+                                </div>
+                            </vueper-slide>
+                        </vueper-slides>
+                        <div class="text-center mt-5">
+                            <div class="link">
+                                <a class="link-text" href="">See All Bridal Studios</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-photographers" role="tabpanel" aria-labelledby="nav-photographers-tab">
+                        <vueper-slides class="no-shadow" :visible-slides="3" slide-multiple :slide-ratio="1/4" :dragging-distance="70" :bullets="false" :arrows-outside="true" :fixedHeight="true" :breakpoints="{ 800: { visibleSlides: 2 } }">
+                            <v-icon slot="arrowLeft" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group29.svg" alt="left-arrow" width="25px"></v-icon>
+                            <v-icon slot="arrowRight" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group28.svg" alt="right-arrow" width="25px;"></v-icon>
+                            <vueper-slide class="mr-4" v-for="photographer in photographers" :key="photographer.id" :image="photographer.around_image" >
+                                <div slot="slideContent">
+                                    <div class="slider-white-box">{{ photographer.name }}</div>
+                                </div>
+                            </vueper-slide>
+                        </vueper-slides>
+                        <div class="text-center mt-5">
+                            <div class="link">
+                                <a class="link-text" href="">See All Photographers</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="nav-others" role="tabpanel" aria-labelledby="nav-others-tab">
+                        <vueper-slides class="no-shadow" :visible-slides="3" slide-multiple :slide-ratio="1/4" :dragging-distance="70" :bullets="false" :arrows-outside="true" :fixedHeight="true" :breakpoints="{ 800: { visibleSlides: 2 } }">
+                            <v-icon slot="arrowLeft" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group29.svg" alt="left-arrow" width="25px"></v-icon>
+                            <v-icon slot="arrowRight" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group28.svg" alt="right-arrow" width="25px;"></v-icon>
+                            <vueper-slide class="mr-4" v-for="other in others" :key="other.id" :image="other.around_image" >
+                                <div slot="slideContent">
+                                    <div class="slider-white-box">{{ other.name }}</div>
+                                </div>
+                            </vueper-slide>
+                        </vueper-slides>
+                        <div class="text-center mt-5">
+                            <div class="link">
+                                <a class="link-text" href="">See All Other Countries</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
 </template>
@@ -85,6 +144,7 @@ export default {
             bridalId: 1,
             venuesId: 5,
             photographersId: 2,
+            others: []
         }
     },
     apollo: {
@@ -143,11 +203,24 @@ export default {
             }
         },
     },
-    computed: {
-
+    methods: {
+        tabBar() 
+        {
+            $('.nav-item').click(function (e){
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                $('.nav-item').removeClass("active");
+                $(this).addClass("active");
+                $('.tab-pane').removeClass("active");
+                $('.tab-pane').removeClass("show");
+                var id = $(this).attr('href');
+                $(id).addClass('active');
+                $(id).addClass('show');
+            });
+        }
     },
     mounted() {
-
+        this.tabBar();
     }
     
 
@@ -183,6 +256,7 @@ h1
     padding:15px 10px;
     text-align: center;
     text-transform: uppercase;
+    min-width: 180px;
 }
 #nav-tab
 {
@@ -242,10 +316,9 @@ a.nav-item.nav-link.active,
     padding-bottom:2px;
 
 }
-
 li
 { 
-display: inline; list-style-type: none; margin-left: 0; 
+    display: inline; list-style-type: none; margin-left: 0; 
 }
 li:before { content: "/"; padding-right: 3px; }
 li:first-child:before { content: ""; padding-right: 0; }
@@ -253,5 +326,30 @@ li:first-child:before { content: ""; padding-right: 0; }
 .nav-fill .nav-item
 {
     display: inline !important;
+}
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus
+{
+    border-color: #ffffff;
+}
+.vueperslides__track-inner
+{
+    width: 95% !important;
+}
+.link
+{
+    font-family: 'Cormorant Garamond';
+    font-style: italic;
+    font-size: 18px;
+    
+    cursor: pointer;
+    /* text-decoration: underline; */
+}
+.link-text
+{
+    padding-bottom:2px;
+    border-bottom: 0.5px solid #26140E;
+    color: #26140E;
+    text-decoration: none;
+    text-transform: capitalize;
 }
 </style>

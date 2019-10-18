@@ -1,5 +1,5 @@
 
-.vueperslide__content-wrapper:not(.vueperslide__content-wrapper--outside-top):not(.vueperslide__content-wrapper--outside-bottom) 
+.popular-searches .vueperslide__content-wrapper:not(.vueperslide__content-wrapper--outside-top):not(.vueperslide__content-wrapper--outside-bottom) 
 {
 	top: 94%!important;
 	left: 50%;
@@ -8,6 +8,10 @@
 	text-align: center
 }
 
+.testimonials .vueperslide__content-wrapper:not(.vueperslide__content-wrapper--outside-top):not(.vueperslide__content-wrapper--outside-bottom)
+{
+    width: 90% !important;
+}
 .vueperslides__inner 
 {
     margin: auto;
@@ -27,4 +31,18 @@
     right: -60px !important;
     box-shadow: none;
     outline: none;
+}
+
+.testimonials .vueperslides__arrows--outside .vueperslides__arrow--prev
+{
+    margin-top: -8%;
+}
+
+.testimonials .vueperslides__arrows--outside .vueperslides__arrow--next
+{
+    margin-top: -8%;
+}
+.vueperslides__track-inner
+{
+    width: 95% !important;
 }
