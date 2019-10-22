@@ -41,7 +41,7 @@
                         <vueper-slides class="no-shadow" :visible-slides="3" :slide-multiple="true" :slide-ratio="1/4" :dragging-distance="400" :bullets="false" :arrows-outside="true" :fixedHeight="true" :breakpoints="{ 800: { visibleSlides: 2 } }">
                             <v-icon slot="arrowLeft" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group29.svg" alt="left-arrow" width="25px"></v-icon>
                             <v-icon slot="arrowRight" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group28.svg" alt="right-arrow" width="25px;"></v-icon>
-                            <vueper-slide class="mr-4" style="width:300px;" v-for="hotel in hotels" :key="hotel.id" :image="hotel.cover_photo" >
+                            <vueper-slide class="mr-3" style="width:300px;" v-for="hotel in hotels" :key="hotel.id" :image="hotel.cover_photo" >
                                 <div slot="slideContent">
                                     <div class="slider-white-box">{{ hotel.name }}</div>
                                 </div>
@@ -57,7 +57,7 @@
                         <vueper-slides class="no-shadow" :visible-slides="3" slide-multiple :slide-ratio="1/4" :dragging-distance="70" :bullets="false" :arrows-outside="true" :fixedHeight="true" :breakpoints="{ 800: { visibleSlides: 2 } }">
                             <v-icon slot="arrowLeft" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group29.svg" alt="left-arrow" width="25px"></v-icon>
                             <v-icon slot="arrowRight" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group28.svg" alt="right-arrow" width="25px;"></v-icon>
-                            <vueper-slide class="mr-4" style="width:300px;" v-for="venue in venues" :key="venue.id" :image="venue.cover_photo" >
+                            <vueper-slide class="mr-3" style="width:300px;" v-for="venue in venues" :key="venue.id" :image="venue.cover_photo" >
                                 <div slot="slideContent">
                                     <div class="slider-white-box">{{ venue.name }}</div>
                                 </div>
@@ -73,7 +73,7 @@
                         <vueper-slides class="no-shadow" :visible-slides="3" slide-multiple :slide-ratio="1/4" :dragging-distance="70" :bullets="false" :arrows-outside="true" :fixedHeight="true" :breakpoints="{ 800: { visibleSlides: 2 } }">
                             <v-icon slot="arrowLeft" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group29.svg" alt="left-arrow" width="25px"></v-icon>
                             <v-icon slot="arrowRight" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group28.svg" alt="right-arrow" width="25px;"></v-icon>
-                            <vueper-slide class="mr-4" style="width:300px;" v-for="bridal in bridals" :key="bridal.id" :image="bridal.cover_photo" >
+                            <vueper-slide class="mr-3" style="width:300px;" v-for="bridal in bridals" :key="bridal.id" :image="bridal.cover_photo" >
                                 <div slot="slideContent">
                                     <div class="slider-white-box">{{ bridal.name }}</div>
                                 </div>
@@ -89,7 +89,7 @@
                         <vueper-slides class="no-shadow" :visible-slides="3" slide-multiple :slide-ratio="1/4" :dragging-distance="70" :bullets="false" :arrows-outside="true" :fixedHeight="true" :breakpoints="{ 800: { visibleSlides: 2 } }">
                             <v-icon slot="arrowLeft" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group29.svg" alt="left-arrow" width="25px"></v-icon>
                             <v-icon slot="arrowRight" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group28.svg" alt="right-arrow" width="25px;"></v-icon>
-                            <vueper-slide class="mr-4" style="width:300px;" v-for="photographer in photographers" :key="photographer.id" :image="photographer.cover_photo" >
+                            <vueper-slide class="mr-3" style="width:300px;" v-for="photographer in photographers" :key="photographer.id" :image="photographer.cover_photo" >
                                 <div slot="slideContent">
                                     <div class="slider-white-box">{{ photographer.name }}</div>
                                 </div>
@@ -105,7 +105,7 @@
                         <vueper-slides class="no-shadow" :visible-slides="3" slide-multiple :slide-ratio="1/4" :dragging-distance="70" :bullets="false" :arrows-outside="true" :fixedHeight="true" :breakpoints="{ 800: { visibleSlides: 2 } }">
                             <v-icon slot="arrowLeft" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group29.svg" alt="left-arrow" width="25px"></v-icon>
                             <v-icon slot="arrowRight" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group28.svg" alt="right-arrow" width="25px;"></v-icon>
-                            <vueper-slide class="mr-4" style="width:300px;" v-for="other in others" :key="other.id" :image="other.around_image" >
+                            <vueper-slide class="mr-3" style="width:300px;" v-for="other in others" :key="other.id" :image="other.around_image" >
                                 <div slot="slideContent">
                                     <div class="slider-white-box">{{ other.name }}</div>
                                 </div>
