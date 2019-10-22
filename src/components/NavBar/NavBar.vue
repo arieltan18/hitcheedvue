@@ -7,22 +7,42 @@
                 </b-navbar-brand>
                 <div class="navbar-nav">
                     <div class="nav-bar-link nav-bar-dropdown" @mouseover="hover = true" :style="[ this.$route.path=='/' ? whiteStyle : blackStyle ]">
-                        <div class="browse-menu-link" @click="hover=true">Browse</div>
+                        <div class="browse-menu-link" @click="hover=true">
+                            Browse
+                            <hr class="browse-border" v-if="hover" @mouseleave="hover = false">
+                        </div>
                     </div>
                     <div class="dropdown-content" v-if="hover" @mouseleave="hover = false">
-                        <div class="row country-nav">
-                            <div class="col-sm-4"></div>
-                            <div class="country-text col-sm-2">Singapore</div>
-                            <div class="country-text col-sm-2">Other Country</div>
-                            <div class="col-sm-4"></div>
-                        </div>
-                        <hr>
-                        <div class="dropdown-country-content">
-                            
+                        <div class="nav-content nav-text text-center">
+                            <ul class="column1 text-left">
+                                <li>Hotels</li>
+                                <li>Venues</li>
+                                <li>Bridal Studios</li>
+                                <li>Photographers</li>
+                                <li>Videographers</li>
+                            </ul>
+                            <ul class="column2 text-left">
+                                <li>Florists</li>
+                                <li>Invitation & wedding favours</li>
+                                <li>event styling & rental</li>
+                                <li>hair & makeup</li>
+                                <li>live band & emcee</li>
+                            </ul>
+                            <ul class="column3 text-left">
+                                <li>Wedding Jewellery</li>
+                                <li>Catering</li>
+                                <li>photo booth</li>
+                                <li>other countries</li>
+                                <li>all categories</li>
+                            </ul>
                         </div>
                     </div>
                     <div v-if="loggedIn" class="nav-bar-link" :style="[ this.$route.path=='/' ? whiteStyle : blackStyle ]">Messages</div>
-                    <div class="nav-bar-link" :style="[ this.$route.path=='/' ? whiteStyle : blackStyle ]">Articles</div>
+                    <div class="nav-bar-link" :style="[ this.$route.path=='/' ? whiteStyle : blackStyle ]">
+                        <router-link :to="{ name: 'articlesHome'}" class="header-link">
+                            Articles
+                        </router-link>
+                    </div>
                     <div class="nav-bar-link" :style="[ this.$route.path=='/' ? whiteStyle : blackStyle ]">Events & Promotions</div>
                 </div>
                 <div class="ml-auto">
@@ -83,13 +103,10 @@ export default {
 {
     height: 100px;
 }
-
 .nav-link
 {
     margin-left: 8%;
 }
-
-
 .nav-bar li a, .nav-link span
 {
     font-size: 13px;
@@ -98,7 +115,6 @@ export default {
     color: #25130e !important;
     font-weight: 700;
 }
-
 .nav-item
 {
     position: relative;
@@ -108,7 +124,6 @@ export default {
     vertical-align: middle;
     padding-top:2px;
 }
-
 .keyword-field
 {
     font-weight: 400;
@@ -125,37 +140,33 @@ export default {
     margin-left: -20px;
     display: none;
 }
-
 .search-width
 {
     width:235px !important;
 }
-
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #ffffff;
   opacity: 0.7; /* Firefox */
+  font-size: 16px;
 }
-
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
   color: #ffffff;
   opacity: 0.7;
+  font-size: 16px;
 }
-
 ::-ms-input-placeholder { /* Microsoft Edge */
   color: #ffffff;
   opacity: 0.7;
+  font-size: 16px;
 }
-
 .dropdown-toggle,
 .dropdown-menu {
   width: 100%;
 }
-
 .logo-brand
 {
     margin-right: 4em;
 }
-
 .caret
 {
     display: inline-block;
@@ -178,25 +189,22 @@ export default {
     cursor: pointer;
     font-family: 'Open Sans';
 }
-
 .nav-bar-dropdown
 {
     position: relative;
     display: inline-block;
 }
-
 .dropdown-content
 {
     width:100%;
     position: absolute;
-    background-color:clear;
     z-index: 1000;
-    top:86px;
+    top:110px;
     left: 0px;
     padding: 10px;
-    border: 1px solid rgba(0,0,0,0.15);
+    border-top: 1px solid #ffffff87;
+    border-bottom: 1px solid #ffffff87;
 }
-
 .dropdown-content a 
 {
   color: black;
@@ -204,38 +212,27 @@ export default {
   text-decoration: none;
   display: block;
 }
-
 .browse-menu-link
 {
     text-decoration: none;
 }
-
 .browse-menu-link:hover .dropdown-content 
 {
     display: block;
 }
-
 .search-icon
 {
     position: relative;
     right: 34px;
     cursor: pointer;
 }
-
-.country-nav
-{
-    margin-right: -10px;
-    margin-left: -10px;
-    height: 40px;
-}
-
-.country-text
+.nav-text
 {
     line-height: 3em;
-    font-size: 14px;
-    letter-spacing: 1px;
-    color: #25130e !important;
-    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1.2px;
+    color: #26140E !important;
+    font-weight: 600;
     font-family: 'Open Sans', sans-serif;
     text-transform: uppercase;
 }
@@ -246,5 +243,39 @@ export default {
 .white-text
 {
     color: #ffffff;
+}
+.header-link
+{
+    text-decoration: none;
+    color: inherit;
+}
+.column1, .column2, .column3
+{
+    display: inline-block;
+}
+.column1
+{
+    width: 12%;
+}
+.column2
+{
+    width: 18%;
+}
+.column3
+{
+    width: 9%;
+}
+ul
+{
+    list-style: none;
+    padding-inline-start: 0;
+}
+.browse-border
+{
+    position:absolute;
+    width:49%;
+    border-top: 4px solid #26140E;
+    top: 134%;
+    z-index: 100;
 }
 </style>

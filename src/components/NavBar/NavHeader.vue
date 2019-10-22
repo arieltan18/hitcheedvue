@@ -261,7 +261,7 @@ export default {
 {
     /* background-color: #25130E !important; */
     height: 45px;
-    border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff87;
 }
 .brown-header-top
 {
