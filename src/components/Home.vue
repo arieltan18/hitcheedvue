@@ -7,6 +7,7 @@
         <Articles />
         <Testimonials />
         <DownloadApp />
+        <Footer />
     </div>
 </template>
 
@@ -18,6 +19,7 @@ import Articles from './Articles/ArticlesHomePage.vue';
 // import Professionals from './Professionals/Professionals.vue';
 import Testimonials from './Testimonials/Testimonials.vue';
 import DownloadApp from './DownloadApp/DownloadApp.vue';
+import Footer from './Footer/Footer.vue';
 
 export default {
     name: "Home",
@@ -28,7 +30,8 @@ export default {
         Events,
         // Professionals,
         Testimonials,
-        DownloadApp
+        DownloadApp,
+        Footer
     },
     
 }

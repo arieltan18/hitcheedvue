@@ -31,18 +31,16 @@
                     </router-link>
                 </div>
                 <div class="col-md-6 right-article">
-                    <div class="article-item mb-4" v-for="articleItem in articleItems.slice(1)" :key="articleItem.id" >
+                    <div class="article-item mb-3" v-for="articleItem in articleItems.slice(1)" :key="articleItem.id" >
                         <router-link :to="articleItem.slug" class="read-link">
                             <div class="col-md-6 article-img">
-                                <img :src="articleItem.content.cover" width="100%">
+                                <img :src="articleItem.content.cover" width="100%"  height="173px">
                             </div>
                             <div class="col-md-6 article-details">
                                 <div class="tag text-left" v-if="articleItem.tag_list">
-                                    <span v-for="tag in articleItem.tag_list" :key="tag" class="mr-2">
-                                        <router-link class="article-tag-btn" :to="{ name: 'articlesTag', query: { tag: tag }}">
-                                            {{ tag }}
-                                        </router-link>
-                                    </span>
+                                    <router-link class="article-tag-btn mr-2"  v-for="tag in articleItem.tag_list" :key="tag" :to="{ name: 'articlesTag', query: { tag: tag }}">
+                                        {{ tag }}
+                                    </router-link>
                                 </div>
                                 <div class="name mt-2 mb-4">{{ articleItem.name }}</div>
                                 <div class="article-date text-left">
@@ -91,6 +89,10 @@ export default {
                 this.articleItems[1].slug = '/articles/' + this.articleItems[1].slug;
                 this.articleItems[2].slug = '/articles/' + this.articleItems[2].slug;
                 this.articleItems[3].slug = '/articles/' + this.articleItems[3].slug;
+                this.articleItems[0].content.cover = 'https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/sweet-ice-cream-photography-1219572-unsplash2x.png';
+                this.articleItems[1].content.cover = 'https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/dmitry-schemelev-1205165-unsplash%402x.png';
+                this.articleItems[2].content.cover = 'https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/xd45Y326SvKzSR3Nanc8_MRJ_8125-1%402x.png';
+                this.articleItems[3].content.cover = 'https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/adult-architecture-bride-1488315%402x.png';
             })
             .catch(error => {
                 console.log(error);
@@ -227,6 +229,7 @@ h1 {
 {
     display: inline-block;
     width: 100%;
+    vertical-align: top;
 }
 .name
 {

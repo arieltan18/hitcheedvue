@@ -8,18 +8,18 @@
             </div>
             <div class="categories-section row mb-4">
                 <div class="d-flex justify-content-center align-self-center align-items-center mb-3" style="width:100%;">
-                    <div id="hotels" class="row1 mr-2">
-                    </div>
-                    <div id="bridal-studios" class="row1">
-                    </div>
+                    <router-link id="hotels" class="row1 mr-2 header-link" :to="{ name: 'professionalCategory', params: { 'id': 14 }}">
+                    </router-link>
+                    <router-link id="bridal-studios" class="row1 mr-2 header-link" :to="{ name: 'professionalCategory', params: { 'id': 1 }}">
+                    </router-link>
                 </div>
                 <div class="d-flex justify-content-center" style="width:100%;">
-                    <div id="venues" class="row2 mr-2">
-                    </div>
-                    <div id="photographers" class="row2 mr-2">
-                    </div>
-                    <div id="other-countries" class="row2">
-                    </div>
+                    <router-link id="venues" class="row1 mr-2 header-link" :to="{ name: 'professionalCategory', params: { 'id': 5 }}">
+                    </router-link>
+                    <router-link id="photographers" class="row1 mr-2 header-link" :to="{ name: 'professionalCategory', params: { 'id': 2 }}">
+                    </router-link>
+                    <router-link id="other-countries" class="row1 mr-2 header-link" :to="{ name: 'professionalCategory', params: { 'id': 2 }}">
+                    </router-link>
                 </div>
             </div>
             <div class="text-center">

@@ -340,9 +340,7 @@ li:first-child:before { content: ""; padding-right: 0; }
     font-family: 'Cormorant Garamond';
     font-style: italic;
     font-size: 18px;
-    
     cursor: pointer;
-    /* text-decoration: underline; */
 }
 .link-text
 {
