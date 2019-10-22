@@ -38,10 +38,10 @@
                 </nav>
                 <div class="tab-content popular-searches py-3 px-3 px-sm-0" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-hotels" role="tabpanel" aria-labelledby="nav-hotels-tab">
-                        <vueper-slides class="no-shadow" :visible-slides="3" :slide-multiple="true" :slide-ratio="1/4" :dragging-distance="200" :bullets="false" :arrows-outside="true" :fixedHeight="true" :breakpoints="{ 800: { visibleSlides: 2 } }">
+                        <vueper-slides class="no-shadow" :visible-slides="3" :slide-multiple="true" :slide-ratio="1/4" :dragging-distance="400" :bullets="false" :arrows-outside="true" :fixedHeight="true" :breakpoints="{ 800: { visibleSlides: 2 } }">
                             <v-icon slot="arrowLeft" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group29.svg" alt="left-arrow" width="25px"></v-icon>
                             <v-icon slot="arrowRight" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group28.svg" alt="right-arrow" width="25px;"></v-icon>
-                            <vueper-slide class="mr-4" v-for="hotel in hotels" :key="hotel.id" :image="hotel.around_image" >
+                            <vueper-slide class="mr-4" style="width:300px;" v-for="hotel in hotels" :key="hotel.id" :image="hotel.cover_photo" >
                                 <div slot="slideContent">
                                     <div class="slider-white-box">{{ hotel.name }}</div>
                                 </div>
@@ -57,7 +57,7 @@
                         <vueper-slides class="no-shadow" :visible-slides="3" slide-multiple :slide-ratio="1/4" :dragging-distance="70" :bullets="false" :arrows-outside="true" :fixedHeight="true" :breakpoints="{ 800: { visibleSlides: 2 } }">
                             <v-icon slot="arrowLeft" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group29.svg" alt="left-arrow" width="25px"></v-icon>
                             <v-icon slot="arrowRight" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group28.svg" alt="right-arrow" width="25px;"></v-icon>
-                            <vueper-slide class="mr-4" v-for="venue in venues" :key="venue.id" :image="venue.around_image" >
+                            <vueper-slide class="mr-4" style="width:300px;" v-for="venue in venues" :key="venue.id" :image="venue.cover_photo" >
                                 <div slot="slideContent">
                                     <div class="slider-white-box">{{ venue.name }}</div>
                                 </div>
@@ -73,7 +73,7 @@
                         <vueper-slides class="no-shadow" :visible-slides="3" slide-multiple :slide-ratio="1/4" :dragging-distance="70" :bullets="false" :arrows-outside="true" :fixedHeight="true" :breakpoints="{ 800: { visibleSlides: 2 } }">
                             <v-icon slot="arrowLeft" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group29.svg" alt="left-arrow" width="25px"></v-icon>
                             <v-icon slot="arrowRight" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group28.svg" alt="right-arrow" width="25px;"></v-icon>
-                            <vueper-slide class="mr-4" v-for="bridal in bridals" :key="bridal.id" :image="bridal.around_image" >
+                            <vueper-slide class="mr-4" style="width:300px;" v-for="bridal in bridals" :key="bridal.id" :image="bridal.cover_photo" >
                                 <div slot="slideContent">
                                     <div class="slider-white-box">{{ bridal.name }}</div>
                                 </div>
@@ -89,7 +89,7 @@
                         <vueper-slides class="no-shadow" :visible-slides="3" slide-multiple :slide-ratio="1/4" :dragging-distance="70" :bullets="false" :arrows-outside="true" :fixedHeight="true" :breakpoints="{ 800: { visibleSlides: 2 } }">
                             <v-icon slot="arrowLeft" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group29.svg" alt="left-arrow" width="25px"></v-icon>
                             <v-icon slot="arrowRight" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group28.svg" alt="right-arrow" width="25px;"></v-icon>
-                            <vueper-slide class="mr-4" v-for="photographer in photographers" :key="photographer.id" :image="photographer.around_image" >
+                            <vueper-slide class="mr-4" style="width:300px;" v-for="photographer in photographers" :key="photographer.id" :image="photographer.cover_photo" >
                                 <div slot="slideContent">
                                     <div class="slider-white-box">{{ photographer.name }}</div>
                                 </div>
@@ -105,7 +105,7 @@
                         <vueper-slides class="no-shadow" :visible-slides="3" slide-multiple :slide-ratio="1/4" :dragging-distance="70" :bullets="false" :arrows-outside="true" :fixedHeight="true" :breakpoints="{ 800: { visibleSlides: 2 } }">
                             <v-icon slot="arrowLeft" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group29.svg" alt="left-arrow" width="25px"></v-icon>
                             <v-icon slot="arrowRight" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group28.svg" alt="right-arrow" width="25px;"></v-icon>
-                            <vueper-slide class="mr-4" v-for="other in others" :key="other.id" :image="other.around_image" >
+                            <vueper-slide class="mr-4" style="width:300px;" v-for="other in others" :key="other.id" :image="other.around_image" >
                                 <div slot="slideContent">
                                     <div class="slider-white-box">{{ other.name }}</div>
                                 </div>
@@ -128,15 +128,13 @@
 import gql from 'graphql-tag'
 import '../../assets/css/vueper-slider.css';
 import { VueperSlides, VueperSlide } from 'vueperslides'
-import ProfessionalList from '../Professionals/ProfessionalList.vue'
-import { PROFESSIONALS_BY_CATEGORY } from '../../graphql/graphql.js';
+import { TAGS_BY_CATEGORY } from '../../graphql/graphql.js';
 
 export default {
     name: 'PopularSearches',
     components: {
         VueperSlides, 
         VueperSlide,
-        ProfessionalList
     },
     data() {
         return {
@@ -149,57 +147,47 @@ export default {
     },
     apollo: {
         hotels: {
-            query: PROFESSIONALS_BY_CATEGORY,
+            query: TAGS_BY_CATEGORY,
             variables() {
                 return {
                     category_id: this.hotelId
                 }
             },
             update(data){
-                return data.professionals_by_category;
+                return data.tags_by_category;
             }
         },
         bridals: {
-            query: PROFESSIONALS_BY_CATEGORY,
+            query: TAGS_BY_CATEGORY,
             variables() {
                 return {
                     category_id: this.bridalId
                 }
             },
             update(data){
-                return data.professionals_by_category;
+                return data.tags_by_category;
             }
         },
         venues: {
-            query: PROFESSIONALS_BY_CATEGORY,
+            query: TAGS_BY_CATEGORY,
             variables() {
                 return {
                     category_id: this.venuesId
                 }
             },
             update(data){
-                return data.professionals_by_category;
+                return data.tags_by_category;
             }
         },
         photographers: {
-            query: gql`
-                query professionals_by_category($category_id: Int!){
-                    professionals_by_category(category_id: $category_id) {
-                        id,
-                        name,
-                        slug,
-                        cover_image,
-                        around_image,
-                        profile_image
-                    }
-                }`,
+            query: TAGS_BY_CATEGORY,
             variables() {
                 return {
                     category_id: this.photographersId
                 }
             },
             update(data){
-                return data.professionals_by_category;
+                return data.tags_by_category;
             }
         },
     },
@@ -350,4 +338,5 @@ li:first-child:before { content: ""; padding-right: 0; }
     text-decoration: none;
     text-transform: capitalize;
 }
+
 </style>

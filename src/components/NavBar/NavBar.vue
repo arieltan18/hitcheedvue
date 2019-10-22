@@ -25,10 +25,10 @@
                     <div class="nav-bar-link" :style="[ this.$route.path=='/' ? whiteStyle : blackStyle ]">Articles</div>
                     <div class="nav-bar-link" :style="[ this.$route.path=='/' ? whiteStyle : blackStyle ]">Events & Promotions</div>
                 </div>
-                <b-nav-form class="ml-auto">
-                    <!-- <b-form-input size="sm" class="mr-sm-2 keyword-field search-width" placeholder="Search Vendors, Inspirations..."></b-form-input> -->
+                <div class="ml-auto">
                     <i class="fa fa-search search-icon" aria-hidden="true" style="color:white;"></i>
-                </b-nav-form>
+                    <input size="sm" data="hide" class="keyword-field search-width" placeholder="Search Locations, Vendors, Articles">
+                </div>
             </div>
         </b-navbar>
     </div>
@@ -56,9 +56,25 @@ export default {
             return this.$store.getters.loggedIn;
         }
     },
-    methods: {
+    mounted() {
+        $('.search-icon').on('click', (evt) => {
+            evt.preventDefault();
+            
+            var data = $('.keyword-field').attr("data");
+            if(data=='hide')
+            {
+                $('.keyword-field').css('display','inline-block');
+                $('.keyword-field').attr('data','show');
+            }
+            else
+            {
+                $('.keyword-field').css('display','none');
+                $('.keyword-field').attr('data','hide');
+            }
+        });
 
-    }
+
+   },
 }
 </script>
 
@@ -95,17 +111,39 @@ export default {
 
 .keyword-field
 {
-    border-radius: 10px;
-    padding: 12px;
-    font-size:12px;
     font-weight: 400;
-    letter-spacing: 1px;
-    height: 40px;
+    font-family: 'Cormorant Garamond';
+    font-style: italic;
+    font-size: 16px;
+    color:#FFFFFF;
+    opacity: 0.7;
+    border:none;
+    background: none;
+    outline: none;
+    box-shadow: none;
+    border-bottom: 1px solid #ffffff;
+    margin-left: -20px;
+    display: none;
 }
 
 .search-width
 {
-    width:450px !important;
+    width:235px !important;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #ffffff;
+  opacity: 0.7; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #ffffff;
+  opacity: 0.7;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #ffffff;
+  opacity: 0.7;
 }
 
 .dropdown-toggle,
@@ -181,6 +219,7 @@ export default {
 {
     position: relative;
     right: 34px;
+    cursor: pointer;
 }
 
 .country-nav

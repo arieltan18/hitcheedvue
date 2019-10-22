@@ -14,11 +14,11 @@
                     </router-link>
                 </div>
                 <div class="d-flex justify-content-center" style="width:100%;">
-                    <router-link id="venues" class="row1 mr-2 header-link" :to="{ name: 'professionalCategory', params: { 'id': 5 }}">
+                    <router-link id="venues" class="row2 mr-2 header-link" :to="{ name: 'professionalCategory', params: { 'id': 5 }}">
                     </router-link>
-                    <router-link id="photographers" class="row1 mr-2 header-link" :to="{ name: 'professionalCategory', params: { 'id': 2 }}">
+                    <router-link id="photographers" class="row2 mr-2 header-link" :to="{ name: 'professionalCategory', params: { 'id': 2 }}">
                     </router-link>
-                    <router-link id="other-countries" class="row1 mr-2 header-link" :to="{ name: 'professionalCategory', params: { 'id': 2 }}">
+                    <router-link id="other-countries" class="row2 mr-2 header-link" :to="{ name: 'professionalCategory', params: { 'id': 2 }}">
                     </router-link>
                 </div>
             </div>
