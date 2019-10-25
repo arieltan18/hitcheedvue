@@ -89,10 +89,6 @@ export default {
                 this.articleItems[1].slug = '/articles/' + this.articleItems[1].slug;
                 this.articleItems[2].slug = '/articles/' + this.articleItems[2].slug;
                 this.articleItems[3].slug = '/articles/' + this.articleItems[3].slug;
-                this.articleItems[0].content.cover = 'https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/sweet-ice-cream-photography-1219572-unsplash2x.png';
-                this.articleItems[1].content.cover = 'https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/dmitry-schemelev-1205165-unsplash%402x.png';
-                this.articleItems[2].content.cover = 'https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/xd45Y326SvKzSR3Nanc8_MRJ_8125-1%402x.png';
-                this.articleItems[3].content.cover = 'https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/adult-architecture-bride-1488315%402x.png';
             })
             .catch(error => {
                 console.log(error);

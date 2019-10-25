@@ -184,11 +184,10 @@ input[type="text"]
 {
     width: 250px;
     height: 35px;
-    padding-right: 50px;
     font-size: 16px;
     font-family: 'Cormorant Garamond';
     font-style: italic;
-    padding-left: 5px;
+    padding-left: 10px;
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     border:1px solid #26140e3d;

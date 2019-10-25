@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <b-navbar :class="[this.$route.path=='/' ? whiteClass : brownClass ]" >
+    <div class="navheader">
+        <b-navbar id="navheader-bar" >
             <div class="container">
                 <b-navbar-nav class="ml-auto">
                     <b-navbar-nav v-if="!loggedIn">
@@ -156,8 +156,6 @@ export default {
             },
             loginError: false,
             response: [],
-            whiteClass: 'white-header-top',
-            brownClass: 'brown-header-top'
         }
     },
     components: {
@@ -252,21 +250,58 @@ export default {
         onLogout() {
             this.isConnected = false;
         }
-    }
+    },
+    mounted() {
+        if(this.$route.path != '/')
+        {
+            $('#navheader-bar').addClass('brown-header-top');
+        }
+        else
+        {
+            $('#navheader-bar').addClass('white-header-top');
+
+            $(document).scroll(function () 
+            {
+                var $nav = $(".navheader");
+                if($(this).scrollTop() > $nav.height())
+                {
+                    $('#navheader-bar').removeClass('white-header-top');
+                    $('#navheader-bar').addClass('brown-header-top');
+                }
+                else
+                {
+                    $('#navheader-bar').removeClass('brown-header-top');
+                    $('#navheader-bar').addClass('white-header-top');
+                }
+
+            });
+        }
+
+        
+    },
 }
 </script>
 
 <style scoped>
+.navheader
+{
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
 .white-header-top
 {
-    /* background-color: #25130E !important; */
+    background-color: transparent !important;
     height: 45px;
     border-bottom: 1px solid #ffffff87;
+    z-index: 1000;
 }
 .brown-header-top
 {
     background-color: #25130E !important;
     height: 45px;
+    z-index: 1000;
 }
 .nav-text
 {

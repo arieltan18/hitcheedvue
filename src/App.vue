@@ -3,7 +3,8 @@
     <HeroImage v-if="this.$route.path=='/'" />
     <NavHeader v-if="this.$route.path!='/'"></NavHeader>
     <NavBar v-if="this.$route.path!='/'"></NavBar>
-    <router-view/>
+    <router-view v-if="this.$route.path!='/'" style="padding-top:200px;"/>
+    <router-view v-else/>
   </div>
 </template>
 
@@ -18,7 +19,7 @@ export default {
     HeroImage,
     NavHeader,
     NavBar
-  },  
+  },
 }
 </script>
 

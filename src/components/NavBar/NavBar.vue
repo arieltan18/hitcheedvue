@@ -1,18 +1,18 @@
 <template>
-    <div>
+    <div class="navbar-fixed-top">
         <b-navbar >
             <div class="container nav-bar">
                 <b-navbar-brand class="logo-brand" href="/">
-                    <img alt="Hitcheed Private Limited [SG]" :src="[this.$route.path =='/' ? whiteLogo : blackLogo]" height="38px;"/>
+                    <img class="logo-img" alt="Hitcheed Private Limited [SG]" :src="whiteLogo" height="38px;"/>
                 </b-navbar-brand>
                 <div class="navbar-nav">
-                    <div class="nav-bar-link nav-bar-dropdown" @mouseover="hover = true" :style="[ this.$route.path=='/' ? whiteStyle : blackStyle ]">
-                        <div class="browse-menu-link" @click="hover=true">
+                    <div class="nav-bar-link nav-bar-dropdown" :style="whiteStyle">
+                        <div class="browse-menu-link">
                             Browse
-                            <hr class="browse-border" v-if="hover" @mouseleave="hover = false">
+                            <hr class="browse-border">
                         </div>
                     </div>
-                    <div class="dropdown-content" v-if="hover" @mouseleave="hover = false">
+                    <div class="dropdown-content">
                         <div class="nav-content nav-text text-center">
                             <ul class="column1 text-left">
                                 <li>Hotels</li>
@@ -37,17 +37,17 @@
                             </ul>
                         </div>
                     </div>
-                    <div v-if="loggedIn" class="nav-bar-link" :style="[ this.$route.path=='/' ? whiteStyle : blackStyle ]">Messages</div>
-                    <div class="nav-bar-link" :style="[ this.$route.path=='/' ? whiteStyle : blackStyle ]">
+                    <div v-if="loggedIn" class="nav-bar-link" :style="whiteStyle">Messages</div>
+                    <div class="nav-bar-link" :style="whiteStyle">
                         <router-link :to="{ name: 'articlesHome'}" class="header-link">
                             Articles
                         </router-link>
                     </div>
-                    <div class="nav-bar-link" :style="[ this.$route.path=='/' ? whiteStyle : blackStyle ]">Events & Promotions</div>
+                    <div class="nav-bar-link" :style="whiteStyle">Events & Promotions</div>
                 </div>
                 <div class="ml-auto">
                     <i class="fa fa-search search-icon" aria-hidden="true" style="color:white;"></i>
-                    <input size="sm" data="hide" class="keyword-field search-width" placeholder="Search Locations, Vendors, Articles">
+                    <input size="sm" data="hide" class="keyword-field search-width input-white" placeholder="Search Locations, Vendors, Articles">
                 </div>
             </div>
         </b-navbar>
@@ -63,12 +63,8 @@ export default {
             hover: false,
             whiteLogo: 'https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/logo/logo_White.png',
             blackLogo: 'https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/logo/logo.png',
-            whiteStyle: {
-                color: '#ffffff' 
-            },
-            blackStyle: {
-                color: '#26140E'
-            }
+            whiteStyle: "color: #ffffff;" ,
+            blackStyle: "color: #26140E;",
         }
     },
     computed: {
@@ -77,6 +73,52 @@ export default {
         }
     },
     mounted() {
+        //if this route is not on home page
+        if(this.$route.path != '/')
+        {
+            $('.logo-img').attr('src', this.blackLogo);
+            $('.nav-bar-link').attr('style',this.blackStyle);
+            $('.navbar-fixed-top').attr('style','background-color: #ffffff;z-index:1000;border-bottom: 1px solid #f5f5f4;');
+            $('.dropdown-content').css('background-color','#ffffff');
+            $('.dropdown-content').css('border-top','1px solid #f5f5f4');
+            $('.dropdown-content').css('border-bottom','1px solid #f5f5f4');
+            $('.search-icon').css('color','black');
+            $('.keyword-field').css('color','black');
+            $('.keyword-field').css('border-bottom','1px solid #000000');
+            $('.keyword-field').addClass('input-black');
+        }
+        else
+        {
+            $(document).scroll(function () 
+            {
+                var $nav = $(".navheader");
+                if($(this).scrollTop() > $nav.height())
+                {
+                    $('.navbar-fixed-top').attr('style','background-color: #ffffff;z-index:1000;');
+                    $('.logo-img').attr('src', 'https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/logo/logo.png');
+                    $('.nav-bar-link').attr('style','color: #26140E');
+                    $('.dropdown-content').css('background-color','#ffffff');
+                    $('.dropdown-content').css('border-top','1px solid #f5f5f4');
+                    $('.dropdown-content').css('border-bottom','1px solid #f5f5f4');
+                    $('.search-icon').css('color','black');
+                    $('.keyword-field').css('color','black');
+                    $('.keyword-field').css('border-bottom','1px solid #000000');
+                    $('.keyword-field').addClass('input-black');
+                }
+                else
+                {
+                    $('.navbar-fixed-top').attr('style','background-color: transparent;z-index:1000;');
+                    $('.logo-img').attr('src', 'https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/logo/logo_White.png');
+                    $('.nav-bar-link').attr('style','color: #ffffff');
+                    $('.dropdown-content').css('background-color','transparent');
+                    $('.search-icon').css('color','white');
+                    $('.keyword-field').css('color','white');
+                    $('.keyword-field').css('border-bottom','1px solid #ffffff');
+                    $('.keyword-field').removeClass('input-black');
+                }
+            });
+        }
+
         $('.search-icon').on('click', (evt) => {
             evt.preventDefault();
             
@@ -93,12 +135,40 @@ export default {
             }
         });
 
+        $('.nav-bar-dropdown').hover(
+            function(e){ 
+                $('.dropdown-content').css('visibility','visible');
+                $('.browse-border').css('visibility','visible');
+            }, 
+        );
+
+        $('.dropdown-content').mouseleave(
+            function(){
+                $('.dropdown-content').css('visibility','hidden');
+                $('.browse-border').css('visibility','hidden');
+            }
+        );
+
+
+        
 
    },
 }
 </script>
 
 <style scoped>
+.navbar-fixed-top
+{
+    position: fixed;
+    width: 100%;    
+    margin-top: 45px;
+}
+.scrolled
+{
+    background-color: #fff !important;
+    transition: background-color 200ms linear;
+    color: #26140E;
+}
 .nav-bar
 {
     height: 100px;
@@ -144,18 +214,33 @@ export default {
 {
     width:235px !important;
 }
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+.input-white::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #ffffff;
   opacity: 0.7; /* Firefox */
   font-size: 16px;
 }
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
+.input-white:-ms-input-placeholder { /* Internet Explorer 10-11 */
   color: #ffffff;
   opacity: 0.7;
   font-size: 16px;
 }
-::-ms-input-placeholder { /* Microsoft Edge */
+.input-white::-ms-input-placeholder { /* Microsoft Edge */
   color: #ffffff;
+  opacity: 0.7;
+  font-size: 16px;
+}
+.input-black::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #26140E;
+  opacity: 0.7; /* Firefox */
+  font-size: 16px;
+}
+.input-black:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #26140E;
+  opacity: 0.7;
+  font-size: 16px;
+}
+.input-black::-ms-input-placeholder { /* Microsoft Edge */
+  color: #26140E;
   opacity: 0.7;
   font-size: 16px;
 }
@@ -204,6 +289,8 @@ export default {
     padding: 10px;
     border-top: 1px solid #ffffff87;
     border-bottom: 1px solid #ffffff87;
+    background-color: transparent;
+    visibility: hidden;
 }
 .dropdown-content a 
 {
@@ -216,10 +303,10 @@ export default {
 {
     text-decoration: none;
 }
-.browse-menu-link:hover .dropdown-content 
+/* .browse-menu-link:hover .dropdown-content 
 {
     display: block;
-}
+} */
 .search-icon
 {
     position: relative;
@@ -277,5 +364,6 @@ ul
     border-top: 4px solid #26140E;
     top: 134%;
     z-index: 100;
+    visibility: hidden;
 }
 </style>
