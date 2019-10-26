@@ -37,7 +37,9 @@
                             </ul>
                         </div>
                     </div>
-                    <div v-if="loggedIn" class="nav-bar-link" :style="whiteStyle">Messages</div>
+                    <div v-if="loggedIn" class="nav-bar-link" :style="whiteStyle">
+                        <router-link :to="{ name: 'messages' }" class="header-link">Messages</router-link>
+                    </div>
                     <div class="nav-bar-link" :style="whiteStyle">
                         <router-link :to="{ name: 'articlesHome'}" class="header-link">
                             Articles
@@ -89,7 +91,7 @@ export default {
         }
         else
         {
-            $(document).scroll(function () 
+            $(document).scroll(function ()
             {
                 var $nav = $(".navheader");
                 if($(this).scrollTop() > $nav.height())
@@ -121,7 +123,7 @@ export default {
 
         $('.search-icon').on('click', (evt) => {
             evt.preventDefault();
-            
+
             var data = $('.keyword-field').attr("data");
             if(data=='hide')
             {
@@ -136,10 +138,10 @@ export default {
         });
 
         $('.nav-bar-dropdown').hover(
-            function(e){ 
+            function(e){
                 $('.dropdown-content').css('visibility','visible');
                 $('.browse-border').css('visibility','visible');
-            }, 
+            },
         );
 
         $('.dropdown-content').mouseleave(
@@ -150,7 +152,7 @@ export default {
         );
 
 
-        
+
 
    },
 }
@@ -160,7 +162,7 @@ export default {
 .navbar-fixed-top
 {
     position: fixed;
-    width: 100%;    
+    width: 100%;
     margin-top: 45px;
 }
 .scrolled
@@ -292,7 +294,7 @@ export default {
     background-color: transparent;
     visibility: hidden;
 }
-.dropdown-content a 
+.dropdown-content a
 {
   color: black;
   padding: 12px 16px;
@@ -303,7 +305,7 @@ export default {
 {
     text-decoration: none;
 }
-/* .browse-menu-link:hover .dropdown-content 
+/* .browse-menu-link:hover .dropdown-content
 {
     display: block;
 } */

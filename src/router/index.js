@@ -7,6 +7,7 @@ import ProfessionalContent from '../components/Professionals/ProfessionalContent
 import ProfessionalHome from '../components/Professionals/ProfessionalHome'
 import ProfessionalCategory from '../components/Professionals/ProfessionalCategory'
 import ProjectContent from '../components/Projects/ProjectContent'
+import Messages from '../components/Messages'
 
 Vue.use(VueRouter);
 
@@ -18,13 +19,13 @@ export default new VueRouter({
             path: '/',
             component: Home
         },
-        { 
-            path: '/articles/:slug', 
+        {
+            path: '/articles/:slug',
             component: ArticleContent
         },
-        { 
+        {
             name: 'articlesTag',
-            path: '/articles', 
+            path: '/articles',
             component: Articles
         },
         {
@@ -51,6 +52,11 @@ export default new VueRouter({
             name: 'professionalCategory',
             path: '/browseCategory/professionals/:id',
             component: ProfessionalCategory,
+        },
+        {
+            name: 'messages',
+            path: '/messages',
+            component: Messages,
         },
     ]
 })

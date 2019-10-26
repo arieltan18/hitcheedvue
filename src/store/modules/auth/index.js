@@ -36,12 +36,12 @@ const actions = {
             user_role: credentials.user_role
         }).then(response => {
             const token  = response.data.success.token;
-    
+
             localStorage.setItem('access_token', token);
             context.commit('registerUser',token);
             console.log(response.data);
             console.log("Successfully Register");
-            
+
             return response
         }).catch(error => {
             console.log(error);
@@ -61,14 +61,14 @@ const actions = {
             //     'Content-Type': 'application/json',
             //     'cache-control': 'no-cache'
             // }
-    
+
             // return new Promise((resolve, reject) => {
             //     axios.post(logoutURL).then(response => {
 
             //         localStorage.removeItem('access_token');
             //         context.commit('destroyToken');
             //         resolve(response);
-                    
+
             //     }).catch(error => {
             //         localStorage.removeItem('access_token');
             //         context.commit('destroyToken');
@@ -84,7 +84,7 @@ const actions = {
         axios.defaults.headers = {
             'Content-Type': 'application/json',
             'cache-control': 'no-cache'
-        }
+        };
 
         return new Promise((resolve, reject) => {
             axios.post(loginURL, {
@@ -92,12 +92,12 @@ const actions = {
                 password: credentials.password
             }).then(response => {
                 const token  = response.data.success.token;
-    
+
                 localStorage.setItem('access_token', token);
                 context.commit('retrieveToken',token);
                 resolve(response);
                 console.log('login');
-                
+
             }).catch(error => {
                 console.log(error);
                 reject(error);
@@ -107,7 +107,7 @@ const actions = {
 }
 
 const getters = {
-    loggedIn(state) 
+    loggedIn(state)
     {
         return  state.token != null;
     }
