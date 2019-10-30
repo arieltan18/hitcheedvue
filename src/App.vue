@@ -1,24 +1,27 @@
 <template>
   <div id="app">
     <HeroImage v-if="this.$route.path=='/'" />
-    <NavHeader v-if="this.$route.path!='/'"></NavHeader>
-    <NavBar v-if="this.$route.path!='/'"></NavBar>
-    <router-view v-if="this.$route.path!='/'" style="padding-top:200px;"/>
-    <router-view v-else/>
+    <BrownNavHeader></BrownNavHeader>
+    <BlackNavBar></BlackNavBar>
+    <BrowseCategories v-if="this.$route.path!='/'" style="padding-top:200px;"></BrowseCategories>
+    <router-view v-if="this.$route.path!='/'" style="padding-top:50px;"/>
+    <router-view v-else />
   </div>
 </template>
 
 <script>
-import NavHeader from './components/NavBar/NavHeader.vue';
-import NavBar from './components/NavBar/NavBar.vue';
 import HeroImage from './components/HeroImage/HeroImage.vue';
+import BrownNavHeader from './components/NavBar/BrownNavHeader.vue';
+import BlackNavBar from './components/NavBar/BlackNavBar.vue';
+import BrowseCategories from './components/BrowseCategories/BrowseCategories.vue';
 
 export default {
   name: 'app',
   components: {
     HeroImage,
-    NavHeader,
-    NavBar
+    BrownNavHeader,
+    BlackNavBar,
+    BrowseCategories,
   },
 }
 </script>

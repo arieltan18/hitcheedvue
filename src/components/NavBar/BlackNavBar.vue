@@ -3,10 +3,10 @@
         <b-navbar >
             <div class="container nav-bar">
                 <b-navbar-brand class="logo-brand" href="/">
-                    <img class="logo-img" alt="Hitcheed Private Limited [SG]" :src="whiteLogo" height="38px;"/>
+                    <img class="black-logo" alt="Hitcheed Private Limited [SG]" src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/logo/logo.png" height="38px;"/>
                 </b-navbar-brand>
                 <div class="navbar-nav">
-                    <div class="nav-bar-link nav-bar-dropdown" :style="whiteStyle">
+                    <div class="nav-bar-black-link nav-bar-dropdown">
                         <div class="browse-menu-link">
                             Browse
                             <hr class="browse-border">
@@ -37,17 +37,17 @@
                             </ul>
                         </div>
                     </div>
-                    <div v-if="loggedIn" class="nav-bar-link" :style="whiteStyle">Messages</div>
-                    <div class="nav-bar-link" :style="whiteStyle">
+                    <div v-if="loggedIn" class="nav-bar-black-link">Messages</div>
+                    <div class="nav-bar-black-link">
                         <router-link :to="{ name: 'articlesHome'}" class="header-link">
                             Articles
                         </router-link>
                     </div>
-                    <div class="nav-bar-link" :style="whiteStyle">Events & Promotions</div>
+                    <div class="nav-bar-black-link" >Events & Promotions</div>
                 </div>
                 <div class="ml-auto">
-                    <i class="fa fa-search search-icon" aria-hidden="true" style="color:white;"></i>
-                    <input size="sm" data="hide" class="keyword-field search-width input-white" placeholder="Search Locations, Vendors, Articles">
+                    <i class="fa fa-search search-black-icon" aria-hidden="true"></i>
+                    <input size="sm" data="hide" class="keyword-field search-width input-black" placeholder="Search Locations, Vendors, Articles">
                 </div>
             </div>
         </b-navbar>
@@ -56,15 +56,13 @@
 
 <script>
 export default {
-    name: 'NavBar',
+    name: 'BlackNavBar',
+    props: [ 'route' ],
     data() {
         return {
             logo: '/logo-5a97df3649b490ac45e1ce37411c365f11a95fc5239008a885742ed20ed69c26.png',
             hover: false,
-            whiteLogo: 'https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/logo/logo_White.png',
             blackLogo: 'https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/logo/logo.png',
-            whiteStyle: "color: #ffffff;" ,
-            blackStyle: "color: #26140E;",
         }
     },
     computed: {
@@ -72,54 +70,9 @@ export default {
             return this.$store.getters.loggedIn;
         }
     },
-    mounted() {
-        //if this route is not on home page
-        if(this.$route.path != '/')
-        {
-            $('.logo-img').attr('src', this.blackLogo);
-            $('.nav-bar-link').attr('style',this.blackStyle);
-            $('.navbar-fixed-top').attr('style','background-color: #ffffff;z-index:1000;border-bottom: 1px solid #f5f5f4;');
-            $('.dropdown-content').css('background-color','#ffffff');
-            $('.dropdown-content').css('border-top','1px solid #f5f5f4');
-            $('.dropdown-content').css('border-bottom','1px solid #f5f5f4');
-            $('.search-icon').css('color','black');
-            $('.keyword-field').css('color','black');
-            $('.keyword-field').css('border-bottom','1px solid #000000');
-            $('.keyword-field').addClass('input-black');
-        }
-        else
-        {
-            $(document).scroll(function () 
-            {
-                var $nav = $(".navheader");
-                if($(this).scrollTop() > $nav.height())
-                {
-                    $('.navbar-fixed-top').attr('style','background-color: #ffffff;z-index:1000;');
-                    $('.logo-img').attr('src', 'https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/logo/logo.png');
-                    $('.nav-bar-link').attr('style','color: #26140E');
-                    $('.dropdown-content').css('background-color','#ffffff');
-                    $('.dropdown-content').css('border-top','1px solid #f5f5f4');
-                    $('.dropdown-content').css('border-bottom','1px solid #f5f5f4');
-                    $('.search-icon').css('color','black');
-                    $('.keyword-field').css('color','black');
-                    $('.keyword-field').css('border-bottom','1px solid #000000');
-                    $('.keyword-field').addClass('input-black');
-                }
-                else
-                {
-                    $('.navbar-fixed-top').attr('style','background-color: transparent;z-index:1000;');
-                    $('.logo-img').attr('src', 'https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/logo/logo_White.png');
-                    $('.nav-bar-link').attr('style','color: #ffffff');
-                    $('.dropdown-content').css('background-color','transparent');
-                    $('.search-icon').css('color','white');
-                    $('.keyword-field').css('color','white');
-                    $('.keyword-field').css('border-bottom','1px solid #ffffff');
-                    $('.keyword-field').removeClass('input-black');
-                }
-            });
-        }
-
-        $('.search-icon').on('click', (evt) => {
+    mounted() 
+    {
+        $('.search-black-icon').on('click', (evt) => {
             evt.preventDefault();
             
             var data = $('.keyword-field').attr("data");
@@ -149,10 +102,8 @@ export default {
             }
         );
 
-
-        
-
    },
+
 }
 </script>
 
@@ -200,7 +151,7 @@ export default {
     font-family: 'Cormorant Garamond';
     font-style: italic;
     font-size: 16px;
-    color:#FFFFFF;
+    color:#26140E;
     opacity: 0.7;
     border:none;
     background: none;
@@ -213,21 +164,6 @@ export default {
 .search-width
 {
     width:235px !important;
-}
-.input-white::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #ffffff;
-  opacity: 0.7; /* Firefox */
-  font-size: 16px;
-}
-.input-white:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: #ffffff;
-  opacity: 0.7;
-  font-size: 16px;
-}
-.input-white::-ms-input-placeholder { /* Microsoft Edge */
-  color: #ffffff;
-  opacity: 0.7;
-  font-size: 16px;
 }
 .input-black::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: #26140E;
@@ -264,8 +200,9 @@ export default {
     border-right: 4px solid transparent;
     border-left: 4px solid transparent;
 }
-.nav-bar-link
+.nav-bar-black-link
 {
+    color: #26140E;
     font-size: 13px;
     letter-spacing: 1.2px;
     text-transform: uppercase;
@@ -294,7 +231,7 @@ export default {
 }
 .dropdown-content a 
 {
-  color: black;
+  color: #26140E;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -307,8 +244,9 @@ export default {
 {
     display: block;
 } */
-.search-icon
+.search-black-icon
 {
+    color: #26140E;
     position: relative;
     right: 34px;
     cursor: pointer;

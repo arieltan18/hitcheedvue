@@ -6,6 +6,7 @@ import Articles from '../components/Articles/Articles'
 import ProfessionalContent from '../components/Professionals/ProfessionalContent'
 import ProfessionalHome from '../components/Professionals/ProfessionalHome'
 import ProfessionalCategory from '../components/Professionals/ProfessionalCategory'
+import ProfessionalsByCategory from '../components/Professionals/ProfessionalsByCategory'
 import ProjectContent from '../components/Projects/ProjectContent'
 
 Vue.use(VueRouter);
@@ -52,5 +53,10 @@ export default new VueRouter({
             path: '/browseCategory/professionals/:id',
             component: ProfessionalCategory,
         },
+        {
+            name: 'professionalsByCategory',
+            path: '/professionals/',
+            component:ProfessionalsByCategory
+        }
     ]
 })

@@ -125,7 +125,6 @@
 </template>
 
 <script>
-import gql from 'graphql-tag'
 import '../../assets/css/vueper-slider.css';
 import { VueperSlides, VueperSlide } from 'vueperslides'
 import { TAGS_BY_CATEGORY } from '../../graphql/graphql.js';

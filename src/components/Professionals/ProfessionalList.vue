@@ -10,6 +10,7 @@
         <div class="bottom-centered text-center">
             <h2>{{ professional.name }}</h2>
             <hr>
+            <p>{{ professional.rating }}</p>
             <p>{{ professional.price_text }}</p>
         </div>
     </div>
@@ -43,9 +44,12 @@ export default {
 
 .professional-img>img
 {
-    width: 100%;
+    width: 266px;
+    height: 266px;
+    object-fit: cover;
     max-width: 100%;
     display: block;
+    margin: auto;
 }
 
 .ar-image
@@ -57,10 +61,9 @@ export default {
 
 .bottom-centered h2
 {
-    font-size: 25px;
+    font-size: 24px;
     font-family: 'Cormorant Garamond';
-    color: #25130e;
-    font-weight: normal;
+    color: #26140E;
 }
 
 .text-center
