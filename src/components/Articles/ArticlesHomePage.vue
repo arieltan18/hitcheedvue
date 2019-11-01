@@ -11,7 +11,7 @@
             <div class="row">
                 <div class="col-md-6 left-article">
                     <router-link :to="articleItems[0].slug" class="read-link">
-                        <img class="mb-2" :src="articleItems[0].content.cover " alt="" width="100%">
+                        <img class="mb-2" :src="'https:'+ articleItems[0].content.cover " alt="" width="100%">
                         <div class="tag text-center" v-if="articleItems[0].tag_list">
                             <span v-for="tag in articleItems[0].tag_list" :key="tag" class="mr-3">
                                 <router-link class="article-tag-btn" :to="{ name: 'articlesTag', query: { tag: tag }}">
@@ -34,7 +34,7 @@
                     <div class="article-item mb-3" v-for="articleItem in articleItems.slice(1)" :key="articleItem.id" >
                         <router-link :to="articleItem.slug" class="read-link">
                             <div class="col-md-6 article-img">
-                                <img :src="articleItem.content.cover" width="100%"  height="173px">
+                                <img :src="'https:'+ articleItem.content.cover" width="100%"  height="173px">
                             </div>
                             <div class="col-md-6 article-details">
                                 <div class="tag text-left" v-if="articleItem.tag_list">

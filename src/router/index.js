@@ -55,7 +55,7 @@ export default new VueRouter({
         },
         {
             name: 'professionalsByCategory',
-            path: '/professionals/',
+            path: '/professionals/:category',
             component:ProfessionalsByCategory
         }
     ]

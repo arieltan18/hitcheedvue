@@ -67,6 +67,10 @@ export default {
 </script>
 
 <style scoped>
+.container-fluid
+{
+    border-top: 1px solid rgba(221, 218, 217, 0.5);
+}
 .bottom-row
 {
     padding-top:8%;

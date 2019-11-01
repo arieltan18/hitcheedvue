@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 export const PROFESSIONALS_BY_CATEGORY = gql`
-  query professionals_by_category($category_id: Int!, $cat_id: ID!){
+  query professionals_by_category($category_id: Int!){
       professionals_by_category(category_id: $category_id) {
           id,
           name,
@@ -10,10 +10,22 @@ export const PROFESSIONALS_BY_CATEGORY = gql`
           around_image,
           profile_image
       }
-      category(id: $cat_id )
-      {
-          name
+  }
+`
+
+export const PROFESSIONALS_BY_CATEGORY_PAGINATE = gql`
+  query professionals_by_category_paginate($category_id: Int!, $first: Int!, $page: Int!){
+    professionals_by_category_paginate(category_id: $category_id, first: $first, page: $page) {
+      data {
+        id
+        name,
+        slug,
+        cover_image,
+        around_image,
+        profile_image,
+        rating
       }
+    }
   }
 `
 
@@ -24,6 +36,18 @@ export const TAGS_BY_CATEGORY = gql`
           name,
           cover_photo
       }
+  }
+`
+
+export const TAGS_BY_CATEGORY_BY_PAGINATE = gql`
+  query tags_by_category_paginate($category_id: Int!, $first: Int!, $page: Int!){
+    tags_by_category_paginate(category_id: $category_id, first: $first, page: $page) {
+      data {
+        id,
+        name,
+        cover_photo,
+      }
+    }
   }
 `
 

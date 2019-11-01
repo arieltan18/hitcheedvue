@@ -3,9 +3,10 @@
     <HeroImage v-if="this.$route.path=='/'" />
     <BrownNavHeader></BrownNavHeader>
     <BlackNavBar></BlackNavBar>
-    <BrowseCategories v-if="this.$route.path!='/'" style="padding-top:200px;"></BrowseCategories>
-    <router-view v-if="this.$route.path!='/'" style="padding-top:50px;"/>
+    <BrowseCategories v-if="this.$route.name=='professionalsByCategory'" style="padding-top:200px;"></BrowseCategories>
+    <router-view v-if="this.$route.path!='/'" :style="this.$route.name == 'professionalsByCategory' ? 'padding-top:50px;' : 'padding-top:162px;'"/>
     <router-view v-else />
+    <Footer />
   </div>
 </template>
 
@@ -14,6 +15,7 @@ import HeroImage from './components/HeroImage/HeroImage.vue';
 import BrownNavHeader from './components/NavBar/BrownNavHeader.vue';
 import BlackNavBar from './components/NavBar/BlackNavBar.vue';
 import BrowseCategories from './components/BrowseCategories/BrowseCategories.vue';
+import Footer from './components/Footer/Footer.vue';
 
 export default {
   name: 'app',
@@ -22,6 +24,7 @@ export default {
     BrownNavHeader,
     BlackNavBar,
     BrowseCategories,
+    Footer
   },
 }
 </script>

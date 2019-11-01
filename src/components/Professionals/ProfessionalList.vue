@@ -1,17 +1,17 @@
 <template>
     <div>
         <router-link class="professional-img" :to="{ name: 'professional', params: { slug: slug, id: professional.id }}">
-            <img class="ar-image mb-2" :src="professional.around_image" alt="professional">
+            <img class="ar-image mb-3" :src="professional.around_image" alt="professional">
         </router-link>
-        <!-- <div class="bottom-centered text-center">
-            <h2>{{ professional.country }}</h2>
-            <p>{{ professional.name }}</p>
-        </div> -->
         <div class="bottom-centered text-center">
-            <h2>{{ professional.name }}</h2>
-            <hr>
-            <p>{{ professional.rating }}</p>
-            <p>{{ professional.price_text }}</p>
+            <h2 class="professional-name">{{ professional.name }}</h2>
+            <div class="text-left" v-if="professional.rating > 1">
+                <span class="review" v-for="(value, index) in parseInt(professional.rating)" :key="index">
+                    <img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group129.svg">
+                </span>
+                <span class="ml-1 review">({{professional.rating}})</span>
+            </div>
+            <div class="text-left location"></div>
         </div>
     </div>
 </template>
@@ -19,7 +19,7 @@
 <script>
 
 export default {
-    name: "Professionals",
+    name: "ProfessionalList",
     data() {
         return {
             professional_id: ''
@@ -77,6 +77,23 @@ p
     color: #25130e;
     margin: 5px 0;
     text-transform: none;
+}
+
+.professional-name
+{
+    text-align: left;
+    font-family: 'Cormorant Garamond';
+    font-size: 24px;
+    color: #26140E;
+}
+
+.review
+{
+    margin-right: 3px;
+    font-size: 12px;
+    letter-spacing: 0.6px;
+    font-family: 'Open Sans';
+    color: rgba(38, 20, 14, 0.5);
 }
 </style>
 

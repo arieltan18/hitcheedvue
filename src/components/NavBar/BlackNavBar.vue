@@ -12,7 +12,7 @@
                             <hr class="browse-border">
                         </div>
                     </div>
-                    <div class="dropdown-content">
+                    <div class="dropdown-content-white">
                         <div class="nav-content nav-text text-center">
                             <ul class="column1 text-left">
                                 <li>Hotels</li>
@@ -47,7 +47,7 @@
                 </div>
                 <div class="ml-auto">
                     <i class="fa fa-search search-black-icon" aria-hidden="true"></i>
-                    <input size="sm" data="hide" class="keyword-field search-width input-black" placeholder="Search Locations, Vendors, Articles">
+                    <input size="sm" data="hide" class="keyword-field-black search-width input-black" placeholder="Search Locations, Vendors, Articles">
                 </div>
             </div>
         </b-navbar>
@@ -75,29 +75,29 @@ export default {
         $('.search-black-icon').on('click', (evt) => {
             evt.preventDefault();
             
-            var data = $('.keyword-field').attr("data");
+            var data = $('.keyword-field-black').attr("data");
             if(data=='hide')
             {
-                $('.keyword-field').css('display','inline-block');
-                $('.keyword-field').attr('data','show');
+                $('.keyword-field-black').css('display','inline-block');
+                $('.keyword-field-black').attr('data','show');
             }
             else
             {
-                $('.keyword-field').css('display','none');
-                $('.keyword-field').attr('data','hide');
+                $('.keyword-field-black').css('display','none');
+                $('.keyword-field-black').attr('data','hide');
             }
         });
 
         $('.nav-bar-dropdown').hover(
             function(e){ 
-                $('.dropdown-content').css('visibility','visible');
+                $('.dropdown-content-white').css('visibility','visible');
                 $('.browse-border').css('visibility','visible');
             }, 
         );
 
-        $('.dropdown-content').mouseleave(
+        $('.dropdown-content-white').mouseleave(
             function(){
-                $('.dropdown-content').css('visibility','hidden');
+                $('.dropdown-content-white').css('visibility','hidden');
                 $('.browse-border').css('visibility','hidden');
             }
         );
@@ -110,9 +110,12 @@ export default {
 <style scoped>
 .navbar-fixed-top
 {
+    background-color: #ffffff;
+    z-index:1000;
     position: fixed;
     width: 100%;    
     margin-top: 45px;
+    border-bottom: 1px solid #f5f5f4;
 }
 .scrolled
 {
@@ -145,7 +148,7 @@ export default {
     vertical-align: middle;
     padding-top:2px;
 }
-.keyword-field
+.keyword-field-black
 {
     font-weight: 400;
     font-family: 'Cormorant Garamond';
@@ -160,6 +163,7 @@ export default {
     border-bottom: 1px solid #ffffff;
     margin-left: -20px;
     display: none;
+    border-bottom: 1px solid #26140E;
 }
 .search-width
 {
@@ -216,7 +220,7 @@ export default {
     position: relative;
     display: inline-block;
 }
-.dropdown-content
+.dropdown-content-white
 {
     width:100%;
     position: absolute;
@@ -224,12 +228,12 @@ export default {
     top:110px;
     left: 0px;
     padding: 10px;
-    border-top: 1px solid #ffffff87;
-    border-bottom: 1px solid #ffffff87;
-    background-color: transparent;
+    border-top: 1px solid #f5f5f4;
+    border-bottom: 1px solid #f5f5f4;
+    background-color: #ffffff;
     visibility: hidden;
 }
-.dropdown-content a 
+.dropdown-content-white a 
 {
   color: #26140E;
   padding: 12px 16px;
@@ -240,10 +244,6 @@ export default {
 {
     text-decoration: none;
 }
-/* .browse-menu-link:hover .dropdown-content 
-{
-    display: block;
-} */
 .search-black-icon
 {
     color: #26140E;
