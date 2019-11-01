@@ -8,9 +8,12 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import store from './store/index.js';
 import { createProvider } from './vue-apollo'
+import VueChatScroll from 'vue-chat-scroll'
 
 Vue.use(BootstrapVue)
 Vue.use(VueSimpleMarkdown)
+Vue.use(VueChatScroll)
+
 Vue.config.productionTip = false
 
 

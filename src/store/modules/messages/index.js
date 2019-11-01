@@ -1,72 +1,29 @@
 
 const state = {
     messages: [
-        {
-            id: 1,
-            chatId: '1',
-            from: 'Test 1',
-            message: 'test Message',
-            image_url: 'https://ptetutorials.com/images/user-profile.png',
-            date: new Date()
-        },
-        {
-            id: 2,
-            chatId: '1',
-            from: 'Test 1',
-            message: 'Hello there 2',
-            image_url: 'https://ptetutorials.com/images/user-profile.png',
-            date: new Date()
-        },
-        {
-            id: 3,
-            chatId: '1',
-            from: 'Test 1',
-            message: 'Hello there 3',
-            image_url: 'https://ptetutorials.com/images/user-profile.png',
-            outgoing: true,
-            date: new Date()
-        },
-        {
-            id: 4,
-            chatId: '2',
-            from: 'Test 1',
-            message: 'Hello there 3',
-            image_url: 'https://ptetutorials.com/images/user-profile.png',
-            outgoing: true,
-            date: new Date()
-        }
     ],
-    chats: [
-        {
-            id: '1',
-            name: 'Test 1',
-            message: 'Hello there',
-            image_url: 'https://ptetutorials.com/images/user-profile.png',
-            date: new Date()
-        },
-        {
-            id: '2',
-            name: 'Test 2',
-            message: 'Hello there',
-            image_url: 'https://ptetutorials.com/images/user-profile.png',
-            date: new Date()
-        }
+    rooms: [
     ]
 };
 
-const mutators = {
-    startChat(state, chat){
-
+const mutations = {
+    addedToRoom(state, room){
+        state.rooms.push(room)
     },
-    chatStarted(state, chat){
-
-    },
-    sendMessage(state, message){
-
+    roomUpdated(state, room){
+        const rooms = state.rooms.filter(r=>r.id !== room.id);
+        rooms.push(room);
+        const roomsSorted = rooms.sort((r1, r2)=>{
+            if(r1.lastMessageAt > r2.lastMessageAt) return -1;
+            if(r1.lastMessageAt < r2.lastMessageAt) return 1;
+            return 0;
+        });
+        state.rooms = roomsSorted;
     },
     messageReceived(state, message){
+        state.messages.push(message)
+    },
 
-    }
 };
 
 const actions = {
@@ -85,11 +42,11 @@ const actions = {
 };
 
 const getters = {
-    getMessages: (state)=>(chatId)=>{
-        return state.messages.filter(c=>c.chatId === chatId)
+    getMessages: (state)=>(roomId)=>{
+        return state.messages.filter(c=>c.roomId === roomId)
     },
     getChats(state){
-        return state.chats
+        return state.rooms
     }
 };
 
@@ -97,7 +54,7 @@ const messages = {
     state,
     getters,
     actions,
-    mutators
+    mutations
 };
 
 export default messages;

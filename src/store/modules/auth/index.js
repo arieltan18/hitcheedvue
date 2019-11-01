@@ -27,7 +27,7 @@ const actions = {
         axios.defaults.headers = {
             'Content-Type': 'application/json',
             'cache-control': 'no-cache'
-        }
+        };
         axios.post(signUpURL, {
             name: credentials.name,
             email: credentials.email,

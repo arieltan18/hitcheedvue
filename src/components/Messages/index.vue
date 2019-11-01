@@ -11,7 +11,7 @@
                         </div>
                         <ChatList @changeActiveChatId="setActiveChatId" :active-chat-id="activeChatId"></ChatList>
                     </div>
-                    <ChatMessages :chat-id="activeChatId"></ChatMessages>
+                    <ChatMessages :key="setActiveChatId" :chat-id="activeChatId"></ChatMessages>
                 </div>
             </div>
         </div>
@@ -19,10 +19,10 @@
 </template>
 
 <script>
-    import PubNub from 'pubnub';
     import '../../assets/css/messages.css'
     import ChatList from "./ChatList";
     import ChatMessages from "./ChatMessages";
+    import chatkit from '../../chatkit'
 
     export default {
         name: "Messages",
@@ -30,57 +30,20 @@
         data: function () {
             return ({
                 activeChatId: '123',
-                publishKey: 'pub-c-2fdb492a-fa06-4679-8a10-05ef6cac8334',
-                subscribeKey: 'sub-c-0da01d2a-f7aa-11e9-8f6e-d28065e14af1'
             })
         }
         ,
         created: function () {
-            const {publishKey, subscribeKey} = this;
 
-            this.pubNub = new PubNub({
-                publishKey,
-                subscribeKey
-            });
+            this.chatManager = chatkit.connectUser('user-9818');
 
-            this.pubNub.addListener({
-                status: function(statusEvent) {
-                    if (statusEvent.category === "PNConnectedCategory") {
-                        console.log('connected');
-                    }
-                },
-                message: (msg) => {
-                    console.log(msg.message.title);
-                    console.log(msg.message.description);
-                },
-                presence: function(presenceEvent) {
-                    // handle presence
-                    console.log(presenceEvent);
-                }
-            });
-
-            this.pubNub.subscribe({
-                channels: ['hello_world']
-            });
-
-            // this.getChats();
+            this.chatManager.then(user=>{
+                console.log(user);
+            }).catch(e=>{
+                console.log('error', e)
+            })
         },
         methods: {
-            sendMessage: function (){
-                this.pubNub.publish({
-                    channel : "hello_world",
-                    message: {
-                        title: "greeting",
-                        description: "hello world!"
-                    }
-                }).then((r, s)=>{
-                    console.log(r, s);
-                    // alert('sent')
-                }).catch(e=>{
-                    console.log(e);
-                });
-
-            },
             getChats: function () {
                 const [chat] = this.chats;
                 if(chat) {
