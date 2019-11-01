@@ -42,6 +42,12 @@ h3
 a
 {
     color: rgb(137, 209, 207);
+    text-decoration: none;
+}
+
+a:hover
+{
+    text-decoration: none;
 }
 
 .image-holder

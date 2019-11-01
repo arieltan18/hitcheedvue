@@ -13,8 +13,8 @@
                             <div class="top-link mb-3">About Us</div>
                             <div class="bottom-link">
                                 <a href="">who we are</a><br/>
-                                <a href="">press</a><br/>
-                                <a href="">careers</a>
+                                <a href="mailto:press@hitcheed.com">press</a><br/>
+                                <a href="mailto:jobs@hitcheed.com">careers</a>
                             </div>
                         </div>
                         <div class="col-sm-3 text-left">
@@ -22,7 +22,7 @@
                             <div class="bottom-link">
                                 <a href="">browse</a><br/>
                                 <a href="">wishlists</a><br/>
-                                <a href="">articles</a>
+                                <router-link :to="{ name: 'articlesHome'}" class="header-link">articles</router-link>
                             </div>
                         </div>
                         <div class="col-sm-5 mail-box">

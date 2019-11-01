@@ -5,16 +5,9 @@
                 <h1>{{ this.category_name }}</h1>
             </div>
         </div>
-        <div class="container">
-            <!-- <PopularSearchesNav></PopularSearchesNav> -->
-        </div>
-        <ProfessionalSection :category_id="this.category.id ? this.category.id : '1'" :first="8" :page="1"></ProfessionalSection>
-        <ProfessionalSection :category_id="this.category.id ? this.category.id : '1'" :first="8" :page="2"></ProfessionalSection>
-        <div class="articles-section">
-            <RelatedArticles></RelatedArticles>
-        </div>
+        <ProfessionalSection :category_id="this.category.id ? this.category.id : '1'" :first="40" :page="1"></ProfessionalSection>
         <div class="container mt-5">
-            <router-link class="see-more-link" :to="{ name: 'professionalsByCategoryAll', params: { category: this.$route.params.category } }">See More {{ this.category_name }}</router-link>
+            <a href="" class="see-more-link">See More {{ this.category_name }}</a>
         </div>
     </div>
 </template>
@@ -22,15 +15,11 @@
 <script>
 import ProfessionalSection from './ProfessionalSection.vue';
 import { CATEGORIES_FILTER } from '../../graphql/graphql.js';
-import PopularSearchesNav from "../PopularSearches/PopularSearchesNav.vue";
-import RelatedArticles from "../Articles/RelatedArticles.vue";
 
 export default {
     name: "ProfessionalsByCategory",
     components: {
         ProfessionalSection,
-        PopularSearchesNav,
-        RelatedArticles
     },
     mounted() {
 
@@ -46,7 +35,6 @@ export default {
     },
     data() {
         return {
-            // professionals: [],
             category_name: '',
         }
     },

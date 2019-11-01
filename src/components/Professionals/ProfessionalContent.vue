@@ -2,7 +2,7 @@
     <div>
         <div class="container-fluid bg-color">
             <div class="row">
-                <img class="top-image" :src="professionalContent.cover_image">
+                <img class="top-image" :src="professionalContent.cover_image" width="100%">
             </div>
         </div>
         <div class="container-fluid padding">

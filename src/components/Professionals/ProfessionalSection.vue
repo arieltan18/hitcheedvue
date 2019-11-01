@@ -14,7 +14,7 @@ import { PROFESSIONALS_BY_CATEGORY_PAGINATE } from '../../graphql/graphql.js';
 
 export default {
     name: 'ProfessionalSection',
-    props: [ 'category_id' ],
+    props: [ 'category_id', 'first', 'page' ],
     components: {
         ProfessionalList,
 
@@ -26,8 +26,8 @@ export default {
             variables() {
                 return {
                     category_id: this.category_id,
-                    first : 8,
-                    page: 1,
+                    first : this.first,
+                    page: this.page,
                 }
             },
             update(data){
