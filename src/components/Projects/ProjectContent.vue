@@ -10,7 +10,7 @@
         <div class="container-fluid padding">
             <div class="row">
                 <div class="col-md-8 project-content">
-                    <h3>{{ projectContent.name }}</h3>
+                    <h3>{{ projectContent.project_name }}</h3>
                     <div v-html="projectContent.descriptions"></div>
                     <p v-if="projectContent.country">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
@@ -42,7 +42,7 @@ export default {
     },
     data() {
         return {
-            project_id: '',
+            project_slug: '',
             projectImages: [],
             projectContent: [],
             otherProjects: [],
@@ -51,12 +51,11 @@ export default {
         }
     },
     created() {
-        this.project_id = this.$route.params.id;
+        this.project_slug = this.$route.params.slug;
     },
     methods: {
         getProjectContent () {
-            const url =  process.env.VUE_APP_HITCHEED_API  + "/v1/projects/" + this.project_id;
-            //const url = "http://hitcheedlaravel.test/api/v1/projects/" + this.project_id;
+            const url =  process.env.VUE_APP_HITCHEED_API  + "/v1/projects/slug/" + this.project_slug;
 
             axios.defaults.headers = {
                 'Content-Type': 'application/json',
@@ -78,14 +77,14 @@ export default {
 
     },
     beforeMount() {
-        this.project_id = this.$route.params.id;
+        this.project_slug = this.$route.params.slug;
         this.getProjectContent();
     },
     mounted() {
         console.log(this.$options.name+' component successfully mounted');
     },
     beforeRouteUpdate(to,from,next) {
-        this.project_id = to.params.id;
+        this.project_slug = to.params.slug;
         this.getProjectContent();
         next();
     },

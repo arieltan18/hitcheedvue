@@ -27,7 +27,6 @@
 
 <script>
 import ProfessionalSection from './ProfessionalSection.vue';
-
 import { CATEGORIES_FILTER } from '../../graphql/graphql.js';
 import PopularSearchesNav from "../PopularSearches/PopularSearchesNav.vue";
 import RelatedArticles from "../Articles/RelatedArticles.vue";

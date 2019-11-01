@@ -35,12 +35,12 @@ export default new VueRouter({
         },
         {
             name: 'professional',
-            path: '/professionals/:slug/:id',
+            path: '/professionals/:slug',
             component: ProfessionalContent
         },
         {
             name: 'project',
-            path: '/projects/:slug/:id',
+            path: '/projects/:slug',
             component: ProjectContent
         },
         {
@@ -55,7 +55,7 @@ export default new VueRouter({
         },
         {
             name: 'professionalsByCategory',
-            path: '/professionals/:category',
+            path: '/category/:category',
             component:ProfessionalsByCategory
         }
     ]

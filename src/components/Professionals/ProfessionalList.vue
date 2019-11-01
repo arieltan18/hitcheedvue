@@ -1,6 +1,6 @@
 <template>
     <div>
-        <router-link class="professional-img" :to="{ name: 'professional', params: { slug: slug, id: professional.id }}">
+        <router-link class="professional-img" :to="{ name: 'professional', params: { slug: slug }}">
             <img class="ar-image mb-3" :src="professional.around_image" alt="professional">
         </router-link>
         <div class="bottom-centered text-center">
