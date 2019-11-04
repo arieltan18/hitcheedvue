@@ -2,24 +2,20 @@
     <div>
         <Explore />
         <PopularSearches />
-        <Events />
-        <!-- <Professionals /> -->
+        <!-- <Events /> -->
         <Articles />
         <Testimonials />
         <DownloadApp />
-        <Footer />
     </div>
 </template>
 
 <script>
 import Explore from './Explore/Explore.vue';
 import PopularSearches from './PopularSearches/PopularSearches.vue';
-import Events from './Events&Promotions/Events.vue';
+//import Events from './Events&Promotions/Events.vue';
 import Articles from './Articles/ArticlesHomePage.vue';
-// import Professionals from './Professionals/Professionals.vue';
 import Testimonials from './Testimonials/Testimonials.vue';
 import DownloadApp from './DownloadApp/DownloadApp.vue';
-import Footer from './Footer/Footer.vue';
 
 export default {
     name: "Home",
@@ -27,13 +23,10 @@ export default {
         Explore,
         PopularSearches,
         Articles,
-        Events,
-        // Professionals,
+        // Events,
         Testimonials,
         DownloadApp,
-        Footer
     },
-    
 }
 
 </script>

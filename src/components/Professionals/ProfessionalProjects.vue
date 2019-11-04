@@ -4,9 +4,9 @@
         <div class="row">
             <div class="col-sm-4" v-for="project in projects" :key="project.id">
                 <div class="thumbnail">
-                    <router-link :to="{ name: 'project', params: { slug: project.slug, id: project.id }}">
+                    <router-link :to="{ name: 'project', params: { slug: project.slug }}">
                         <div class="image-holder">
-                            <img alt="project.name" style="height:auto;" :src="project.image">
+                            <img :alt="project.name" :src="project.image">
                         </div>
                         <div class="caption text-center">
                             <p class="font-weight-bold">{{project.name}}</p>
@@ -42,6 +42,12 @@ h3
 a
 {
     color: rgb(137, 209, 207);
+    text-decoration: none;
+}
+
+a:hover
+{
+    text-decoration: none;
 }
 
 .image-holder
@@ -63,6 +69,7 @@ a
     width: 100%;
     height: 100%;
     margin-bottom: 10px;
+    object-fit: cover;
 }
 
 .thumbnail.caption

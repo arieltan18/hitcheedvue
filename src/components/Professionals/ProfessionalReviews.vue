@@ -1,7 +1,7 @@
 <template>
     <div class="col-sm-4">
         <div class="text-center">
-            <img class="img-circle" :src="professionalContent.profile_image">
+            <img class="img-circle" :src="professionalContent.profile_image" width="200px">
             <h4 class="text-center professional-name">
                 {{ professionalContent.name }}
             </h4>

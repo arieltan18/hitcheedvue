@@ -1,6 +1,6 @@
 <template>
     <router-link class="article-img" :to="slug">
-        <img class="img" :src="articleItem.content.cover">
+        <img class="img" :src="'https:'+ articleItem.content.cover">
     </router-link>
 </template>
 

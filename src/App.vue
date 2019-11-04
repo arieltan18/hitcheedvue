@@ -1,24 +1,30 @@
 <template>
   <div id="app">
     <HeroImage v-if="this.$route.path=='/'" />
-    <NavHeader v-if="this.$route.path!='/'"></NavHeader>
-    <NavBar v-if="this.$route.path!='/'"></NavBar>
-    <router-view v-if="this.$route.path!='/'" style="padding-top:200px;"/>
-    <router-view v-else/>
+    <BrownNavHeader></BrownNavHeader>
+    <BlackNavBar></BlackNavBar>
+    <BrowseCategories :key="$route.fullPath" v-if="(this.$route.name=='professionalsByCategory') || (this.$route.name=='professionalsByCategoryAll')" style="padding-top:200px;"></BrowseCategories>
+    <router-view :key="$route.fullPath" v-if="this.$route.path!='/'" :style="(this.$route.name == 'professionalsByCategory') || (this.$route.name == 'professionalsByCategoryAll') ? 'padding-top:50px;' : 'padding-top:162px;'"/>
+    <router-view v-else />
+    <Footer />
   </div>
 </template>
 
 <script>
-import NavHeader from './components/NavBar/NavHeader.vue';
-import NavBar from './components/NavBar/NavBar.vue';
 import HeroImage from './components/HeroImage/HeroImage.vue';
+import BrownNavHeader from './components/NavBar/BrownNavHeader.vue';
+import BlackNavBar from './components/NavBar/BlackNavBar.vue';
+import BrowseCategories from './components/BrowseCategories/BrowseCategories.vue';
+import Footer from './components/Footer/Footer.vue';
 
 export default {
   name: 'app',
   components: {
     HeroImage,
-    NavHeader,
-    NavBar
+    BrownNavHeader,
+    BlackNavBar,
+    BrowseCategories,
+    Footer
   },
 }
 </script>

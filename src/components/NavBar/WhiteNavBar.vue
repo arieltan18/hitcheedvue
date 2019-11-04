@@ -1,6 +1,6 @@
 <template>
     <div class="navbar-fixed-top">
-        <b-navbar >
+        <b-navbar>
             <div class="container nav-bar">
                 <b-navbar-brand class="logo-brand" href="/">
                     <img class="logo-img" alt="Hitcheed Private Limited [SG]" :src="whiteLogo" height="38px;"/>
@@ -15,25 +15,84 @@
                     <div class="dropdown-content">
                         <div class="nav-content nav-text text-center">
                             <ul class="column1 text-left">
-                                <li>Hotels</li>
-                                <li>Venues</li>
-                                <li>Bridal Studios</li>
-                                <li>Photographers</li>
-                                <li>Videographers</li>
+                                <li>
+                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'hotels' }}">
+                                        Hotels
+                                    </router-link>
+                                </li>
+                                <li>
+                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'venues' }}">
+                                        Venues
+                                    </router-link>
+                                </li>
+                                <li>
+                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'bridal-studios' }}">
+                                        Bridal Studios
+                                    </router-link>
+                                </li>
+                                <li>
+                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'photographers' }}">
+                                        Photographers
+                                    </router-link>
+                                </li>
+                                <li>
+                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'videographers' }}">
+                                        Videographers
+                                    </router-link>
+                                </li>
                             </ul>
                             <ul class="column2 text-left">
-                                <li>Florists</li>
-                                <li>Invitation & wedding favours</li>
-                                <li>event styling & rental</li>
-                                <li>hair & makeup</li>
-                                <li>live band & emcee</li>
+                                <li>
+                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'florists' }}">
+                                        Florists
+                                    </router-link>
+                                </li>
+                                <li>
+                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'invitation-and-wedding-favours' }}">
+                                        Invitation & wedding favours
+                                    </router-link>
+                                </li>
+                                <li>
+                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'event-styling-and-rental' }}">
+                                        event styling & rental
+                                    </router-link>
+                                </li>
+                                <li>
+                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'hair-and-makeup' }}">
+                                        hair & makeup
+                                    </router-link>
+                                </li>
+                                <li>
+                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'live-band-and-emcee' }}">
+                                        live band & emcee
+                                    </router-link>
+                                </li>
                             </ul>
                             <ul class="column3 text-left">
-                                <li>Wedding Jewellery</li>
-                                <li>Catering</li>
-                                <li>photo booth</li>
-                                <li>other countries</li>
-                                <li>all categories</li>
+                                <li>
+                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'wedding-jewellery' }}">Wedding Jewellery
+                                    </router-link>
+                                </li>
+                                <li>
+                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'catering' }}">
+                                        Catering
+                                    </router-link>
+                                </li>
+                                <li>
+                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'photo-booth' }}">
+                                        photo booth
+                                    </router-link>
+                                </li>
+                                <li>
+                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'other-countries' }}">
+                                        other countries
+                                    </router-link>
+                                </li>
+                                <li>
+                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'all-categories' }}">
+                                        all categories
+                                    </router-link>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -58,7 +117,8 @@
 
 <script>
 export default {
-    name: 'NavBar',
+    name: 'WhiteNavBar',
+    props: [ 'route' ],
     data() {
         return {
             logo: '/logo-5a97df3649b490ac45e1ce37411c365f11a95fc5239008a885742ed20ed69c26.png',
@@ -74,9 +134,10 @@ export default {
             return this.$store.getters.loggedIn;
         }
     },
-    mounted() {
+    mounted()
+    {
         //if this route is not on home page
-        if(this.$route.path != '/')
+        if(this.$route.fullPath != '/')
         {
             $('.logo-img').attr('src', this.blackLogo);
             $('.nav-bar-link').attr('style',this.blackStyle);
@@ -91,7 +152,7 @@ export default {
         }
         else
         {
-            $(document).scroll(function ()
+            $(window).scroll(function ()
             {
                 var $nav = $(".navheader");
                 if($(this).scrollTop() > $nav.height())
@@ -155,6 +216,7 @@ export default {
 
 
    },
+
 }
 </script>
 
@@ -297,7 +359,6 @@ export default {
 .dropdown-content a
 {
   color: black;
-  padding: 12px 16px;
   text-decoration: none;
   display: block;
 }

@@ -1,19 +1,19 @@
 <template>
     <div class="hero-image">  
-        <NavHeader></NavHeader>
-        <NavBar></NavBar>    
+        <TransparentNavHeader></TransparentNavHeader>
+        <WhiteNavBar></WhiteNavBar>
     </div>
 </template>
 
 <script>
-import NavHeader from '../NavBar/NavHeader.vue';
-import NavBar from '../NavBar/NavBar.vue';
+import WhiteNavBar from '../NavBar/WhiteNavBar.vue';
+import TransparentNavHeader from '../NavBar/TransparentNavHeader.vue';
 
 export default {
   name: 'HeroImage',
   components: {
-    NavHeader,
-    NavBar
+    WhiteNavBar,
+    TransparentNavHeader
   },
   
 

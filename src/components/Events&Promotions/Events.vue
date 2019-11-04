@@ -29,8 +29,16 @@
 </template>
 
 <script>
+import '../../assets/css/vueper-slider.css';
+import { VueperSlides, VueperSlide } from 'vueperslides'
+import { TAGS_BY_CATEGORY } from '../../graphql/graphql.js';
+
 export default {
     name: "Events",
+    components: {
+        VueperSlides, 
+        VueperSlide,
+    },
 }
 </script>
 

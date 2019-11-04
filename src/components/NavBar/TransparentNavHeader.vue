@@ -1,6 +1,6 @@
 <template>
     <div class="navheader">
-        <b-navbar id="navheader-bar" >
+        <b-navbar id="navheader-bar" class="white-header-top">
             <div class="container">
                 <b-navbar-nav class="ml-auto">
                     <b-navbar-nav v-if="!loggedIn">
@@ -249,35 +249,31 @@ export default {
         },
         onLogout() {
             this.isConnected = false;
+        },
+        methodThatForcesUpdate() {
+            // ...
+            this.$forceUpdate();  // Notice we have to use a $ here
+            // ...
         }
     },
-    mounted() {
-        if(this.$route.path != '/')
+    mounted() 
+    {
+        $(document).scroll(function () 
         {
-            $('#navheader-bar').addClass('brown-header-top');
-        }
-        else
-        {
-            $('#navheader-bar').addClass('white-header-top');
-
-            $(document).scroll(function () 
+            var $nav = $(".navheader");
+            if($(this).scrollTop() > $nav.height())
             {
-                var $nav = $(".navheader");
-                if($(this).scrollTop() > $nav.height())
-                {
-                    $('#navheader-bar').removeClass('white-header-top');
-                    $('#navheader-bar').addClass('brown-header-top');
-                }
-                else
-                {
-                    $('#navheader-bar').removeClass('brown-header-top');
-                    $('#navheader-bar').addClass('white-header-top');
-                }
+                $('#navheader-bar').removeClass('white-header-top');
+                $('#navheader-bar').addClass('brown-header-top');
+            }
+            else
+            {
+                $('#navheader-bar').removeClass('brown-header-top');
+                $('#navheader-bar').addClass('white-header-top');
+            }
 
-            });
-        }
+        });
 
-        
     },
 }
 </script>

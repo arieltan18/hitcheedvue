@@ -2,7 +2,7 @@
     <div>
         <div class="container-fluid bg-color">
             <div class="row">
-                <img class="top-image" :src="professionalContent.cover_image">
+                <img class="top-image" :src="professionalContent.cover_image" width="100%">
             </div>
         </div>
         <div class="container-fluid padding">
@@ -35,7 +35,7 @@ export default {
     },
     data() {
         return {
-            professional_id: '',
+            professional_slug: '',
             professionalContent: [],
             projects: [],
             reviews: []
@@ -44,8 +44,7 @@ export default {
     methods: {
         getProfessionalContent () 
         {
-            const url = process.env.VUE_APP_HITCHEED_API + "/v1/professionals/" + this.professional_id;
-            //const url = "http://hitcheedlaravel.test/api/v1/professionals/" + this.professional_id;
+            const url = process.env.VUE_APP_HITCHEED_API + "/v1/professionals/slug/" + this.professional_slug;
             
             axios.defaults.headers = {
                 'Content-Type': 'application/json',
@@ -64,7 +63,7 @@ export default {
         }
     },
     mounted() {
-        this.professional_id = this.$route.params.id;
+        this.professional_slug = this.$route.params.slug;
         this.getProfessionalContent();
     },
     beforeRouteUpdate(to,from,next) {

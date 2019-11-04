@@ -2,14 +2,17 @@
     <div class="container-fluid mb-5" >
         <div class="container">
             <div class="row mb-2">
-                <div class="col-sm-12 text-center">
+                <div class="col-sm-12 text-center mt-2 mb-5">
                     <router-link class="header-link" :to="{ name: 'professionalCategory', params: { 'id': categoryID }}">
                         <h1>{{categoryName}}</h1>
                     </router-link>
                 </div>
             </div>
+            <div>
+                <PopularSearchesNav></PopularSearchesNav>
+            </div>
             <div class="row">
-                <div v-for="professional in professionals" :key="professional.id" class="col-md-4 professional-padding mb-4">
+                <div v-for="professional in professionals" :key="professional.id" class="col-md-3 professional-padding mb-5">
                     <ProfessionalList :professional="professional" />
                 </div>
             </div>
@@ -18,19 +21,21 @@
 </template>
 
 <script>
+import PopularSearchesNav from "../PopularSearches/PopularSearchesNav.vue";
 import ProfessionalList from './ProfessionalList.vue';
 import axios from 'axios';
 
 export default {
     name: "ProfessionalCategory",
     components: {
-        ProfessionalList
+        ProfessionalList,
+        PopularSearchesNav
     },
     data() {
         return {
             professionals: [],
             categoryName: '',
-            categoryID: ''
+            categoryID: 1
         }
     },
     props:[
@@ -87,8 +92,8 @@ h1 {
 
 .professional-padding
 {
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .text-center

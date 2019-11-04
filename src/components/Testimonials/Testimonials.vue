@@ -20,8 +20,8 @@
                 </div>
             </div> -->
             <vueper-slides class="testimonials no-shadow" arrows-outside :bullets="false" transition-speed="250">
-                <v-icon slot="arrowLeft" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group29.svg" alt="left-arrow" width="25px"></v-icon>
-                <v-icon slot="arrowRight" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group28.svg" alt="right-arrow" width="25px;"></v-icon>
+                <div slot="arrowLeft" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group29.svg" alt="left-arrow" width="25px"></div>
+                <div slot="arrowRight" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group28.svg" alt="right-arrow" width="25px;"></div>
                 <vueper-slide
                     v-for="testimonial in testimonials"
                     :key="testimonial.id"
