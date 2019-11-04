@@ -6,7 +6,7 @@
         <div class="row">
             <div v-for="articleItem in articleItems" :key="articleItem.id" class="col-md-6 float-left mt-3 pl-0">
                 <div class="text-left mr-1">
-                    <router-link :to="articleItem.slug" class="read-link">
+                    <router-link :to="{ name: 'singleArticlePage', params: { slug: articleItem.slug }}" class="read-link">
                         <div class="col-md-6 article-img">
                             <img :src="'https:'+ articleItem.content.cover" width="100%"  height="173px">
                         </div>
@@ -48,7 +48,7 @@ export default {
             //get the current timestamp
             const date = Date.now();
 
-            const url = process.env.VUE_APP_STORYBLOK_API + '&page=1&per_page=2&starts_with=blog&cv=' + date;
+            const url = process.env.VUE_APP_STORYBLOK_API + '&page=1&per_page=6&starts_with=blog&cv=' + date;
         
             axios.defaults.headers = {
                 'Content-Type': 'application/json',

@@ -70,7 +70,8 @@
                             </ul>
                             <ul class="column3 text-left">
                                 <li>
-                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'wedding-jewellery' }}">Wedding Jewellery
+                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'wedding-jewellery' }}">
+                                        Wedding Jewellery
                                     </router-link>
                                 </li>
                                 <li>
@@ -89,7 +90,7 @@
                                     </router-link>
                                 </li>
                                 <li>
-                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'all-categories' }}">
+                                    <router-link :to="{ name: 'professionalsByAllCategories'}">
                                         all categories
                                     </router-link>
                                 </li>
@@ -139,7 +140,7 @@ export default {
         {
             $('.logo-img').attr('src', this.blackLogo);
             $('.nav-bar-link').attr('style',this.blackStyle);
-            $('.navbar-fixed-top').attr('style','background-color: #ffffff;z-index:1000;border-bottom: 1px solid #f5f5f4;');
+            $('.navbar-fixed-top').attr('style','background-color: #ffffff;z-index:10;border-bottom: 1px solid #f5f5f4;');
             $('.dropdown-content').css('background-color','#ffffff');
             $('.dropdown-content').css('border-top','1px solid #f5f5f4');
             $('.dropdown-content').css('border-bottom','1px solid #f5f5f4');
@@ -155,7 +156,7 @@ export default {
                 var $nav = $(".navheader");
                 if($(this).scrollTop() > $nav.height())
                 {
-                    $('.navbar-fixed-top').attr('style','background-color: #ffffff;z-index:1000;');
+                    $('.navbar-fixed-top').attr('style','background-color: #ffffff;z-index:10;');
                     $('.logo-img').attr('src', 'https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/logo/logo.png');
                     $('.nav-bar-link').attr('style','color: #26140E');
                     $('.dropdown-content').css('background-color','#ffffff');
@@ -168,7 +169,7 @@ export default {
                 }
                 else
                 {
-                    $('.navbar-fixed-top').attr('style','background-color: transparent;z-index:1000;');
+                    $('.navbar-fixed-top').attr('style','background-color: transparent;z-index:10;');
                     $('.logo-img').attr('src', 'https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/logo/logo_White.png');
                     $('.nav-bar-link').attr('style','color: #ffffff');
                     $('.dropdown-content').css('background-color','transparent');
@@ -342,7 +343,7 @@ export default {
 {
     width:100%;
     position: absolute;
-    z-index: 1000;
+    z-index: 10;
     top:110px;
     left: 0px;
     padding: 10px;

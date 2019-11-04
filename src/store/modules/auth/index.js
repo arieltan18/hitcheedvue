@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const state = {
     token: localStorage.getItem('access_token') || null ,
+    username: ''
 }
 
 const mutations = {
@@ -9,9 +10,10 @@ const mutations = {
     {
         state.token = token
     },
-    retrieveToken(state, token)
+    retrieveToken(state, token, username)
     {
         state.token = token
+        state.username = username
     },
     destroyToken(state)
     {
@@ -92,11 +94,12 @@ const actions = {
                 password: credentials.password
             }).then(response => {
                 const token  = response.data.success.token;
+                const username = response.data.username;
     
                 localStorage.setItem('access_token', token);
-                context.commit('retrieveToken',token);
+                context.commit('retrieveToken',token, username);
                 resolve(response);
-                console.log('login');
+                //console.log(response.data.name);
                 
             }).catch(error => {
                 console.log(error);
@@ -110,7 +113,8 @@ const getters = {
     loggedIn(state) 
     {
         return  state.token != null;
-    }
+    },
+    username: state => state.username
 }
 
 const loginModule = {

@@ -89,7 +89,7 @@
                                     </router-link>
                                 </li>
                                 <li>
-                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'all-categories' }}">
+                                    <router-link :to="{ name: 'professionalsByAllCategories'}">
                                         all categories
                                     </router-link>
                                 </li>
@@ -170,7 +170,7 @@ export default {
 .navbar-fixed-top
 {
     background-color: #ffffff;
-    z-index:1000;
+    z-index:10;
     position: fixed;
     width: 100%;    
     margin-top: 45px;
@@ -283,7 +283,7 @@ export default {
 {
     width:100%;
     position: absolute;
-    z-index: 1000;
+    z-index: 500;
     top:110px;
     left: 0px;
     padding: 10px;
