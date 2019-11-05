@@ -8,6 +8,7 @@ import ProfessionalHome from '../components/Professionals/ProfessionalHome'
 import ProfessionalCategory from '../components/Professionals/ProfessionalCategory'
 import ProfessionalsByCategory from '../components/Professionals/ProfessionalsByCategory'
 import ProfessionalsByCategoryAll from '../components/Professionals/ProfessionalsByCategoryAll'
+import ProfessionalsByAllCategories from '../components/Professionals/ProfessionalsByAllCategories'
 import ProjectContent from '../components/Projects/ProjectContent'
 import Messages from '../components/Messages'
 
@@ -22,6 +23,7 @@ export default new VueRouter({
             component: Home
         },
         {
+            name: 'singleArticlePage',
             path: '/articles/:slug',
             component: ArticleContent
         },
@@ -69,6 +71,11 @@ export default new VueRouter({
             name: 'professionalsByCategoryAll',
             path: '/category/:category/all',
             component: ProfessionalsByCategoryAll
+        },
+        {
+            name: 'professionalsByAllCategories',
+            path: '/all/category',
+            component: ProfessionalsByAllCategories
         }
     ]
 })

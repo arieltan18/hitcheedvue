@@ -79,7 +79,7 @@
                         </router-link>
                     </li>
                     <li>
-                        <router-link :to="{ name: 'professionalsByCategory', params: { category: 'all-categories' }}" class="nav-item nav-link" id="nav-all-tab" data-category-name="all-categories" data-toggle="tab" href="#nav-others" role="tab" aria-controls="nav-others" aria-selected="false">
+                        <router-link :to="{ name: 'professionalsByAllCategories'}" class="nav-item nav-link" id="nav-all-tab" data-category-name="all-categories" data-toggle="tab" href="#nav-others" role="tab" aria-controls="nav-others" aria-selected="false">
                             <span class="nav-text-link">All Categories</span>
                         </router-link>
                     </li>
@@ -95,6 +95,11 @@ export default {
     mounted ()
     {
         $("a[data-category-name='" + this.$route.params.category + "']").addClass('active');
+
+        if(this.$route.name == 'professionalsByAllCategories')
+        {
+            $("a[data-category-name='all-categories']").addClass('active');
+        }
     }
 }
 </script>

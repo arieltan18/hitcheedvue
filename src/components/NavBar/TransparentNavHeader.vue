@@ -119,7 +119,7 @@
                 <b-navbar-nav v-else>
                     <b-dropdown size="lg"  variant="link" toggle-class="text-decoration-none" no-caret>
                         <template v-slot:button-content>
-                            <span class="nav-text">Ariel Tan<i class="fa fa-angle-down ml-2"></i></span>
+                            <span class="nav-text">Ariel<i class="fa fa-angle-down ml-2"></i></span>
                         </template>
                         <b-dropdown-item class="profile-dropdown-menu" href="#">WishLists</b-dropdown-item>
                         <b-dropdown-item class="profile-dropdown-menu" href="#">My Profile</b-dropdown-item>
@@ -135,6 +135,7 @@
 
 <script>
 import facebookLogin from 'facebook-login-vuejs';
+import { mapGetters } from 'vuex';
 
 export default {
     name: 'NavHeader',
@@ -164,7 +165,11 @@ export default {
     computed: {
         loggedIn() {
             return this.$store.getters.loggedIn;
-        }
+        },
+        ...mapGetters([
+            'username'
+
+        ]),
     },
     methods: {
         submitRegister() 
@@ -214,7 +219,8 @@ export default {
                 password: this.loginInput.password
             })
             .then(response => {
-                console.log(response);
+                //console.log(response);
+                this.username = response.data.name;
             });
         },
         logout()
@@ -283,7 +289,7 @@ export default {
 {
     position: fixed;
     width: 100%;
-    z-index: 1000;
+    z-index: 10;
 }
 
 .white-header-top
@@ -291,13 +297,13 @@ export default {
     background-color: transparent !important;
     height: 45px;
     border-bottom: 1px solid #ffffff87;
-    z-index: 1000;
+    z-index: 10;
 }
 .brown-header-top
 {
     background-color: #25130E !important;
     height: 45px;
-    z-index: 1000;
+    z-index: 10;
 }
 .nav-text
 {

@@ -3,6 +3,7 @@ import chatkit from "../../../chatkit";
 
 const state = {
     token: localStorage.getItem('access_token') || null ,
+    username: ''
 }
 
 const mutations = {
@@ -10,9 +11,10 @@ const mutations = {
     {
         state.token = token
     },
-    retrieveToken(state, token)
+    retrieveToken(state, token, username)
     {
         state.token = token
+        state.username = username
     },
     destroyToken(state)
     {
@@ -101,14 +103,14 @@ const actions = {
             }).then(response => {
                 const token  = response.data.success.token;
                 const chat_id  = response.data.chat_id;
+                const username = response.data.username;
 
 
                 localStorage.setItem('access_token', token);
                 localStorage.setItem('chat_id', chat_id);
                 chatkit.connectUser();
-                context.commit('retrieveToken',token);
+                context.commit('retrieveToken',token, username);
                 resolve(response);
-                console.log('login');
 
             }).catch(error => {
                 console.log(error);
@@ -122,7 +124,8 @@ const getters = {
     loggedIn(state)
     {
         return  state.token != null;
-    }
+    },
+    username: state => state.username
 }
 
 const loginModule = {

@@ -3,8 +3,8 @@
     <HeroImage v-if="this.$route.path=='/'" />
     <BrownNavHeader></BrownNavHeader>
     <BlackNavBar></BlackNavBar>
-    <BrowseCategories :key="$route.fullPath" v-if="(this.$route.name=='professionalsByCategory') || (this.$route.name=='professionalsByCategoryAll')" style="padding-top:200px;"></BrowseCategories>
-    <router-view :key="$route.fullPath" v-if="this.$route.path!='/'" :style="(this.$route.name == 'professionalsByCategory') || (this.$route.name == 'professionalsByCategoryAll') ? 'padding-top:50px;' : 'padding-top:162px;'"/>
+    <BrowseCategories :route-key="$route.fullPath" v-if="(this.$route.name=='professionalsByCategory') || (this.$route.name=='professionalsByCategoryAll') || (this.$route.name=='professionalsByAllCategories')" style="padding-top:200px;"></BrowseCategories>
+    <router-view :key="$route.fullPath" v-if="this.$route.path!='/'" :style="(this.$route.name == 'professionalsByCategory') || (this.$route.name == 'professionalsByCategoryAll') || (this.$route.name=='professionalsByAllCategories') ? 'padding-top:50px;' : 'padding-top:162px;'"/>
     <router-view v-else />
     <Footer />
   </div>
