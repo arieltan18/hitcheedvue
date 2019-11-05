@@ -32,8 +32,9 @@ async function connectUser() {
     });
 
     const rooms = currentUser.rooms;
-
-    rooms.forEach(onAddedToRoom);
+    store.commit('setMessagesLoading', true);
+    await Promise.all(rooms.map(onAddedToRoom));
+    store.commit('setMessagesLoading', false);
 
     return currentUser;
 }
@@ -59,7 +60,7 @@ function markAsRead(roomId, messageId) {
 }
 
 function subscribeToRoom(room){
-    currentUser.subscribeToRoom({
+    return currentUser.subscribeToRoom({
         roomId: room.id,
         hooks: {
             onMessage
@@ -73,8 +74,7 @@ function subscribeToRoom(room){
 }
 
 function onAddedToRoom(room) {
-
-    subscribeToRoom(room);
+    return subscribeToRoom(room);
 }
 
 function onRoomUpdated(room){

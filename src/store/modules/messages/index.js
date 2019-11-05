@@ -1,5 +1,6 @@
 
 const state = {
+    loading: true,
     messages: [
     ],
     rooms: [
@@ -7,6 +8,9 @@ const state = {
 };
 
 const mutations = {
+    setMessagesLoading(state, loading){
+        state.loading = loading;
+    },
     resetMessages(){
         state.rooms=[];
         state.messages=[];
@@ -62,6 +66,9 @@ const getters = {
     },
     getChats(state){
         return state.rooms
+    },
+    isMessagesLoading(state){
+        return state.loading
     }
 };
 

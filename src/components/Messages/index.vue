@@ -11,7 +11,8 @@
                         </div>
                         <ChatList @changeActiveChatId="setActiveChatId" :active-chat-id="activeChatId"></ChatList>
                     </div>
-                    <ChatMessages :key="activeChatId" :chat-id="activeChatId"></ChatMessages>
+                    <ChatMessages v-if="activeChatId" :key="activeChatId" :chat-id="activeChatId"></ChatMessages>
+                    <div class="p-5 text-center font-weight-bold" v-else>Please select a Conversation</div>
                 </div>
             </div>
         </div>
