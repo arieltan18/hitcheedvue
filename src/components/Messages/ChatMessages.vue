@@ -36,9 +36,16 @@
         computed:{
             messages(){
                 const id = this.chatId;
-                console.log(this);
                 if(!id) return [];
                 return this.$store.getters.getMessages(this.chatId)
+            },
+            lastMessage(){
+                return this.$store.getters.getLastMessage(this.chatId);
+            }
+        },
+        watch:{
+            lastMessage:function () {
+                this.markAsRead();
             }
         },
         methods:{
@@ -54,10 +61,16 @@
                   .then(()=>{
                       this.sending = false;
                   })
+            },
+            markAsRead(){
+                const message = this.lastMessage;
+              if(this.chatId && message && !message.outgoing) {
+                chatkit.markAsRead(this.chatId, message.id)
+              }
             }
         },
         created(){
-            console.log(this);
+            this.markAsRead();
         }
 
     }

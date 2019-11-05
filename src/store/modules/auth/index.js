@@ -1,4 +1,5 @@
 import axios from 'axios';
+import chatkit from "../../../chatkit";
 
 const state = {
     token: localStorage.getItem('access_token') || null ,
@@ -36,8 +37,11 @@ const actions = {
             user_role: credentials.user_role
         }).then(response => {
             const token  = response.data.success.token;
+            const chat_id  = response.data.chat_id;
 
             localStorage.setItem('access_token', token);
+            localStorage.setItem('chat_id', chat_id);
+            chatkit.connectUser();
             context.commit('registerUser',token);
             console.log(response.data);
             console.log("Successfully Register");
@@ -54,7 +58,11 @@ const actions = {
         if(context.getters.loggedIn)
         {
             localStorage.removeItem('access_token');
+            localStorage.removeItem('chat_id');
+            chatkit.disconnectUser();
             context.commit('destroyToken');
+            context.commit('resetMessages');
+
             // const logoutURL = process.env.VUE_APP_HITCHEED_API + "/v1/logout";
 
             // axios.defaults.headers = {
@@ -92,8 +100,12 @@ const actions = {
                 password: credentials.password
             }).then(response => {
                 const token  = response.data.success.token;
+                const chat_id  = response.data.chat_id;
+
 
                 localStorage.setItem('access_token', token);
+                localStorage.setItem('chat_id', chat_id);
+                chatkit.connectUser();
                 context.commit('retrieveToken',token);
                 resolve(response);
                 console.log('login');
@@ -104,7 +116,7 @@ const actions = {
             });
         })
     }
-}
+};
 
 const getters = {
     loggedIn(state)

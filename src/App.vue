@@ -16,6 +16,7 @@ import BrownNavHeader from './components/NavBar/BrownNavHeader.vue';
 import BlackNavBar from './components/NavBar/BlackNavBar.vue';
 import BrowseCategories from './components/BrowseCategories/BrowseCategories.vue';
 import Footer from './components/Footer/Footer.vue';
+import chatkit from "./chatkit";
 
 export default {
   name: 'app',
@@ -26,6 +27,9 @@ export default {
     BrowseCategories,
     Footer
   },
+    created: function () {
+        chatkit.connectUser();
+    }
 }
 </script>
 

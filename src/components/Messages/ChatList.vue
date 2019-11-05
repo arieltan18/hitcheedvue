@@ -1,20 +1,16 @@
 <template>
     <div class="inbox_chat">
         <div v-for="chat of chats" v-bind:key="chat.id" @click="changeActiveChatId(chat.id)" :class="{active_chat: chat.id === activeChatId}" class="chat_list">
-            <div class="chat_people">
-                <div class="chat_img"> <img :src="chat.image_url" alt="sunil"> </div>
-                <div class="chat_ib">
-                    <h5>{{chat.name}} <span class="chat_date">{{chat.date}}</span></h5>
-                    <p>{{chat.message}}</p>
-                </div>
-            </div>
+            <ChatListItem :chat="chat"></ChatListItem>
         </div>
     </div>
 </template>
 
 <script>
+    import ChatListItem from "./ChatListItem";
     export default {
         name: "ChatList",
+        components: {ChatListItem},
         props: ['active-chat-id'],
         computed: {
             chats(){

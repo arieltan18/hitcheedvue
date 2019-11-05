@@ -7,6 +7,10 @@ const state = {
 };
 
 const mutations = {
+    resetMessages(){
+        state.rooms=[];
+        state.messages=[];
+    },
     addedToRoom(state, room){
         state.rooms.push(room)
     },
@@ -42,6 +46,17 @@ const actions = {
 };
 
 const getters = {
+    getLastMessage: (state)=>(roomId)=>{
+        const allMessages = state.messages.filter(c=>c.roomId === roomId);
+        return allMessages.reduce((latest, message)=>{
+            if(latest){
+                return latest.createdAt < message.createdAt? message : latest;
+            }else {
+                return message;
+            }
+        }, null);
+    },
+
     getMessages: (state)=>(roomId)=>{
         return state.messages.filter(c=>c.roomId === roomId)
     },

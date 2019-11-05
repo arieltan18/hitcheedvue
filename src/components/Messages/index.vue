@@ -11,7 +11,7 @@
                         </div>
                         <ChatList @changeActiveChatId="setActiveChatId" :active-chat-id="activeChatId"></ChatList>
                     </div>
-                    <ChatMessages :key="setActiveChatId" :chat-id="activeChatId"></ChatMessages>
+                    <ChatMessages :key="activeChatId" :chat-id="activeChatId"></ChatMessages>
                 </div>
             </div>
         </div>
@@ -22,34 +22,23 @@
     import '../../assets/css/messages.css'
     import ChatList from "./ChatList";
     import ChatMessages from "./ChatMessages";
-    import chatkit from '../../chatkit'
 
     export default {
         name: "Messages",
         components: {ChatMessages, ChatList},
         data: function () {
             return ({
-                activeChatId: '123',
+                activeChatId: null,
             })
+        },
+        computed:{
+
         }
         ,
         created: function () {
 
-            this.chatManager = chatkit.connectUser('user-9818');
-
-            this.chatManager.then(user=>{
-                console.log(user);
-            }).catch(e=>{
-                console.log('error', e)
-            })
         },
         methods: {
-            getChats: function () {
-                const [chat] = this.chats;
-                if(chat) {
-                    this.setActiveChatId(chat.id)
-                }
-            },
             setActiveChatId: function (chatId) {
                 this.activeChatId = chatId;
             }
