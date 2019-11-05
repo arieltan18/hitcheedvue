@@ -96,7 +96,9 @@
                             </ul>
                         </div>
                     </div>
-                    <div v-if="loggedIn" class="nav-bar-black-link">Messages</div>
+                    <div v-if="loggedIn" class="nav-bar-black-link">
+                        <router-link :to="{ name: 'messages' }" class="header-link">Messages</router-link>
+                    </div>
                     <div class="nav-bar-black-link">
                         <router-link :to="{ name: 'articlesHome'}" class="header-link">
                             Articles
@@ -129,11 +131,11 @@ export default {
             return this.$store.getters.loggedIn;
         }
     },
-    mounted() 
+    mounted()
     {
         $('.search-black-icon').on('click', (evt) => {
             evt.preventDefault();
-            
+
             var data = $('.keyword-field-black').attr("data");
             if(data=='hide')
             {
@@ -148,10 +150,10 @@ export default {
         });
 
         $('.nav-bar-dropdown').hover(
-            function(e){ 
+            function(e){
                 $('.dropdown-content-white').css('visibility','visible');
                 $('.browse-border').css('visibility','visible');
-            }, 
+            },
         );
 
         $('.dropdown-content-white').mouseleave(
@@ -172,7 +174,7 @@ export default {
     background-color: #ffffff;
     z-index:10;
     position: fixed;
-    width: 100%;    
+    width: 100%;
     margin-top: 45px;
     border-bottom: 1px solid #f5f5f4;
 }
@@ -292,7 +294,7 @@ export default {
     background-color: #ffffff;
     visibility: hidden;
 }
-.dropdown-content-white a 
+.dropdown-content-white a
 {
   color: #26140E;
   text-decoration: none;
