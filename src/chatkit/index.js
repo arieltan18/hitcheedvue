@@ -16,6 +16,8 @@ async function connectUser() {
 
     if(!userId || !token) return;
 
+    store.commit('setMessagesLoading', true);
+
     const chatManager = new ChatManager({
         instanceLocator: INSTANCE_LOCATOR,
         tokenProvider: new TokenProvider({
@@ -32,7 +34,6 @@ async function connectUser() {
     });
 
     const rooms = currentUser.rooms;
-    store.commit('setMessagesLoading', true);
     await Promise.all(rooms.map(onAddedToRoom));
     store.commit('setMessagesLoading', false);
 

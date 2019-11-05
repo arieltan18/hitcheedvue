@@ -1,6 +1,6 @@
 
 const state = {
-    loading: true,
+    loading: false,
     messages: [
     ],
     rooms: [
