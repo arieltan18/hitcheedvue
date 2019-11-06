@@ -32,6 +32,11 @@
                 }
             }
         },
+        created: function(){
+            if(!this.activeChatId && this.chats.length > 0){
+                this.changeActiveChatId(this.chats[0].id)
+            }
+        },
         methods:{
             changeActiveChatId: function (chatId) {
                 this.$emit('changeActiveChatId', chatId)

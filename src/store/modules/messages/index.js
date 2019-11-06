@@ -39,11 +39,10 @@ const actions = {
     sendMessage(context, message){
 
     },
-    sendMessageToUser(context, messageInfo){
+    sendMessageToProfessional(context, messageInfo){
         const sendMesssageUrl = process.env.VUE_APP_HITCHEED_API + "/v1/send_message";
-        const {userId, message} = messageInfo;
-        const token = localStorage.getItem('token');
-        return axios.post(sendMesssageUrl, {to: userId, message}, { headers:{
+        const token = localStorage.getItem('access_token');
+        return axios.post(sendMesssageUrl, messageInfo, { headers:{
                 authorization: `Bearer ${token}`
             }}).then(res=>res.data)
     }

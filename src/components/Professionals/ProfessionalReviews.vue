@@ -5,12 +5,17 @@
             <h4 class="text-center professional-name">
                 {{ professionalContent.name }}
             </h4>
-            <p class="review-rating-text text-center" v-if="reviews.length > 0">{{ totalReviews }} Reviews 
+
+            <p class="review-rating-text text-center" v-if="reviews.length > 0">{{ totalReviews }} Reviews
                 <span v-for="(value, index) in this.professionalContent.rating" :key="index">
                     <span class="rating-star fa fa-star"></span>
                 </span>
             </p>
+
         </div>
+
+        <MessageProfessional v-if="loggedIn" :professional="professionalContent"></MessageProfessional>
+
         <h3>Reviews</h3>
         <hr>
         <ProfessionalSingleReview v-for="review in reviews" :key="review.id" :review="review" />
@@ -18,11 +23,18 @@
 </template>
 
 <script>
-import ProfessionalSingleReview from './ProfessionalSingleReview'; 
+import ProfessionalSingleReview from './ProfessionalSingleReview';
+import MessageProfessional from "./MessageProfessional";
 
 export default {
     name: "ProfessionalReviews",
+    computed: {
+        loggedIn() {
+            return this.$store.getters.loggedIn;
+        }
+    },
     components: {
+        MessageProfessional,
         ProfessionalSingleReview
     },
     props: [
@@ -41,7 +53,7 @@ export default {
 
 .img-circle
 {
-    border-radius: 50%; 
+    border-radius: 50%;
 }
 
 .professional-name

@@ -15,6 +15,9 @@ import Messages from '../components/Messages'
 Vue.use(VueRouter);
 
 export default new VueRouter({
+    scrollBehavior() {
+        return { x: 0, y: 0 };
+    },
     mode: 'history',
     base: '',
     routes: [
