@@ -1,3 +1,4 @@
+import axios from "axios";
 
 const state = {
     loading: false,
@@ -35,17 +36,16 @@ const mutations = {
 };
 
 const actions = {
-    startChat(context, chat){
-
-    },
-    chatStarted(context, chat){
-
-    },
     sendMessage(context, message){
 
     },
-    messageReceived(context, message){
-
+    sendMessageToUser(context, messageInfo){
+        const sendMesssageUrl = process.env.VUE_APP_HITCHEED_API + "/v1/send_message";
+        const {userId, message} = messageInfo;
+        const token = localStorage.getItem('token');
+        return axios.post(sendMesssageUrl, {to: userId, message}, { headers:{
+                authorization: `Bearer ${token}`
+            }}).then(res=>res.data)
     }
 };
 
