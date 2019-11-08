@@ -1,5 +1,5 @@
 import { ChatManager, TokenProvider } from '@pusher/chatkit-client'
-import store from '../store'
+import store from '../store/index'
 import moment from 'moment';
 import defaultUserImage from '../assets/user.png';
 

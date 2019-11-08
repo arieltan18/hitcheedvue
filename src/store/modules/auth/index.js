@@ -1,12 +1,17 @@
 import axios from 'axios';
-import chatkit from "../../../chatkit";
+import chatkit from "../../../services/Chatkit";
+import {getUser} from "../../../services/User";
 
 const state = {
     token: localStorage.getItem('access_token') || null ,
-    username: ''
+    username: '',
+    user: null,
 }
 
 const mutations = {
+    setUser(state, user){
+        state.user = user;
+    },
     registerUser(state, token)
     {
         state.token = token
@@ -19,10 +24,16 @@ const mutations = {
     destroyToken(state)
     {
         state.token = null
+        state.user = null
     }
 }
 
 const actions = {
+    getUser(context){
+        getUser().then(user=>{
+            context.commit('setUser', user);
+        });
+    },
     registerUser(context,credentials)
     {
         const signUpURL = process.env.VUE_APP_HITCHEED_API + "/v1/register";
@@ -45,6 +56,7 @@ const actions = {
             localStorage.setItem('chat_id', chat_id);
             chatkit.connectUser();
             context.commit('registerUser',token);
+            context.dispatch('getUser');
             console.log(response.data);
             console.log("Successfully Register");
 
@@ -110,6 +122,7 @@ const actions = {
                 localStorage.setItem('chat_id', chat_id);
                 chatkit.connectUser();
                 context.commit('retrieveToken',token, username);
+                context.dispatch('getUser');
                 resolve(response);
 
             }).catch(error => {
@@ -123,7 +136,11 @@ const actions = {
 const getters = {
     loggedIn(state)
     {
-        return  state.token != null;
+        return  !!state.token;
+    },
+    user(state)
+    {
+        return  state.user;
     },
     username: state => state.username
 }

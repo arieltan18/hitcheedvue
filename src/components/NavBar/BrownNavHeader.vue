@@ -93,7 +93,7 @@
                                         </span>
                                     </div>
                                 </form>
-                                <div class="condition float-left">Don't have an account? 
+                                <div class="condition float-left">Don't have an account?
                                     <b-link class="sign-up-link" variant="black" v-b-modal.signup>Sign Up</b-link>
                                 </div>
                             </div>
@@ -119,7 +119,7 @@
                 <b-navbar-nav v-else>
                     <b-dropdown size="lg"  variant="link" toggle-class="text-decoration-none" no-caret>
                         <template v-slot:button-content>
-                            <span class="nav-text">Ariel<i class="fa fa-angle-down ml-2"></i></span>
+                            <span v-if="user" class="nav-text">{{user.name}}<i class="fa fa-angle-down ml-2"></i></span>
                         </template>
                         <b-dropdown-item class="profile-dropdown-menu" href="#">WishLists</b-dropdown-item>
                         <b-dropdown-item class="profile-dropdown-menu" href="#">My Profile</b-dropdown-item>
@@ -164,10 +164,13 @@ export default {
     computed: {
         loggedIn() {
             return this.$store.getters.loggedIn;
+        },
+        user() {
+            return this.$store.getters.user;
         }
     },
     methods: {
-        submitRegister() 
+        submitRegister()
         {
             if(this.registerInput.name == "")
             {
@@ -185,7 +188,7 @@ export default {
             {
                 this.response.push("Password Confirmation can't be blank");
             }
-            
+
             if(this.registerInput.password !== this.registerInput.c_password)
             {
                 this.response.push("Your password is not match!");
@@ -207,7 +210,7 @@ export default {
                 });
             }
         },
-        submitLogin() 
+        submitLogin()
         {
             this.$store.dispatch('retrieveToken', {
                 email: this.loginInput.email,
@@ -259,7 +262,7 @@ export default {
 {
     position: fixed;
     width: 100%;
-    z-index: 10;
+    z-index: 501;
 }
 
 .brown-header-top

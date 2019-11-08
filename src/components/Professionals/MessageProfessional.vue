@@ -40,9 +40,9 @@
                     email: this.professional.email,
                     message: this.message
                 })
-                    .then(()=> this.$router.push('/messages'))
-                    .catch(()=>{})
-                    .then(()=>{this.sending = false;})
+                .then(()=> this.$router.push('/messages'))
+                .catch(()=>{})
+                .then(()=>{this.sending = false;})
             }
         }
     }

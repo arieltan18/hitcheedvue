@@ -24,7 +24,7 @@
 </template>
 
 <script>
-    import chatkit from "../../chatkit";
+    import chatkit from "../../services/Chatkit";
 
     export default {
         name: "ChatMessages",
