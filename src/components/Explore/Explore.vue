@@ -8,17 +8,17 @@
             </div>
             <div class="categories-section row mb-4">
                 <div class="d-flex justify-content-center align-self-center align-items-center mb-3" style="width:100%;">
-                    <router-link id="hotels" class="row1 mr-2 header-link" :to="{ name: 'professionalsByCategory', params: { category: 'hotels' }}">
+                    <router-link id="hotels" class="row1 mr-2 header-link" :to="{ name: 'projectsByCategory', params: { category: 'hotels' }}">
                     </router-link>
-                    <router-link id="bridal-studios" class="row1 mr-2 header-link" :to="{ name: 'professionalsByCategory', params: { category: 'bridal-studios' }}">
+                    <router-link id="bridal-studios" class="row1 mr-2 header-link" :to="{ name: 'projectsByCategory', params: { category: 'bridal-studios' }}">
                     </router-link>
                 </div>
                 <div class="d-flex justify-content-center" style="width:100%;">
-                    <router-link id="venues" class="row2 mr-2 header-link" :to="{ name: 'professionalsByCategory', params: { category: 'venues' }}">
+                    <router-link id="venues" class="row2 mr-2 header-link" :to="{ name: 'projectsByCategory', params: { category: 'venues' }}">
                     </router-link>
-                    <router-link id="photographers" class="row2 mr-2 header-link" :to="{ name: 'professionalsByCategory', params: { category: 'photographers' }}">
+                    <router-link id="photographers" class="row2 mr-2 header-link" :to="{ name: 'projectsByCategory', params: { category: 'photographers' }}">
                     </router-link>
-                    <router-link id="other-countries" class="row2 mr-2 header-link" :to="{ name: 'professionalsByCategory', params: { category: 'other-countries' }}">
+                    <router-link id="other-countries" class="row2 mr-2 header-link" :to="{ name: 'projectsByCategory', params: { category: 'other-countries' }}">
                     </router-link>
                 </div>
             </div>

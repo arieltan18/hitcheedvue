@@ -16,81 +16,81 @@
                         <div class="nav-content nav-text text-center">
                             <ul class="column1 text-left">
                                 <li>
-                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'hotels' }}">
+                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'hotels' }}">
                                         Hotels
                                     </router-link>
                                 </li>
                                 <li>
-                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'venues' }}">
+                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'venues' }}">
                                         Venues
                                     </router-link>
                                 </li>
                                 <li>
-                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'bridal-studios' }}">
+                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'bridal-studios' }}">
                                         Bridal Studios
                                     </router-link>
                                 </li>
                                 <li>
-                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'photographers' }}">
+                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'photographers' }}">
                                         Photographers
                                     </router-link>
                                 </li>
                                 <li>
-                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'videographers' }}">
+                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'videographers' }}">
                                         Videographers
                                     </router-link>
                                 </li>
                             </ul>
                             <ul class="column2 text-left">
                                 <li>
-                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'florists' }}">
+                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'florists' }}">
                                         Florists
                                     </router-link>
                                 </li>
                                 <li>
-                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'invitation-and-wedding-favours' }}">
+                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'invitation-and-wedding-favours' }}">
                                         Invitation & wedding favours
                                     </router-link>
                                 </li>
                                 <li>
-                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'event-styling-and-rental' }}">
+                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'event-styling-and-rental' }}">
                                         event styling & rental
                                     </router-link>
                                 </li>
                                 <li>
-                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'hair-and-makeup' }}">
+                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'hair-and-makeup' }}">
                                         hair & makeup
                                     </router-link>
                                 </li>
                                 <li>
-                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'live-band-and-emcee' }}">
+                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'live-band-and-emcee' }}">
                                         live band & emcee
                                     </router-link>
                                 </li>
                             </ul>
                             <ul class="column3 text-left">
                                 <li>
-                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'wedding-jewellery' }}">
+                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'wedding-jewellery' }}">
                                         Wedding Jewellery
                                     </router-link>
                                 </li>
                                 <li>
-                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'catering' }}">
+                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'catering' }}">
                                         Catering
                                     </router-link>
                                 </li>
                                 <li>
-                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'photo-booth' }}">
+                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'photo-booth' }}">
                                         photo booth
                                     </router-link>
                                 </li>
                                 <li>
-                                    <router-link :to="{ name: 'professionalsByCategory', params: { category: 'other-countries' }}">
+                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'other-countries' }}">
                                         other countries
                                     </router-link>
                                 </li>
                                 <li>
-                                    <router-link :to="{ name: 'professionalsByAllCategories'}">
+                                    <router-link :to="{ name: 'projectsByAllCategories'}">
                                         all categories
                                     </router-link>
                                 </li>

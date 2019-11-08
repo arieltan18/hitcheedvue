@@ -68,7 +68,6 @@ export default {
                 this.otherProjects = response.data.other_projects;
                 this.totalReviews = response.data.total_reviews;
                 this.reviews = response.data.reviews;
-                console.log(this.projectImages);
             })
             .catch(error => {
                 console.log(error);
@@ -79,9 +78,6 @@ export default {
     beforeMount() {
         this.project_slug = this.$route.params.slug;
         this.getProjectContent();
-    },
-    mounted() {
-        console.log(this.$options.name+' component successfully mounted');
     },
     beforeRouteUpdate(to,from,next) {
         this.project_slug = to.params.slug;

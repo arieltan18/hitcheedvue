@@ -6,9 +6,10 @@ import Articles from '../components/Articles/Articles'
 import ProfessionalContent from '../components/Professionals/ProfessionalContent'
 import ProfessionalHome from '../components/Professionals/ProfessionalHome'
 import ProfessionalCategory from '../components/Professionals/ProfessionalCategory'
-import ProfessionalsByCategory from '../components/Professionals/ProfessionalsByCategory'
+import ProjectsByCategory from '../components/Projects/ProjectsByCategory'
+import ProjectsByCategoryAll from '../components/Projects/ProjectsByCategoryAll'
 import ProfessionalsByCategoryAll from '../components/Professionals/ProfessionalsByCategoryAll'
-import ProfessionalsByAllCategories from '../components/Professionals/ProfessionalsByAllCategories'
+import ProjectsByAllCategories from '../components/Projects/ProjectsByAllCategories'
 import ProjectContent from '../components/Projects/ProjectContent'
 import Messages from '../components/Messages'
 
@@ -42,12 +43,12 @@ export default new VueRouter({
         },
         {
             name: 'professional',
-            path: '/professionals/:slug/:id',
+            path: '/professionals/:slug',
             component: ProfessionalContent
         },
         {
             name: 'project',
-            path: '/projects/:slug/:id',
+            path: '/projects/:slug',
             component: ProjectContent
         },
         {
@@ -66,19 +67,24 @@ export default new VueRouter({
             component: Messages,
         },
         {
-            name: 'professionalsByCategory',
+            name: 'projectsByCategory',
             path: '/category/:category',
-            component: ProfessionalsByCategory
+            component: ProjectsByCategory
+        },
+        {
+            name: 'projectsByCategoryAll',
+            path: '/category/:category/all',
+            component: ProjectsByCategoryAll
+        },
+        {
+            name: 'projectsByAllCategories',
+            path: '/all/category',
+            component: ProjectsByAllCategories
         },
         {
             name: 'professionalsByCategoryAll',
             path: '/category/:category/all',
             component: ProfessionalsByCategoryAll
-        },
-        {
-            name: 'professionalsByAllCategories',
-            path: '/all/category',
-            component: ProfessionalsByAllCategories
         }
     ]
 })

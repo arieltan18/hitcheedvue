@@ -1,17 +1,21 @@
 <template>
     <div>
-        <router-link class="professional-img" :to="{ name: 'professional', params: { slug: this.professional.slug }}">
-            <img class="ar-image mb-3" :src="professional.around_image" alt="professional">
+        <router-link class="project-img" :to="{ name: 'project', params: { slug: this.project.slug }}">
+            <img class="ar-image mb-3" :src="project.image" alt="project">
         </router-link>
         <div class="bottom-centered text-center">
-            <h2 class="professional-name">{{ professional.name }}</h2>
-            <div class="text-left" v-if="professional.rating > 1">
-                <span class="review" v-for="(value, index) in parseInt(professional.rating)" :key="index">
+            <h2 class="project-name">{{ project.name }}</h2>
+            <div class="text-left" v-if="project.professional.rating > 1">
+                <span class="review" v-for="(value, index) in parseInt(project.professional.rating)" :key="index">
                     <img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group129.svg">
                 </span>
-                <span class="ml-1 review">({{professional.rating}})</span>
+                <span class="ml-1 review">({{project.professional.rating}})</span>
+                
             </div>
-            <div class="text-left location"></div>
+            <div class="text-left location">
+                <img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group47.svg">
+                <span class="ml-2 review">{{project.country ? project.country : project.professional.country }}</span>
+            </div>
         </div>
     </div>
 </template>
@@ -19,16 +23,16 @@
 <script>
 
 export default {
-    name: "ProfessionalList",
+    name: "ProjectList",
     data() {
         return {
-            professional_id: ''
+            project_id: ''
         }
     },
-    props: ['professional'],
+    props: ['project'],
     computed: {
         slug: function () {
-            const routerLink = this.professional.slug;
+            const routerLink = this.project.slug;
             return routerLink;
         }
     }
@@ -37,12 +41,12 @@ export default {
 </script>
 
 <style scoped>
-.professional-img
+.project-img
 {
         background: rgba(255,255,255,0) linear-gradient(to bottom, transparent 10%, rgba(255,255,255,0.1) 72%, rgba(21,21,21,0.5) 87%, #161616 100%) repeat scroll 0 0;
 }
 
-.professional-img>img
+.project-img>img
 {
     width: 266px;
     height: 266px;
@@ -79,7 +83,7 @@ p
     text-transform: none;
 }
 
-.professional-name
+.project-name
 {
     text-align: left;
     font-family: 'Cormorant Garamond';

@@ -29,6 +29,31 @@ export const PROFESSIONALS_BY_CATEGORY_PAGINATE = gql`
   }
 `
 
+export const PROJECTS_BY_CATEGORY_PAGINATE = gql`
+  query projects_by_category_paginate($category_id: Int!, $first: Int!, $page: Int!){
+    projects_by_category_paginate(category_id: $category_id, first: $first, page: $page) {
+      data {
+        id
+        name,
+        slug,
+        image,
+        country
+        professional
+        {
+          id,
+          name,
+          slug,
+          cover_image,
+          profile_image,
+          around_image,
+          rating,
+          country
+        }
+      }
+    }
+  }
+`
+
 export const TAGS_BY_CATEGORY = gql`
   query tags_by_category($category_id: Int!){
       tags_by_category(category_id: $category_id) {

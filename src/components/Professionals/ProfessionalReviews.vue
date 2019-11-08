@@ -1,11 +1,12 @@
 <template>
     <div class="col-sm-4">
         <div class="text-center">
+            <router-link :to="{ name: 'professional', params: { slug: professionalContent.professional_slug }}">
             <img class="img-circle" :src="professionalContent.profile_image" width="200px">
             <h4 class="text-center professional-name">
                 {{ professionalContent.name }}
             </h4>
-
+            </router-link>
             <p class="review-rating-text text-center" v-if="reviews.length > 0">{{ totalReviews }} Reviews
                 <span v-for="(value, index) in this.professionalContent.rating" :key="index">
                     <span class="rating-star fa fa-star"></span>

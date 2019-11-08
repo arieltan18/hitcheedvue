@@ -168,7 +168,7 @@ export default {
         },
         ...mapGetters([
             'username'
-
+            
         ]),
     },
     methods: {
