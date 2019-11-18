@@ -60,7 +60,7 @@
                             </b-form-invalid-feedback>
                         </b-form-group>
                         <b-form-group>
-                            <b-button v-b-toggle.change-password variant="outline-dark" v-on:click="togglePasswordChange(!form.changePassword)">Change Password</b-button>
+                            <b-button variant="outline-dark" v-on:click="togglePasswordChange(!form.changePassword)">Change Password</b-button>
                             <b-collapse :visible="form.changePassword" id="change-password" class="mt-2">
                                 <b-card class="pl-4">
                                     <b-form-group label="Current password">
@@ -147,7 +147,10 @@
                 }
             },
             togglePasswordChange(changePassword){
-                this.form.changePassword = changePassword;
+                this.form = {
+                    ...this.form,
+                    changePassword
+                };
             },
             updateProfile(){
                 this.submitting = true;
