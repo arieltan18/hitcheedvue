@@ -12,6 +12,7 @@ import ProfessionalsByCategoryAll from '../components/Professionals/Professional
 import ProjectsByAllCategories from '../components/Projects/ProjectsByAllCategories'
 import ProjectContent from '../components/Projects/ProjectContent'
 import Messages from '../components/Messages'
+import Profile from '../components/Profile'
 
 Vue.use(VueRouter);
 
@@ -85,6 +86,11 @@ export default new VueRouter({
             name: 'professionalsByCategoryAll',
             path: '/category/:category/all',
             component: ProfessionalsByCategoryAll
-        }
+        },
+        {
+            name: 'profile',
+            path: '/Profile',
+            component: Profile
+        },
     ]
 })

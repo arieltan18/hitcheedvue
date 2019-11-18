@@ -43,6 +43,23 @@ export const put = (path, data, options={})=>{
     }).then(mapData);
 };
 
+export const patch = (path, data, options={})=>{
+    const headers = {
+        ...defaultHeaders
+    };
+    const token = localStorage.getItem('access_token');
+    if(token){
+        headers.authorization = `Bearer ${token}`;
+    }
+
+    const url = `${baseUrl}${path}`;
+
+    return axios.patch(url, data, {
+        headers,
+        ...options
+    }).then(mapData);
+};
+
 export const get = (path, options={})=>{
     const headers = {
         ...defaultHeaders
