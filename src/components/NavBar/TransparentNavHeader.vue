@@ -13,7 +13,7 @@
                             </a> -->
                             <!-- <v-facebook-login app-id="966242223397117"></v-facebook-login> -->
                             <facebook-login class="button"
-                            appId="966242223397117"
+                            appId="123367248113310"
                             @login="getUserData"
                             @logout="onLogout"
                             @get-initial-status="getUserData">
