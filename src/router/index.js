@@ -85,6 +85,12 @@ export default new VueRouter({
             name: 'professionalsByCategoryAll',
             path: '/category/:category/all',
             component: ProfessionalsByCategoryAll
+        },
+        {
+            path: '/auth/:provider/callback',
+            component: {
+                template: '<div class="auth-component"></div>'
+            }
         }
     ]
 })

@@ -13,10 +13,10 @@
                             </a> -->
                             <!-- <v-facebook-login app-id="966242223397117"></v-facebook-login> -->
                             <facebook-login class="button"
-                            appId="966242223397117"
+                            appId="123367248113310"
                             @login="getUserData"
                             @logout="onLogout"
-                            @get-initial-status="getUserData">
+                            @get-initial-status="getUserData" @click="AuthProvider('facebook')">
                             </facebook-login>
                             <p class="text-center">or</p>
                             <b-link class="btn btn-signup-email" v-b-modal.signup-email>
@@ -246,6 +246,27 @@ export default {
             this.FB = payload.FB
             if (this.isConnected) this.getUserData()
         },
+
+        AuthProvider(provider) {
+            
+              var self = this
+              
+              this.$auth.authenticate(provider).then(response =>{
+             
+                self.SocialLogin(provider,response)
+                }).catch(err => {
+                    console.log({err:err})
+                })
+            },
+            
+        SocialLogin(provider,response){
+            this.$http.post('/sociallogin/'+provider,response).then(response => {
+                console.log(response.data)
+            }).catch(err => {
+                console.log({err:err})
+            })
+        },
+            
         onLogin() {
             this.isConnected = true
             this.getUserData()
