@@ -9,7 +9,7 @@
             <div class="row bg-white" >
                 <div class="col-md-3 p-4 text-center">
                     <div class="m-auto" style="width: 179px">
-                        <ImageCropCenter rounded size="179px" :src="form.profile_picture || (user && user.profile_picture) || `https://ui-avatars.com/api/?name=${form.name}&size=179`" ></ImageCropCenter>
+                        <ImageCropCenter rounded size="179px" :src="form.profile_picture || (user && user.profile_picture) || `https://ui-avatars.com/api/?name=${(user && user.name)}&size=179`" ></ImageCropCenter>
                         <b-button v-if="imageChanged" @click="clearImage" block class="mt-3" variant="danger">Remove Image</b-button>
                         <b-button @click="changeImage" block class="mt-3" variant="outline-dark">Upload Image</b-button>
                     </div>
