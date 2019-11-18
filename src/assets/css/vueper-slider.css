@@ -46,3 +46,26 @@
 {
     width: 101% !important;
 }
+.vueperslide__content-wrapper:not(.vueperslide__content-wrapper--outside-top):not(.vueperslide__content-wrapper--outside-bottom)
+{
+    width: 100% !important;
+}
+.vueperslides__inner
+{
+    width: 100% !important;
+}
+
+.tag-slider .vueperslides__inner, .tag-slider .vueperslides__track
+{
+    max-height: 100px;
+}
+
+.tag-slider .vueperslides__arrow--next
+{
+    font-size: 2.5em;
+}
+
+.tag-slider .vueperslide__content
+{
+    padding-left: 5px;
+}

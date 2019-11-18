@@ -92,16 +92,8 @@
 <script>
 export default {
     name: 'BrowseCategories',
-    mounted ()
-    {
-        console.log('name');
-        $("a[data-category-name='" + this.$route.params.category + "']").addClass('active');
 
-        if(this.$route.name == 'projectsByAllCategories')
-        {
-            $("a[data-category-name='all-categories']").addClass('active');
-        }
-    }
+
 }
 </script>
 
@@ -119,15 +111,10 @@ h6
 {
     border-bottom: 1px solid #f5f5f4;
 }
-a.nav-item.nav-link.active,
-.nav-tabs .nav-link.active 
+.router-link-active span
 {
-    font-weight: bold;
-    .nav-text-link
-    {
-        padding-bottom: 4px;
-        border-bottom: 1px solid #88D1CF;
-    }
+    padding-bottom: 4px !important;
+    border-bottom: 1px solid #88D1CF !important;
 }
 .nav-tabs
 {

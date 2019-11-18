@@ -88,9 +88,16 @@ export default new VueRouter({
             component: ProfessionalsByCategoryAll
         },
         {
+
             name: 'profile',
             path: '/Profile',
             component: Profile
         },
+        {
+            path: '/auth/:provider/callback',
+            component: {
+                template: '<div class="auth-component"></div>'
+            }
+        }
     ]
 })

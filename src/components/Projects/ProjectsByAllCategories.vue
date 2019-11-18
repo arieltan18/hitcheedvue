@@ -2,22 +2,27 @@
     <div class="mb-5" >
         <div class="mb-2">
             <div class="col-sm-12 text-center">
-                <h1>Hotels</h1>
+                <h1>{{this.hotels}}</h1>
             </div>
         </div>
         <ProjectSection :category_id="14" :first="8" :page="1"></ProjectSection>
         <div class="articles-section">
-            <PopularSearchesNav></PopularSearchesNav>
+            <PopularSearchNavArticles :category_title="this.hotels"></PopularSearchNavArticles>
+            <RelatedArticles></RelatedArticles>
         </div>
         <div class="container mt-5">
             <router-link class="see-more-link" to="/category/hotels">See More Hotels</router-link>
         </div>
         <div class="mt-5 mb-2">
             <div class="col-sm-12 text-center">
-                <h1>Venues</h1>
+                <h1>{{this.venues}}</h1>
             </div>
         </div>
         <ProjectSection :category_id="5" :first="8" :page="1"></ProjectSection>
+        <div class="articles-section">
+            <PopularSearchNavArticles :category_title="this.venues"></PopularSearchNavArticles>
+            <RelatedArticles></RelatedArticles>
+        </div>
         <div class="container mt-5">
             <router-link class="see-more-link" to="/category/venues">See More Venues</router-link>
         </div>
@@ -29,13 +34,20 @@ import ProjectSection from './ProjectSection.vue';
 import { CATEGORIES_FILTER } from '../../graphql/graphql.js';
 import RelatedArticles from "../Articles/RelatedArticles.vue";
 import PopularSearchesNav from "../PopularSearches/PopularSearchesNav.vue";
+import PopularSearchNavArticles from "../PopularSearches/PopularSearchNavArticles.vue";
 
 export default {
-    name: 'ProfessionalsByAllCategories',
+    name: 'ProjectsByAllCategories',
     components: {
         ProjectSection,
         RelatedArticles,
-        PopularSearchesNav
+        PopularSearchNavArticles
+    },
+    data() {
+        return {
+            hotels: 'Hotels',
+            venues: 'Venues'
+        }
     },
     apollo: {
         category: {

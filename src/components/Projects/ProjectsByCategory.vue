@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="container">
-            <!-- <PopularSearchesNav></PopularSearchesNav> -->
+            <PopularSearchesNav></PopularSearchesNav>
         </div>
         <ProjectSection :category_id="this.category.id ? this.category.id : '1'" :first="8" :page="1"></ProjectSection>
         <ProjectSection :category_id="this.category.id ? this.category.id : '1'" :first="8" :page="2"></ProjectSection>
@@ -47,6 +47,7 @@ export default {
     data() {
         return {
             category_name: '',
+            category: []
         }
     },
     methods: {

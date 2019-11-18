@@ -43,13 +43,13 @@
                 <a class="mr-2" href="https://www.facebook.com/hitcheed" target="_blank">
                     <img alt="Hitcheed Private Limited [SG]" src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group12.svg">
                 </a> 
-                <a class="mr-2" href="https://instagram.com/hitcheed" target="_blank">
+                <a class="mr-2" href="#" target="_blank">
                     <img alt="Hitcheed Private Limited [SG]" src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group13.svg">
                 </a>
                 <a class="mr-2" href="#">
                     <img alt="Hitcheed Private Limited [SG]" src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group14.svg">
                 </a>
-                <a href="#">
+                <a href="https://instagram.com/hitcheed">
                     <img alt="Hitcheed Private Limited [SG]" src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group15.svg">
                 </a>
             </div>

@@ -15,6 +15,11 @@ import { PROJECTS_BY_CATEGORY_PAGINATE } from '../../graphql/graphql.js';
 export default {
     name: 'ProjectSection',
     props: [ 'category_id', 'first', 'page' ],
+    data() {
+        return {
+            projects: []
+        }
+    },
     components: {
         ProjectList,
     },
