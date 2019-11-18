@@ -32,14 +32,13 @@ export default {
         PopularSearchesNav,
         RelatedArticles
     },
-    props:[ 'category' ],
     mounted() {
 
-        this.category_name = this.category;
+        this.category_name = this.$route.params.category;
 
-        if(this.category.includes('-'))
+        if(this.$route.params.category.includes('-'))
         {
-            this.category_name = this.category.replace(/-/g, ' ');
+            this.category_name = this.$route.params.category.replace(/-/g, ' ');
         }
 
         this.category_name = this.capitalizeText(this.category_name);
