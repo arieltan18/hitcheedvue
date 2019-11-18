@@ -1,26 +1,65 @@
 <template>
-    <div class="container-fluid mb-5 pb-5">
+    <div class="container">
         <h6>Popular {{ this.category_name }} Searches</h6>
-        <div class="row d-flex justify-content-between">
-            <div v-for="tag in tags.data" :key="tag.id">
-                <div class="block">
-                    {{ tag.name }}
+        <div class="row d-flex justify-content-between text-left pl-2">
+            <vueper-slides class="tag-slider no-shadow" :visible-slides="6" slide-multiple :slide-ratio="1/4" arrows-outside :bullets="false" transition-speed="250" style="width:100%;">
+                <div slot="arrowLeft" color="white" large class="hide"><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group29.svg" alt="left-arrow" width="25px"></div>
+                <div slot="arrowRight" color="white" large v-if="tags.data.length<6" :class="hide">
                 </div>
-            </div>
+                <vueper-slide
+                    v-for="tag in tags.data"
+                    :key="tag.id">
+                    <div slot="slideContent">
+                        <div class="block">
+                            {{ tag.name }}
+                        </div>
+                    </div>
+                </vueper-slide>
+            </vueper-slides>
         </div>
+        <hr />
     </div>
-
 </template>
 
 <script>
 import { CATEGORIES_FILTER } from '../../graphql/graphql.js';
 import { TAGS_BY_CATEGORY_BY_PAGINATE } from '../../graphql/graphql.js';
+import { VueperSlides, VueperSlide } from 'vueperslides'
 
 export default {
     name: 'PopularSearchesNav',
+    components: {
+        VueperSlides, 
+        VueperSlide
+    },
     data() {
         return {
-            category_name: this.$route.query.category
+            category_name:'',
+            category: [],
+            tags: []
+        }
+    },
+    mounted() {
+
+        this.category_name = this.$route.params.category;
+
+        if(this.$route.params.category.includes('-'))
+        {
+            this.category_name = this.$route.params.category.replace(/-/g, ' ');
+        }
+
+        this.category_name = this.capitalizeText(this.category_name);
+        
+        console.log(tags.data);
+    },
+    methods: {
+        capitalizeText(text) {
+            text = text.toLowerCase()
+                .split(' ')
+                .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+                .join(' ');
+
+            return text;
         }
     },
     apollo: {
@@ -42,7 +81,7 @@ export default {
             variables() {
                 return {
                     category_id: this.category.id,
-                    first : 6,
+                    first : 20,
                     page: 1,
                 }
             },
@@ -57,9 +96,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container-fluid
+.container
 {
-    border-bottom: 1px solid #f5f5f4;
+    padding: 3em 0 2em;
 }
 h6
 {
@@ -70,7 +109,6 @@ h6
     color: #26140E;
     margin-bottom: 16px;
 }
-
 .block
 {
     border:0.5px solid rgba(38, 20, 14, .5);
@@ -84,5 +122,10 @@ h6
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
+    margin-right:15px;
+}
+.hide
+{
+    display: none;
 }
 </style>
