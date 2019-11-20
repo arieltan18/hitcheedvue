@@ -67,7 +67,7 @@
         },
         computed:{
             showResults(){
-                return this.inputFocused || this.resultFocused
+                return (this.inputFocused || this.resultFocused) && !!this.query
             }
         },
         methods:{
