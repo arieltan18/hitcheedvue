@@ -109,7 +109,8 @@
                 </div>
                 <div class="ml-auto">
                     <i class="fa fa-search search-icon" aria-hidden="true" style="color:white;"></i>
-                    <input size="sm" data="hide" class="keyword-field search-width input-white" placeholder="Search Locations, Vendors, Articles">
+                    <!--<input size="sm" data="hide" class="keyword-field search-width input-white" placeholder="Search Locations, Vendors, Articles">-->
+                    <SearchBar theme="white"/>
                 </div>
             </div>
         </b-navbar>
@@ -134,15 +135,17 @@
                 <b-nav-item href="#" disabled>Disabled</b-nav-item>
             </b-navbar-nav>
 
-            
+
             </b-collapse>
         </b-navbar>
         </div> -->
 </template>
 
 <script>
+import SearchBar from "./SearchBar";
 export default {
     name: 'WhiteNavBar',
+    components: {SearchBar},
     props: [ 'route' ],
     data() {
         return {
@@ -282,56 +285,6 @@ export default {
     display: inline-flex;
     vertical-align: middle;
     padding-top:2px;
-}
-.keyword-field
-{
-    font-weight: 400;
-    font-family: 'Cormorant Garamond';
-    font-style: italic;
-    font-size: 16px;
-    color:#FFFFFF;
-    opacity: 0.7;
-    border:none;
-    background: none;
-    outline: none;
-    box-shadow: none;
-    border-bottom: 1px solid #ffffff;
-    margin-left: -20px;
-    display: none;
-}
-.search-width
-{
-    width:235px !important;
-}
-.input-white::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #ffffff;
-  opacity: 0.7; /* Firefox */
-  font-size: 16px;
-}
-.input-white:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: #ffffff;
-  opacity: 0.7;
-  font-size: 16px;
-}
-.input-white::-ms-input-placeholder { /* Microsoft Edge */
-  color: #ffffff;
-  opacity: 0.7;
-  font-size: 16px;
-}
-.input-black::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: #26140E;
-  opacity: 0.7; /* Firefox */
-  font-size: 16px;
-}
-.input-black:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: #26140E;
-  opacity: 0.7;
-  font-size: 16px;
-}
-.input-black::-ms-input-placeholder { /* Microsoft Edge */
-  color: #26140E;
-  opacity: 0.7;
-  font-size: 16px;
 }
 .dropdown-toggle,
 .dropdown-menu {

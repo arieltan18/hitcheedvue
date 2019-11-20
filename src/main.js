@@ -12,6 +12,8 @@ import VueChatScroll from 'vue-chat-scroll'
 import VueAxios from 'vue-axios'
 import VueSocialauth from 'vue-social-auth'
 import axios from 'axios';
+import InstantSearch from 'vue-instantsearch';
+
 
 Vue.use(VueAxios, axios)
 Vue.use(VueSocialauth, {
@@ -26,6 +28,7 @@ Vue.use(VueSocialauth, {
 Vue.use(BootstrapVue)
 Vue.use(VueSimpleMarkdown)
 Vue.use(VueChatScroll)
+Vue.use(InstantSearch)
 
 Vue.config.productionTip = false
 

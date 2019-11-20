@@ -108,7 +108,8 @@
                 </div>
                 <div class="ml-auto">
                     <i class="fa fa-search search-black-icon" aria-hidden="true"></i>
-                    <input size="sm" data="hide" class="keyword-field-black search-width input-black" placeholder="Search Locations, Vendors, Articles">
+                    <!--<input size="sm" data="hide" class="keyword-field-black search-width input-black" placeholder="Search Locations, Vendors, Articles">-->
+                    <SearchBar theme="black"/>
                 </div>
             </div>
         </b-navbar>
@@ -116,8 +117,10 @@
 </template>
 
 <script>
+import SearchBar from "./SearchBar";
 export default {
     name: 'BlackNavBar',
+    components: {SearchBar},
     props: [ 'route' ],
     data() {
         return {

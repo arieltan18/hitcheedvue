@@ -13,6 +13,7 @@ import ProjectsByAllCategories from '../components/Projects/ProjectsByAllCategor
 import ProjectContent from '../components/Projects/ProjectContent'
 import Messages from '../components/Messages'
 import Profile from '../components/Profile'
+import Search from '../components/Search'
 
 Vue.use(VueRouter);
 
@@ -92,6 +93,12 @@ export default new VueRouter({
             name: 'profile',
             path: '/Profile',
             component: Profile
+        },
+        {
+
+            name: 'search',
+            path: '/search/:type?',
+            component: Search
         },
         {
             path: '/auth/:provider/callback',
