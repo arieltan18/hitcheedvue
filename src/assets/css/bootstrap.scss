@@ -1,0 +1,9 @@
+// Your variable overrides
+$primary:       #89d1cf;
+$secondary:     lighten(#89d1cf, 20%);
+$yiq-contrasted-threshold:  190;
+
+// Bootstrap and its default variables
+@import '../../../node_modules/bootstrap/scss/bootstrap';
+// BootstrapVue and its default variables
+@import '../../../node_modules/bootstrap-vue/src/index.scss';

@@ -4,8 +4,7 @@ import router from './router';
 import VueSimpleMarkdown from 'vue-simple-markdown'
 import 'vue-simple-markdown/dist/vue-simple-markdown.css'
 import BootstrapVue from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+import './assets/css/bootstrap.scss';
 import store from './store/index.js';
 import { createProvider } from './vue-apollo'
 import VueChatScroll from 'vue-chat-scroll'
