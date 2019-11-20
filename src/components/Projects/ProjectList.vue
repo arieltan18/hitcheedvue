@@ -1,7 +1,7 @@
 <template>
     <div>
         <router-link class="project-img" :to="{ name: 'project', params: { slug: this.project.slug }}">
-            <img class="ar-image mb-3" :src="project.image" alt="project">
+            <img class="ar-image mb-3" :src="image" alt="project">
         </router-link>
         <div class="bottom-centered text-center">
             <h2 class="project-name">{{ project.name }}</h2>
@@ -34,6 +34,12 @@ export default {
         slug: function () {
             const routerLink = this.project.slug;
             return routerLink;
+        },
+        image(){
+            const image = this.project.image;
+            if(image) return image;
+            const project_images = this.project.project_images;
+            return project_images && project_images[0] && project_images[0].slug;
         }
     }
 

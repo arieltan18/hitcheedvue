@@ -19,19 +19,19 @@
                     :search-client="searchClient"
                     index-name="projects"
             >
-                <ais-configure :query="query"  :hitsPerPage="4">
+                <ais-configure :query="query"  :hitsPerPage="4" :distinct="true">
                 <ais-autocomplete :indices="[{ label: 'Professionals', value: 'professionals' }]">
                     <div slot-scope="{ currentRefinement, indices }">
 
                         <div v-for="index in indices" :key="index.label">
-                            <template>
-                                <h5 class="p-1">{{index.label === 'primary'? 'Projects' : index.label}} (<router-link :to="{name:'search', params:{type:index.index}, query:{q: query}}">See all</router-link>)</h5>
+                            <template v-if="index.hits.length">
+                                <h5 class="p-1">{{index.label === 'primary'? 'Projects' : index.label}} <b-button class="float-right" variant="link" :to="{name:'search', params:{type:index.index}, query:{q: query}}">See all</b-button></h5>
                                 <ul class="list-unstyled">
                                     <b-media class="mt-0 mb-1 p-1" v-for="item in index.hits" :key="item.id">
                                         <template v-slot:aside>
                                             <!--<b-img blank blank-color="#abc" width="10" alt="placeholder"></b-img>-->
                                         </template>
-                                        <b-link variant="primary" class="link-dark" :to="`/projects/${item.slug}`">
+                                        <b-link variant="primary" class="link-dark" :to="`/${index.index}/${item.slug}`">
                                             <ais-highlight attribute="name" :hit="item"/>
                                         </b-link>
                                         <div class="text-muted">{{item.country}}</div>
@@ -162,6 +162,7 @@
     }
 
     .search-results{
+        z-index: 1000;
         outline: 0;
         top: 30px;
         right: 0;
