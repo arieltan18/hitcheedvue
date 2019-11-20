@@ -23,20 +23,17 @@
                 <ais-autocomplete :indices="[{ label: 'Professionals', value: 'professionals' }]">
                     <div slot-scope="{ currentRefinement, indices }">
 
-                        <div v-for="index in indices" :key="index.label">
+                        <div class="p-2" v-for="index in indices" :key="index.label">
                             <template v-if="index.hits.length">
-                                <h5 class="p-1">{{index.label === 'primary'? 'Projects' : index.label}} <b-button class="float-right" variant="link" :to="{name:'search', params:{type:index.index}, query:{q: query}}">See all</b-button></h5>
-                                <ul class="list-unstyled">
-                                    <b-media class="mt-0 mb-1 p-1" v-for="item in index.hits" :key="item.id">
-                                        <template v-slot:aside>
-                                            <!--<b-img blank blank-color="#abc" width="10" alt="placeholder"></b-img>-->
-                                        </template>
-                                        <b-link variant="primary" class="link-dark" :to="`/${index.index}/${item.slug}`">
-                                            <ais-highlight attribute="name" :hit="item"/>
-                                        </b-link>
-                                        <div class="text-muted">{{item.country}}</div>
-                                    </b-media>
-                                </ul>
+                                <h5 class="p-1 text-primary">{{index.label === 'primary'? 'Projects' : index.label}} <b-button class="float-right" variant="link" :to="{name:'search', params:{type:index.index}, query:{q: query}}">See all</b-button></h5>
+                                <b-list-group class="w-100">
+                                    <b-list-group-item class="mt-0 p-1" v-for="item in index.hits" :key="item.id" :to="`/${index.index}/${item.slug}`">
+                                        <div class="w-100">
+                                            <h6 class="m-0 p-0 mt-1"><ais-highlight class="title" attribute="name" :hit="item"/></h6>
+                                            <div class="text-left"><small>{{item.country}}</small></div>
+                                        </div>
+                                    </b-list-group-item>
+                                </b-list-group>
                             </template>
                         </div>
                     </div>
@@ -167,7 +164,7 @@
         top: 30px;
         right: 0;
         width: 400px;
-        max-height: calc(100vh - 200px);
+        max-height: calc(100vh - 150px);
         overflow: auto;
         position: absolute;
         background-color: #f8f8f8;
