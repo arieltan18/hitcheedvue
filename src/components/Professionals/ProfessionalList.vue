@@ -7,7 +7,7 @@
             <h2 class="professional-name">{{ professional.name }}</h2>
             <div class="text-left" v-if="professional.rating > 1">
                 <span class="review" v-for="(value, index) in parseInt(professional.rating)" :key="index">
-                    <img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group129.svg">
+                    <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group129.svg">
                 </span>
                 <span class="ml-1 review">({{professional.rating}})</span>
             </div>

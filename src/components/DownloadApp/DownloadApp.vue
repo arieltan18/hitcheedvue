@@ -30,7 +30,7 @@ export default {
 <style scoped>
 #cover-image
 {
-    background-image: url('https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/hero-image/irina-kostenich-555464-unsplash.png');
+    background-image: url('https://d1qc9wtuffqlue.cloudfront.net/images/hero-image/irina-kostenich-555464-unsplash.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -42,7 +42,7 @@ export default {
 }
 .cover
 {
-    background-image: url('https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/hero-image/cover%402x.png');
+    background-image: url('https://d1qc9wtuffqlue.cloudfront.net/images/hero-image/cover%402x.png');
     background-repeat: no-repeat;
     background-size:  cover;
     background-position: center;

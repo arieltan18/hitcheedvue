@@ -151,8 +151,8 @@ export default {
         return {
             logo: '/logo-5a97df3649b490ac45e1ce37411c365f11a95fc5239008a885742ed20ed69c26.png',
             hover: false,
-            whiteLogo: 'https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/logo/logo_White.png',
-            blackLogo: 'https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/logo/logo.png',
+            whiteLogo: 'https://d1qc9wtuffqlue.cloudfront.net/images/logo/logo_White.png',
+            blackLogo: 'https://d1qc9wtuffqlue.cloudfront.net/images/logo/logo.png',
             whiteStyle: "color: #ffffff;" ,
             blackStyle: "color: #26140E;",
         }
@@ -186,7 +186,7 @@ export default {
                 if($(this).scrollTop() > $nav.height())
                 {
                     $('.navbar-fixed-top').attr('style','background-color: #ffffff;z-index:10;');
-                    $('.logo-img').attr('src', 'https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/logo/logo.png');
+                    $('.logo-img').attr('src', 'https://d1qc9wtuffqlue.cloudfront.net/images/logo/logo.png');
                     $('.nav-bar-link').attr('style','color: #26140E');
                     $('.dropdown-content').css('background-color','#ffffff');
                     $('.dropdown-content').css('border-top','1px solid #f5f5f4');
@@ -199,7 +199,7 @@ export default {
                 else
                 {
                     $('.navbar-fixed-top').attr('style','background-color: transparent;z-index:10;');
-                    $('.logo-img').attr('src', 'https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/logo/logo_White.png');
+                    $('.logo-img').attr('src', 'https://d1qc9wtuffqlue.cloudfront.net/images/logo/logo_White.png');
                     $('.nav-bar-link').attr('style','color: #ffffff');
                     $('.dropdown-content').css('background-color','transparent');
                     $('.search-icon').css('color','white');

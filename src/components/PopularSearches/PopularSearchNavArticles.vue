@@ -3,7 +3,7 @@
         <h6>Popular {{ this.category_title }} Searches</h6>
         <div class="row d-flex justify-content-between text-left pl-2">
             <vueper-slides class="tag-slider no-shadow" :visible-slides="5" slide-multiple :slide-ratio="1/4" arrows-outside :bullets="false" transition-speed="250" style="width:100%;">
-                <div slot="arrowLeft" color="white" large class="hide"><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group29.svg" alt="left-arrow" width="25px"></div>
+                <div slot="arrowLeft" color="white" large class="hide"><img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px"></div>
                 <div slot="arrowRight" color="white" large v-if="tags.data.length<6" :class="hide">
                 </div>
                 <vueper-slide
@@ -28,7 +28,7 @@ import { VueperSlides, VueperSlide } from 'vueperslides'
 export default {
     name: 'PopularSearchNavArticles',
     components: {
-        VueperSlides, 
+        VueperSlides,
         VueperSlide
     },
     props:[ 'category_title' ],
@@ -39,7 +39,7 @@ export default {
             tags: []
         }
     },
-    mounted() 
+    mounted()
     {
         if(this.category_title.includes('-'))
         {
@@ -82,7 +82,7 @@ export default {
                     page: 1,
                 }
             },
-            update(data) 
+            update(data)
             {
                 return data.tags_by_category_paginate;
             }

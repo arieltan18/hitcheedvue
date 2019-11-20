@@ -7,13 +7,13 @@
             <h2 class="project-name">{{ project.name }}</h2>
             <div class="text-left" v-if="project.professional && project.professional.rating > 1">
                 <span class="review" v-for="(value, index) in parseInt(project.professional.rating)" :key="index">
-                    <img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group129.svg">
+                    <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group129.svg">
                 </span>
                 <span class="ml-1 review">({{project.professional.rating}})</span>
 
             </div>
             <div class="text-left location">
-                <img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group47.svg">
+                <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group47.svg">
                 <span class="ml-2 review">{{project.country ? project.country : project.professional.country }}</span>
             </div>
         </div>

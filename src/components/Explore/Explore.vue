@@ -63,7 +63,7 @@ h1
 }
 #hotels
 {
-    background-image: url('https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group1094%402x.png');
+    background-image: url('https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group1094%402x.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -71,7 +71,7 @@ h1
 }
 #bridal-studios
 {
-    background-image: url('https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group1095%402x.png');
+    background-image: url('https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group1095%402x.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -79,7 +79,7 @@ h1
 }
 #venues
 {
-    background-image: url('https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group1096%402x.png');
+    background-image: url('https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group1096%402x.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -87,7 +87,7 @@ h1
 }
 #photographers
 {
-    background-image: url('https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group1098%402x.png');
+    background-image: url('https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group1098%402x.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -95,7 +95,7 @@ h1
 }
 #other-countries
 {
-    background-image: url('https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group1097%402x.png');
+    background-image: url('https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group1097%402x.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -116,7 +116,7 @@ h1
     font-family: 'Cormorant Garamond';
     font-style: italic;
     font-size: 18px;
-    
+
     cursor: pointer;
     /* text-decoration: underline; */
 }

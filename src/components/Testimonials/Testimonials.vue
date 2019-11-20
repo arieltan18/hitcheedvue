@@ -6,7 +6,7 @@
                     <h1>Over 5,000 Happy Wedding Couples and Counting</h1>
                 </div>
                 <div class="col-sm-12 text-center mt-5 mb-4">
-                    <img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Path37.svg">
+                    <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Path37.svg">
                 </div>
             </div>
             <!-- <div class="row mb-4" v-for="testimonial in testimonials" :key="testimonial.id">
@@ -20,8 +20,8 @@
                 </div>
             </div> -->
             <vueper-slides class="testimonials no-shadow" arrows-outside :bullets="false" transition-speed="250">
-                <div slot="arrowLeft" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group29.svg" alt="left-arrow" width="25px"></div>
-                <div slot="arrowRight" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group28.svg" alt="right-arrow" width="25px;"></div>
+                <div slot="arrowLeft" color="white" large><img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px"></div>
+                <div slot="arrowRight" color="white" large><img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;"></div>
                 <vueper-slide
                     v-for="testimonial in testimonials"
                     :key="testimonial.id"
@@ -48,7 +48,7 @@ import { VueperSlides, VueperSlide } from 'vueperslides'
 export default {
     name: "Testimonials",
     components: {
-        VueperSlides, 
+        VueperSlides,
         VueperSlide
     },
     data() {
@@ -58,7 +58,7 @@ export default {
         }
     },
     methods: {
-        async getTestimonialList () 
+        async getTestimonialList ()
         {
             const api = process.env.VUE_APP_HITCHEED_API + "/v1/testimonials";
             //const api = 'http://hitcheedlaravel.test/api/v1/testimonials';
@@ -76,7 +76,7 @@ export default {
             });
         },
     },
-    mounted() 
+    mounted()
     {
         this.getTestimonialList();
     }
@@ -91,7 +91,7 @@ export default {
     padding-top: 3%;
     padding-bottom: 3%;
 }
-h1 
+h1
 {
     font-family: 'Cormorant Garamond';
     font-weight: normal;

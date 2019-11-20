@@ -26,7 +26,6 @@
 </template>
 
 <script>
-    import algoliasearch from 'algoliasearch/lite';
     import ProjectList from "../Projects/ProjectList";
     import ProfessionalList from "../Professionals/ProfessionalList";
     import Http from "../../services/Http";

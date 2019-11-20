@@ -3,7 +3,7 @@
         <b-navbar >
             <div class="container nav-bar">
                 <b-navbar-brand class="logo-brand" href="/">
-                    <img class="black-logo" alt="Hitcheed Private Limited [SG]" src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/logo/logo.png" height="38px;"/>
+                    <img class="black-logo" alt="Hitcheed Private Limited [SG]" src="https://d1qc9wtuffqlue.cloudfront.net/images/logo/logo.png" height="38px;"/>
                 </b-navbar-brand>
                 <div class="navbar-nav">
                     <div class="nav-bar-black-link nav-bar-dropdown">
@@ -126,7 +126,7 @@ export default {
         return {
             logo: '/logo-5a97df3649b490ac45e1ce37411c365f11a95fc5239008a885742ed20ed69c26.png',
             hover: false,
-            blackLogo: 'https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/logo/logo.png',
+            blackLogo: 'https://d1qc9wtuffqlue.cloudfront.net/images/logo/logo.png',
         }
     },
     computed: {
