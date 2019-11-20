@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div v-if="!hasType || isType('projects')">
+        <div v-if="projects.length">
         <h2 class="p-5">Projects</h2>
             <div class="row">
                 <div v-for="project in projects" :key="project.id" class="col-md-3 mb-5">
@@ -11,7 +11,7 @@
                 </div>
             </div>
         </div>
-        <div v-if="!hasType || isType('professionals')">
+        <div v-if="professionals.length">
             <h2 class="p-5">Professionals</h2>
             <div class="row" >
                 <div v-for="professional in professionals" :key="professional.id" class="col-md-3 mb-5">
