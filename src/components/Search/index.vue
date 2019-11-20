@@ -7,7 +7,7 @@
                     <ProjectList :project="project"/>
                 </div>
                 <div class="col-12 pb-5">
-                    <b-button v-if="projects.hasMore" :disabled="projects.isLoading" @click="loadMore('projects')">Load more Projects</b-button>
+                    <b-button v-if="projects.hasMore" :disabled="isLoading" @click="loadMore('projects')">Load more Projects</b-button>
                 </div>
             </div>
         </div>
@@ -18,7 +18,7 @@
                     <ProfessionalList :professional="professional"></ProfessionalList>
                 </div>
                 <div class="col-12 pb-5">
-                    <b-button v-if="professionals.hasMore" :disabled="professionals.isLoading" @click="loadMore('professionals')">Load more Professionals</b-button>
+                    <b-button v-if="professionals.hasMore" :disabled="isLoading" @click="loadMore('professionals')">Load more Professionals</b-button>
                 </div>
             </div>
         </div>
@@ -39,9 +39,7 @@
             return {
                 projects: [],
                 professionals: [],
-                searchClient: algoliasearch(
-                    'JM6090N65T',
-                    '0d201b6bf1664e41e165f3dc793576c6'),
+                isLoading: false
             }
         },
         computed:{
@@ -65,24 +63,27 @@
                 return this.$route.params.type === typeName;
             },
             search(){
+              this.isLoading = true;
               Http.get(`/v1/search?q=${this.query}&type=${this.type}`).then(res=>{
                   Object.keys(res).forEach((key)=>{
                     const records = res[key]['data'];
                     records.currentPage = res[key]['current_page'];
                     records.hasMore = res[key]['current_page'] < res[key]['last_page'];
                     this[key] = records;
+                    this.isLoading = false;
                   });
               })
             },
             loadMore(type){
                 const nextPage = this[type].currentPage + 1;
-                this[type].isLoading = true;
+                this.isLoading = true;
                 Http.get(`/v1/search?q=${this.query}&type=${type}&page=${nextPage}`).then(res=>{
                     Object.keys(res).forEach((key)=>{
                         const records = [...this[key], ...res[key]['data']];
                         records.currentPage = res[key]['current_page'];
                         records.hasMore = res[key]['current_page'] < res[key]['last_page'];
                         this[key] = records;
+                        this.isLoading = false;
                     })
                 })
             },
