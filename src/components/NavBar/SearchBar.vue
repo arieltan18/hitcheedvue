@@ -6,7 +6,7 @@
                 @keypress.enter="search"
                 v-model="query"
                 size="sm"
-                :class="`keyword-field search-width input-${theme}`"
+                :class="`${theme === 'black'? 'keyword-field-black' : 'keyword-field'} search-width input-${theme}`"
                 placeholder="Search Locations, Vendors, Articles"
         >
         <div
@@ -104,6 +104,23 @@
         border-bottom: 1px solid #ffffff;
         margin-left: -20px;
         display: none;
+    }
+    .keyword-field-black
+    {
+        font-weight: 400;
+        font-family: 'Cormorant Garamond';
+        font-style: italic;
+        font-size: 16px;
+        color:#26140E;
+        opacity: 0.7;
+        border:none;
+        background: none;
+        outline: none;
+        box-shadow: none;
+        border-bottom: 1px solid #ffffff;
+        margin-left: -20px;
+        display: none;
+        border-bottom: 1px solid #26140E;
     }
     .search-width
     {
