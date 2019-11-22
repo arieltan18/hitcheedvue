@@ -27,8 +27,10 @@ import axios from 'axios';
 
 export default {
     name: "ProfessionalCategory",
-    metaInfo:{
-        title: 'Professionals'
+    metaInfo(){
+        return {
+            title: `Professionals: ${this.categoryName}`
+        };
     },
     components: {
         ProfessionalList,
