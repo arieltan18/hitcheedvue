@@ -120,6 +120,9 @@
     export default {
         name: "Profile",
         components: {ImageCropCenter},
+        metaInfo:{
+          title: 'My Profile'
+        },
         data(){
             return {
                 form:{
