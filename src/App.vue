@@ -21,6 +21,7 @@ import chatkit from "./services/Chatkit";
 export default {
   name: 'app',
     metaInfo:{
+      title: 'Hitcheed | Singapore Wedding Services | Wedding Planning Website',
       titleTemplate: '%s | Hitcheed.com'
     },
   components: {

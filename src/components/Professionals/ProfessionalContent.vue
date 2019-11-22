@@ -26,6 +26,7 @@
 import axios from 'axios';
 import ProfessionalReviews from './ProfessionalReviews';
 import ProfessionalProjects from './ProfessionalProjects';
+import {metaResolver} from "../../helpers";
 
 export default {
     name: "ProfessionalContent",
@@ -33,12 +34,7 @@ export default {
         ProfessionalReviews,
         ProfessionalProjects
     },
-    metaInfo(){
-        return {
-            title: this.professionalContent.meta_title,
-            description: this.professionalContent.name,
-        }
-    },
+    metaInfo:metaResolver.bind('professionalContent'),
     data() {
         return {
             professional_slug: '',
