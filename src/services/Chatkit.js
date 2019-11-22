@@ -2,6 +2,7 @@ import { ChatManager, TokenProvider } from '@pusher/chatkit-client'
 import store from '../store/index'
 import moment from 'moment';
 import defaultUserImage from '../assets/user.png';
+import {getUiAvatarUrl} from "../helpers";
 
 const INSTANCE_LOCATOR = process.env.VUE_APP_INSTANCE_LOCATOR;
 const TOKEN_URL = process.env.VUE_APP_TOKEN_URL;
@@ -90,7 +91,7 @@ function onMessage(message){
 
 function mapMessage(message){
     const {id: userId} = currentUser;
-    const { id, room:{id: roomId}, sender: {id: senderId, name: senderName, avatarURL: senderAvatar = defaultUserImage}, text, createdAt, updatedAt} = message;
+    const { id, room:{id: roomId}, sender: {id: senderId, name: senderName, avatarURL: senderAvatar}, text, createdAt, updatedAt} = message;
     const outgoing = userId === senderId;
     return {
         id,
@@ -98,7 +99,7 @@ function mapMessage(message){
         senderId,
         senderName: outgoing? 'You': senderName,
         outgoing,
-        senderAvatar: senderAvatar || defaultUserImage,
+        senderAvatar: senderAvatar || getUiAvatarUrl(senderName),
         text,
         createdAt: moment(createdAt),
         updatedAt: moment(updatedAt),
@@ -111,12 +112,12 @@ function mapRoom(room){
     const otherUsers = users.filter(u=>u.id !== userId);
     const roomName = name || otherUsers.map(u=>u.name).join(', ');
     const [user = {}] = otherUsers;
-    const {avatarURL:avatar = defaultUserImage} = user;
+    const {name: userName, avatarURL:avatar} = user;
     return {
         id: roomId,
         name: roomName,
         unreadCount,
-        avatar,
+        avatar: avatar || getUiAvatarUrl(userName),
         lastMessageAt: moment(lastMessageAt),
     }
 }

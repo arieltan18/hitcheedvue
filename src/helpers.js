@@ -12,3 +12,5 @@ export const resizedImageUrl = (imageUrl, width=0, height = 0)=>{
     url.search = search? `${search}&d=${size}` : `?d=${size}`;
     return url.href;
 };
+
+export const getUiAvatarUrl = (name, size=179, color="ffffff", background='64c3c0', rounded = true) => `https://ui-avatars.com/api/?name=${name}&size=${size}&color=${color}&background=${background}&rounded=${rounded}`;
