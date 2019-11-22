@@ -37,7 +37,9 @@ export const PROJECTS_BY_CATEGORY_PAGINATE = gql`
         name,
         slug,
         image,
-        country
+        country,
+        min_capacity,
+        max_capacity,
         professional
         {
           id,
@@ -105,3 +107,48 @@ export const CATEGORIES_FILTER = gql`
   }
 `
 
+export const PROFESSIONAL_FILTER_BY_TAGS = gql`
+  query professional_filter_by_tags($tag_id: Int!) {
+    professional_filter_by_tags(tag_id: $tag_id) {
+      professional {
+      id,
+      name,
+      slug,
+      cover_image,
+      around_image,
+      profile_image,
+      tag_name,
+      rating,
+      projects
+      {
+        id
+        name,
+        slug,
+        image,
+        country,
+        min_capacity,
+        max_capacity,
+      }
+    }
+    }
+  }
+`
+
+export const TAG_FILTER = gql`
+  query tag_filter($name: String!) {
+    tag_filter(name: $name) {
+      id, 
+      name,
+      category_id
+    }
+  }
+`
+
+export const CATEGORY = gql`
+  query category($id: ID! ){
+    category(id: $id) {
+      id,
+      name,
+    }
+  }
+`

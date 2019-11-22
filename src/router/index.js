@@ -11,6 +11,7 @@ import ProjectsByCategoryAll from '../components/Projects/ProjectsByCategoryAll'
 import ProfessionalsByCategoryAll from '../components/Professionals/ProfessionalsByCategoryAll'
 import ProjectsByAllCategories from '../components/Projects/ProjectsByAllCategories'
 import ProjectContent from '../components/Projects/ProjectContent'
+import ProjectsByTag from '../components/Projects/ProjectsByTag'
 import Messages from '../components/Messages'
 
 Vue.use(VueRouter);
@@ -91,6 +92,11 @@ export default new VueRouter({
             component: {
                 template: '<div class="auth-component"></div>'
             }
+        },
+        {
+            name: 'projectsByTag',
+            path: '/category/:category/:tag_name',
+            component: ProjectsByTag
         }
     ]
 })

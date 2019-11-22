@@ -5,16 +5,21 @@
         </router-link>
         <div class="bottom-centered text-center">
             <h2 class="project-name">{{ project.name }}</h2>
-            <div class="text-left" v-if="project.professional.rating > 1">
+            <div class="text-left" v-if="project.professional">
                 <span class="review" v-for="(value, index) in parseInt(project.professional.rating)" :key="index">
                     <img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group129.svg">
                 </span>
-                <span class="ml-1 review">({{project.professional.rating}})</span>
-                
+                <span class="ml-1 review" v-if="project.professional.rating >1">({{ project.professional.rating }})</span>
             </div>
             <div class="text-left location">
-                <img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group47.svg">
-                <span class="ml-2 review">{{project.country ? project.country : project.professional.country }}</span>
+                <div class="mr-2 d-inline pr-2">
+                    <img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group47.svg">
+                    <span class="ml-2 review">{{ project.country ? project.country : project.professional.country }}</span>
+                </div>
+                <div class="pax-div d-inline pl-3" v-if="project.max_capacity!=0">
+                    <img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group48.svg">
+                    <span class="ml-2 pax">{{ project.min_capacity }} - {{ project.max_capacity }} Pax</span>
+                </div>
             </div>
         </div>
     </div>
@@ -97,6 +102,17 @@ p
     font-size: 12px;
     letter-spacing: 0.6px;
     font-family: 'Open Sans';
+    color: rgba(38, 20, 14, 0.5);
+}
+
+.pax-div
+{
+    border-left: 1px solid rgba(38, 20, 14, 0.2);
+}
+
+.pax
+{
+    font-size: 12px;
     color: rgba(38, 20, 14, 0.5);
 }
 </style>

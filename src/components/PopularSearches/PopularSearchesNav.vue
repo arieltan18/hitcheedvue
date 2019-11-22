@@ -10,9 +10,11 @@
                     v-for="tag in tags.data"
                     :key="tag.id">
                     <div slot="slideContent">
+                        <router-link :key="tag.name" class="tag-link" :to="{ name: 'projectsByTag', params: { category: raw_category_name ,tag_name: processTagName(tag.name) }}">
                         <div class="block">
                             {{ tag.name }}
                         </div>
+                        </router-link>
                     </div>
                 </vueper-slide>
             </vueper-slides>
@@ -25,6 +27,7 @@
 import { CATEGORIES_FILTER } from '../../graphql/graphql.js';
 import { TAGS_BY_CATEGORY_BY_PAGINATE } from '../../graphql/graphql.js';
 import { VueperSlides, VueperSlide } from 'vueperslides'
+import { TAG_FILTER } from '../../graphql/graphql.js';
 
 export default {
     name: 'PopularSearchesNav',
@@ -36,21 +39,24 @@ export default {
         return {
             category_name:'',
             category: [],
-            tags: []
+            tags: [],
+            raw_category_name: this.$route.params.category
         }
     },
     mounted() {
 
-        this.category_name = this.$route.params.category;
-
-        if(this.$route.params.category.includes('-'))
+        if(this.$route.params.category)
         {
-            this.category_name = this.$route.params.category.replace(/-/g, ' ');
+            this.category_name = this.$route.params.category;
+
+            if(this.$route.params.category.includes('-'))
+            {
+                this.category_name = this.$route.params.category.replace(/-/g, ' ');
+            }
+
+            this.category_name = this.capitalizeText(this.category_name);
         }
 
-        this.category_name = this.capitalizeText(this.category_name);
-        
-        console.log(tags.data);
     },
     methods: {
         capitalizeText(text) {
@@ -58,6 +64,11 @@ export default {
                 .split(' ')
                 .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
                 .join(' ');
+
+            return text;
+        },
+        processTagName(text) {
+            text = text.replace(/\s+/g,'-').toLowerCase();;
 
             return text;
         }
@@ -89,7 +100,7 @@ export default {
             {
                 return data.tags_by_category_paginate;
             }
-        }
+        },
     },
 
 }
@@ -127,5 +138,15 @@ h6
 .hide
 {
     display: none;
+}
+.tag-link
+{
+    font-family: 'Open Sans';
+    font-weight: 600;
+    font-size: 12px;
+    text-decoration: none;
+    color: #26140E;
+    text-align: center;
+    text-transform: uppercase;
 }
 </style>

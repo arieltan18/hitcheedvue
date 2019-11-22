@@ -71,6 +71,7 @@ export default {
     data() {
         return {
             articleItems: [],
+            category_name: ''
         }
     },
     methods: {
@@ -78,8 +79,8 @@ export default {
             //get the current timestamp
             const date = Date.now();
 
-            const url = process.env.VUE_APP_STORYBLOK_API + '&page=1&per_page=12&starts_with=blog&cv=' + date;
-        
+            const url = process.env.VUE_APP_STORYBLOK_API + '&page=1&per_page=12&starts_with=blog&cv=' + date + '&with_tag=' + this.category_name;
+            console.log(url);
             axios.defaults.headers = {
                 'Content-Type': 'application/json',
                 'cache-control':'no-cache'
@@ -94,11 +95,28 @@ export default {
         },
         date: function (date) {
             return moment(date).format('Do MMMM YYYY');
+        },
+        capitalizeText(text) {
+            text = text.toLowerCase()
+                .split(' ')
+                .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+                .join(' ');
+
+            return text;
         }
     },
     mounted()
     {
         this.getArticles();
+
+        this.category_name = this.$route.params.category;
+
+        if(this.$route.params.category.includes('-'))
+        {
+            this.category_name = this.$route.params.category.replace(/-/g, ' ');
+        }
+
+        this.category_name = this.capitalizeText(this.category_name);
     }
 
 }

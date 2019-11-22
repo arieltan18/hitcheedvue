@@ -250,7 +250,7 @@ export default {
         AuthProvider(provider) {
             
               var self = this
-              
+              console.log(provider);
               this.$auth.authenticate(provider).then(response =>{
              
                 self.SocialLogin(provider,response)
