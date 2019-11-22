@@ -26,6 +26,9 @@
 
     export default {
         name: "Messages",
+        metaInfo:{
+          title: 'Messages'
+        },
         components: {ChatMessages, ChatList},
         data: function () {
             return ({
