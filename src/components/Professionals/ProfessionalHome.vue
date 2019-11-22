@@ -13,6 +13,9 @@ import axios from 'axios';
 
 export default {
     name: "Professionals",
+    metaInfo:{
+        title: 'Professionals'
+    },
     components: {
         ProfessionalCategory
     },
@@ -63,7 +66,7 @@ export default {
             });
         },
     },
-    mounted() 
+    mounted()
     {
         this.getProfessionalList();
         //console.log(this.professionals);

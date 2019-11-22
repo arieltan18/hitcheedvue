@@ -2,11 +2,11 @@
     <div>
         <div class="container-fluid bg-color">
             <div class="container">
-                <div class="article-header"> 
+                <div class="article-header">
                     <h1>Articles</h1>
                 </div>
             </div>
-            
+
         </div>
         <div class="container">
             <div class="row">
@@ -17,7 +17,7 @@
             </div>
         </div>
 
-            
+
 
     </div>
 </template>
@@ -26,9 +26,11 @@
 import axios from 'axios';
 import ArticleContentTitle from "./ArticleContentTitle.vue";
 import ArticleContentBody from "./ArticleContentBody.vue";
+import {metaResolver} from "../../helpers";
 
 export default {
     name: "ArticleContent",
+    metaInfo: metaResolver.bind('articleContent'),
     components: {
         ArticleContentTitle,
         ArticleContentBody,
@@ -47,7 +49,7 @@ export default {
 
             const slug = this.$route.params.slug;
             const article_url = process.env.VUE_APP_STORYBLOK_API + '&cv=' + date + '&starts_with=blog/' + slug;
-            
+
             axios
             .get(article_url)
             .then((response) => {
@@ -58,7 +60,7 @@ export default {
             });
         }
     },
-    beforeMount() 
+    beforeMount()
     {
         this.getArticleContents();
     },
@@ -76,7 +78,7 @@ export default {
     padding-right: 10px;
 }
 
-h1 
+h1
 {
     text-align: left;
     font-family: 'Cormorant Garamond';

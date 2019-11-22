@@ -33,6 +33,11 @@
 
     export default {
         name: "Search",
+        metaInfo(){
+            return {
+                title: `Search: ${this.query}`
+            }
+        },
         components: {ProfessionalList, ProjectList},
         data(){
             return {

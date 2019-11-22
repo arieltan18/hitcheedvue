@@ -23,6 +23,9 @@ import axios from 'axios';
 
 export default {
     name: "Articles",
+    metaInfo:{
+      title: 'Articles'
+    },
     components: {
         ArticleItems
     },
@@ -69,15 +72,15 @@ export default {
             });
         },
     },
-    mounted() 
+    mounted()
     {
         if(!this.$route.query.tag)
         {
             this.getFullArticleItems();
         }
-        
+
     },
-    beforeRouteEnter (to, from, next) 
+    beforeRouteEnter (to, from, next)
     {
         next(vm => {
             // access to component instance via `vm`

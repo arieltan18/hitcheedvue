@@ -27,6 +27,9 @@ import axios from 'axios';
 
 export default {
     name: "ProfessionalCategory",
+    metaInfo:{
+        title: 'Professionals'
+    },
     components: {
         ProfessionalList,
         PopularSearchesNav
@@ -64,7 +67,7 @@ export default {
             });
         },
     },
-    mounted() 
+    mounted()
     {
         if(this.$route.params.id)
         {
@@ -77,7 +80,7 @@ export default {
             this.categoryName = this.professionalCategories.category_name;
             this.categoryID = this.professionalCategories.category_id;
         }
-        
+
     }
 }
 

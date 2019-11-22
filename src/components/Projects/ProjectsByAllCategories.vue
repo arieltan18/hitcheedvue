@@ -38,6 +38,9 @@ import PopularSearchNavArticles from "../PopularSearches/PopularSearchNavArticle
 
 export default {
     name: 'ProjectsByAllCategories',
+    metaInfo:{
+        title: 'Project Categories'
+    },
     components: {
         ProjectSection,
         RelatedArticles,
@@ -67,7 +70,7 @@ export default {
 </script>
 
 <style scoped>
-h1 
+h1
 {
     text-transform: capitalize;
     color: #26140E;
