@@ -35,7 +35,7 @@ export default {
     },
     metaInfo(){
         return {
-            title: this.professionalContent.name,
+            title: this.professionalContent.meta_title,
             description: this.professionalContent.name,
         }
     },
