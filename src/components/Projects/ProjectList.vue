@@ -1,13 +1,13 @@
 <template>
     <div>
         <router-link class="project-img" :to="{ name: 'project', params: { slug: this.project.slug }}">
-            <img class="ar-image mb-3" :src="project.image" alt="project">
+            <img class="ar-image mb-3" :src="resizedImageUrl(image, 400,400)" alt="project">
         </router-link>
         <div class="bottom-centered text-center">
             <h2 class="project-name">{{ project.name }}</h2>
-            <div class="text-left" v-if="project.professional">
+            <div class="text-left" v-if="project.professional && project.professional.rating > 1">
                 <span class="review" v-for="(value, index) in parseInt(project.professional.rating)" :key="index">
-                    <img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group129.svg">
+                    <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group129.svg">
                 </span>
                 <span class="ml-1 review" v-if="project.professional.rating >1">({{ project.professional.rating }})</span>
             </div>
@@ -27,6 +27,8 @@
 
 <script>
 
+import {resizedImageUrl} from "../../helpers";
+
 export default {
     name: "ProjectList",
     data() {
@@ -35,10 +37,19 @@ export default {
         }
     },
     props: ['project'],
+    methods:{
+        resizedImageUrl,
+    },
     computed: {
         slug: function () {
             const routerLink = this.project.slug;
             return routerLink;
+        },
+        image(){
+            const image = this.project.image;
+            if(image) return image;
+            const project_images = this.project.project_images;
+            return project_images && project_images[0] && project_images[0].slug;
         }
     }
 

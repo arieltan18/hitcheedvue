@@ -21,7 +21,7 @@
                 <ProfessionalReviews :professionalContent="projectContent" :reviews="reviews" :totalReviews="totalReviews"/>
             </div>
         </div>
-            
+
     </div>
 </template>
 
@@ -31,13 +31,15 @@ import ProfessionalReviews from '../Professionals/ProfessionalReviews';
 import ProfessionalProjects from '../Professionals/ProfessionalProjects';
 import { VueperSlides, VueperSlide } from 'vueperslides'
 import 'vueperslides/dist/vueperslides.css'
+import {metaResolver} from "../../helpers";
 
 export default {
     name: "ProjectContent",
+    metaInfo: metaResolver.bind('projectContent'),
     components: {
         ProfessionalReviews,
         ProfessionalProjects,
-        VueperSlides, 
+        VueperSlides,
         VueperSlide
     },
     data() {

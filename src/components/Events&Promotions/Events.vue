@@ -4,7 +4,7 @@
             <div class="row mb-2">
                 <div class="col-sm-12 text-center">
                     <div class="title">
-                        <img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Events%26Promotions.svg" width="250px">
+                        <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Events%26Promotions.svg" width="250px">
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@ import { TAGS_BY_CATEGORY } from '../../graphql/graphql.js';
 export default {
     name: "Events",
     components: {
-        VueperSlides, 
+        VueperSlides,
         VueperSlide,
     },
 }
@@ -45,7 +45,7 @@ export default {
 <style lang="scss" scoped>
 .container-fluid
 {
-    background-image: url('https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/cushion-rings-silky-fabric-28148082x.png');
+    background-image: url('https://d1qc9wtuffqlue.cloudfront.net/images/home-page/cushion-rings-silky-fabric-28148082x.png');
     padding-top: 3%;
     padding-bottom: 3%;
 }
@@ -75,7 +75,7 @@ button:focus, button:active
     box-shadow: none !important;
 }
 a.nav-item.nav-link.active,
-.nav-tabs .nav-link.active 
+.nav-tabs .nav-link.active
 {
     font-weight: bold;
     background: none;
@@ -87,9 +87,9 @@ a.nav-item.nav-link.active,
 }
 .nav-tabs
 {
-    border: none; 
+    border: none;
 }
-.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link 
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link
 {
     color:#26140E;
     border:none;
@@ -97,8 +97,8 @@ a.nav-item.nav-link.active,
 
 }
 li
-{ 
-    display: inline; list-style-type: none; margin-left: 0; 
+{
+    display: inline; list-style-type: none; margin-left: 0;
 }
 li:before { content: "/"; padding-right: 3px; }
 li:first-child:before { content: ""; padding-right: 0; }

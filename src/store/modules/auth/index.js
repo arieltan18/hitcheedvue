@@ -1,6 +1,6 @@
 import axios from 'axios';
 import chatkit from "../../../services/Chatkit";
-import {getUser} from "../../../services/User";
+import {getUser, updateProfile} from "../../../services/User";
 
 const state = {
     token: localStorage.getItem('access_token') || null ,
@@ -18,14 +18,14 @@ const mutations = {
     },
     retrieveToken(state, token, username)
     {
-        state.token = token
+        state.token = token;
         state.username = username
     },
     destroyToken(state)
     {
-        state.token = null
+        state.token = null;
         state.user = null
-    }
+    },
 }
 
 const actions = {
@@ -130,6 +130,11 @@ const actions = {
                 reject(error);
             });
         })
+    },
+    updateProfile(context, data){
+        return updateProfile(data).then((user)=>{
+            context.commit('setUser', user);
+        });
     }
 };
 

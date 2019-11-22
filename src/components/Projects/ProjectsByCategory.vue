@@ -24,9 +24,11 @@ import ProjectSection from './ProjectSection.vue';
 import { CATEGORIES_FILTER } from '../../graphql/graphql.js';
 import PopularSearchesNav from "../PopularSearches/PopularSearchesNav.vue";
 import RelatedArticles from "../Articles/RelatedArticles.vue";
+import {metaResolver} from "../../helpers";
 
 export default {
     name: "ProjectsByCategory",
+    metaInfo: metaResolver.bind('category'),
     components: {
         ProjectSection,
         PopularSearchesNav,
@@ -78,7 +80,7 @@ export default {
 </script>
 
 <style scoped>
-h1 
+h1
 {
     text-transform: capitalize;
     color: #26140E;

@@ -4,7 +4,7 @@
             <div class="row bottom-row">
                 <div class="col-md-6 text-left">
                     <a href="/">
-                        <img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/logo/logo.png" alt="" height="38px">
+                        <img src="https://d1qc9wtuffqlue.cloudfront.net/images/logo/logo.png" alt="" height="38px">
                     </a>
                 </div>
                 <div class="col-md-6">
@@ -27,7 +27,7 @@
                         </div>
                         <div class="col-sm-5 mail-box">
                             <a class="mail-link" href="mailto:help@hitcheed.com">
-                                <img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/envelope.svg">
+                                <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/envelope.svg">
                                 help@hitcheed.com
                             </a><br/>
                             <a class="vendor-link" href="https://hitcheed.com/vendor">Become a vendor</a>
@@ -41,16 +41,16 @@
             </div>
             <div class="social-div">
                 <a class="mr-2" href="https://www.facebook.com/hitcheed" target="_blank">
-                    <img alt="Hitcheed Private Limited [SG]" src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group12.svg">
-                </a> 
+                    <img alt="Hitcheed Private Limited [SG]" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group12.svg">
+                </a>
                 <a class="mr-2" href="#" target="_blank">
-                    <img alt="Hitcheed Private Limited [SG]" src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group13.svg">
+                    <img alt="Hitcheed Private Limited [SG]" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group13.svg">
                 </a>
                 <a class="mr-2" href="#">
-                    <img alt="Hitcheed Private Limited [SG]" src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group14.svg">
+                    <img alt="Hitcheed Private Limited [SG]" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group14.svg">
                 </a>
                 <a href="https://instagram.com/hitcheed">
-                    <img alt="Hitcheed Private Limited [SG]" src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group15.svg">
+                    <img alt="Hitcheed Private Limited [SG]" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group15.svg">
                 </a>
             </div>
             <div class="copy-right mt-5">
@@ -184,7 +184,7 @@ hr
     letter-spacing: 1.2px;
     font-size: 12px;
 }
-input[type="text"] 
+input[type="text"]
 {
     width: 250px;
     height: 35px;
@@ -197,7 +197,7 @@ input[type="text"]
     border:1px solid #26140e3d;
 }
 
-input[type="submit"] 
+input[type="submit"]
 {
     margin-left: 0px;
     height: 35px;

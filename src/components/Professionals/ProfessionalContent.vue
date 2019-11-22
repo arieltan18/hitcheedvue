@@ -26,6 +26,7 @@
 import axios from 'axios';
 import ProfessionalReviews from './ProfessionalReviews';
 import ProfessionalProjects from './ProfessionalProjects';
+import {metaResolver} from "../../helpers";
 
 export default {
     name: "ProfessionalContent",
@@ -33,6 +34,7 @@ export default {
         ProfessionalReviews,
         ProfessionalProjects
     },
+    metaInfo:metaResolver.bind('professionalContent'),
     data() {
         return {
             professional_slug: '',
@@ -42,10 +44,10 @@ export default {
         }
     },
     methods: {
-        getProfessionalContent () 
+        getProfessionalContent ()
         {
             const url = process.env.VUE_APP_HITCHEED_API + "/v1/professionals/slug/" + this.professional_slug;
-            
+
             axios.defaults.headers = {
                 'Content-Type': 'application/json',
                 'cache-control': 'no-cache'

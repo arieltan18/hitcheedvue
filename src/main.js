@@ -4,16 +4,18 @@ import router from './router';
 import VueSimpleMarkdown from 'vue-simple-markdown'
 import 'vue-simple-markdown/dist/vue-simple-markdown.css'
 import BootstrapVue from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+import './assets/css/bootstrap.scss';
 import store from './store/index.js';
 import { createProvider } from './vue-apollo'
 import VueChatScroll from 'vue-chat-scroll'
 import VueAxios from 'vue-axios'
 import VueSocialauth from 'vue-social-auth'
 import axios from 'axios';
+import InstantSearch from 'vue-instantsearch';
+import VueMeta from "vue-meta";
 
-Vue.use(VueAxios, axios)
+
+Vue.use(VueAxios, axios);
 Vue.use(VueSocialauth, {
   providers: {
     facebook: {
@@ -21,13 +23,15 @@ Vue.use(VueSocialauth, {
       redirectUri: '/auth/facebook/callback' // Your client app URL
     }
   }
-})
+});
 
-Vue.use(BootstrapVue)
-Vue.use(VueSimpleMarkdown)
-Vue.use(VueChatScroll)
+Vue.use(BootstrapVue);
+Vue.use(VueSimpleMarkdown);
+Vue.use(VueChatScroll);
+Vue.use(InstantSearch);
+Vue.use(VueMeta);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 
 new Vue({

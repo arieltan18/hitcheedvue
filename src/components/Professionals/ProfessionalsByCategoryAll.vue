@@ -15,9 +15,11 @@
 <script>
 import ProfessionalSection from './ProfessionalSection.vue';
 import { CATEGORIES_FILTER } from '../../graphql/graphql.js';
+import {metaResolver} from "../../helpers";
 
 export default {
     name: "ProfessionalsByCategory",
+    metaInfo: metaResolver.bind('category'),
     components: {
         ProfessionalSection,
     },
@@ -94,7 +96,7 @@ export default {
 </script>
 
 <style scoped>
-h1 
+h1
 {
     text-transform: capitalize;
     color: #26140E;

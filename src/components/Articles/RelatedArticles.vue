@@ -25,8 +25,8 @@
                 </div>
             </div> -->
             <vueper-slides class="no-shadow" :visible-slides="2" slide-multiple :slide-ratio="1/4" arrows-outside :bullets="false" transition-speed="250" style="width:100%;">
-                <div slot="arrowLeft" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group29.svg" alt="left-arrow" width="25px"></div>
-                <div slot="arrowRight" color="white" large><img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group28.svg" alt="right-arrow" width="25px;"></div>
+                <div slot="arrowLeft" color="white" large><img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px"></div>
+                <div slot="arrowRight" color="white" large><img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;"></div>
                 <vueper-slide
                     v-for="articleItem in articleItems"
                     :key="articleItem.id"
@@ -65,7 +65,7 @@ export default {
     name: 'RelatedArticles',
     components: {
         ArticleItems,
-        VueperSlides, 
+        VueperSlides,
         VueperSlide
     },
     data() {
@@ -79,8 +79,8 @@ export default {
             //get the current timestamp
             const date = Date.now();
 
-            const url = process.env.VUE_APP_STORYBLOK_API + '&page=1&per_page=12&starts_with=blog&cv=' + date + '&with_tag=' + this.category_name;
-            console.log(url);
+            const url = process.env.VUE_APP_STORYBLOK_API + '&page=1&per_page=12&starts_with=blog&cv=' + date;
+
             axios.defaults.headers = {
                 'Content-Type': 'application/json',
                 'cache-control':'no-cache'

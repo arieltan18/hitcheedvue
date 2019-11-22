@@ -13,6 +13,8 @@ import ProjectsByAllCategories from '../components/Projects/ProjectsByAllCategor
 import ProjectContent from '../components/Projects/ProjectContent'
 import ProjectsByTag from '../components/Projects/ProjectsByTag'
 import Messages from '../components/Messages'
+import Profile from '../components/Profile'
+import Search from '../components/Search'
 
 Vue.use(VueRouter);
 
@@ -86,6 +88,18 @@ export default new VueRouter({
             name: 'professionalsByCategoryAll',
             path: '/category/:category/all',
             component: ProfessionalsByCategoryAll
+        },
+        {
+
+            name: 'profile',
+            path: '/Profile',
+            component: Profile
+        },
+        {
+
+            name: 'search',
+            path: '/search/:type?',
+            component: Search
         },
         {
             path: '/auth/:provider/callback',
