@@ -19,31 +19,31 @@ export function metaResolver (component){
         const propName = this;
         const { name, description, meta_title , meta_description, profile_image , around_image , cover_image , meta_image} = component[propName];
         return {
-            title: meta_title || name,
+            title: meta_title || name || '',
             meta:[
                 {
                     name: 'description',
-                    content: meta_description || description
+                    content: meta_description || description || ''
                 },
                 {
                     name: 'og:title',
-                    content: meta_title || name
+                    content: meta_title || name || ''
                 },
                 {
                     name: 'og:image',
-                    content: meta_image || cover_image || around_image || profile_image
+                    content: meta_image || cover_image || around_image || profile_image || ''
                 },
                 {
                     name: 'og:description',
-                    content: meta_description || description
+                    content: meta_description || description || ''
                 },
                 {
                     name: 'twitter:title',
-                    content: meta_title || name
+                    content: meta_title || name || ''
                 },
                 {
                     name: 'twitter:image',
-                    content: meta_image || cover_image || around_image || profile_image
+                    content: meta_image || cover_image || around_image || profile_image || ''
                 },
 
             ]
