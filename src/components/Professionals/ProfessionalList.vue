@@ -1,7 +1,7 @@
 <template>
     <div>
         <router-link class="professional-img" :to="{ name: 'professional', params: { slug: this.professional.slug }}">
-            <img class="ar-image mb-3" :src="resizedImageUrl(professional.around_image, 200, 200)" alt="professional">
+            <img class="ar-image mb-3" :src="resizedImageUrl(professional.around_image, 400, 400)" alt="professional">
         </router-link>
         <div class="bottom-centered text-center">
             <h2 class="professional-name">{{ professional.name }}</h2>

@@ -1,7 +1,7 @@
 <template>
     <div>
         <router-link class="project-img" :to="{ name: 'project', params: { slug: this.project.slug }}">
-            <img class="ar-image mb-3" :src="resizedImageUrl(image, 200,200)" alt="project">
+            <img class="ar-image mb-3" :src="resizedImageUrl(image, 400,400)" alt="project">
         </router-link>
         <div class="bottom-centered text-center">
             <h2 class="project-name">{{ project.name }}</h2>
