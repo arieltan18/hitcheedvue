@@ -47,6 +47,15 @@ export default {
         this.tag_name = this.capitalizeText(this.tag_name);
 
         console.log(this.tag_name);
+
+        this.category_name = this.$route.params.category;
+
+        if(this.$route.params.category.includes('-'))
+        {
+            this.category_name = this.$route.params.category.replace(/-/g, ' ');
+        }
+
+        this.category_name = this.capitalizeText(this.category_name);
     },
     data() {
         return {
@@ -75,6 +84,18 @@ export default {
             update(data)
             {
                 return data.tag_filter;
+            }
+        },
+        category: {
+            query: CATEGORY,
+            variables() {
+                return {
+                    id: this.tags.id
+                }
+            },
+            update(data)
+            {
+                return data.category
             }
         }
     }

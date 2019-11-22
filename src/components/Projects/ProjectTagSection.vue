@@ -1,8 +1,8 @@
 <template>
     <div class="container">
-        <div class="row">
-            <div v-for="professional in professionalsByTag" :key="professional.professional.id" class="col-md-3 mb-5">
-                <div v-for="project in professional.professional.projects" :key="project.id">
+        <div class="">
+            <div v-for="professional in professionalsByTag" :key="professional.professional.id" class="row">
+                <div v-for="project in professional.professional.projects" :key="project.id" class="col-md-3 mb-5">
                     <ProjectList :project="project" />
                 </div>
             </div>

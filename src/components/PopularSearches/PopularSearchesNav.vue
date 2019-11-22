@@ -11,9 +11,9 @@
                     :key="tag.id">
                     <div slot="slideContent">
                         <router-link :key="tag.name" class="tag-link" :to="{ name: 'projectsByTag', params: { category: raw_category_name ,tag_name: processTagName(tag.name) }}">
-                        <div class="block">
-                            {{ tag.name }}
-                        </div>
+                            <div class="block">
+                                {{ tag.name }}
+                            </div>
                         </router-link>
                     </div>
                 </vueper-slide>
@@ -138,7 +138,6 @@ h6
 {
     display: none;
 }
-<<<<<<< HEAD
 .tag-link
 {
     font-family: 'Open Sans';
@@ -150,6 +149,3 @@ h6
     text-transform: uppercase;
 }
 </style>
-=======
-</style>
->>>>>>> 8374f6fd9c0591210cf8edf9e7364b51bc7589a3
