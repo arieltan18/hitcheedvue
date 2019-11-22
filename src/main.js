@@ -12,9 +12,10 @@ import VueAxios from 'vue-axios'
 import VueSocialauth from 'vue-social-auth'
 import axios from 'axios';
 import InstantSearch from 'vue-instantsearch';
+import VueMeta from "vue-meta";
 
 
-Vue.use(VueAxios, axios)
+Vue.use(VueAxios, axios);
 Vue.use(VueSocialauth, {
   providers: {
     facebook: {
@@ -22,14 +23,15 @@ Vue.use(VueSocialauth, {
       redirectUri: '/auth/facebook/callback' // Your client app URL
     }
   }
-})
+});
 
-Vue.use(BootstrapVue)
-Vue.use(VueSimpleMarkdown)
-Vue.use(VueChatScroll)
-Vue.use(InstantSearch)
+Vue.use(BootstrapVue);
+Vue.use(VueSimpleMarkdown);
+Vue.use(VueChatScroll);
+Vue.use(InstantSearch);
+Vue.use(VueMeta);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 
 new Vue({

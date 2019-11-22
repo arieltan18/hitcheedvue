@@ -1,7 +1,7 @@
 <template>
     <div>
         <router-link class="project-img" :to="{ name: 'project', params: { slug: this.project.slug }}">
-            <img class="ar-image mb-3" :src="image" alt="project">
+            <img class="ar-image mb-3" :src="resizedImageUrl(image, 200,200)" alt="project">
         </router-link>
         <div class="bottom-centered text-center">
             <h2 class="project-name">{{ project.name }}</h2>
@@ -22,6 +22,8 @@
 
 <script>
 
+import {resizedImageUrl} from "../../helpers";
+
 export default {
     name: "ProjectList",
     data() {
@@ -30,6 +32,9 @@ export default {
         }
     },
     props: ['project'],
+    methods:{
+        resizedImageUrl,
+    },
     computed: {
         slug: function () {
             const routerLink = this.project.slug;

@@ -33,6 +33,12 @@ export default {
         ProfessionalReviews,
         ProfessionalProjects
     },
+    metaInfo(){
+        return {
+            title: this.professionalContent.name,
+            description: this.professionalContent.name,
+        }
+    },
     data() {
         return {
             professional_slug: '',
@@ -42,10 +48,10 @@ export default {
         }
     },
     methods: {
-        getProfessionalContent () 
+        getProfessionalContent ()
         {
             const url = process.env.VUE_APP_HITCHEED_API + "/v1/professionals/slug/" + this.professional_slug;
-            
+
             axios.defaults.headers = {
                 'Content-Type': 'application/json',
                 'cache-control': 'no-cache'

@@ -21,7 +21,7 @@
                 <ProfessionalReviews :professionalContent="projectContent" :reviews="reviews" :totalReviews="totalReviews"/>
             </div>
         </div>
-            
+
     </div>
 </template>
 
@@ -37,8 +37,13 @@ export default {
     components: {
         ProfessionalReviews,
         ProfessionalProjects,
-        VueperSlides, 
+        VueperSlides,
         VueperSlide
+    },
+    metaInfo(){
+        return {
+            title: this.projectContent.project_name
+        }
     },
     data() {
         return {

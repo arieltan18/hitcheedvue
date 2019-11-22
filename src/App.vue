@@ -20,6 +20,9 @@ import chatkit from "./services/Chatkit";
 
 export default {
   name: 'app',
+    metaInfo:{
+      titleTemplate: '%s | Hitcheed.com'
+    },
   components: {
     HeroImage,
     BrownNavHeader,
