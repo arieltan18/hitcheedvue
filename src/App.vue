@@ -22,6 +22,16 @@ export default {
   name: 'app',
     metaInfo:{
       title: 'Hitcheed | Singapore Wedding Services | Wedding Planning Website',
+        meta:[
+            {
+                name: 'description',
+                content: 'Hitcheed is a wedding planning website that connects engaged couples with Singapore &amp; overseas wedding professionals to make that dream wedding come true.'
+            },
+            {
+                name: 'og:image',
+                content: 'https://d1qc9wtuffqlue.cloudfront.net/images/hero-photo/image/1573708412-foto-pettine-756112-unsplash.png'
+            }
+        ],
       titleTemplate: '%s | Hitcheed.com'
     },
   components: {
