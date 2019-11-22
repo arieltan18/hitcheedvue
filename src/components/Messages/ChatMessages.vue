@@ -2,7 +2,7 @@
     <div :key="chatId" class="mesgs">
         <div class="msg_history" v-chat-scroll="{always: false, smooth: false, scrollonremoved:true, smoothonremoved: false}">
             <div v-for="message in messages" v-bind:key="message.id" :class="{incoming_msg: !message.outgoing, outgoing_msg: message.outgoing}">
-                <div v-if="!message.outgoing" class="incoming_msg_img"> <img :src="message.senderAvatar" :alt="message.senderName"> </div>
+                <div v-if="!message.outgoing" class="incoming_msg_img"> <img :src="resizedImageUrl(message.senderAvatar, 50,50)" :alt="message.senderName"> </div>
                 <div :class="{received_msg: !message.outgoing, sent_msg: message.outgoing}">
                     <div :class="{received_withd_msg: !message.outgoing}">
 
@@ -25,6 +25,7 @@
 
 <script>
     import chatkit from "../../services/Chatkit";
+    import {resizedImageUrl} from "../../helpers";
 
     export default {
         name: "ChatMessages",
@@ -49,6 +50,7 @@
             }
         },
         methods:{
+          resizedImageUrl,
           sendMessage(){
               if(!this.message) return;
 
