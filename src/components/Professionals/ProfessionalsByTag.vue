@@ -43,8 +43,6 @@ export default {
 
         this.tag_name = this.capitalizeText(this.tag_name);
 
-        console.log(this.tag_name);
-
         this.category_name = this.$route.params.category;
 
         if(this.$route.params.category.includes('-'))
