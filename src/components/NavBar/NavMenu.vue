@@ -7,7 +7,10 @@
                 <img class="logo-img" alt="Hitcheed Private Limited [SG]" v-else :src="blackLogo" height="38px;"/>
             </b-navbar-brand>
 
-            <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+                <div class="ml-auto">
+                    <b-navbar-toggle target="search-collapse" class="ml-1 border-0"><i class="fa fa-search"></i></b-navbar-toggle>
+                    <b-navbar-toggle target="nav-collapse" class="ml-1 border-0"></b-navbar-toggle>
+                </div>
 
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav class="mx-auto">
@@ -64,13 +67,17 @@
                     <b-nav-item :to="{ name: 'articlesHome'}">Articles</b-nav-item>
                     <b-nav-item :to="{name:'messages'}">Events & Promotions</b-nav-item>
                 </b-navbar-nav>
-
-                <!-- Right aligned nav items -->
                 <b-navbar-nav class="ml-auto">
-                    <b-nav-form>
-                        <div class="ml-auto">
+                    <b-nav-form class="d-none d-lg-block">
                             <SearchBar theme="black"/>
-                        </div>
+                    </b-nav-form>
+                </b-navbar-nav>
+            </b-collapse>
+
+            <b-collapse id="search-collapse">
+                <b-navbar-nav class="vw-100 px-4 pt-4 pb-1">
+                    <b-nav-form>
+                            <SearchBar :expanded="true" theme="black"/>
                     </b-nav-form>
                 </b-navbar-nav>
             </b-collapse>

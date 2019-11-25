@@ -3,9 +3,9 @@
     background-color: transparent !important;
   }
 
-  #browse-menu:hover .browse-dropdown{
-    display: block;
-  }
+  /*#browse-menu:hover .browse-dropdown{*/
+    /*display: block;*/
+  /*}*/
 
   .browse-dropdown{
     position: fixed !important;

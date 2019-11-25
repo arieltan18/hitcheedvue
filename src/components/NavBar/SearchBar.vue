@@ -7,7 +7,7 @@
                 @keypress.enter="search"
                 v-model="query"
                 size="sm"
-                :class="`keyword-field search-width input-${theme} ${showSearch && 'show-input'}`"
+                :class="`keyword-field search-width input-${theme} ${showSearchInput && 'show-input'}`"
                 placeholder="Search Locations, Vendors, Articles"
         >
         <div
@@ -52,7 +52,7 @@
 
     export default {
         name: "SearchBar",
-        props: ['theme'],
+        props: ['theme', 'expanded'],
         data(){
             return {
                 showSearch: false,
@@ -67,6 +67,9 @@
         computed:{
             showResults(){
                 return (this.inputFocused || this.resultFocused) && !!this.query
+            },
+            showSearchInput(){
+                return this.expanded || this.showSearch;
             }
         },
         methods:{
@@ -109,6 +112,17 @@
         margin-left: 5px !important;
     }
 
+    .show-input
+    {
+        width:250px !important;
+    }
+
+    @media (max-width: 768px) {
+        .keyword-field{
+            width: calc(100% - 50px) !important;
+        }
+    }
+
     .input-black
     {
         font-weight: 400;
@@ -122,11 +136,6 @@
         outline: none;
         box-shadow: none;
         border-bottom: 1px solid #26140E;
-    }
-
-    .show-input
-    {
-        width:235px !important;
     }
 
     .input-white::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -160,6 +169,7 @@
         font-size: 16px;
     }
     .search-wrapper{
+        width:100%;
         display: inline-block;
         position: relative;
     }
@@ -169,7 +179,7 @@
         outline: 0;
         top: 30px;
         right: 0;
-        width: 400px;
+        left: 0;
         max-height: calc(100vh - 150px);
         overflow: auto;
         position: absolute;
