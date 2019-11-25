@@ -2,7 +2,7 @@
     <div class="container">
         <h6>Popular {{ this.category_name }} Searches</h6>
         <div class="row d-flex justify-content-between text-left pl-2">
-            <vueper-slides class="tag-slider no-shadow" :visible-slides="6" slide-multiple :slide-ratio="1/4" arrows-outside :bullets="false" transition-speed="250" style="width:100%;">
+            <vueper-slides dragging-distance="10" prevent-y-scroll class="tag-slider no-shadow" :visible-slides="6" slide-multiple :slide-ratio="1/4" arrows-outside :bullets="false" transition-speed="250" style="width:100%;">
                 <div slot="arrowLeft" color="white" large class="hide"><img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px"></div>
                 <div slot="arrowRight" color="white" large v-if="tags.data.length<6" :class="hide">
                 </div>
@@ -10,7 +10,7 @@
                     v-for="tag in tags.data"
                     :key="tag.id">
                     <div slot="slideContent">
-                        <router-link :key="tag.name" class="tag-link" :to="{ name: 'projectsByTag', params: { category: raw_category_name ,tag_name: processTagName(tag.name) }}">
+                        <router-link :key="tag.name" class="tag-link" :to="{ name: 'professionalsByTag', params: { category: raw_category_name ,tag_name: processTagName(tag.name) }}">
                             <div class="block">
                                 {{ tag.name }}
                             </div>
@@ -147,5 +147,10 @@ h6
     color: #26140E;
     text-align: center;
     text-transform: uppercase;
+}
+.router-link-active div
+{
+    background-color: #0B0B0B;
+    color: #ffffff;
 }
 </style>

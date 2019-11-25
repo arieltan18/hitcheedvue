@@ -6,14 +6,14 @@ import Articles from '../components/Articles/Articles'
 import ProfessionalContent from '../components/Professionals/ProfessionalContent'
 import ProfessionalHome from '../components/Professionals/ProfessionalHome'
 import ProfessionalCategory from '../components/Professionals/ProfessionalCategory'
-import ProjectsByCategory from '../components/Projects/ProjectsByCategory'
-import ProjectsByCategoryAll from '../components/Projects/ProjectsByCategoryAll'
-import ProjectsByAllCategories from '../components/Projects/ProjectsByAllCategories'
+// import ProjectsByCategory from '../components/Projects/ProjectsByCategory'
+// import ProjectsByCategoryAll from '../components/Projects/ProjectsByCategoryAll'
+// import ProjectsByAllCategories from '../components/Projects/ProjectsByAllCategories'
 import ProfessionalsByCategory from '../components/Professionals/ProfessionalsByCategory'
 import ProfessionalsByCategoryAll from '../components/Professionals/ProfessionalsByCategoryAll'
 import ProfessionalsByAllCategories from '../components/Professionals/ProfessionalsByAllCategories'
 import ProjectContent from '../components/Projects/ProjectContent'
-import ProjectsByTag from '../components/Projects/ProjectsByTag'
+import ProfessionalsByTag from '../components/Professionals/ProfessionalsByTag'
 import Messages from '../components/Messages'
 import Profile from '../components/Profile'
 import Search from '../components/Search'
@@ -86,6 +86,11 @@ export default new VueRouter({
             path: '/all/category',
             component: ProfessionalsByAllCategories
         },
+        {
+            name: 'professionalsByTag',
+            path: '/category/:category/:tag_name',
+            component: ProfessionalsByTag
+        },
         // {
         //     name: 'projectsByCategory',
         //     path: '/category/:category',
@@ -119,10 +124,6 @@ export default new VueRouter({
                 template: '<div class="auth-component"></div>'
             }
         },
-        {
-            name: 'projectsByTag',
-            path: '/category/:category/:tag_name',
-            component: ProjectsByTag
-        }
+        
     ]
 })

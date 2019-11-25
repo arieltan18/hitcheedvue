@@ -123,6 +123,7 @@ export const PROFESSIONAL_FILTER_BY_TAGS = gql`
       profile_image,
       tag_name,
       rating,
+      country,
       projects
       {
         id
