@@ -98,7 +98,7 @@ export const PROMOTIONS = gql`
 
 export const PROMOTIONS_PAGINATE = gql`
   query promotions_paginate($first: Int!, $page: Int!){
-    promotions_paginate($first: Int!, $page: Int!){
+    promotions_paginate(first: $first, page: $page){
       data
       {
         id,

@@ -1,6 +1,6 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
     <div>
-        <b-navbar id="nav-menu" toggleable="lg" fixed="top" type="light" variant="white" :class="['py-4', {transparent: transparent && !scrolled}]">
+        <b-navbar id="nav-menu" toggleable="lg" fixed="top" type="light" variant="white" :class="['py-4', { transparent: transparent && !scrolled }, { border: !transparent }]">
             <div class="container">
             <b-navbar-brand to="/">
                 <img class="logo-img" alt="Hitcheed Private Limited [SG]" v-if="transparent && !scrolled" :src="whiteLogo" height="38px;"/>
@@ -16,56 +16,56 @@
                 <b-navbar-nav class="mx-auto">
                     <b-nav-item-dropdown menu-class="browse-dropdown" id="browse-menu" :no-caret="true" text="Browse" right>
                         <template id="123" v-slot:default>
-                            <b-dropdown-item :to="{ name: 'projectsByCategory', params: { category: 'hotels' }}">
+                            <b-dropdown-item :to="{ name: 'professionalsByCategory', params: { category: 'hotels' }}">
                                 Hotels
                             </b-dropdown-item>
-                            <b-dropdown-item :to="{ name: 'projectsByCategory', params: { category: 'venues' }}">
+                            <b-dropdown-item :to="{ name: 'professionalsByCategory', params: { category: 'venues' }}">
                                 Venues
                             </b-dropdown-item>
-                            <b-dropdown-item :to="{ name: 'projectsByCategory', params: { category: 'bridal-studios' }}">
+                            <b-dropdown-item :to="{ name: 'professionalsByCategory', params: { category: 'bridal-studios' }}">
                                 Bridal Studios
                             </b-dropdown-item>
-                            <b-dropdown-item :to="{ name: 'projectsByCategory', params: { category: 'photographers' }}">
+                            <b-dropdown-item :to="{ name: 'professionalsByCategory', params: { category: 'photographers' }}">
                                 Photographers
                             </b-dropdown-item>
-                            <b-dropdown-item :to="{ name: 'projectsByCategory', params: { category: 'videographers' }}">
+                            <b-dropdown-item :to="{ name: 'professionalsByCategory', params: { category: 'videographers' }}">
                                 Videographers
                             </b-dropdown-item>
-                            <b-dropdown-item :to="{ name: 'projectsByCategory', params: { category: 'florists' }}">
+                            <b-dropdown-item :to="{ name: 'professionalsByCategory', params: { category: 'florists' }}">
                                 Florists
                             </b-dropdown-item>
-                            <b-dropdown-item :to="{ name: 'projectsByCategory', params: { category: 'invitation-and-wedding-favours' }}">
+                            <b-dropdown-item :to="{ name: 'professionalsByCategory', params: { category: 'invitation-and-wedding-favours' }}">
                                 Invitation & wedding favours
                             </b-dropdown-item>
-                            <b-dropdown-item :to="{ name: 'projectsByCategory', params: { category: 'event-styling-and-rental' }}">
+                            <b-dropdown-item :to="{ name: 'professionalsByCategory', params: { category: 'event-styling-and-rental' }}">
                                 event styling & rental
                             </b-dropdown-item>
-                            <b-dropdown-item :to="{ name: 'projectsByCategory', params: { category: 'hair-and-makeup' }}">
+                            <b-dropdown-item :to="{ name: 'professionalsByCategory', params: { category: 'hair-and-makeup' }}">
                                 hair & makeup
                             </b-dropdown-item>
-                            <b-dropdown-item :to="{ name: 'projectsByCategory', params: { category: 'live-band-and-emcee' }}">
+                            <b-dropdown-item :to="{ name: 'professionalsByCategory', params: { category: 'live-band-and-emcee' }}">
                                 live band & emcee
                             </b-dropdown-item>
-                            <b-dropdown-item :to="{ name: 'projectsByCategory', params: { category: 'wedding-jewellery' }}">
+                            <b-dropdown-item :to="{ name: 'professionalsByCategory', params: { category: 'wedding-jewellery' }}">
                                 Wedding Jewellery
                             </b-dropdown-item>
-                            <b-dropdown-item :to="{ name: 'projectsByCategory', params: { category: 'catering' }}">
+                            <b-dropdown-item :to="{ name: 'professionalsByCategory', params: { category: 'catering' }}">
                                 Catering
                             </b-dropdown-item>
-                            <b-dropdown-item :to="{ name: 'projectsByCategory', params: { category: 'photo-booth' }}">
+                            <b-dropdown-item :to="{ name: 'professionalsByCategory', params: { category: 'photo-booth' }}">
                                 photo booth
                             </b-dropdown-item>
-                            <b-dropdown-item :to="{ name: 'projectsByCategory', params: { category: 'other-countries' }}">
+                            <b-dropdown-item :to="{ name: 'professionalsByCategory', params: { category: 'other-countries' }}">
                                 other countries
                             </b-dropdown-item>
-                            <b-dropdown-item :to="{ name: 'projectsByAllCategories'}">
+                            <b-dropdown-item :to="{ name: 'professionalsByAllCategories'}">
                                 all categories
                             </b-dropdown-item>
                         </template>
                     </b-nav-item-dropdown>
-                    <b-nav-item :to="{name:'messages'}">Messages</b-nav-item>
-                    <b-nav-item :to="{ name: 'articlesHome'}">Articles</b-nav-item>
-                    <b-nav-item :to="{name:'messages'}">Events & Promotions</b-nav-item>
+                    <b-nav-item :to="{ name:'messages' }" :class="[{white: transparent && !scrolled}]">Messages</b-nav-item>
+                    <b-nav-item :to="{ name:'articlesHome'}">Articles</b-nav-item>
+                    <b-nav-item :to="{ name:'events&promotions' }">Events & Promotions</b-nav-item>
                 </b-navbar-nav>
                 <b-navbar-nav class="ml-auto">
                     <b-nav-form class="d-none d-lg-block">
@@ -135,13 +135,35 @@
         margin-top: 45px;
     }
 
-    .nav-link, .nav-item{
+    #nav-menu.border
+    {
+        border-bottom: 1px solid black;
+    }
+
+    .nav-link, .nav-item, .nav-link span{
         margin: 0 5px;
         font-size: 13px;
         letter-spacing: 1.2px;
         font-weight: 600;
         text-transform: uppercase;
         font-family: Open Sans,serif;
+        color: #26140E !important;    
+    }
+
+    ::v-deep .navbar-light .navbar-nav .nav-link
+    {
+        color: #26140E !important;
+    }
+
+    ::v-deep .dropdown-item
+    {
+        color: #26140E !important;
+        font-weight: bold;
+    }
+
+    .white
+    {
+        color: #ffffff !important;
     }
 
 </style>
