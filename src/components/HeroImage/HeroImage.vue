@@ -1,21 +1,14 @@
 <template>
-    <div class="hero-image" :style="{ 'background-image': 'url(' + this.heroImage + ')'}">  
-        <TransparentNavHeader></TransparentNavHeader>
-        <WhiteNavBar></WhiteNavBar>
+    <div class="hero-image" :style="{ 'background-image': 'url(' + this.heroImage + ')'}">
     </div>
 </template>
 
 <script>
-import WhiteNavBar from '../NavBar/WhiteNavBar.vue';
-import TransparentNavHeader from '../NavBar/TransparentNavHeader.vue';
 import axios from 'axios';
 
 export default {
   name: 'HeroImage',
-  components: {
-    WhiteNavBar,
-    TransparentNavHeader
-  },
+  components: {},
   data() {
     return {
       heroImage: ''

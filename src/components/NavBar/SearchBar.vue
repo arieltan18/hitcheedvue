@@ -1,12 +1,13 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
-    <div class="search-wrapper text-left">
+    <div class="text-left search-wrapper">
+        <i @click="toggleSearch" class="fa fa-search search-icon" aria-hidden="true" :style="`color:${theme};`"></i>
         <input
                 @focus="inputFocus(true)"
                 @blur="inputFocus(false)"
                 @keypress.enter="search"
                 v-model="query"
                 size="sm"
-                :class="`${theme === 'black'? 'keyword-field-black' : 'keyword-field'} search-width input-${theme}`"
+                :class="`keyword-field search-width input-${theme} ${showSearchInput && 'show-input'}`"
                 placeholder="Search Locations, Vendors, Articles"
         >
         <div
@@ -51,9 +52,10 @@
 
     export default {
         name: "SearchBar",
-        props: ['theme'],
+        props: ['theme', 'expanded'],
         data(){
             return {
+                showSearch: false,
                 inputFocused:false,
                 resultFocused:false,
                 query: '',
@@ -65,6 +67,9 @@
         computed:{
             showResults(){
                 return (this.inputFocused || this.resultFocused) && !!this.query
+            },
+            showSearchInput(){
+                return this.expanded || this.showSearch;
             }
         },
         methods:{
@@ -78,6 +83,9 @@
                     this.resultFocused = focus;
                 }, focus? 0 : 200);
             },
+            toggleSearch(){
+              this.showSearch = !this.showSearch;
+            },
             search(){
                 this.$router.push(`/search?q=${this.query}`);
             }
@@ -88,6 +96,8 @@
 <style scoped>
     .keyword-field
     {
+        transition: all 0.25s;
+        width:0px !important;
         font-weight: 400;
         font-family: 'Cormorant Garamond';
         font-style: italic;
@@ -99,10 +109,21 @@
         outline: none;
         box-shadow: none;
         border-bottom: 1px solid #ffffff;
-        margin-left: -20px;
-        display: none;
+        margin-left: 5px !important;
     }
-    .keyword-field-black
+
+    .show-input
+    {
+        width:250px !important;
+    }
+
+    @media (max-width: 768px) {
+        .keyword-field{
+            width: calc(100% - 50px) !important;
+        }
+    }
+
+    .input-black
     {
         font-weight: 400;
         font-family: 'Cormorant Garamond';
@@ -114,15 +135,9 @@
         background: none;
         outline: none;
         box-shadow: none;
-        border-bottom: 1px solid #ffffff;
-        margin-left: -20px;
-        display: none;
         border-bottom: 1px solid #26140E;
     }
-    .search-width
-    {
-        width:235px !important;
-    }
+
     .input-white::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
         color: #ffffff;
         opacity: 0.7; /* Firefox */
@@ -154,6 +169,7 @@
         font-size: 16px;
     }
     .search-wrapper{
+        width:100%;
         display: inline-block;
         position: relative;
     }
@@ -163,7 +179,7 @@
         outline: 0;
         top: 30px;
         right: 0;
-        width: 400px;
+        left: 0;
         max-height: calc(100vh - 150px);
         overflow: auto;
         position: absolute;
