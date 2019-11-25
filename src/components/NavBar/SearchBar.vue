@@ -114,7 +114,7 @@
 
     .show-input
     {
-        width:250px !important;
+        width:300px !important;
         border-bottom: 1px solid #26140E !important;
     }
 

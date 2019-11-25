@@ -1,11 +1,12 @@
-@media (min-width: 1024px) {
+.outline-none:focus{
+   outline: none;
+   outline: none;
+}
+
+@media (min-width: 1000px) {
   #nav-menu.transparent, #nav-menu.transparent .browse-dropdown{
     background-color: transparent !important;
   }
-
-  /*#browse-menu:hover .browse-dropdown{*/
-    /*display: block;*/
-  /*}*/
 
   .browse-dropdown{
     position: fixed !important;
