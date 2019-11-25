@@ -114,7 +114,7 @@
 
     .show-input
     {
-        width:250px !important;
+        width:300px !important;
     }
 
     @media (max-width: 768px) {
