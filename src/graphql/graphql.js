@@ -8,7 +8,10 @@ export const PROFESSIONALS_BY_CATEGORY = gql`
           slug,
           cover_image,
           around_image,
-          profile_image
+          profile_image,
+          rating
+          country,
+          project
       }
   }
 `
@@ -23,7 +26,8 @@ export const PROFESSIONALS_BY_CATEGORY_PAGINATE = gql`
         cover_image,
         around_image,
         profile_image,
-        rating
+        rating,
+        country
       }
     }
   }

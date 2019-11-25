@@ -1,18 +1,25 @@
 <template>
     <div>
         <router-link class="professional-img" :to="{ name: 'professional', params: { slug: this.professional.slug }}">
-            <img class="ar-image mb-3" :src="resizedImageUrl(professional.around_image, 400, 400)" alt="professional">
+            <img v-if="professional.around_image" class="ar-image" :src="resizedImageUrl(professional.around_image, 400, 400)" alt="professional">
+            <img v-else-if="professional.cover_image" class="ar-image" :src="resizedImageUrl(professional.cover_image, 400, 400)" alt="professional">
+            <img v-else class="ar-image" :alt="professional.name">
         </router-link>
-        <div class="bottom-centered text-center">
-            <h2 class="professional-name">{{ professional.name }}</h2>
+        <router-link class="link bottom-centered text-center" :to="{ name: 'professional', params: { slug: this.professional.slug }}">
+            <h2 class="professional-name mt-3">{{ professional.name }}</h2>
             <div class="text-left" v-if="professional.rating > 1">
                 <span class="review" v-for="(value, index) in parseInt(professional.rating)" :key="index">
                     <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group129.svg">
                 </span>
                 <span class="ml-1 review">({{professional.rating}})</span>
             </div>
-            <div class="text-left location"></div>
-        </div>
+            <div class="text-left location">
+                <div class="mr-2 d-inline pr-2">
+                    <img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group47.svg">
+                    <span class="ml-2 review">{{ professional.country ? professional.country : professional.country }}</span>
+                </div>
+            </div>
+        </router-link>
     </div>
 </template>
 
@@ -100,5 +107,11 @@ p
     font-family: 'Open Sans';
     color: rgba(38, 20, 14, 0.5);
 }
+
+.link, .link:hover
+{
+    text-decoration: none;
+}
+
 </style>
 

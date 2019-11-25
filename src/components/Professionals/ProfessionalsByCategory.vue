@@ -6,7 +6,7 @@
             </div>
         </div>
         <div class="container">
-            <!-- <PopularSearchesNav></PopularSearchesNav> -->
+            <PopularSearchesNav></PopularSearchesNav>
         </div>
         <ProfessionalSection :category_id="this.category.id ? this.category.id : '1'" :first="8" :page="1"></ProfessionalSection>
         <ProfessionalSection :category_id="this.category.id ? this.category.id : '1'" :first="8" :page="2"></ProfessionalSection>
@@ -46,7 +46,7 @@ export default {
     },
     data() {
         return {
-            // professionals: [],
+            professionals: [],
             category_name: '',
         }
     },
@@ -72,35 +72,7 @@ export default {
             {
                 return data.category_filter;
             }
-        },
-        // //query the first 8 professionals by category with pagination
-        // professionals: {
-        //     query: PROFESSIONALS_BY_CATEGORY_PAGINATE,
-        //     variables() {
-        //         return {
-        //             category_id: this.category.id,
-        //             first : 8,
-        //             page: 1,
-        //         }
-        //     },
-        //     update(data){
-        //         return data.professionals_by_category_paginate;
-        //     }
-        // },
-        // //query the second 8 professionals by category with pagination
-        // professionals2: {
-        //     query: PROFESSIONALS_BY_CATEGORY_PAGINATE,
-        //     variables() {
-        //         return {
-        //             category_id: this.category.id,
-        //             first : 8,
-        //             page: 2,
-        //         }
-        //     },
-        //     update(data){
-        //         return data.professionals_by_category_paginate;
-        //     }
-        // }
+        }
     }
 }
 </script>

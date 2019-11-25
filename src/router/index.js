@@ -8,6 +8,7 @@ import ProfessionalHome from '../components/Professionals/ProfessionalHome'
 import ProfessionalCategory from '../components/Professionals/ProfessionalCategory'
 import ProjectsByCategory from '../components/Projects/ProjectsByCategory'
 import ProjectsByCategoryAll from '../components/Projects/ProjectsByCategoryAll'
+import ProfessionalsByCategory from '../components/Professionals/ProfessionalsByCategory'
 import ProfessionalsByCategoryAll from '../components/Professionals/ProfessionalsByCategoryAll'
 import ProjectsByAllCategories from '../components/Projects/ProjectsByAllCategories'
 import ProjectContent from '../components/Projects/ProjectContent'
@@ -70,20 +71,30 @@ export default new VueRouter({
             component: Messages,
         },
         {
-            name: 'projectsByCategory',
+            name: 'professionalsByCategory',
             path: '/category/:category',
-            component: ProjectsByCategory
+            component: ProfessionalsByCategory
         },
         {
-            name: 'projectsByCategoryAll',
+            name: 'professionalsByCategoryAll',
             path: '/category/:category/all',
-            component: ProjectsByCategoryAll
+            component: ProfessionalsByCategoryAll
         },
-        {
-            name: 'projectsByAllCategories',
-            path: '/all/category',
-            component: ProjectsByAllCategories
-        },
+        // {
+        //     name: 'projectsByCategory',
+        //     path: '/category/:category',
+        //     component: ProjectsByCategory
+        // },
+        // {
+        //     name: 'projectsByCategoryAll',
+        //     path: '/category/:category/all',
+        //     component: ProjectsByCategoryAll
+        // },
+        // {
+        //     name: 'projectsByAllCategories',
+        //     path: '/all/category',
+        //     component: ProjectsByAllCategories
+        // },
         {
             name: 'professionalsByCategoryAll',
             path: '/category/:category/all',
