@@ -5,6 +5,7 @@ import VueSimpleMarkdown from 'vue-simple-markdown'
 import 'vue-simple-markdown/dist/vue-simple-markdown.css'
 import BootstrapVue from 'bootstrap-vue'
 import './assets/css/bootstrap.scss';
+import './assets/css/style.css';
 import store from './store/index.js';
 import { createProvider } from './vue-apollo'
 import VueChatScroll from 'vue-chat-scroll'

@@ -1,6 +1,6 @@
 <template>
     <div class="navheader">
-        <b-navbar id="navheader-bar" class="white-header-top">
+        <b-navbar id="navheader-bar" :class="{'white-header-top': !scrolled && transparent, 'brown-header-top': scrolled || !transparent}">
             <div class="container">
                 <b-navbar-nav class="ml-auto">
                     <b-navbar-nav v-if="!loggedIn">
@@ -157,6 +157,7 @@ export default {
             },
             loginError: false,
             response: [],
+            scrolled: false,
         }
     },
     components: {
@@ -165,6 +166,9 @@ export default {
     computed: {
         loggedIn() {
             return this.$store.getters.loggedIn;
+        },
+        transparent(){
+            return this.$route.path === '/';
         },
         user() {
             return this.$store.getters.user;
@@ -262,26 +266,18 @@ export default {
             // ...
             this.$forceUpdate();  // Notice we have to use a $ here
             // ...
+        },
+        onScroll(){
+            if(!this.scrolled && window.scrollY > 100){
+                this.scrolled = true;
+            } else if(this .scrolled && window.scrollY < 100){
+                this.scrolled = false;
+            }
         }
     },
     mounted()
     {
-        $(document).scroll(function ()
-        {
-            var $nav = $(".navheader");
-            if($(this).scrollTop() > $nav.height())
-            {
-                $('#navheader-bar').removeClass('white-header-top');
-                $('#navheader-bar').addClass('brown-header-top');
-            }
-            else
-            {
-                $('#navheader-bar').removeClass('brown-header-top');
-                $('#navheader-bar').addClass('white-header-top');
-            }
-
-        });
-
+        window.addEventListener('scroll', this.onScroll);
     },
 }
 </script>
@@ -291,7 +287,7 @@ export default {
 {
     position: fixed;
     width: 100%;
-    z-index: 501;
+    z-index: 1050;
 }
 
 .white-header-top

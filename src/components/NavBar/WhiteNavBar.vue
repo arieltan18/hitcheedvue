@@ -1,117 +1,121 @@
 <template>
-    <div class="navbar-fixed-top">
+    <div toggleable="lg" class="navbar-fixed-top">
         <b-navbar>
             <div class="container nav-bar">
                 <b-navbar-brand class="logo-brand" href="/">
                     <img class="logo-img" alt="Hitcheed Private Limited [SG]" :src="whiteLogo" height="38px;"/>
                 </b-navbar-brand>
-                <div class="navbar-nav">
-                    <div class="nav-bar-link nav-bar-dropdown" :style="whiteStyle">
-                        <div class="browse-menu-link">
-                            Browse
-                            <hr class="browse-border">
+
+                <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+                    <b-collapse id="nav-collapse" is-nav>
+                    <div class="navbar-nav">
+                        <div class="nav-bar-link nav-bar-dropdown" :style="whiteStyle">
+                            <div class="browse-menu-link">
+                                Browse
+                                <hr class="browse-border">
+                            </div>
                         </div>
-                    </div>
-                    <div class="dropdown-content">
-                        <div class="nav-content nav-text text-center">
-                            <ul class="column1 text-left">
-                                <li>
-                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'hotels' }}">
-                                        Hotels
-                                    </router-link>
-                                </li>
-                                <li>
-                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'venues' }}">
-                                        Venues
-                                    </router-link>
-                                </li>
-                                <li>
-                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'bridal-studios' }}">
-                                        Bridal Studios
-                                    </router-link>
-                                </li>
-                                <li>
-                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'photographers' }}">
-                                        Photographers
-                                    </router-link>
-                                </li>
-                                <li>
-                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'videographers' }}">
-                                        Videographers
-                                    </router-link>
-                                </li>
-                            </ul>
-                            <ul class="column2 text-left">
-                                <li>
-                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'florists' }}">
-                                        Florists
-                                    </router-link>
-                                </li>
-                                <li>
-                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'invitation-and-wedding-favours' }}">
-                                        Invitation & wedding favours
-                                    </router-link>
-                                </li>
-                                <li>
-                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'event-styling-and-rental' }}">
-                                        event styling & rental
-                                    </router-link>
-                                </li>
-                                <li>
-                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'hair-and-makeup' }}">
-                                        hair & makeup
-                                    </router-link>
-                                </li>
-                                <li>
-                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'live-band-and-emcee' }}">
-                                        live band & emcee
-                                    </router-link>
-                                </li>
-                            </ul>
-                            <ul class="column3 text-left">
-                                <li>
-                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'wedding-jewellery' }}">
-                                        Wedding Jewellery
-                                    </router-link>
-                                </li>
-                                <li>
-                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'catering' }}">
-                                        Catering
-                                    </router-link>
-                                </li>
-                                <li>
-                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'photo-booth' }}">
-                                        photo booth
-                                    </router-link>
-                                </li>
-                                <li>
-                                    <router-link :to="{ name: 'projectsByCategory', params: { category: 'other-countries' }}">
-                                        other countries
-                                    </router-link>
-                                </li>
-                                <li>
-                                    <router-link :to="{ name: 'projectsByAllCategories'}">
-                                        all categories
-                                    </router-link>
-                                </li>
-                            </ul>
+                        <div class="dropdown-content">
+                            <div class="nav-content nav-text text-center">
+                                <ul class="column1 text-left">
+                                    <li>
+                                        <router-link :to="{ name: 'projectsByCategory', params: { category: 'hotels' }}">
+                                            Hotels
+                                        </router-link>
+                                    </li>
+                                    <li>
+                                        <router-link :to="{ name: 'projectsByCategory', params: { category: 'venues' }}">
+                                            Venues
+                                        </router-link>
+                                    </li>
+                                    <li>
+                                        <router-link :to="{ name: 'projectsByCategory', params: { category: 'bridal-studios' }}">
+                                            Bridal Studios
+                                        </router-link>
+                                    </li>
+                                    <li>
+                                        <router-link :to="{ name: 'projectsByCategory', params: { category: 'photographers' }}">
+                                            Photographers
+                                        </router-link>
+                                    </li>
+                                    <li>
+                                        <router-link :to="{ name: 'projectsByCategory', params: { category: 'videographers' }}">
+                                            Videographers
+                                        </router-link>
+                                    </li>
+                                </ul>
+                                <ul class="column2 text-left">
+                                    <li>
+                                        <router-link :to="{ name: 'projectsByCategory', params: { category: 'florists' }}">
+                                            Florists
+                                        </router-link>
+                                    </li>
+                                    <li>
+                                        <router-link :to="{ name: 'projectsByCategory', params: { category: 'invitation-and-wedding-favours' }}">
+                                            Invitation & wedding favours
+                                        </router-link>
+                                    </li>
+                                    <li>
+                                        <router-link :to="{ name: 'projectsByCategory', params: { category: 'event-styling-and-rental' }}">
+                                            event styling & rental
+                                        </router-link>
+                                    </li>
+                                    <li>
+                                        <router-link :to="{ name: 'projectsByCategory', params: { category: 'hair-and-makeup' }}">
+                                            hair & makeup
+                                        </router-link>
+                                    </li>
+                                    <li>
+                                        <router-link :to="{ name: 'projectsByCategory', params: { category: 'live-band-and-emcee' }}">
+                                            live band & emcee
+                                        </router-link>
+                                    </li>
+                                </ul>
+                                <ul class="column3 text-left">
+                                    <li>
+                                        <router-link :to="{ name: 'projectsByCategory', params: { category: 'wedding-jewellery' }}">
+                                            Wedding Jewellery
+                                        </router-link>
+                                    </li>
+                                    <li>
+                                        <router-link :to="{ name: 'projectsByCategory', params: { category: 'catering' }}">
+                                            Catering
+                                        </router-link>
+                                    </li>
+                                    <li>
+                                        <router-link :to="{ name: 'projectsByCategory', params: { category: 'photo-booth' }}">
+                                            photo booth
+                                        </router-link>
+                                    </li>
+                                    <li>
+                                        <router-link :to="{ name: 'projectsByCategory', params: { category: 'other-countries' }}">
+                                            other countries
+                                        </router-link>
+                                    </li>
+                                    <li>
+                                        <router-link :to="{ name: 'projectsByAllCategories'}">
+                                            all categories
+                                        </router-link>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
+                        <div v-if="loggedIn" class="nav-bar-link" :style="whiteStyle">
+                            <router-link :to="{ name: 'messages' }" class="header-link">Messages</router-link>
+                        </div>
+                        <div class="nav-bar-link" :style="whiteStyle">
+                            <router-link :to="{ name: 'articlesHome'}" class="header-link">
+                                Articles
+                            </router-link>
+                        </div>
+                        <div class="nav-bar-link" :style="whiteStyle">Events & Promotions</div>
                     </div>
-                    <div v-if="loggedIn" class="nav-bar-link" :style="whiteStyle">
-                        <router-link :to="{ name: 'messages' }" class="header-link">Messages</router-link>
+                    <div class="ml-auto">
+                        <i class="fa fa-search search-icon" aria-hidden="true" style="color:white;"></i>
+                        <!--<input size="sm" data="hide" class="keyword-field search-width input-white" placeholder="Search Locations, Vendors, Articles">-->
+                        <SearchBar theme="white"/>
                     </div>
-                    <div class="nav-bar-link" :style="whiteStyle">
-                        <router-link :to="{ name: 'articlesHome'}" class="header-link">
-                            Articles
-                        </router-link>
-                    </div>
-                    <div class="nav-bar-link" :style="whiteStyle">Events & Promotions</div>
-                </div>
-                <div class="ml-auto">
-                    <i class="fa fa-search search-icon" aria-hidden="true" style="color:white;"></i>
-                    <!--<input size="sm" data="hide" class="keyword-field search-width input-white" placeholder="Search Locations, Vendors, Articles">-->
-                    <SearchBar theme="white"/>
-                </div>
+                </b-collapse>
             </div>
         </b-navbar>
     </div>

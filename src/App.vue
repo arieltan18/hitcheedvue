@@ -1,8 +1,7 @@
 <template>
   <div id="app">
+    <NavBar></NavBar>
     <HeroImage v-if="this.$route.path=='/'" />
-    <BrownNavHeader></BrownNavHeader>
-    <BlackNavBar></BlackNavBar>
     <BrowseCategories :route-key="$route.params.category" v-if="(this.$route.name=='projectsByCategory') || (this.$route.name=='projectsByCategoryAll') || (this.$route.name=='projectsByAllCategories')" style="padding-top:200px;"></BrowseCategories>
     <router-view :key="$route.fullPath" v-if="this.$route.path!='/'" :style="(this.$route.name == 'projectsByCategory') || (this.$route.name == 'projectsByCategoryAll') || (this.$route.name=='projectsByAllCategories') ? 'padding-top:50px;' : 'padding-top:162px;'"/>
     <router-view v-else />
@@ -12,11 +11,10 @@
 
 <script>
 import HeroImage from './components/HeroImage/HeroImage.vue';
-import BrownNavHeader from './components/NavBar/BrownNavHeader.vue';
-import BlackNavBar from './components/NavBar/BlackNavBar.vue';
 import BrowseCategories from './components/BrowseCategories/BrowseCategories.vue';
 import Footer from './components/Footer/Footer.vue';
 import chatkit from "./services/Chatkit";
+import NavBar from "./components/NavBar";
 
 export default {
   name: 'app',
@@ -35,9 +33,8 @@ export default {
       titleTemplate: '%s | Hitcheed.com'
     },
   components: {
+    NavBar,
     HeroImage,
-    BrownNavHeader,
-    BlackNavBar,
     BrowseCategories,
     Footer
   },
