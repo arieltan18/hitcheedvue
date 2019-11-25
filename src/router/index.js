@@ -8,9 +8,10 @@ import ProfessionalHome from '../components/Professionals/ProfessionalHome'
 import ProfessionalCategory from '../components/Professionals/ProfessionalCategory'
 import ProjectsByCategory from '../components/Projects/ProjectsByCategory'
 import ProjectsByCategoryAll from '../components/Projects/ProjectsByCategoryAll'
+import ProjectsByAllCategories from '../components/Projects/ProjectsByAllCategories'
 import ProfessionalsByCategory from '../components/Professionals/ProfessionalsByCategory'
 import ProfessionalsByCategoryAll from '../components/Professionals/ProfessionalsByCategoryAll'
-import ProjectsByAllCategories from '../components/Projects/ProjectsByAllCategories'
+import ProfessionalsByAllCategories from '../components/Professionals/ProfessionalsByAllCategories'
 import ProjectContent from '../components/Projects/ProjectContent'
 import ProjectsByTag from '../components/Projects/ProjectsByTag'
 import Messages from '../components/Messages'
@@ -80,6 +81,11 @@ export default new VueRouter({
             path: '/category/:category/all',
             component: ProfessionalsByCategoryAll
         },
+        {
+            name: 'professionalsByAllCategories',
+            path: '/all/category',
+            component: ProfessionalsByAllCategories
+        },
         // {
         //     name: 'projectsByCategory',
         //     path: '/category/:category',
@@ -95,11 +101,6 @@ export default new VueRouter({
         //     path: '/all/category',
         //     component: ProjectsByAllCategories
         // },
-        {
-            name: 'professionalsByCategoryAll',
-            path: '/category/:category/all',
-            component: ProfessionalsByCategoryAll
-        },
         {
 
             name: 'profile',
