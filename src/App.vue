@@ -2,8 +2,8 @@
   <div id="app">
     <NavBar></NavBar>
     <HeroImage v-if="this.$route.path=='/'" />
-    <BrowseCategories :route-key="$route.params.category" v-if="(this.$route.name=='projectsByCategory') || (this.$route.name=='projectsByCategoryAll') || (this.$route.name=='projectsByAllCategories')" style="padding-top:200px;"></BrowseCategories>
-    <router-view :key="$route.fullPath" v-if="this.$route.path!='/'" :style="(this.$route.name == 'projectsByCategory') || (this.$route.name == 'projectsByCategoryAll') || (this.$route.name=='projectsByAllCategories') ? 'padding-top:50px;' : 'padding-top:162px;'"/>
+    <BrowseCategories :route-key="$route.params.category" v-if="(this.$route.name=='professionalsByCategory') || (this.$route.name=='professionalsByCategoryAll') || (this.$route.name=='professionalsByAllCategories') || (this.$route.name=='professionalsByTag')" style="padding-top:200px;"></BrowseCategories>
+    <router-view :key="$route.fullPath" v-if="this.$route.path!='/'" :style="(this.$route.name == 'professionalsByCategory') || (this.$route.name == 'professionalsByCategoryAll') || (this.$route.name=='professionalsByAllCategories') || (this.$route.name=='professionalsByTag') ? 'padding-top:50px;' : 'padding-top:162px;'"/>
     <router-view v-else />
     <Footer />
   </div>

@@ -2,37 +2,51 @@
     <div class="mb-5" >
         <div class="mb-2">
             <div class="col-sm-12 text-center">
-                <h1>{{ this.category_name }}</h1>
+                <h1>{{ this.$route.params.category }}</h1>
             </div>
         </div>
         <div class="container">
             <PopularSearchesNav></PopularSearchesNav>
         </div>
-        <ProfessionalSection :category_id="this.category.id ? this.category.id : '1'" :first="8" :page="1"></ProfessionalSection>
-        <ProfessionalSection :category_id="this.category.id ? this.category.id : '1'" :first="8" :page="2"></ProfessionalSection>
+        <ProjectTagSection :tag_id="this.tags.id"></ProjectTagSection>
+        <ProjectTagSection :tag_id="this.tags.id"></ProjectTagSection>
         <div class="articles-section">
             <RelatedArticles></RelatedArticles>
         </div>
         <div class="container mt-5">
-            <router-link class="see-more-link" :to="{ name: 'professionalsByCategoryAll', params: { category: this.$route.params.category } }">See More {{ this.category_name }}</router-link>
+            <!-- <router-link :key="this.category_name" class="see-more-link" :to="{ name: 'projectsByCategoryAll', params: { category: this.$route.params.category } }">See More {{ this.category_name }}</router-link> -->
         </div>
     </div>
 </template>
 
 <script>
-import ProfessionalSection from './ProfessionalSection.vue';
+import ProjectTagSection from './ProjectTagSection.vue';
 import { CATEGORIES_FILTER } from '../../graphql/graphql.js';
+import { PROFESSIONALS_FILTER_BY_TAGS } from '../../graphql/graphql.js';
+import { TAG_FILTER } from '../../graphql/graphql.js';
 import PopularSearchesNav from "../PopularSearches/PopularSearchesNav.vue";
 import RelatedArticles from "../Articles/RelatedArticles.vue";
+import { CATEGORY } from '../../graphql/graphql.js';
 
 export default {
-    name: "ProfessionalsByCategory",
+    name: "ProjectsByTag",
     components: {
-        ProfessionalSection,
+        ProjectTagSection,
         PopularSearchesNav,
         RelatedArticles
     },
     mounted() {
+
+        this.tag_name = this.$route.params.tag_name;
+
+        if(this.$route.params.tag_name.includes('-'))
+        {
+            this.tag_name = this.$route.params.tag_name.replace(/-/g, ' ');
+        }
+
+        this.tag_name = this.capitalizeText(this.tag_name);
+
+        console.log(this.tag_name);
 
         this.category_name = this.$route.params.category;
 
@@ -42,12 +56,11 @@ export default {
         }
 
         this.category_name = this.capitalizeText(this.category_name);
-
     },
     data() {
         return {
-            professionals: [],
-            category_name: '',
+            tag_name: '',
+            tags: [],
         }
     },
     methods: {
@@ -61,16 +74,28 @@ export default {
         }
     },
     apollo: {
-        category: {
-            query: CATEGORIES_FILTER,
+        tags: {
+            query: TAG_FILTER,
             variables() {
                 return {
-                    name: this.category_name
+                    name: this.tag_name
                 }
             },
             update(data)
             {
-                return data.category_filter;
+                return data.tag_filter;
+            }
+        },
+        category: {
+            query: CATEGORY,
+            variables() {
+                return {
+                    id: this.tags.id
+                }
+            },
+            update(data)
+            {
+                return data.category
             }
         }
     }

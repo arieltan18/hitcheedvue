@@ -2,7 +2,7 @@
     <div class="container">
         <h6>Popular {{ this.category_name }} Searches</h6>
         <div class="row d-flex justify-content-between text-left pl-2">
-            <vueper-slides class="tag-slider no-shadow" :visible-slides="6" slide-multiple :slide-ratio="1/4" arrows-outside :bullets="false" transition-speed="250" style="width:100%;">
+            <vueper-slides :dragging-distance="10" prevent-y-scroll class="tag-slider no-shadow" :visible-slides="6" slide-multiple :slide-ratio="1/4" arrows-outside :bullets="false" transition-speed="250" style="width:100%;">
                 <div slot="arrowLeft" color="white" large class="hide"><img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px"></div>
                 <div slot="arrowRight" color="white" large v-if="tags.data.length<6" :class="hide">
                 </div>
@@ -10,9 +10,11 @@
                     v-for="tag in tags.data"
                     :key="tag.id">
                     <div slot="slideContent">
-                        <div class="block">
-                            {{ tag.name }}
-                        </div>
+                        <router-link :key="tag.name" class="tag-link" :to="{ name: 'professionalsByTag', params: { category: raw_category_name ,tag_name: processTagName(tag.name) }}">
+                            <div class="block">
+                                {{ tag.name }}
+                            </div>
+                        </router-link>
                     </div>
                 </vueper-slide>
             </vueper-slides>
@@ -25,6 +27,7 @@
 import { CATEGORIES_FILTER } from '../../graphql/graphql.js';
 import { TAGS_BY_CATEGORY_BY_PAGINATE } from '../../graphql/graphql.js';
 import { VueperSlides, VueperSlide } from 'vueperslides'
+import { TAG_FILTER } from '../../graphql/graphql.js';
 
 export default {
     name: 'PopularSearchesNav',
@@ -36,21 +39,23 @@ export default {
         return {
             category_name:'',
             category: [],
-            tags: []
+            tags: [],
+            raw_category_name: this.$route.params.category
         }
     },
     mounted() {
 
-        this.category_name = this.$route.params.category;
-
-        if(this.$route.params.category.includes('-'))
+        if(this.$route.params.category)
         {
-            this.category_name = this.$route.params.category.replace(/-/g, ' ');
+            this.category_name = this.$route.params.category;
+
+            if(this.$route.params.category.includes('-'))
+            {
+                this.category_name = this.$route.params.category.replace(/-/g, ' ');
+            }
+
+            this.category_name = this.capitalizeText(this.category_name);
         }
-
-        this.category_name = this.capitalizeText(this.category_name);
-
-        console.log(tags.data);
     },
     methods: {
         capitalizeText(text) {
@@ -58,6 +63,11 @@ export default {
                 .split(' ')
                 .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
                 .join(' ');
+
+            return text;
+        },
+        processTagName(text) {
+            text = text.replace(/\s+/g,'-').toLowerCase();;
 
             return text;
         }
@@ -89,7 +99,7 @@ export default {
             {
                 return data.tags_by_category_paginate;
             }
-        }
+        },
     },
 
 }
@@ -127,5 +137,20 @@ h6
 .hide
 {
     display: none;
+}
+.tag-link
+{
+    font-family: 'Open Sans';
+    font-weight: 600;
+    font-size: 12px;
+    text-decoration: none;
+    color: #26140E;
+    text-align: center;
+    text-transform: uppercase;
+}
+.router-link-active div
+{
+    background-color: #0B0B0B;
+    color: #ffffff;
 }
 </style>

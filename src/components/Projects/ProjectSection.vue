@@ -16,7 +16,7 @@ export default {
     name: 'ProjectSection',
     props: [ 'category_id', 'first', 'page' ],
     data() {
-        return {
+        return { 
             projects: []
         }
     },
@@ -37,7 +37,7 @@ export default {
             update(data){
                 return data.projects_by_category_paginate;
             }
-        },
+        }
     }
 }
 </script>

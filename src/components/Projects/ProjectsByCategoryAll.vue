@@ -7,7 +7,7 @@
         </div>
         <ProjectSection :category_id="this.category.id ? this.category.id : '1'" :first="40" :page="1"></ProjectSection>
         <div class="container mt-5">
-            <a href="" class="see-more-link">See More {{ this.category_name }}</a>
+            <router-link :key="this.category_name" class="see-more-link" :to="{ name: 'projectsByCategoryAll', params: { category: this.$route.params.category } }">See More {{ this.category_name }}</router-link>
         </div>
     </div>
 </template>
