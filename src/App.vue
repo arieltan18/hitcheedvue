@@ -41,10 +41,10 @@ export default {
     BrowseCategories,
     Footer
   },
-    mounted: function () {
-        chatkit.connectUser();
-        this.$store.dispatch('getUser')
-    }
+  mounted: function () {
+      chatkit.connectUser();
+      this.$store.dispatch('getUser')
+  }
 }
 </script>
 

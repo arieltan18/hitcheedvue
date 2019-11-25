@@ -104,7 +104,11 @@
                             Articles
                         </router-link>
                     </div>
-                    <div class="nav-bar-black-link" >Events & Promotions</div>
+                    <div class="nav-bar-black-link">
+                        <router-link :to="{ name: 'events&promotions'}" class="header-link">
+                            Events & Promotions
+                        </router-link>
+                    </div>
                 </div>
                 <div class="ml-auto">
                     <i class="fa fa-search search-black-icon" aria-hidden="true"></i>

@@ -27,7 +27,8 @@ export const PROFESSIONALS_BY_CATEGORY_PAGINATE = gql`
         around_image,
         profile_image,
         rating,
-        country
+        country,
+        status
       }
     }
   }
@@ -91,6 +92,19 @@ export const PROMOTIONS = gql`
       promotion_image,
       date_from,
       valid_to,
+    }
+  }
+`
+
+export const PROMOTIONS_PAGINATE = gql`
+  query promotions_paginate($first: Int!, $page: Int!){
+    promotions_paginate($first: Int!, $page: Int!){
+      data
+      {
+        id,
+        title,
+        cover_image
+      }
     }
   }
 `
