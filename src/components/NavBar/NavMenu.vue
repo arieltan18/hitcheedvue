@@ -8,8 +8,8 @@
             </b-navbar-brand>
 
                 <div class="ml-auto">
-                    <b-navbar-toggle target="search-collapse" class="ml-1 border-0"><i class="fa fa-search"></i></b-navbar-toggle>
-                    <b-navbar-toggle target="nav-collapse" class="ml-1 border-0"></b-navbar-toggle>
+                    <b-navbar-toggle target="search-collapse" class="ml-1 border-0 outline outline-none"><i class="fa fa-search"></i></b-navbar-toggle>
+                    <b-navbar-toggle target="nav-collapse" class="ml-1 border-0 outline-none"></b-navbar-toggle>
                 </div>
 
             <b-collapse id="nav-collapse" is-nav>
@@ -75,7 +75,7 @@
             </b-collapse>
 
             <b-collapse id="search-collapse">
-                <b-navbar-nav class="vw-100 px-4 pt-4 pb-1">
+                <b-navbar-nav class="vw-100 px-0 pr-4 pt-4 pb-1">
                     <b-nav-form>
                             <SearchBar :expanded="true" theme="black"/>
                     </b-nav-form>
