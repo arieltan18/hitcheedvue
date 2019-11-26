@@ -161,6 +161,11 @@
         font-weight: bold;
     }
 
+    .black
+    {
+        color: #26140E !important;
+    }
+
     .white
     {
         color: #ffffff !important;

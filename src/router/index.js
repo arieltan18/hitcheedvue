@@ -18,6 +18,7 @@ import Messages from '../components/Messages'
 import Profile from '../components/Profile'
 import Search from '../components/Search'
 import EventsPromotions from '../components/Events&Promotions/EventsPromotions'
+import Promotions from '../components/Events&Promotions/Promotions'
 
 Vue.use(VueRouter);
 
@@ -107,6 +108,11 @@ export default new VueRouter({
         //     path: '/all/category',
         //     component: ProjectsByAllCategories
         // },
+        {
+            name: 'promotions',
+            path: '/promotions/:title',
+            component: Promotions,
+        },
         {
 
             name: 'profile',
