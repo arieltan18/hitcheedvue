@@ -138,6 +138,9 @@
 </script>
 
 <style scoped>
+    #nav-menu{
+        transition: all 0.25s;
+    }
     #nav-menu.transparent{
         background-color: transparent !important;
     }
