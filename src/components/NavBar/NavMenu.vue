@@ -3,7 +3,7 @@
         <b-navbar id="nav-menu" toggleable="lg" fixed="top" :type="type" variant="white" :class="['py-4', {transparent: isTransparent}, { 'border-bottom': !isTransparent }]">
             <div class="container">
             <b-navbar-brand to="/">
-                <img class="logo-img" alt="Hitcheed Private Limited [SG]" v-if="hasTransparentOnTop && !isScrolled" :src="whiteLogo" height="38px;"/>
+                <img class="logo-img" alt="Hitcheed Private Limited [SG]" v-if="isTransparent" :src="whiteLogo" height="38px;"/>
                 <img class="logo-img" alt="Hitcheed Private Limited [SG]" v-else :src="blackLogo" height="38px;"/>
             </b-navbar-brand>
 
@@ -90,6 +90,7 @@
         components:{
             SearchBar
         },
+        props: ['is-transparent', 'variant', 'theme', 'type'],
         data() {
             return {
                 logo: '/logo.png',
@@ -100,38 +101,6 @@
                 whiteStyle: "color: #ffffff;" ,
                 blackStyle: "color: #26140E;",
             }
-        },
-        computed:{
-            hasTransparentOnTop(){
-                return this.$route.path === '/';
-            },
-            isTransparent(){
-                return this.hasTransparentOnTop && !this.isScrolled;
-            },
-            variant(){
-                return this.isTransparent ? 'white' : 'secondary';
-            },
-            theme(){
-                return this.isTransparent ? 'white' : 'black';
-            },
-            type(){
-                return this.isTransparent? 'dark' : 'light';
-            }
-        },
-        methods:{
-            onScroll(){
-                if(!this.isScrolled && window.scrollY > 100){
-                    this.isScrolled = true;
-                } else if(this .isScrolled && window.scrollY < 100){
-                    this.isScrolled = false;
-                }
-            }
-        },
-        mounted(){
-            window.addEventListener('scroll', this.onScroll);
-        },
-        deactivated(){
-            window.removeEventListener('scroll', this.onScroll);
         },
         name: "NavMenu"
     }

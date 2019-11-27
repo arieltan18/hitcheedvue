@@ -1,6 +1,6 @@
 <template>
     <div class="navheader">
-        <b-navbar id="navheader-bar" :class="{'white-header-top': !scrolled && transparent, 'brown-header-top': scrolled || !transparent}">
+        <b-navbar id="navheader-bar" :class="{'white-header-top': isTransparent, 'brown-header-top': !isTransparent}">
             <div class="container">
                 <b-navbar-nav class="ml-auto">
                     <b-navbar-nav v-if="!loggedIn">
@@ -139,6 +139,7 @@ import { mapGetters } from 'vuex';
 
 export default {
     name: 'NavHeader',
+    props: ['is-transparent'],
     data() {
         return {
             registerInput: {
@@ -267,17 +268,6 @@ export default {
             this.$forceUpdate();  // Notice we have to use a $ here
             // ...
         },
-        onScroll(){
-            if(!this.isScrolled && window.scrollY > 100){
-                this.scrolled = true;
-            } else if(this .isScrolled && window.scrollY < 100){
-                this.scrolled = false;
-            }
-        }
-    },
-    mounted()
-    {
-        window.addEventListener('scroll', this.onScroll);
     },
 }
 </script>
