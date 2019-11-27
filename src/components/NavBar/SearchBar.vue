@@ -97,7 +97,7 @@
     .keyword-field
     {
         transition: all 0.25s;
-        width:0px !important;
+        width:0 !important;
         font-weight: 400;
         font-family: 'Cormorant Garamond';
         font-style: italic;
@@ -112,30 +112,29 @@
         margin-left: 5px !important;
     }
 
+    .input-white
+    {
+        color:#ffffff;
+        border-bottom: 0 solid #ffffff !important;
+    }
+
+    .input-black
+    {
+        color:#26140E;
+        border-bottom: 0 solid #26140E !important;
+    }
+
     .show-input
     {
         width:300px !important;
-        border-bottom: 1px solid #26140E !important;
+        border-bottom-width: 1px !important;
+
     }
 
     @media (max-width: 768px) {
         .keyword-field{
             width: calc(100% - 50px) !important;
         }
-    }
-
-    .input-black
-    {
-        font-weight: 400;
-        font-family: 'Cormorant Garamond';
-        font-style: italic;
-        font-size: 16px;
-        color:#26140E;
-        opacity: 0.7;
-        border:none;
-        background: none;
-        outline: none;
-        box-shadow: none;
     }
 
     .input-white::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
