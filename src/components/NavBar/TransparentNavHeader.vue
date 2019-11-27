@@ -157,7 +157,7 @@ export default {
             },
             loginError: false,
             response: [],
-            scrolled: false,
+            isScrolled: false,
         }
     },
     components: {
@@ -167,7 +167,7 @@ export default {
         loggedIn() {
             return this.$store.getters.loggedIn;
         },
-        transparent(){
+        hasTransparentOnTop(){
             return this.$route.path === '/';
         },
         user() {
@@ -268,9 +268,9 @@ export default {
             // ...
         },
         onScroll(){
-            if(!this.scrolled && window.scrollY > 100){
+            if(!this.isScrolled && window.scrollY > 100){
                 this.scrolled = true;
-            } else if(this .scrolled && window.scrollY < 100){
+            } else if(this .isScrolled && window.scrollY < 100){
                 this.scrolled = false;
             }
         }

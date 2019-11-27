@@ -22,10 +22,14 @@
   }
 
 
+  .browse-dropdown .dropdown-item{
+    font-weight: 600;
+  }
   .browse-dropdown li{
     width:33%;
     float:left;
     padding: 10px 0;
+
   }
 
   .browse-dropdown li a:hover{
