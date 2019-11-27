@@ -17,6 +17,8 @@ import ProfessionalsByTag from '../components/Professionals/ProfessionalsByTag'
 import Messages from '../components/Messages'
 import Profile from '../components/Profile'
 import Search from '../components/Search'
+import EventsPromotions from '../components/Events&Promotions/EventsPromotions'
+import Promotions from '../components/Events&Promotions/Promotions'
 
 Vue.use(VueRouter);
 
@@ -107,6 +109,11 @@ export default new VueRouter({
         //     component: ProjectsByAllCategories
         // },
         {
+            name: 'promotions',
+            path: '/promotions/:title',
+            component: Promotions,
+        },
+        {
 
             name: 'profile',
             path: '/Profile',
@@ -124,6 +131,11 @@ export default new VueRouter({
                 template: '<div class="auth-component"></div>'
             }
         },
+        {
+            name: 'events&promotions',
+            path: '/events&promotions',
+            component: EventsPromotions
+        }
         
     ]
 })

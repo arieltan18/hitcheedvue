@@ -19,6 +19,11 @@ export default {
         ProfessionalList,
 
     },
+    data() {
+        return {
+            professionals: [],
+        }
+    },
     apollo: {
         //query the first 8 professionals by category with pagination
         professionals: {

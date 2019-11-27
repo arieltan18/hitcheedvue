@@ -115,6 +115,7 @@
     .show-input
     {
         width:300px !important;
+        border-bottom: 1px solid #26140E !important;
     }
 
     @media (max-width: 768px) {
@@ -135,7 +136,6 @@
         background: none;
         outline: none;
         box-shadow: none;
-        border-bottom: 1px solid #26140E;
     }
 
     .input-white::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */

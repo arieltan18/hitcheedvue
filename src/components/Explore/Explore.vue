@@ -6,7 +6,7 @@
                     <h1>Explore</h1>
                 </div>
             </div>
-            <div class="categories-section row mb-4">
+            <div class="categories-section row mb-4" v-if="!isMobile()">
                 <div class="d-flex justify-content-center align-self-center align-items-center mb-3" style="width:100%;">
                     <router-link id="hotels" class="row1 mr-2 header-link" :to="{ name: 'professionalsByCategory', params: { category: 'hotels' }}">
                     </router-link>
@@ -22,6 +22,18 @@
                     </router-link>
                 </div>
             </div>
+            <div class="categories-section row mb-4" v-else-if="isMobile()">
+                <router-link id="hotels" class="image header-link" :to="{ name: 'professionalsByCategory', params: { category: 'hotels' }}">
+                </router-link>
+                <router-link id="bridal-studios" class="image header-link" :to="{ name: 'professionalsByCategory', params: { category: 'bridal-studios' }}">
+                </router-link>
+                <router-link id="venues" class="image header-link" :to="{ name: 'professionalsByCategory', params: { category: 'venues' }}">
+                </router-link>
+                <router-link id="photographers" class="image header-link" :to="{ name: 'professionalsByCategory', params: { category: 'photographers' }}">
+                </router-link>
+                <router-link id="other-countries" class="image header-link" :to="{ name: 'professionalsByCategory', params: { category: 'other-countries' }}">
+                </router-link>
+            </div>
             <div class="text-center">
                 <div class="link">
                     <a class="link-text" href="">See All Categories</a>
@@ -35,6 +47,15 @@
 
 export default {
     name: "Explore",
+    methods: {
+        isMobile() {
+            if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+                return true
+            } else {
+                return false
+            }
+        }
+    }
 }
 </script>
 
@@ -127,5 +148,10 @@ h1
     color: #26140E;
     text-decoration: none;
     text-transform: capitalize;
+}
+.image
+{
+    width: 100%;
+    height: 255px;
 }
 </style>

@@ -99,5 +99,12 @@
 </script>
 
 <style scoped>
-
+h2
+{
+    text-transform: capitalize;
+    color: #26140E;
+    font-family: 'Cormorant Garamond';
+    font-weight: normal;
+    font-size: 30px;
+}
 </style>
