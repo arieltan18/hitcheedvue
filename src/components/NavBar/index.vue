@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    import NavHeader from "./TransparentNavHeader";
+    import NavHeader from "./NavHeader";
     import NavMenu from "./NavMenu";
     export default {
         name: "NavBar",
