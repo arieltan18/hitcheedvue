@@ -14,7 +14,7 @@
 
             <b-collapse id="nav-collapse" is-nav>
                 <b-navbar-nav class="mx-auto">
-                    <b-nav-item-dropdown class="active" menu-class="browse-dropdown" id="browse-menu" :no-caret="true" text="Browse" right>
+                    <b-nav-item-dropdown toggle-class="active" menu-class="browse-dropdown" id="browse-menu" :no-caret="true" text="Browse" right>
                             <b-dropdown-item :variant="variant" :to="{ name: 'professionalsByCategory', params: { category: 'hotels' }}">
                                 Hotels
                             </b-dropdown-item>
