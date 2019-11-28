@@ -3,6 +3,9 @@
         <b-row>
             <b-col md="6" offset-md="3">
                 <b-card class="mb-5">
+                    <b-card-text>
+                        <h3>Password Reset</h3>
+                    </b-card-text>
                     <b-alert :variant="hasErrors? 'danger' : 'primary'" :show="!!message">{{message}}</b-alert>
                     <b-form @submit.prevent="resetPassword">
                         <b-form-group label="New Password">
