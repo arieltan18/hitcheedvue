@@ -6,6 +6,7 @@ import Articles from '../components/Articles/Articles'
 import ProfessionalContent from '../components/Professionals/ProfessionalContent'
 import ProfessionalHome from '../components/Professionals/ProfessionalHome'
 import ProfessionalCategory from '../components/Professionals/ProfessionalCategory'
+import ResetPassword from '../components/ResetPassword'
 // import ProjectsByCategory from '../components/Projects/ProjectsByCategory'
 // import ProjectsByCategoryAll from '../components/Projects/ProjectsByCategoryAll'
 // import ProjectsByAllCategories from '../components/Projects/ProjectsByAllCategories'
@@ -132,10 +133,16 @@ export default new VueRouter({
             }
         },
         {
+
+            name: 'ResetPassword',
+            path: '/reset_password/:token',
+            component: ResetPassword
+        },
+        {
             name: 'events&promotions',
             path: '/events&promotions',
             component: EventsPromotions
         }
-        
+
     ]
 })

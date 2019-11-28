@@ -8,6 +8,10 @@ export function requestPasswordReset(data){
     return post('/create', data);
 }
 
+export function resetPassword(data){
+    return post('/reset', data);
+}
+
 export function updateProfile(data){
     return patch('/v1/update_profile', data);
 }
@@ -19,6 +23,7 @@ export function facebookLogin(data){
 const User = {
     getUser,
     requestPasswordReset,
+    resetPassword,
     updateProfile,
     facebookLogin,
 };
