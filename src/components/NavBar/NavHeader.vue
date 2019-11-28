@@ -7,17 +7,12 @@
                         <b-button class="nav-text" variant="black" v-b-modal.signup>Sign Up</b-button>
                         <b-modal id="signup" title="SIGN UP" centered hide-footer no-stacking>
                             <h1 class="signup-title text-capitalize">First step to create your dream wedding.</h1>
-                            <!-- <a class="btn btn-primary" href="">
+
+                            <b-button @click="fbLogin" class="btn btn-primary">
                                 <i class="fa fa-facebook-f"></i>
-                                LOGIN WITH FACEBOOK
-                            </a> -->
-                            <!-- <v-facebook-login app-id="966242223397117"></v-facebook-login> -->
-                            <facebook-login class="button"
-                            appId="123367248113310"
-                            @login="getUserData"
-                            @logout="onLogout"
-                            @get-initial-status="getUserData">
-                            </facebook-login>
+                                SIGNUP WITH FACEBOOK
+                            </b-button>
+
                             <p class="text-center">or</p>
                             <b-link class="btn btn-signup-email" v-b-modal.signup-email>
                                 <i class="fa fa-envelope"></i>
@@ -226,28 +221,6 @@ export default {
         clearResponse()
         {
             this.response = [];
-        },
-        getUserData() {
-            this.FB.api('/me', 'GET', { fields: 'id,name,email' },
-                userInformation => {
-                    console.warn("data api",userInformation)
-                    this.personalID = userInformation.id;
-                    this.email = userInformation.email;
-                    this.name = userInformation.name;
-                }
-            )
-        },
-        sdkLoaded(payload) {
-            this.isConnected = payload.isConnected
-            this.FB = payload.FB
-            if (this.isConnected) this.getUserData()
-        },
-        onLogin() {
-            this.isConnected = true
-            this.getUserData()
-        },
-        onLogout() {
-            this.isConnected = false;
         },
         methodThatForcesUpdate() {
             // ...
