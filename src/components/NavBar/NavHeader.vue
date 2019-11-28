@@ -66,10 +66,10 @@
                         <b-modal id="login" title="LOGIN" centered hide-footer ok-only no-stacking>
                             <div class="centered-modal">
                                 <form class="contact-form" method="POST">
-                                    <a class="btn btn-primary" href="">
+                                    <b-button @click="fbLogin" class="btn btn-primary">
                                         <i class="fa fa-facebook-f"></i>
                                         LOGIN WITH FACEBOOK
-                                    </a>
+                                    </b-button>
                                     <p>or</p>
                                     <span class="text">LOGIN WITH YOUR EMAIL ADDRESS</span>
                                     <b-form-input
@@ -136,7 +136,6 @@
 <script>
 import facebookLogin from 'facebook-login-vuejs';
 import { mapGetters } from 'vuex';
-
 export default {
     name: 'NavHeader',
     props: ['is-transparent'],
@@ -268,7 +267,35 @@ export default {
             this.$forceUpdate();  // Notice we have to use a $ here
             // ...
         },
+        fbLogin(){
+            window.FB.login(function(response) {
+                console.log(response);
+            });
+        }
     },
+    mounted() {
+
+        window.fbAsyncInit = function (app) {
+            console.log(app);
+            window.FB.init({
+                appId: '123367248113310',
+                cookie: true,
+                xfbml: true,
+                version: 'v2.8'
+            });
+        };
+
+            (function (d, s, id) {
+                let js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "https://connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+    }
 }
 </script>
 
