@@ -255,8 +255,8 @@ export default {
             // ...
         },
         fbLogin(){
-            window.FB.login((response) => {
-                this.$store.dispatch('facebookLogin', response);
+            window.FB.login(({authResponse}) => {
+                this.$store.dispatch('facebookLogin', authResponse);
             });
         }
     },
