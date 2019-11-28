@@ -101,16 +101,17 @@ const actions = {
         }
     },
     facebookLogin(context, facebookCredentials){
-        User.facebookLogin(facebookCredentials).then(response=>{
-            const token  = response.data.success.token;
-            const chat_id  = response.data.chat_id;
-            const username = response.data.username;
+        return User.facebookLogin(facebookCredentials).then(data=>{
+            const token  = data.success.token;
+            const chat_id  = data.chat_id;
+            const username = data.username;
 
             localStorage.setItem('access_token', token);
             localStorage.setItem('chat_id', chat_id);
             chatkit.connectUser();
             context.commit('retrieveToken',token, username);
             context.dispatch('getUser');
+            return data;
         });
     },
     retrieveToken(context, credentials )
