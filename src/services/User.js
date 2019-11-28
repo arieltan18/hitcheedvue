@@ -1,4 +1,4 @@
-import {get, patch} from "./Http";
+import {get, post, patch} from "./Http";
 
 export function getUser(){
     return get('/v1/me');
@@ -9,13 +9,13 @@ export function updateProfile(data){
 }
 
 export function facebookLogin(data){
-    return patch('/v1/login/facebook', data);
+    return post('/v1/login/facebook', data);
 }
 
 const User = {
     get,
     patch,
     facebookLogin,
-}
+};
 
 export default User;
