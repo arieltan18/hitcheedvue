@@ -134,7 +134,6 @@
 </template>
 
 <script>
-import facebookLogin from 'facebook-login-vuejs';
 import { mapGetters } from 'vuex';
 export default {
     name: 'NavHeader',
@@ -159,9 +158,6 @@ export default {
             response: [],
             isScrolled: false,
         }
-    },
-    components: {
-        facebookLogin
     },
     computed: {
         loggedIn() {
@@ -206,15 +202,6 @@ export default {
                 this.$store.dispatch('registerUser', this.registerInput)
                 .then(response => {
                     console.log(response);
-                    // if(response.message=="Successfully Register")
-                    // {
-                    //     this.$refs['signup-modal'].hide();
-                    //     console.log('close');
-                    // }
-                    // else
-                    // {
-                    //     console.log('no' + ' ' + response.message);
-                    // }
                 });
             }
         },
@@ -268,8 +255,8 @@ export default {
             // ...
         },
         fbLogin(){
-            window.FB.login(function(response) {
-                console.log(response);
+            window.FB.login((response) => {
+                this.$store.dispatch('facebookLogin', response);
             });
         }
     },

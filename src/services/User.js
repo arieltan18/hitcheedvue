@@ -7,3 +7,15 @@ export function getUser(){
 export function updateProfile(data){
     return patch('/v1/update_profile', data);
 }
+
+export function facebookLogin(data){
+    return patch('/v1/login/facebook', data);
+}
+
+const User = {
+    get,
+    patch,
+    facebookLogin,
+}
+
+export default User;
