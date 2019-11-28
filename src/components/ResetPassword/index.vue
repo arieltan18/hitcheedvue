@@ -3,7 +3,7 @@
         <b-row>
             <b-col md="6" offset-md="3">
                 <b-card class="mb-5">
-                    <b-alert :show="!!message">{{message}}</b-alert>
+                    <b-alert :variant="hasErrors? 'danger' : 'primary'" :show="!!message">{{message}}</b-alert>
                     <b-form @submit.prevent="resetPassword">
                         <b-form-group label="New Password">
                             <b-form-input
@@ -19,7 +19,7 @@
                                     placeholder="Confirm password"
                             ></b-form-input>
                         </b-form-group>
-                        <b-button type="submit" size="lg" variant="primary">Reset Password</b-button>
+                        <b-button :disabled="submitting" type="submit" size="lg" variant="primary"> <i class="fa fa-spin fa-spinner" v-if="submitting"></i> Reset Password</b-button>
                     </b-form>
                 </b-card>
             </b-col>
@@ -45,9 +45,23 @@
                     token: this.$route.params.token
                 };
                 this.submitting=true;
+                this.hasErrors = false;
+                this.message = null;
                 this.$store.dispatch('resetPassword', formData).then(({message})=>{
                     this.message = message;
-                }).then(()=>{
+                })
+                    .catch(({request:{responseText = '{}'}})=>{
+                        let message = 'Unexpected error occurred while resetting password.';
+                        try{
+                            ({message} = JSON.parse(responseText))
+                        }catch (e) {
+
+                        }
+                        this.hasErrors = true;
+                        this.message = message;
+
+                    })
+                    .then(()=>{
                     this.submitting = false;
                 });
             }
