@@ -10,6 +10,7 @@
                     <b-form @submit.prevent="resetPassword">
                         <b-form-group label="New Password">
                             <b-form-input
+                                    type="password"
                                     v-model="form.password"
                                     required
                                     placeholder="Enter New Password"
@@ -17,6 +18,7 @@
                         </b-form-group>
                         <b-form-group label="Confirm Password">
                             <b-form-input
+                                    type="password"
                                     v-model="form.password_confirmation"
                                     required
                                     placeholder="Confirm password"
