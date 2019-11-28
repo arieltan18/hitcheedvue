@@ -4,6 +4,10 @@ export function getUser(){
     return get('/v1/me');
 }
 
+export function requestPasswordReset(data){
+    return post('/create', data);
+}
+
 export function updateProfile(data){
     return patch('/v1/update_profile', data);
 }
@@ -13,8 +17,9 @@ export function facebookLogin(data){
 }
 
 const User = {
-    get,
-    patch,
+    getUser,
+    requestPasswordReset,
+    updateProfile,
     facebookLogin,
 };
 

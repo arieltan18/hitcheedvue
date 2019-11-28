@@ -35,6 +35,10 @@ const actions = {
             context.commit('setUser', user);
         });
     },
+
+    requestPasswordReset(context, data){
+        return User.requestPasswordReset(data);
+    },
     registerUser(context,credentials)
     {
         const signUpURL = process.env.VUE_APP_HITCHEED_API + "/v1/register";

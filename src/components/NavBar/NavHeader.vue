@@ -95,17 +95,19 @@
                         </b-modal>
                         <b-modal id="forgot-pwd" title="FORGET PASSWORD" centered hide-footer  ok-only no-stacking>
                             <div class="text-center">
+                                <b-alert :variant="forgotPasswordError ? 'danger' : 'primary'" :show="!!forgoPasswordMessage">{{forgoPasswordMessage}}</b-alert>
                                 <p class="forget-pwd-text text-left">
                                     Enter your email address and submit to receive an email with a link to reset password.
                                 </p>
-                                <form class="forget-pwd-form" method="POST">
+                                <form @submit.prevent="requestPasswordReset" class="forget-pwd-form">
                                     <b-form-input
                                         class="mt-2 mb-4 input-field"
                                         size="sm"
                                         placeholder="Email Address"
                                         v-model="forgetPwd.email"
+                                        :readonly="resetPasswordRequesting"
                                     ></b-form-input>
-                                    <b-button class="forget-btn" variant="primary" size="sm" >Submit</b-button>
+                                    <b-button :disabled="resetPasswordRequesting" type="submit" class="forget-btn" variant="primary" size="sm" > <i class="fa fa-spinner fa-spin" v-if="resetPasswordRequesting"></i> Submit</b-button>
                                 </form>
                                 <b-link class="text-dark text-uppercase" variant="black" v-b-modal.login>Back to Login</b-link>
                             </div>
@@ -150,6 +152,9 @@ export default {
                 email: ""
             },
             loginError: false,
+            resetPasswordRequesting: false,
+            forgotPasswordError: false,
+            forgoPasswordMessage: '',
             response: [],
             isScrolled: false,
         }
@@ -210,6 +215,26 @@ export default {
                 //console.log(response);
                 this.username = response.data.name;
             });
+        },
+        requestPasswordReset(){
+            this.resetPasswordRequesting = true;
+            this.forgotPasswordError = false;
+            this.forgoPasswordMessage = '';
+            this.$store.dispatch('requestPasswordReset', this.forgetPwd)
+                .then(({message})=>{
+                    this.forgoPasswordMessage = message;
+                }).catch(({request:{responseText = '{}'}})=>{
+                    let message = 'Sorry an error occurred while resetting password!';
+                    try {
+                        ({message} = JSON.parse(responseText));
+                    }catch (e) {}
+
+                    this.forgotPasswordError = true;
+                    this.forgoPasswordMessage = message;
+            }).then(()=>{
+                this.resetPasswordRequesting = false;
+            })
+            ;
         },
         logout()
         {
