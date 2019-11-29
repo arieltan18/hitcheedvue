@@ -61,7 +61,7 @@
                         </h4>
                         </router-link>
                         <p class="review-rating-text text-center" v-if="event.professional.review_count > 0" >{{ event.professional.review_count }} Reviews
-                            <span v-for="(value, index) in this.promoeventtion.professional.rating" :key="index">
+                            <span v-for="(value, index) in this.event.professional.rating" :key="index">
                                 <span class="rating-star fa fa-star"></span>
                             </span>
                         </p>
