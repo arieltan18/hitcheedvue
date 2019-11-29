@@ -21,7 +21,9 @@ import Search from '../components/Search'
 import EventsPromotions from '../components/Events&Promotions/EventsPromotions'
 import Promotions from '../components/Events&Promotions/Promotions'
 import Events from '../components/Events&Promotions/Events'
-import About from "../components/About";
+import About from "../components/Public/About"
+import PrivacyPolicy from "../components/Public/PrivacyPolicy"
+import Faq from "../components/Public/Faq"
 
 Vue.use(VueRouter);
 
@@ -35,10 +37,6 @@ export default new VueRouter({
         {
             path: '/',
             component: Home
-        },
-        {
-            path: '/about',
-            component: About
         },
         {
             name: 'singleArticlePage',
@@ -153,6 +151,18 @@ export default new VueRouter({
             name: 'events&promotions',
             path: '/events&promotions',
             component: EventsPromotions
+        },
+        {
+            path: '/about',
+            component: About
+        },
+        {
+            path: '/privacy',
+            component: PrivacyPolicy
+        },
+        {
+            path: '/faq',
+            component: Faq
         },
 
     ]

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="container-fluid">
-            <div class="container">
+            <div class="container img-holder">
                 <img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/hitcheedaboutcover.jpg" alt="">
             </div>
             <div class="container">
@@ -40,5 +40,20 @@ export default {
         text-align:left;
         padding-bottom:50px;
         color:#000;
+    }
+
+    @media screen and (max-width:600px) {
+        .container-fluid ,.img-holder {
+            padding-right:0;
+            padding-left:0;
+        }
+        .about-title {
+            font-size:1.4em;
+        }
+        .about-content {
+            padding-right:15px;
+            padding-left:15px;
+            font-size:0.9em;
+        }
     }
 </style>
