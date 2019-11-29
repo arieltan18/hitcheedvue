@@ -61,7 +61,7 @@
                                 all categories
                             </b-dropdown-item>
                     </b-nav-item-dropdown>
-                    <b-nav-item active :to="{ name:'messages' }">Messages</b-nav-item>
+                    <b-nav-item v-if="loggedIn" active :to="{ name:'messages' }">Messages</b-nav-item>
                     <b-nav-item active :to="{ name:'articlesHome'}">Articles</b-nav-item>
                     <b-nav-item active :to="{ name:'events&promotions' }">Events & Promotions</b-nav-item>
                 </b-navbar-nav>
@@ -101,6 +101,11 @@
                 whiteStyle: "color: #ffffff;" ,
                 blackStyle: "color: #26140E;",
             }
+        },
+        computed:{
+            loggedIn() {
+                return this.$store.getters.loggedIn;
+            },
         },
         name: "NavMenu"
     }
