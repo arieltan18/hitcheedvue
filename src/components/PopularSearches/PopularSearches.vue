@@ -245,7 +245,8 @@ h1
     padding:15px 10px;
     text-align: center;
     text-transform: uppercase;
-    min-width: 180px;
+    max-width: 180px;
+    margin: auto;
 }
 #nav-tab
 {
