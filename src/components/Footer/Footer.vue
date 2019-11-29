@@ -10,18 +10,17 @@
                 <div class="col-md-6">
                     <div class="row website-link">
                         <div class="col-sm-3 mr-2 text-left">
+                            <div class="top-link">About Us</div>
                             <div class="bottom-link">
-                                <router-link :to="{ name: 'about' }" class="d-block">About Us</router-link>
-                                <a href="">who we are</a><br/>
+                                <router-link :to="{ name: 'about' }" class="header-link">who we are</router-link><br/>
                                 <a href="mailto:press@hitcheed.com">press</a><br/>
                                 <a href="mailto:jobs@hitcheed.com">careers</a>
                             </div>
                         </div>
                         <div class="col-sm-3 text-left">
+                            <div class="top-link">Get Started</div>
                             <div class="bottom-link">
-                                <div class="top-link">Get Started</div>
                                 <a href="">browse</a><br/>
-                                <a href="">wishlists</a><br/>
                                 <router-link :to="{ name: 'articlesHome'}" class="header-link">articles</router-link>
                             </div>
                         </div>
@@ -42,12 +41,6 @@
             <div class="social-div">
                 <a class="mr-2" href="https://www.facebook.com/hitcheed" target="_blank">
                     <img alt="Hitcheed Private Limited [SG]" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group12.svg">
-                </a>
-                <a class="mr-2" href="#" target="_blank">
-                    <img alt="Hitcheed Private Limited [SG]" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group13.svg">
-                </a>
-                <a class="mr-2" href="#">
-                    <img alt="Hitcheed Private Limited [SG]" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group14.svg">
                 </a>
                 <a href="https://instagram.com/hitcheed">
                     <img alt="Hitcheed Private Limited [SG]" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group15.svg">
