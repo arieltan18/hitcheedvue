@@ -5,7 +5,7 @@
         </div>
         <div class="container">
             <div class="pl-0 pr-5 col-md-6 inline box" v-for="promotion in promotions.data" :key="promotion.id">
-                <router-link :to="{ name: 'promotions', params: { title: processTagName(promotion.title) }}">
+                <router-link :to="{ name: 'promotions', params: { slug: promotion.slug }}">
                     <div class="pink-text">Ending in 3 days</div>
                     <img class="promotion-image mb-4" :src="promotion.cover_image" width="100%">
                     <div class="title line-clamp mb-2">{{ promotion.title }}</div>
@@ -28,6 +28,7 @@ export default {
     data() {
         return {
             promotions: [],
+            promotions2: [],
         }
     },
     apollo: {
@@ -42,18 +43,40 @@ export default {
             update(data){
                 return data.promotions_paginate;
             }
-        }
+        },
+        promotions2: {
+            query: PROMOTIONS_PAGINATE,
+            variables() {
+                return {
+                    first: 20,
+                    page: 1
+                }
+            },
+            update(data){
+                return data.promotions_paginate;
+            }
+        },
     },
     methods: {
         date: function (date) {
             return moment(date).format('D MMMM YYYY');
         },
-        processTagName(text) {
-            text = text.replace(/\s+/g,'-').toLowerCase();;
+        checkPromotions()
+        {
+            // console.log(this.promotions2);
+            // Object.keys(this.promotions2).forEach(key => {
+            //     console.log(this.promotions2[key]);
+            //     // for(i=0; i<this.promotions2[key].length;i++)
+            //     // {
+            //     //     console.log(this.promotions2[key][i]);
+            //     // }
+            // })
 
-            return text;
         }
-    }
+    },
+    mounted: function () {
+      this.checkPromotions();
+  }
 }
 </script>
 

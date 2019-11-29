@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="article-date">{{ date(articleContent.first_published_at )}}</div>
-            <vue-simple-markdown :source="articleContent.content.body"></vue-simple-markdown>
+            <vue-simple-markdown class="article-content" :source="articleContent.content.body"></vue-simple-markdown>
         </div>
     </div>
 </template>
@@ -30,5 +30,13 @@ export default {
     font-weight: 700;
     text-align: left;
     margin-bottom: 10px;
+    color: #26140E;
+}
+
+.article-content
+{
+    width: 100%;
+    margin-bottom: 30px;
+    color: #26140E;
 }
 </style>

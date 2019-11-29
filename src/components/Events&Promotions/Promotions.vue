@@ -2,7 +2,7 @@
     <div>
         <div class="container-fluid">
             <div class="row">
-                <img class="top-image" :src="promotion.cover_image" width="100%">
+                <img class="top-image" :src="promotion.cover_image" width="100%" style="object-fit:contain;max-height:500px;">
             </div>
         </div>
         <div class="container-fluid padding">
@@ -21,12 +21,33 @@
                     </div>
                     <div>
                         <b-button class="interested-btn" variant="primary" v-b-modal.interested>I'm interested</b-button>
-                        <b-modal id="interested" title="Interested" centered hide-footer ok-only no-stacking>
+                        <b-modal id="interested" title="Leave your contact details below and we’ll get in touch!" size="lg" centered hide-footer ok-only no-stacking>
                             <div class="centered-modal">
-                                <form class="contact-form" method="POST">
-                                    
+                                <form class="interested-form" method="POST">
+                                    <div class="mb-5">
+                                        <label for="name">Name*</label>
+                                        <input type="text" name="name">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label for="email">Email*</label>
+                                        <input type="text" name="email">
+                                        <div class="mandatory">*Mandatory</div>
+                                    </div>
+                                    <div class="mb-2">
+                                        <input style="display:inline-block;width:25px;" type="checkbox" name="phone-check">
+                                        <label style="display:inline-block;width:90%;" for="checkbox-label">It's ok to reach me via phone as well</label>
+                                    </div>
+                                    <div class="mb-5">
+                                        <label for="phone">Phone (Optional)</label>
+                                        <input type="text" name="phone">
+                                    </div>
+                                    <b-button class="submit-btn" variant="primary" v-b-modal.thankyou>Submit</b-button>
                                 </form>
                             </div>
+                        </b-modal>
+                        <b-modal id="thankyou" size="md" centered hide-footer >
+                            <div class="thank-you">Thank<br/>You!</div>
+                            <div class="msg">We’ll be in touch shortly.</div>
                         </b-modal>
                     </div>
                 </div>
@@ -60,38 +81,19 @@ export default {
     data() {
         return {
             promotion: [],
-            title: ''
         }
-    },
-    props: [ 'promotionid' ],
-    mounted()
-    {
-        this.title = this.capitalizeText(this.$route.params.title);
     },
     methods: {
         date: function (date) {
             return moment(date).format('D MMMM YYYY');
         },
-        capitalizeText(text) {
-            text = text.toLowerCase()
-                .split(' ')
-                .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
-                .join(' ');
-
-            if(text.includes('-'))
-            {
-                text = text.replace(/-/g, ' ');
-            }
-                
-            return text;
-        }
     },
     apollo: {
         promotion: {
             query: PROMOTION_FILTER,
             variables() {
                 return {
-                    title: this.title
+                    slug: this.$route.params.slug
                 }
             },
             update(data){
@@ -230,5 +232,100 @@ h3
     padding: 10px 30px;
     color: #ffffff;
     width: 100%;
+}
+
+::v-deep  #interested .modal-header
+{
+    border-bottom: 0px;
+    padding-top: 3rem;
+    padding-left: 4rem;
+    padding-right: 3rem;
+}
+
+::v-deep #interested .modal-title
+{
+    font-family: 'Cormorant Garamond' !important;
+    font-size: 24px !important;
+    font-style: italic !important;
+}
+
+::v-deep #interested .modal-body
+{
+    padding-left: 4rem;
+    padding-right: 4rem;
+    padding-bottom: 4rem;
+}
+
+label
+{
+    font-size: 16px;
+    font-family: 'Open Sans';
+    color: #26140E;
+    opacity: 0.5;
+    width: 100%;
+}
+
+input
+{
+    border-top:none;
+    border-left:none;
+    border-right:none;
+    border-bottom: 1px solid #c9c7c6;
+    width: 100%;
+}
+
+.mandatory
+{
+    font-size: 12px;
+    color: #26140E;
+    opacity: 0.3;
+}
+
+.checkbox-label
+{
+    font-style: italic;
+}
+
+.submit-btn
+{
+    width: 100%;
+    text-transform: uppercase;
+    font-family: 'Open Sans';
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1.4px;
+    padding-top:10px;
+    padding-bottom: 10px;
+}
+
+::v-deep  #thankyou .modal-header
+{
+    border-bottom: 0px;
+    padding-bottom: 2em;
+}
+
+::v-deep  #thankyou .modal-body
+{
+    border-bottom: 0px;
+    padding-bottom: 4em;
+}
+
+.thank-you
+{
+    font-size: 100px;
+    font-family: 'Cormorant Garamond';
+    color: #26140E;
+    text-align: center;
+    font-style: italic;
+    line-height: 1.2em;
+}
+
+.msg
+{
+    font-size: 16px;
+    font-family: 'Open Sans';
+    color: #26140E;
+    letter-spacing: 0.8px;
+    text-align: center;
 }
 </style>

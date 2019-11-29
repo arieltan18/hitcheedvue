@@ -20,6 +20,8 @@ import Profile from '../components/Profile'
 import Search from '../components/Search'
 import EventsPromotions from '../components/Events&Promotions/EventsPromotions'
 import Promotions from '../components/Events&Promotions/Promotions'
+import Events from '../components/Events&Promotions/Events'
+import About from "../components/About";
 
 Vue.use(VueRouter);
 
@@ -33,6 +35,10 @@ export default new VueRouter({
         {
             path: '/',
             component: Home
+        },
+        {
+            path: '/about',
+            component: About
         },
         {
             name: 'singleArticlePage',
@@ -111,8 +117,13 @@ export default new VueRouter({
         // },
         {
             name: 'promotions',
-            path: '/promotions/:title',
+            path: '/promotions/:slug',
             component: Promotions,
+        },
+        {
+            name: 'events',
+            path: '/events/:slug',
+            component: Events,
         },
         {
 
@@ -142,7 +153,7 @@ export default new VueRouter({
             name: 'events&promotions',
             path: '/events&promotions',
             component: EventsPromotions
-        }
+        },
 
     ]
 })
