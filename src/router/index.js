@@ -125,8 +125,8 @@ export default new VueRouter({
         },
         {
 
-            name: 'profile',
-            path: '/Profile',
+            name: 'Profile',
+            path: '/profile',
             component: Profile
         },
         {

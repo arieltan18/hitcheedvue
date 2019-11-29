@@ -114,7 +114,7 @@
 </template>
 
 <script>
-    import {fileToBase64} from "../../helpers";
+    import {fileToBase64, getUiAvatarUrl} from "../../helpers";
     import ImageCropCenter from "../../elements/ImageCropCenter";
 
     export default {
@@ -143,6 +143,7 @@
             }
         },
         methods :{
+            getUiAvatarUrl,
             updateUser(){
                 if(this.user){
                     const {name, email} = this.user;
