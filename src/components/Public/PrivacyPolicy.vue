@@ -99,18 +99,10 @@ export default {
         padding-top:10px;
     }
 
+    
     @media screen and (max-width:600px) {
-        .container-fluid ,.img-holder {
-            padding-right:0;
-            padding-left:0;
-        }
-        .about-title {
+        .privacy-content-title {
             font-size:1.4em;
-        }
-        .about-content {
-            padding-right:15px;
-            padding-left:15px;
-            font-size:0.9em;
         }
     }
 </style>

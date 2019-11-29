@@ -106,7 +106,8 @@ export default {
             font-size:1em;
         }
         .faq-button span {
-            width:70%;
+            width:90%;
+            display:block;
         }
     }
 </style>

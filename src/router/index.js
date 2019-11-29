@@ -153,14 +153,17 @@ export default new VueRouter({
             component: EventsPromotions
         },
         {
+            name: 'about',
             path: '/about',
             component: About
         },
         {
+            name: 'privacy',
             path: '/privacy',
             component: PrivacyPolicy
         },
         {
+            name: 'faq',
             path: '/faq',
             component: Faq
         },

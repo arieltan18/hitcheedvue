@@ -54,7 +54,7 @@
                 </a>
             </div>
             <div class="copy-right mt-5">
-                © COPYRIGHT 2019 Hitcheed Pte Ltd | <a class="copyright-link" href="https://hitcheed.com/faqs">FAQs</a> | <a class="copyright-link" href="https://hitcheed.com/privacy">Privacy Policy</a>
+                © COPYRIGHT 2019 Hitcheed Pte Ltd | <router-link :to="{ name: 'faq' }" class="copyright-link">FAQs</router-link> | <router-link :to="{ name: 'privacy' }" class="copyright-link">Privacy Policy</router-link>
             </div>
         </div>
     </div>
