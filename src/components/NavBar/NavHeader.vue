@@ -7,17 +7,12 @@
                         <b-button class="nav-text" variant="black" v-b-modal.signup>Sign Up</b-button>
                         <b-modal id="signup" title="SIGN UP" centered hide-footer no-stacking>
                             <h1 class="signup-title text-capitalize">First step to create your dream wedding.</h1>
-                            <!-- <a class="btn btn-primary" href="">
+
+                            <b-button @click="fbLogin" class="btn btn-primary">
                                 <i class="fa fa-facebook-f"></i>
-                                LOGIN WITH FACEBOOK
-                            </a> -->
-                            <!-- <v-facebook-login app-id="966242223397117"></v-facebook-login> -->
-                            <facebook-login class="button"
-                            appId="123367248113310"
-                            @login="getUserData"
-                            @logout="onLogout"
-                            @get-initial-status="getUserData">
-                            </facebook-login>
+                                SIGNUP WITH FACEBOOK
+                            </b-button>
+
                             <p class="text-center">or</p>
                             <b-link class="btn btn-signup-email" v-b-modal.signup-email>
                                 <i class="fa fa-envelope"></i>
@@ -66,10 +61,10 @@
                         <b-modal id="login" title="LOGIN" centered hide-footer ok-only no-stacking>
                             <div class="centered-modal">
                                 <form class="contact-form" method="POST">
-                                    <a class="btn btn-primary" href="">
+                                    <b-button @click="fbLogin" class="btn btn-primary">
                                         <i class="fa fa-facebook-f"></i>
                                         LOGIN WITH FACEBOOK
-                                    </a>
+                                    </b-button>
                                     <p>or</p>
                                     <span class="text">LOGIN WITH YOUR EMAIL ADDRESS</span>
                                     <b-form-input
@@ -100,17 +95,19 @@
                         </b-modal>
                         <b-modal id="forgot-pwd" title="FORGET PASSWORD" centered hide-footer  ok-only no-stacking>
                             <div class="text-center">
+                                <b-alert :variant="forgotPasswordError ? 'danger' : 'primary'" :show="!!forgoPasswordMessage">{{forgoPasswordMessage}}</b-alert>
                                 <p class="forget-pwd-text text-left">
                                     Enter your email address and submit to receive an email with a link to reset password.
                                 </p>
-                                <form class="forget-pwd-form" method="POST">
+                                <form @submit.prevent="requestPasswordReset" class="forget-pwd-form">
                                     <b-form-input
                                         class="mt-2 mb-4 input-field"
                                         size="sm"
                                         placeholder="Email Address"
                                         v-model="forgetPwd.email"
+                                        :readonly="resetPasswordRequesting"
                                     ></b-form-input>
-                                    <b-button class="forget-btn" variant="primary" size="sm" >Submit</b-button>
+                                    <b-button :disabled="resetPasswordRequesting" type="submit" class="forget-btn" variant="primary" size="sm" > <i class="fa fa-spinner fa-spin" v-if="resetPasswordRequesting"></i> Submit</b-button>
                                 </form>
                                 <b-link class="text-dark text-uppercase" variant="black" v-b-modal.login>Back to Login</b-link>
                             </div>
@@ -134,9 +131,7 @@
 </template>
 
 <script>
-import facebookLogin from 'facebook-login-vuejs';
 import { mapGetters } from 'vuex';
-
 export default {
     name: 'NavHeader',
     props: ['is-transparent'],
@@ -157,12 +152,12 @@ export default {
                 email: ""
             },
             loginError: false,
+            resetPasswordRequesting: false,
+            forgotPasswordError: false,
+            forgoPasswordMessage: '',
             response: [],
             isScrolled: false,
         }
-    },
-    components: {
-        facebookLogin
     },
     computed: {
         loggedIn() {
@@ -207,15 +202,6 @@ export default {
                 this.$store.dispatch('registerUser', this.registerInput)
                 .then(response => {
                     console.log(response);
-                    // if(response.message=="Successfully Register")
-                    // {
-                    //     this.$refs['signup-modal'].hide();
-                    //     console.log('close');
-                    // }
-                    // else
-                    // {
-                    //     console.log('no' + ' ' + response.message);
-                    // }
                 });
             }
         },
@@ -230,6 +216,26 @@ export default {
                 this.username = response.data.name;
             });
         },
+        requestPasswordReset(){
+            this.resetPasswordRequesting = true;
+            this.forgotPasswordError = false;
+            this.forgoPasswordMessage = '';
+            this.$store.dispatch('requestPasswordReset', this.forgetPwd)
+                .then(({message})=>{
+                    this.forgoPasswordMessage = message;
+                }).catch(({request:{responseText = '{}'}})=>{
+                    let message = 'Sorry an error occurred while resetting password!';
+                    try {
+                        ({message} = JSON.parse(responseText));
+                    }catch (e) {}
+
+                    this.forgotPasswordError = true;
+                    this.forgoPasswordMessage = message;
+            }).then(()=>{
+                this.resetPasswordRequesting = false;
+            })
+            ;
+        },
         logout()
         {
             this.$store.dispatch('destroyToken')
@@ -241,34 +247,40 @@ export default {
         {
             this.response = [];
         },
-        getUserData() {
-            this.FB.api('/me', 'GET', { fields: 'id,name,email' },
-                userInformation => {
-                    console.warn("data api",userInformation)
-                    this.personalID = userInformation.id;
-                    this.email = userInformation.email;
-                    this.name = userInformation.name;
-                }
-            )
-        },
-        sdkLoaded(payload) {
-            this.isConnected = payload.isConnected
-            this.FB = payload.FB
-            if (this.isConnected) this.getUserData()
-        },
-        onLogin() {
-            this.isConnected = true
-            this.getUserData()
-        },
-        onLogout() {
-            this.isConnected = false;
-        },
         methodThatForcesUpdate() {
             // ...
             this.$forceUpdate();  // Notice we have to use a $ here
             // ...
         },
+        fbLogin(){
+            window.FB.login(({authResponse}) => {
+                this.$store.dispatch('facebookLogin', authResponse);
+            });
+        }
     },
+    mounted() {
+
+        window.fbAsyncInit = function (app) {
+            console.log(app);
+            window.FB.init({
+                appId: '123367248113310',
+                cookie: true,
+                xfbml: true,
+                version: 'v2.8'
+            });
+        };
+
+            (function (d, s, id) {
+                let js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) {
+                    return;
+                }
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "https://connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+    }
 }
 </script>
 

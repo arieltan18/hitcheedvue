@@ -10,22 +10,12 @@ import store from './store/index.js';
 import { createProvider } from './vue-apollo'
 import VueChatScroll from 'vue-chat-scroll'
 import VueAxios from 'vue-axios'
-import VueSocialauth from 'vue-social-auth'
 import axios from 'axios';
 import InstantSearch from 'vue-instantsearch';
 import VueMeta from "vue-meta";
 
 
 Vue.use(VueAxios, axios);
-Vue.use(VueSocialauth, {
-  providers: {
-    facebook: {
-      clientId: '123367248113310',
-      redirectUri: '/auth/facebook/callback' // Your client app URL
-    }
-  }
-});
-
 Vue.use(BootstrapVue);
 Vue.use(VueSimpleMarkdown);
 Vue.use(VueChatScroll);

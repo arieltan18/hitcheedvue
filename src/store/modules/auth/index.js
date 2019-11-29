@@ -1,6 +1,7 @@
 import axios from 'axios';
 import chatkit from "../../../services/Chatkit";
 import {getUser, updateProfile} from "../../../services/User";
+import User from "../../../services/User";
 
 const state = {
     token: localStorage.getItem('access_token') || null ,
@@ -33,6 +34,14 @@ const actions = {
         getUser().then(user=>{
             context.commit('setUser', user);
         });
+    },
+
+    requestPasswordReset(context, data){
+        return User.requestPasswordReset(data);
+    },
+
+    resetPassword(context, data){
+        return User.resetPassword(data);
     },
     registerUser(context,credentials)
     {
@@ -99,6 +108,20 @@ const actions = {
             // })
         }
     },
+    facebookLogin(context, facebookCredentials){
+        return User.facebookLogin(facebookCredentials).then(data=>{
+            const token  = data.success.token;
+            const chat_id  = data.chat_id;
+            const username = data.username;
+
+            localStorage.setItem('access_token', token);
+            localStorage.setItem('chat_id', chat_id);
+            chatkit.connectUser();
+            context.commit('retrieveToken',token, username);
+            context.dispatch('getUser');
+            return data;
+        });
+    },
     retrieveToken(context, credentials )
     {
         const loginURL = process.env.VUE_APP_HITCHEED_API + "/v1/login";
@@ -116,7 +139,6 @@ const actions = {
                 const token  = response.data.success.token;
                 const chat_id  = response.data.chat_id;
                 const username = response.data.username;
-
 
                 localStorage.setItem('access_token', token);
                 localStorage.setItem('chat_id', chat_id);
