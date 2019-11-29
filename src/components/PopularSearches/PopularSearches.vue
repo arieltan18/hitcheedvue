@@ -49,7 +49,7 @@
                         </vueper-slides>
                         <div class="text-center mt-5">
                             <div class="link">
-                                <a class="link-text" href="">See All Hotels</a>
+                                <router-link class="link-text" to="/category/hotels/all">See More Hotels</router-link>
                             </div>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                         </vueper-slides>
                         <div class="text-center mt-5">
                             <div class="link">
-                                <a class="link-text" href="">See All Venues</a>
+                                <router-link class="link-text" to="/category/venues/all">See More Venues</router-link>
                             </div>
                         </div>
                     </div>
@@ -81,7 +81,7 @@
                         </vueper-slides>
                         <div class="text-center mt-5">
                             <div class="link">
-                                <a class="link-text" href="">See All Bridal Studios</a>
+                                <router-link class="link-text" to="/category/bridal-studios/all">See More Bridal Studios</router-link>
                             </div>
                         </div>
                     </div>
@@ -98,6 +98,7 @@
                         <div class="text-center mt-5">
                             <div class="link">
                                 <a class="link-text" href="">See All Photographers</a>
+                                <router-link class="link-text" to="/category/photographers/all">See More Photographers</router-link>
                             </div>
                         </div>
                     </div>
@@ -114,6 +115,7 @@
                         <div class="text-center mt-5">
                             <div class="link">
                                 <a class="link-text" href="">See All Other Countries</a>
+                                <router-link class="link-text" to="/category/others/all">See More Other Countries</router-link>
                             </div>
                         </div>
                     </div>

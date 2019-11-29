@@ -24,5 +24,6 @@ export default {
     position: relative;
     text-transform: uppercase;
     margin-bottom: 35px;
+    color: #26140E;
 }
 </style>

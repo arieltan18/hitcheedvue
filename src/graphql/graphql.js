@@ -107,11 +107,12 @@ export const PROMOTIONS = gql`
 
 export const PROMOTIONS_PAGINATE = gql`
   query promotions_paginate($first: Int!, $page: Int!){
-    promotions_paginate(first: $first, page: $page){
+    promotions_paginate(first: $first, page: $page, orderBy: [{field: "valid_to", order: DESC}]){
       data
       {
         id,
         title,
+        slug,
         cover_image,
         promotion_image,
         valid_to,
@@ -192,16 +193,16 @@ export const CATEGORY = gql`
 
 export const EVENT_PROMOTIONS_PAGINATE = gql`
   query event_promotions_paginate($first: Int!, $page: Int!){
-    event_promotions_paginate(first: $first, page: $page){
-      data
+    event_promotions_paginate(first: $first, page: $page, orderBy: [{field: "valid_to", order: DESC}]){
+     data
       {
         id,
         title,
-        status,
-        image,
-        preferred_date,
-        address,
-        event_link,
+        slug,
+        date_from,
+        valid_to,
+        cover_image,
+        location,
         professional
         {
           id,
@@ -214,10 +215,11 @@ export const EVENT_PROMOTIONS_PAGINATE = gql`
 
 `
 export const PROMOTION_FILTER = gql`
-  query promotion_filter($title: String!){
-    promotion_filter(title: $title){
+  query promotion_filter($slug: String!){
+    promotion_filter(slug: $slug){
       title,
       sub_title,
+      slug,
       promotion_for,
       terms,
       description,
@@ -242,11 +244,12 @@ export const PROMOTION_FILTER = gql`
 
 export const PROMOTION_PAGINATE = gql`
   query promotion_paginate($promotion_for: String! ,$first: Int!){
-    promotion_paginate(promotion_for: $promotion_for ,first: $first){
+    promotion_paginate(promotion_for: $promotion_for ,first: $first, orderBy: [{field: "valid_to", order: DESC}]){
       data
       {
         id,
         title,
+        slug,
         cover_image,
         promotion_image,
         valid_to,
@@ -257,6 +260,33 @@ export const PROMOTION_PAGINATE = gql`
           name,
           slug
         }
+      }
+    }
+  }
+`
+
+export const EVENT_PROMOTION_FILTER = gql`
+  query event_promotion_filter($slug: String!){
+    event_promotion_filter(slug: $slug){
+      title,
+      sub_title,
+      slug,
+      description,
+      share_link,
+      location,
+      date_from,
+      date_from_timing,
+      valid_to,
+      valid_to_timing,
+      cover_image,
+      professional
+      {
+        id,
+        name,
+        slug,
+        profile_image,
+        review_count,
+        rating
       }
     }
   }

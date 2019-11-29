@@ -19,6 +19,7 @@ import Profile from '../components/Profile'
 import Search from '../components/Search'
 import EventsPromotions from '../components/Events&Promotions/EventsPromotions'
 import Promotions from '../components/Events&Promotions/Promotions'
+import Events from '../components/Events&Promotions/Events'
 
 Vue.use(VueRouter);
 
@@ -110,8 +111,13 @@ export default new VueRouter({
         // },
         {
             name: 'promotions',
-            path: '/promotions/:title',
+            path: '/promotions/:slug',
             component: Promotions,
+        },
+        {
+            name: 'events',
+            path: '/events/:slug',
+            component: Events,
         },
         {
 

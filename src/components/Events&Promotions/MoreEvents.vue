@@ -5,21 +5,23 @@
         </div>
         <div class="container text-left">
             <div class="d-flex justify-content-between"> 
-                <a class="box" href="" v-for="event in events.data" :key="event.id">
-                    <img class="mb-2" :src="event.cover_image" width="100%">
-                    <div class="title line-clamp mb-2">{{ event.title }}</div>
-                    <div class="professionals">by 
-                        <router-link target= '_blank' :to="{ name: 'professional', params: { slug: event.professional.slug }}" class="bold">{{ event.professional.name }}</router-link>
-                    </div>
-                    <div class="date mt-2">
-                        <i class="fa fa-calendar mr-2" aria-hidden="true"></i>
-                        {{ date(event.date_from) }} - {{ date(event.valid_to) }}
-                    </div>
-                    <div class="date" v-if="event.location">
-                        <img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group47.svg">
-                        {{ event.location }}
-                    </div>
-                </a>
+                <div class="box" href="" v-for="event in events.data" :key="event.id">
+                    <router-link :to="{ name: 'events', params: { slug: event.slug }}">
+                        <img class="mb-2" :src="event.cover_image" width="100%">
+                        <div class="title line-clamp mb-2">{{ event.title }}</div>
+                        <div class="professionals">by 
+                            <router-link target= '_blank' :to="{ name: 'professional', params: { slug: event.professional.slug }}" class="bold">{{ event.professional.name }}</router-link>
+                        </div>
+                        <div class="date mt-2">
+                            <i class="fa fa-calendar mr-2" aria-hidden="true"></i>
+                            {{ date(event.date_from) }} - {{ date(event.valid_to) }}
+                        </div>
+                        <div class="date" v-if="event.location">
+                            <img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group47.svg">
+                            {{ event.location }}
+                        </div>
+                    </router-link>
+                </div>
             </div>
         </div>
     </div>
@@ -39,7 +41,7 @@ export default {
     },
     apollo: {
         events: {
-            query: PROMOTIONS_PAGINATE,
+            query: EVENT_PROMOTIONS_PAGINATE,
             variables() {
                 return {
                     first: 3,
@@ -47,7 +49,7 @@ export default {
                 }
             },
             update(data){
-                return data.promotions_paginate;
+                return data.event_promotions_paginate;
             }
         }
     },

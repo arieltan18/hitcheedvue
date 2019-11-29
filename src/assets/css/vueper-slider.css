@@ -69,3 +69,8 @@
 {
     padding-left: 5px;
 }
+
+.vueperslide__content-wrapper .vueperslide__title  div
+{
+    color: #26140E !important;
+}

@@ -2,7 +2,7 @@
     <div>
         <Explore />
         <PopularSearches />
-        <!-- <Events /> -->
+        <EventsHomePage />
         <Articles />
         <Testimonials />
         <DownloadApp />
@@ -12,7 +12,7 @@
 <script>
 import Explore from './Explore/Explore.vue';
 import PopularSearches from './PopularSearches/PopularSearches.vue';
-//import Events from './Events&Promotions/Events.vue';
+import EventsHomePage from './Events&Promotions/EventsHomePage.vue';
 import Articles from './Articles/ArticlesHomePage.vue';
 import Testimonials from './Testimonials/Testimonials.vue';
 import DownloadApp from './DownloadApp/DownloadApp.vue';
@@ -27,7 +27,7 @@ export default {
         Explore,
         PopularSearches,
         Articles,
-        // Events,
+        EventsHomePage,
         Testimonials,
         DownloadApp,
     },

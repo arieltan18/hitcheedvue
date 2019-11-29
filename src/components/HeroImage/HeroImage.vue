@@ -24,7 +24,6 @@ export default {
           }
           await axios.get(api, {crossDomain: true})
           .then((response) => {
-            console.log(response.data.photo);
             this.heroImage = response.data.photo;
           })
           .catch(error => {
