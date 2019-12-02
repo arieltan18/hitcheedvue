@@ -291,3 +291,28 @@ export const EVENT_PROMOTION_FILTER = gql`
     }
   }
 `
+
+export const PROFESSIONALS_BY_TAG = gql`
+  query professionals_by_tag($tag_id: Int!, $first: Int!) {
+    professionals_by_tag(tag_id: $tag_id, first: $first) {
+      data
+      {
+        tag
+        {
+          name
+        }
+        professional {
+          id,
+          name,
+          slug,
+          cover_image,
+          around_image,
+          profile_image,
+          tag_name,
+          rating,
+          country
+        }
+      }
+    }
+  }
+`

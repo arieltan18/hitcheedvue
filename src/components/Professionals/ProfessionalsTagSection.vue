@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <div v-for="professional in professionalsByTag" :key="professional.professional.id" class="col-md-3 mb-5">
+            <div v-for="professional in professionalsByTag.data" :key="professional.professional.id" class="col-md-3 mb-5">
                 <ProfessionalList :professional="professional.professional" />
             </div>
         </div>
@@ -10,7 +10,7 @@
 
 <script>
 import ProfessionalList from './ProfessionalList.vue';
-import { PROFESSIONAL_FILTER_BY_TAGS } from '../../graphql/graphql.js';
+import { PROFESSIONALS_BY_TAG } from '../../graphql/graphql.js';
 
 export default {
     name: 'ProfessionalTagSection',
@@ -26,15 +26,16 @@ export default {
     apollo: {
         //get the projects of professionals filter by tags 
         professionalsByTag: {
-            query: PROFESSIONAL_FILTER_BY_TAGS,
+            query: PROFESSIONALS_BY_TAG,
             variables() {
                 return {
-                    tag_id: this.tag_id
+                    tag_id: this.tag_id,
+                    first: 20
                 }
             },
             update(data)
             {
-                return data.professional_filter_by_tags;
+                return data.professionals_by_tag;
             }
         },
     }
