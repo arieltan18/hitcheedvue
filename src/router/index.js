@@ -21,6 +21,9 @@ import Search from '../components/Search'
 import EventsPromotions from '../components/Events&Promotions/EventsPromotions'
 import Promotions from '../components/Events&Promotions/Promotions'
 import Events from '../components/Events&Promotions/Events'
+import About from "../components/Public/About"
+import PrivacyPolicy from "../components/Public/PrivacyPolicy"
+import Faq from "../components/Public/Faq"
 
 Vue.use(VueRouter);
 
@@ -122,8 +125,8 @@ export default new VueRouter({
         },
         {
 
-            name: 'profile',
-            path: '/Profile',
+            name: 'Profile',
+            path: '/profile',
             component: Profile
         },
         {
@@ -148,7 +151,22 @@ export default new VueRouter({
             name: 'events&promotions',
             path: '/events&promotions',
             component: EventsPromotions
-        }
+        },
+        {
+            name: 'about',
+            path: '/about',
+            component: About
+        },
+        {
+            name: 'privacy',
+            path: '/privacy',
+            component: PrivacyPolicy
+        },
+        {
+            name: 'faq',
+            path: '/faq',
+            component: Faq
+        },
 
     ]
 })
