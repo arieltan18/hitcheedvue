@@ -316,3 +316,22 @@ export const PROFESSIONALS_BY_TAG = gql`
     }
   }
 `
+
+export const PROFESSIONALS_OTHER_COUNTRY_PAGINATE = gql`
+  query professionals_other_country_paginate($first: Int!, $page: Int!){
+    professionals_other_country_paginate(first: $first, page: $page) {
+      data
+      {
+        id,
+        name,
+        slug,
+        cover_image,
+        around_image,
+        profile_image,
+        tag_name,
+        rating,
+        country{name}
+      }
+    }
+  }
+`

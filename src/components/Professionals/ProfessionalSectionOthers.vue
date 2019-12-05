@@ -10,11 +10,11 @@
 
 <script>
 import ProfessionalList from './ProfessionalList.vue';
-import { PROFESSIONALS_BY_CATEGORY_PAGINATE } from '../../graphql/graphql.js';
+import { PROFESSIONALS_OTHER_COUNTRY_PAGINATE } from '../../graphql/graphql.js';
 
 export default {
-    name: 'ProfessionalSection',
-    props: [ 'category_id', 'first', 'page' ],
+    name: 'ProfessionalSectionOthers',
+    props: [ 'first', 'page' ],
     components: {
         ProfessionalList
     },
@@ -26,16 +26,15 @@ export default {
     apollo: {
         //query the first 8 professionals by category with pagination
         professionals: {
-            query: PROFESSIONALS_BY_CATEGORY_PAGINATE,
+            query: PROFESSIONALS_OTHER_COUNTRY_PAGINATE,
             variables() {
                 return {
-                    category_id: this.category_id,
                     first : this.first,
                     page: this.page,
                 }
             },
             update(data){
-                return data.professionals_by_category_paginate;
+                return data.professionals_other_country_paginate;
             }
         },
     }
