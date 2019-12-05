@@ -13,10 +13,10 @@
                 </span>
                 <span class="ml-1 review">({{professional.rating}})</span>
             </div>
-            <div class="text-left location">
+            <div class="text-left location" v-if="professional.country.name">
                 <div class="mr-2 d-inline pr-2">
                     <img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group47.svg">
-                    <span class="ml-2 review">{{ professional.country ? professional.country : professional.country }}</span>
+                    <span class="ml-2 review">{{ professional.country.name }}</span>
                 </div>
             </div>
         </router-link>

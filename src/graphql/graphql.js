@@ -36,7 +36,7 @@ export const PROFESSIONALS_BY_CATEGORY_PAGINATE = gql`
         around_image,
         profile_image,
         rating,
-        country,
+        country{name},
         status
       }
     }
@@ -212,8 +212,8 @@ export const EVENT_PROMOTIONS_PAGINATE = gql`
       }
     }
   }
-
 `
+
 export const PROMOTION_FILTER = gql`
   query promotion_filter($slug: String!){
     promotion_filter(slug: $slug){
