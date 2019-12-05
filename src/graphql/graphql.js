@@ -156,7 +156,7 @@ export const PROFESSIONAL_FILTER_BY_TAGS = gql`
       profile_image,
       tag_name,
       rating,
-      country,
+      country{name},
       projects
       {
         id
@@ -310,7 +310,7 @@ export const PROFESSIONALS_BY_TAG = gql`
           profile_image,
           tag_name,
           rating,
-          country
+          country{name}
         }
       }
     }
