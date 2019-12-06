@@ -11,11 +11,11 @@
                     <h3>{{ event.title }}</h3>
                     <div class="subtitle mb-3">by <span class="bold">{{ event.professional.name }}</span></div>
                     <div class="date-time mb-2">
-                        <i class="fa fa-calendar mr-2" aria-hidden="true"></i>
+                        <img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group1077.png">
                         {{ date(event.date_from) }} - {{ date(event.valid_to) }}
                     </div>
                     <div class="location mb-3">
-                        <i class="fa fa-map-marker mr-2" aria-hidden="true"></i>
+                        <img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group1076.png">
                         {{ event.location }}
                     </div>
                     <div class="happening mt-2 ">Happening in 3 days</div>
@@ -24,25 +24,28 @@
                         <b-button class="rsvp-btn" variant="primary" v-b-modal.rsvp>RSVP NOW</b-button>
                         <b-modal id="rsvp" title="RSVP to the event Celebrate Love Wedding Showcase, now." size="lg" centered hide-footer ok-only no-stacking>
                             <div class="centered-modal">
-                                <form class="rsvp-form" method="POST">
+                                <form class="rsvp-form" method="POST" action="" validate>
                                     <div class="mb-5">
                                         <label for="name">Name*</label>
-                                        <input type="text" name="name">
+                                        <input class="form-control" type="text" name="name" required/>
                                     </div>
                                     <div class="mb-5">
                                         <label for="email">Email*</label>
-                                        <input type="text" name="email">
+                                        <input class="form-control" type="text" name="email" required/>
                                         <div class="mandatory">*Mandatory</div>
                                     </div>
                                     <div class="mb-5">
                                         <label for="name">Partner's Name</label>
-                                        <input type="text" name="partner-name">
+                                        <input class="form-control" type="text" name="partner-name"/>
                                     </div>
                                     <div class="mb-5">
                                         <label for="phone">Contact Number</label>
-                                        <input type="text" name="contact_number">
+                                        <input class="form-control" type="text" name="contact_number"/>
                                     </div>
-                                    <b-button class="submit-btn" variant="primary" v-b-modal.thankyou>Submit</b-button>
+                                    <input type="hidden" name="event_id" :value="event.id ">
+                                    <input type="hidden" name="professional_id" :value="event.professional.id ">
+                                    <input type="hidden" name="professional_name" :value="event.professional.name">
+                                    <b-button class="submit-btn" variant="primary" type="submit">Submit</b-button>
                                 </form>
                             </div>
                         </b-modal>
@@ -66,7 +69,6 @@
                             </span>
                         </p>
                     </div>
-
                 </div>
             </div>
         </div>

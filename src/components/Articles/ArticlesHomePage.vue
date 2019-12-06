@@ -211,6 +211,7 @@ h1 {
     text-transform: uppercase;
     margin: auto;
     width: 144px;
+    margin-bottom: 20px;
 }
 .read-link
 {
