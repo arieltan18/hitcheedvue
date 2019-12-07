@@ -251,10 +251,7 @@ export default {
         },
         logout()
         {
-            this.$store.dispatch('destroyToken')
-            .then(response => {
-                console.log(response);
-            });
+            this.$store.dispatch('destroyToken');
 
             this.$bvToast.toast("Logged out successfully", {
                 title: 'Hitcheed',
