@@ -67,6 +67,7 @@
                                     </b-button>
                                     <p>or</p>
                                     <span class="text">LOGIN WITH YOUR EMAIL ADDRESS</span>
+                                    <b-alert :variant="loginError? 'danger' : 'success'" :show="!!loginMessage">{{loginMessage}}</b-alert>
                                     <b-form-input
                                         class="mt-2 mb-4 input-field"
                                         size="sm"
@@ -80,7 +81,7 @@
                                         type="password"
                                         v-model="loginInput.password"
                                     ></b-form-input>
-                                    <b-button class="login-btn" variant="primary" size="sm" @click="submitLogin">Sign In</b-button>
+                                    <b-button class="login-btn" :disabled="loggingIn" variant="primary" size="sm" @click="submitLogin"> <i v-if="loggingIn" class="fa fa-spinner fa-spin"></i> Sign In</b-button>
                                     <div class="checkbox">
                                         <b-form-checkbox class="remember-me float-left">Remember me</b-form-checkbox>
                                         <span class="float-right text">
@@ -132,6 +133,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import {showAlertMessage} from "../../helpers";
 export default {
     name: 'NavHeader',
     props: ['is-transparent'],
@@ -151,6 +153,8 @@ export default {
             forgetPwd:{
                 email: ""
             },
+            loggingIn: false,
+            loginMessage: '',
             loginError: false,
             resetPasswordRequesting: false,
             forgotPasswordError: false,
@@ -207,13 +211,22 @@ export default {
         },
         submitLogin()
         {
+            // this.loginMessage = '';
+            // this.loginError = false;
+            this.loggingIn = true;
             this.$store.dispatch('retrieveToken', {
                 email: this.loginInput.email,
                 password: this.loginInput.password
             })
             .then(response => {
-                //console.log(response);
                 this.username = response.data.name;
+                this.loginError = false;
+                this.loginMessage = '';
+            }).catch(()=>{
+                this.loginMessage = 'Invalid Username/Password.';
+                this.loginError = true;
+            }).then(()=>{
+                this.loggingIn = false;
             });
         },
         requestPasswordReset(){
@@ -241,7 +254,14 @@ export default {
             this.$store.dispatch('destroyToken')
             .then(response => {
                 console.log(response);
-            })
+            });
+
+            this.$bvToast.toast("Logged out successfully", {
+                title: 'Hitcheed',
+                variant: 'success',
+                autoHideDelay: 5000,
+                appendToast: true,
+            });
         },
         clearResponse()
         {

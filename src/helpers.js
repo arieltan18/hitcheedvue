@@ -13,6 +13,15 @@ export const resizedImageUrl = (imageUrl, width=0, height = 0)=>{
     return url.href;
 };
 
+export function showAlertMessage( message, type='primary', timeout = 5000){
+    const bvToaster =  this.$bvToast;
+    bvToaster.toast(message, {
+        variant:type,
+        autoHideDelay: timeout,
+        appendToast: true,
+    });
+}
+
 export const getUiAvatarUrl = (name, size=179, color="ffffff", background='64c3c0', rounded = true) => `https://ui-avatars.com/api/?name=${name}&size=${size}&color=${color}&background=${background}&rounded=${rounded}`;
 
 export function metaResolver (component){
