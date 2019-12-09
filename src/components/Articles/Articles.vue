@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="col-12 pb-5">
-                <b-button v-if="this.articleItems.length < totalItems" :disabled="isLoading" @click="loadMore()">Load more Articles</b-button>
+                <button class="see-more-link" v-if="this.articleItems.length < totalItems" :disabled="isLoading" @click="loadMore()">See more Articles</button>
             </div>
         </div>
     </div>
@@ -144,5 +144,17 @@ h1 {
 {
     text-decoration: none;
     color: black;
+}
+.see-more-link
+{
+    border:none;
+    text-decoration: none;
+    color: #26140E;
+    font-style: italic;
+    font-size: 18px;
+    text-align: center;
+    font-family: 'Cormorant Garamond';
+    border-bottom: 0.5px solid #26140E;
+    text-transform: capitalize;
 }
 </style>

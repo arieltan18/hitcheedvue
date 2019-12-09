@@ -119,7 +119,7 @@
                         <template v-slot:button-content>
                             <span v-if="user" class="nav-text">{{user.name}}<i class="fa fa-angle-down ml-2"></i></span>
                         </template>
-                        <b-dropdown-item class="profile-dropdown-menu" href="#">WishLists</b-dropdown-item>
+                        <!-- <b-dropdown-item class="profile-dropdown-menu" href="#">WishLists</b-dropdown-item> -->
                         <b-dropdown-item class="profile-dropdown-menu" :to="{name: 'Profile'}">My Profile</b-dropdown-item>
                         <b-dropdown-divider></b-dropdown-divider>
                         <b-dropdown-item class="profile-dropdown-menu" href="#" @click="logout">Logout</b-dropdown-item>

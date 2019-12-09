@@ -102,9 +102,22 @@ export default {
         date: function (date) {
             return moment(date).format('D MMMM YYYY');
         },
+        validEmail: function (email) {
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        },
         submitRSVPForm(e) {
             e.preventDefault();
             let currentObj = this;
+
+            if(!this.validEmail(this.email))
+            {
+                this.alertMessage = 'Invalid Email Address';
+
+            }
+            else
+            {
+
             this.axios.post('https://laravel.hitcheed.com/api/v1/event-promotion/rsvp', {
                 name: this.name,
                 email: this.email,
@@ -120,15 +133,23 @@ export default {
                 {
                     this.$refs.rsvpRef.hide();
                     this.$refs.thankyouRef.show();
+                    e.target.reset();
                 }
             })
             .catch(error => {
                 currentObj.output = error;
-                const {response:{data:{message = 'An error occurred while sending message'}}} = error;
+                const {response:{data:{message = 'An error occurred while rsvp'}}} = error;
                 this.alertMessage = message;
+
+                if(message.includes('Duplicate entry'))
+                {
+                    this.alertMessage = 'You have already submitted!';
+                }
+                
                 this.hasErrors = true;
-                console.log(error);
+                console.log(message);
             });
+            }
         }
 
     },
