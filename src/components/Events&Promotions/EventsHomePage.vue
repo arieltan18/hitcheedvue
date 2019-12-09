@@ -10,21 +10,21 @@
             </div>
             <div class="col-md-12 slider-section">
                 <nav class="mb-4">
-                    <ul class="nav nav-tabs nav-fill justify-content-center" id="nav-tab" role="tablist">
+                    <ul class="nav nav-tabs nav-fill justify-content-center">
                         <li>
-                            <a class="nav-item nav-link cursor-pointer" :class="{'active': isActive('events')}" id="nav-events-tab" data-toggle="tab" href="javascript:void(0)" @click="setActiveTab('events')" role="tab" aria-controls="nav-events" aria-selected="true">
+                            <a class="nav-item nav-link" :class="{'active': isActive('events')}" href="javascript:void(0)" @click="setActiveTab('events')">
                                 <span class="nav-text-link">Events</span>
                             </a>
                         </li>
                         <li>
-                            <a class="nav-item nav-link" :class="{'active': isActive('promotions')}" id="nav-promotions-tab" data-toggle="tab" href="javascript:void(0)" @click="setActiveTab('promotions')" role="tab" aria-controls="nav-promotions" aria-selected="false">
+                            <a class="nav-item nav-link" :class="{'active': isActive('promotions')}" href="javascript:void(0)" @click="setActiveTab('promotions')">
                                 <span class="nav-text-link">Promotions</span>
                             </a>
                         </li>
                     </ul>
                 </nav>
                 <div>
-                    <vueper-slides class="no-shadow px-5 mx-5" arrows-outside :visible-slides="2" slide-multiple :slide-ratio="1/2" :dragging-distance="70" :bullets="false" :fixedHeight="false" :breakpoints="{ 800: { visibleSlides: 2 } }">
+                    <vueper-slides class="no-shadow px-5 mx-5" arrows-outside :visible-slides="2" slide-multiple :slide-ratio="1/2" :dragging-distance="70" :bullets="false" :fixedHeight="false" :breakpoints="{ 600: { visibleSlides: 1 } }">
                     <template v-slot:arrow-left>
                         <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
                     </template>
