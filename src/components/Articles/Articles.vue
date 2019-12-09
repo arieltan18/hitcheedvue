@@ -13,6 +13,9 @@
                     <ArticleItems :articleItem="articleItem" />
                 </div>
             </div>
+            <div class="col-12 pb-5">
+                <b-button v-if="this.articleItems.length < totalItems" :disabled="isLoading" @click="loadMore()">Load more Articles</b-button>
+            </div>
         </div>
     </div>
 </template>
@@ -32,6 +35,9 @@ export default {
     data() {
         return {
             articleItems: [],
+            totalItems: '',
+            page: 1,
+            isLoading: false
         }
     },
     methods: {
@@ -39,8 +45,9 @@ export default {
             //get the current timestamp
             const date = Date.now();
 
-            const url = process.env.VUE_APP_STORYBLOK_API + '&starts_with=blog&cv=' + date;
+            const url = process.env.VUE_APP_STORYBLOK_API + '&per_page=40&page=' + this.page + '&starts_with=blog&cv=' + date;
 
+            console.log(url);
             axios.defaults.headers = {
                 'Content-Type': 'application/json',
                 'cache-control':'no-cache'
@@ -48,6 +55,8 @@ export default {
             axios.get(url)
             .then((response) => {
                 this.articleItems = response.data.stories;
+                this.totalItems = response.headers.total;
+
             })
             .catch(error => {
                 console.log(error);
@@ -71,6 +80,29 @@ export default {
                 console.log(error);
             });
         },
+        loadMore()
+        {
+            this.isLoading = true;
+            this.page = this.page + 1;
+
+            //get the current timestamp
+            const date = Date.now();
+
+            const url = process.env.VUE_APP_STORYBLOK_API + '&per_page=40&page=' + this.page + '&starts_with=blog&cv=' + date;
+
+            axios.defaults.headers = {
+                'Content-Type': 'application/json',
+                'cache-control':'no-cache'
+            }
+            axios.get(url)
+            .then((response) => {
+                this.articleItems.push(...response.data.stories);
+                this.isLoading = false;
+            })
+            .catch(error => {
+                console.log(error);
+            });
+        }
     },
     mounted()
     {

@@ -24,7 +24,7 @@
                         <b-button class="rsvp-btn" variant="primary" v-b-modal.rsvp>RSVP NOW</b-button>
                         <b-modal id="rsvp" title="RSVP to the event Celebrate Love Wedding Showcase, now." size="lg" centered hide-footer ok-only no-stacking>
                             <div class="centered-modal">
-                                <form class="rsvp-form" method="POST" action="http://hitcheedlaravel.test/api/v1/event-promotion/rsvp" validate>
+                                <form class="rsvp-form" method="POST" action="https://laravel.hitcheed.com/api/v1/event-promotion/rsvp" validate>
                                     <div class="mb-5">
                                         <label for="name">Name*</label>
                                         <input class="form-control" type="text" name="name" required/>
@@ -80,6 +80,7 @@
 import { EVENT_PROMOTION_FILTER } from '../../graphql/graphql.js';
 import moment from 'moment';
 import MessageProfessional from "../Professionals/MessageProfessional";
+import axios from 'axios';
 
 export default {
     name: 'Events',
@@ -93,6 +94,14 @@ export default {
         date: function (date) {
             return moment(date).format('D MMMM YYYY');
         },
+        // submitRSVPForm: function (payload) {
+        // axios
+        //     .post('http://localhost:8081/product', payload)
+        //     .then(response) => {
+        //         console.log()
+        //     }) // assuming your response payload is in a data object
+        // }
+
     },
     apollo: {
         event: {
@@ -106,7 +115,7 @@ export default {
                 return data.event_promotion_filter;
             }
         }
-    },
+    }
 }
 </script>
 
