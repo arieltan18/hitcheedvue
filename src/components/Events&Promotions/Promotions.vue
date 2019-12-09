@@ -20,35 +20,7 @@
                         {{ promotion.terms }}
                     </div>
                     <div>
-                        <b-button class="interested-btn" variant="primary" v-b-modal.interested>I'm interested</b-button>
-                        <b-modal id="interested" title="Leave your contact details below and we’ll get in touch!" size="lg" centered hide-footer ok-only no-stacking>
-                            <div class="centered-modal">
-                                <form class="interested-form" method="POST">
-                                    <div class="mb-5">
-                                        <label for="name">Name*</label>
-                                        <input type="text" name="name">
-                                    </div>
-                                    <div class="mb-4">
-                                        <label for="email">Email*</label>
-                                        <input type="text" name="email">
-                                        <div class="mandatory">*Mandatory</div>
-                                    </div>
-                                    <div class="mb-2">
-                                        <input style="display:inline-block;width:25px;" type="checkbox" name="phone-check">
-                                        <label style="display:inline-block;width:90%;" for="checkbox-label">It's ok to reach me via phone as well</label>
-                                    </div>
-                                    <div class="mb-5">
-                                        <label for="phone">Phone (Optional)</label>
-                                        <input type="text" name="phone">
-                                    </div>
-                                    <b-button class="submit-btn" variant="primary" v-b-modal.thankyou>Submit</b-button>
-                                </form>
-                            </div>
-                        </b-modal>
-                        <b-modal id="thankyou" size="md" centered hide-footer >
-                            <div class="thank-you">Thank<br/>You!</div>
-                            <div class="msg">We’ll be in touch shortly.</div>
-                        </b-modal>
+                        <b-button class="interested-btn" variant="primary" v-b-modal.modal-1>I'm interested</b-button>
                     </div>
                 </div>
                 <div class="col-md-4">

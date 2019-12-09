@@ -47,7 +47,6 @@ export default {
 
             const url = process.env.VUE_APP_STORYBLOK_API + '&per_page=40&page=' + this.page + '&starts_with=blog&cv=' + date;
 
-            console.log(url);
             axios.defaults.headers = {
                 'Content-Type': 'application/json',
                 'cache-control':'no-cache'

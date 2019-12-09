@@ -22,34 +22,35 @@
                     <div class="desc mt-4 mb-4">{{ event.description }}</div>
                     <div>
                         <b-button class="rsvp-btn" variant="primary" v-b-modal.rsvp>RSVP NOW</b-button>
-                        <b-modal id="rsvp" title="RSVP to the event Celebrate Love Wedding Showcase, now." size="lg" centered hide-footer ok-only no-stacking>
+                        <b-modal id="rsvp" ref="rsvpRef" :title="eventTitle" size="lg" centered hide-footer ok-only no-stacking>
+                            <b-alert :variant="hasErrors? 'danger' : 'primary'" :show="!!alertMessage">{{alertMessage}}</b-alert>
                             <div class="centered-modal">
-                                <form class="rsvp-form" method="POST" action="https://laravel.hitcheed.com/api/v1/event-promotion/rsvp" validate>
+                                <form class="rsvp-form" @submit="submitRSVPForm" method="POST" validate>
                                     <div class="mb-5">
                                         <label for="name">Name*</label>
-                                        <input class="form-control" type="text" name="name" required/>
+                                        <input class="form-control" type="text" name="name" v-model="name" required/>
                                     </div>
                                     <div class="mb-5">
                                         <label for="email">Email*</label>
-                                        <input class="form-control" type="text" name="email" required/>
+                                        <input class="form-control" type="text" name="email" v-model="email" required/>
                                         <div class="mandatory">*Mandatory</div>
                                     </div>
                                     <div class="mb-5">
                                         <label for="name">Partner's Name</label>
-                                        <input class="form-control" type="text" name="partner_name"/>
+                                        <input class="form-control" type="text" name="partner_name" v-model="partner_name"/>
                                     </div>
                                     <div class="mb-5">
                                         <label for="phone">Contact Number</label>
-                                        <input class="form-control" type="text" name="contact_number"/>
+                                        <input class="form-control" type="text" name="contact_number" v-model="contact_number"/>
                                     </div>
-                                    <input type="hidden" name="event_id" :value="event.id ">
-                                    <input type="hidden" name="professional_id" :value="event.professional.id ">
-                                    <input type="hidden" name="professional_name" :value="event.professional.name">
-                                    <b-button class="submit-btn" variant="primary" type="submit">Submit</b-button>
+                                    <input type="hidden" name="event_id" :value="event.id">
+                                    <input type="hidden" name="professional_id" :value="event.professional.id">
+                                    <input type="hidden" name="professional_name" :value="event.professional.name" >
+                                    <b-button class="submit-btn" variant="primary" type="submit" >Submit</b-button>
                                 </form>
                             </div>
                         </b-modal>
-                        <b-modal id="thankyou" size="md" centered hide-footer >
+                        <b-modal id="thankyou" ref="thankyouRef" size="md" centered hide-footer>
                             <div class="thank-you">Thank<br/>You!</div>
                             <div class="msg">You have successfully completed your RSVP, the vendor will contact you shortly.</div>
                         </b-modal>
@@ -88,19 +89,47 @@ export default {
     data() {
         return {
             event: [],
+            name: '',
+            email: '',
+            partner_name: '',
+            contact_number: '',
+            showModal: false,
+            alertMessage:'',
+            hasErrors: false
         }
     },
     methods: {
         date: function (date) {
             return moment(date).format('D MMMM YYYY');
         },
-        // submitRSVPForm: function (payload) {
-        // axios
-        //     .post('http://localhost:8081/product', payload)
-        //     .then(response) => {
-        //         console.log()
-        //     }) // assuming your response payload is in a data object
-        // }
+        submitRSVPForm(e) {
+            e.preventDefault();
+            let currentObj = this;
+            this.axios.post('https://laravel.hitcheed.com/api/v1/event-promotion/rsvp', {
+                name: this.name,
+                email: this.email,
+                partner_name: this.partner_name,
+                contact_number: this.contact_number,
+                event_id: this.event.id,
+                professional_id: this.event.professional.id,
+                professional_name: this.event.professional.name
+            })
+            .then(response => {
+                currentObj.output = response.data;
+                if(response.data.success === true)
+                {
+                    this.$refs.rsvpRef.hide();
+                    this.$refs.thankyouRef.show();
+                }
+            })
+            .catch(error => {
+                currentObj.output = error;
+                const {response:{data:{message = 'An error occurred while sending message'}}} = error;
+                this.alertMessage = message;
+                this.hasErrors = true;
+                console.log(error);
+            });
+        }
 
     },
     apollo: {
@@ -114,6 +143,12 @@ export default {
             update(data){
                 return data.event_promotion_filter;
             }
+        }
+    },
+    computed:  {
+        eventTitle: function () {
+            const eventTitle = 'RSVP to the event ' + this.event.title + '.' ;
+            return eventTitle;
         }
     }
 }
