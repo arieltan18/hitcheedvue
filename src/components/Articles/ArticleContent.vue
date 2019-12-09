@@ -10,7 +10,7 @@
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <ArticleContentTitle :articleContent="articleContent" />
                     <ArticleContentBody :articleContent="articleContent" />
                 </div>

@@ -12,12 +12,12 @@
                     <div class="professionals">by 
                         <router-link target= '_blank' :to="{ name: 'professional', params: { slug: event.professional.slug }}" class="bold">{{ event.professional.name }}</router-link>
                     </div>
-                    <div class="date mt-2">
-                        <i class="fa fa-calendar mr-2" aria-hidden="true"></i>
+                    <div class="date mt-2 mb-1">
+                        <img class="mr-1" src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/Group644%402x.png" width="20px">
                         {{ date(event.date_from) }} - {{ date(event.valid_to) }}
                     </div>
                     <div class="date" v-if="event.location">
-                        <img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group47.svg">
+                        <img class="mr-2" src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/Group611%402x.png" width="13px">
                         {{ event.location }}
                     </div>
                 </router-link>
