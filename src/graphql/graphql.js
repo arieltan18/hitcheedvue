@@ -7,7 +7,7 @@ export const PROFESSIONAL = gql`
       slug,
     }
   }
-` 
+`
 
 export const PROFESSIONALS_BY_CATEGORY = gql`
   query professionals_by_category($category_id: Int!){
@@ -233,6 +233,7 @@ export const PROMOTION_FILTER = gql`
       {
         id,
         name,
+        email,
         slug,
         profile_image,
         review_count,
@@ -284,6 +285,7 @@ export const EVENT_PROMOTION_FILTER = gql`
       {
         id,
         name,
+        email,
         slug,
         profile_image,
         review_count,

@@ -59,6 +59,7 @@
                             {{ promotion.professional.name }}
                         </h4>
                         </router-link>
+                        <MessageProfessional :professional="promotion.professional"></MessageProfessional>
                         <p class="review-rating-text text-center" v-if="promotion.professional.review_count > 0" >{{ promotion.professional.review_count }} Reviews
                             <span v-for="(value, index) in this.promotion.professional.rating" :key="index">
                                 <span class="rating-star fa fa-star"></span>
@@ -75,13 +76,18 @@
 <script>
 import { PROMOTION_FILTER } from '../../graphql/graphql.js';
 import moment from 'moment';
+import MessageProfessional from "../Professionals/MessageProfessional";
 
 export default {
     name: 'Promotions',
+    components: {MessageProfessional},
     data() {
         return {
             promotion: [],
         }
+    },
+    computed(){
+
     },
     methods: {
         date: function (date) {
@@ -124,7 +130,7 @@ h3
 }
 .bold
 {
-    font-weight: bold; 
+    font-weight: bold;
 }
 
 .subtitle

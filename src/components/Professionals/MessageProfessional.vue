@@ -1,8 +1,9 @@
 <template>
-    <div>
+    <div v-if="loggedIn">
         <b-button class="my-3" variant="info" v-b-modal.modal-1>Send Message</b-button>
 
         <b-modal hide-footer id="modal-1" :title="`Chat with ${professional.name}`">
+            <b-alert :variant="hasErrors? 'danger' : 'primary'" :show="!!alertMessage">{{alertMessage}}</b-alert>
             <div>Make sure you share the following:</div>
             <ul class="pl">
                 <li>What do you like about their work?</li>
@@ -30,9 +31,16 @@
         name: "MessageProfessional",
         props: ['professional'],
         data:()=>({
+            alertMessage:'',
+            hasErrors: false,
             sending: false,
             message: ''
         }),
+        computed:{
+            loggedIn() {
+                return this.$store.getters.loggedIn;
+            },
+        },
         methods:{
             sendMessage(){
                 this.sending = true;
@@ -41,7 +49,11 @@
                     message: this.message
                 })
                 .then(()=> this.$router.push('/messages'))
-                .catch(()=>{})
+                .catch((error)=>{
+                    const {response:{data:{message = 'An error occurred while sending message'}}} = error;
+                    this.alertMessage = message;
+                    this.hasErrors = true;
+                })
                 .then(()=>{this.sending = false;})
             }
         }
