@@ -268,6 +268,7 @@ export const PROMOTION_PAGINATE = gql`
 export const EVENT_PROMOTION_FILTER = gql`
   query event_promotion_filter($slug: String!){
     event_promotion_filter(slug: $slug){
+      id,
       title,
       sub_title,
       slug,
