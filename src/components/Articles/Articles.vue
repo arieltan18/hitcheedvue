@@ -75,7 +75,9 @@ export default {
             }
             axios.get(url)
             .then((response) => {
+                console.log(url);
                 this.articleItems = response.data.stories;
+                this.pageLoading=false;
             })
             .catch(error => {
                 console.log(error);
@@ -111,7 +113,6 @@ export default {
         {
             this.getFullArticleItems();
         }
-
     },
     beforeRouteEnter (to, from, next)
     {

@@ -28,7 +28,9 @@
                     <template v-slot:arrow-left>
                         <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
                     </template>
-                    <template v-slot:arrow-right><img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;"></template>
+                    <template v-slot:arrow-right>
+                        <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;">
+                    </template>
                     <vueper-slide v-for="data of sliderItems.data" :key="data.id" :event="data" >
                         <template v-slot:content>
                             <EventPromotionSliderItem :data="data" />
