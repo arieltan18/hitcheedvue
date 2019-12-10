@@ -1,5 +1,5 @@
 <template>
-    <div class="clear-both">
+    <div>
         <div class="article-item">
             <ArticleImg :articleItem="articleItem"/>
             <ArticleCaptions :articleItem="articleItem"/>

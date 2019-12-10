@@ -58,9 +58,6 @@ export default {
             isLoading: false
         }
     },
-    computed(){
-
-    },
     methods: {
         date: function (date) {
             return moment(date).format('D MMMM YYYY');

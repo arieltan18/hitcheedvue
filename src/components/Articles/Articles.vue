@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid mb-5">
+    <div class="container-fluid pb-5">
         <div class="container">
             <div class="row mb-4">
                 <div class="col-sm-12 text-center">
@@ -131,11 +131,22 @@ export default {
 </script>
 
 <style scoped>
+.container-fluid
+{
+    background-color: rgba(250, 250, 250, 1);
+}
+
 h1 {
     font-family: 'Cormorant Garamond';
     font-weight: normal;
     font-size: 36px;
     color: #26140E;
+}
+
+.col-md-3
+{
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 .text-center
@@ -159,5 +170,6 @@ h1 {
     font-family: 'Cormorant Garamond';
     border-bottom: 0.5px solid #26140E;
     text-transform: capitalize;
+    background-color: rgba(250, 250, 250, 1);
 }
 </style>

@@ -32,6 +32,8 @@ export default {
     width: 100%;
     max-width: 100%;
     display: block;
+    max-height: 200px;
+    object-fit: cover;
 }
 
 </style>

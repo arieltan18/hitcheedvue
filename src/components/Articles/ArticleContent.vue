@@ -8,6 +8,7 @@
             </div>
 
         </div>
+        <div v-if="isLoading"><i class="fa fa-spinner fa-spin"></i></div>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -35,7 +36,8 @@ export default {
     data() {
         return {
             articleContent: [],
-            professionals: []
+            professionals: [],
+            isLoading: true
         }
     },
     methods: {
@@ -51,6 +53,7 @@ export default {
             .get(article_url)
             .then((response) => {
                 this.articleContent = response.data.stories[0];
+                this.isLoading = false;
             })
             .catch(error => {
                 console.log(error);
