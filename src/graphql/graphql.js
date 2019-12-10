@@ -244,8 +244,8 @@ export const PROMOTION_FILTER = gql`
 `
 
 export const PROMOTION_PAGINATE = gql`
-  query promotion_paginate($promotion_for: String! ,$first: Int!){
-    promotion_paginate(promotion_for: $promotion_for ,first: $first, orderBy: [{field: "valid_to", order: DESC}]){
+  query promotion_paginate($promotion_for: String! ,$first: Int!, $page: Int!){
+    promotion_paginate(promotion_for: $promotion_for ,first: $first, page:$page , orderBy: [{field: "valid_to", order: DESC}]){
       data
       {
         id,
