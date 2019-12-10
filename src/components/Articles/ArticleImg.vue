@@ -32,7 +32,7 @@ export default {
     width: 100%;
     max-width: 100%;
     display: block;
-    max-height: 200px;
+    height: 270px;
     object-fit: cover;
 }
 
