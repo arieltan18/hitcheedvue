@@ -29,7 +29,7 @@
                                 <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/envelope.svg">
                                 help@hitcheed.com
                             </a><br/>
-                            <a class="vendor-link" href="https://hitcheed.com/vendor">Become a vendor</a>
+                            <a class="vendor-link" href="/vendor">Become a vendor</a>
                         </div>
                     </div>
                 </div>

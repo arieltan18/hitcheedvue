@@ -24,6 +24,7 @@ import Events from '../components/Events&Promotions/Events'
 import About from "../components/Public/About"
 import PrivacyPolicy from "../components/Public/PrivacyPolicy"
 import Faq from "../components/Public/Faq"
+import Vendor from "../components/Public/Vendor"
 
 Vue.use(VueRouter);
 
@@ -166,6 +167,11 @@ export default new VueRouter({
             name: 'faq',
             path: '/faq',
             component: Faq
+        },
+        {
+            name: 'vendor',
+            path: '/vendor',
+            component: Vendor
         },
 
     ]
