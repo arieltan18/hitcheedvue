@@ -70,7 +70,7 @@ export default {
             this.isLoading = true;
             this.$store.dispatch('sendMessageToProfessional', {
                 email: this.promotion.professional.email,
-                message: "Hi, I am very interested to know more about this promotion. Could you share more about it?"
+                message: "Hi, I am very interested to know more about this promotion, " + this.promotion.title + ". Could you share more about it?"
             })
             .then(()=> {this.$router.push('/messages');this.isLoading = false;})
             .catch((error)=>{
