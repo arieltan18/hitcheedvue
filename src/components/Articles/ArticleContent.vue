@@ -82,6 +82,7 @@ h1
     font-weight: normal;
     font-size: 36px;
     line-height: 100px;
+    color: #26140E;
 }
 
 .article-header

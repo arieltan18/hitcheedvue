@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid mb-5" v-if="articleItems.length >0" >
+    <div class="container-fluid mb-5">
         <div class="container">
             <div class="row mb-4">
                 <div class="col-sm-12 text-center">
@@ -8,13 +8,14 @@
                     </router-link>
                 </div>
             </div>
+            <div v-if="pageLoading"><i class="fa fa-spinner fa-spin"></i></div>
             <div class="row">
                 <div v-for="articleItem in articleItems" :key="articleItem.id" class="col-md-3 float-left">
                     <ArticleItems :articleItem="articleItem" />
                 </div>
             </div>
             <div class="col-12 pb-5">
-                <button class="see-more-link" v-if="this.articleItems.length < totalItems" :disabled="isLoading" @click="loadMore()">See more Articles</button>
+                <button class="see-more-link" v-if="this.articleItems.length < totalItems" :disabled="isLoading" @click="loadMore()">See more Articles <i v-if="isLoading" class="fa fa-spinner fa-spin"></i></button>
             </div>
         </div>
     </div>
@@ -37,7 +38,8 @@ export default {
             articleItems: [],
             totalItems: '',
             page: 1,
-            isLoading: false
+            isLoading: false,
+            pageLoading:true,
         }
     },
     methods: {
@@ -55,7 +57,7 @@ export default {
             .then((response) => {
                 this.articleItems = response.data.stories;
                 this.totalItems = response.headers.total;
-
+                this.pageLoading=false;
             })
             .catch(error => {
                 console.log(error);
@@ -133,6 +135,7 @@ h1 {
     font-family: 'Cormorant Garamond';
     font-weight: normal;
     font-size: 36px;
+    color: #26140E;
 }
 
 .text-center

@@ -145,7 +145,7 @@ export default {
                     const {response:{data:{message = 'An error occurred while rsvp'}}} = error;
                     this.alertMessage = message;
 
-                    if(message.includes('Duplicate entry'))
+                    if(message.includes('This email has been registered for this event'))
                     {
                         this.alertMessage = 'You have already submitted!';
                     }
