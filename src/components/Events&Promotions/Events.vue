@@ -113,42 +113,45 @@ export default {
             if(!this.validEmail(this.email))
             {
                 this.alertMessage = 'Invalid Email Address';
-
             }
             else
             {
+                this.axios.post('https://laravel.hitcheed.com/api/v1/event-promotion/rsvp', {
+                    name: this.name,
+                    email: this.email,
+                    partner_name: this.partner_name,
+                    contact_number: this.contact_number,
+                    event_id: this.event.id,
+                    professional_id: this.event.professional.id,
+                    professional_name: this.event.professional.name
+                })
+                .then(response => {
+                    currentObj.output = response.data;
+                    if(response.data.success === true)
+                    {
+                        this.$refs.rsvpRef.hide();
+                        this.$refs.thankyouRef.show();
+                        //clear all the input value
+                        this.name='';
+                        this.email='';
+                        this.partner_name='';
+                        this.contact_number='';
+                        this.hasErrors=false;
+                        this.alertMessage='';
+                    }
+                })
+                .catch(error => {
+                    currentObj.output = error;
+                    const {response:{data:{message = 'An error occurred while rsvp'}}} = error;
+                    this.alertMessage = message;
 
-            this.axios.post('https://laravel.hitcheed.com/api/v1/event-promotion/rsvp', {
-                name: this.name,
-                email: this.email,
-                partner_name: this.partner_name,
-                contact_number: this.contact_number,
-                event_id: this.event.id,
-                professional_id: this.event.professional.id,
-                professional_name: this.event.professional.name
-            })
-            .then(response => {
-                currentObj.output = response.data;
-                if(response.data.success === true)
-                {
-                    this.$refs.rsvpRef.hide();
-                    this.$refs.thankyouRef.show();
-                    e.target.reset();
-                }
-            })
-            .catch(error => {
-                currentObj.output = error;
-                const {response:{data:{message = 'An error occurred while rsvp'}}} = error;
-                this.alertMessage = message;
-
-                if(message.includes('Duplicate entry'))
-                {
-                    this.alertMessage = 'You have already submitted!';
-                }
-                
-                this.hasErrors = true;
-                console.log(message);
-            });
+                    if(message.includes('Duplicate entry'))
+                    {
+                        this.alertMessage = 'You have already submitted!';
+                    }
+                    
+                    this.hasErrors = true;
+                });
             }
         }
 
@@ -171,6 +174,11 @@ export default {
             const eventTitle = 'RSVP to the event ' + this.event.title + '.' ;
             return eventTitle;
         }
+    },
+    mounted: function() {
+        $('.rsvp').on('hidden.bs.modal', function () {
+            $('.rsvp form')[0].reset();
+        });
     }
 }
 </script>
