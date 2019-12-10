@@ -20,7 +20,7 @@
                         {{ promotion.terms }}
                     </div>
                     <div>
-                        <b-button class="interested-btn" variant="primary" v-b-modal.modal-1>I'm interested</b-button>
+                        <b-button class="interested-btn" variant="primary" v-on:click="sendMessageToProfessional()">I'm interested <i v-if="isLoading" class="fa fa-spinner fa-spin"></i></b-button>
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -55,6 +55,7 @@ export default {
     data() {
         return {
             promotion: [],
+            isLoading: false
         }
     },
     computed(){
@@ -64,6 +65,21 @@ export default {
         date: function (date) {
             return moment(date).format('D MMMM YYYY');
         },
+        sendMessageToProfessional()
+        {
+            this.isLoading = true;
+            this.$store.dispatch('sendMessageToProfessional', {
+                email: this.promotion.professional.email,
+                message: "Hi, I am very interested to know more about this promotion. Could you share more about it?"
+            })
+            .then(()=> {this.$router.push('/messages');this.isLoading = false;})
+            .catch((error)=>{
+                const {response:{data:{message = 'An error occurred while sending message'}}} = error;
+                console.log(message);
+                this.isLoading = false;
+            })
+            .then(()=>{this.$router.push('/messages');this.isLoading = false;})
+        }
     },
     apollo: {
         promotion: {

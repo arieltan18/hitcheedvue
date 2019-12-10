@@ -12,8 +12,12 @@
 </template>
 
 <script>
+import {metaResolver} from "../../helpers";
 export default {
-    name: 'PageNotFound'
+    name: 'PageNotFound',
+    metaInfo:{
+        title: 'Page Not Found'
+    },
 }
 </script>
 
