@@ -74,3 +74,13 @@
 {
     color: #26140E !important;
 }
+
+.articles-slider .vueperslides__track-inner
+{
+    padding-top: 50px;
+}
+
+.vueperslides--fixed-height.vueperslides--bullets-outside
+{
+    margin-bottom: 0px !important;
+}

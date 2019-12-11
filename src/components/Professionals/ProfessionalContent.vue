@@ -1,22 +1,25 @@
 <template>
     <div>
-        <div class="container-fluid bg-color">
-            <div class="row">
-                <img class="top-image" :src="professionalContent.cover_image" width="100%">
-            </div>
-        </div>
-        <div class="container-fluid padding">
-            <div class="row">
-                <div class="col-md-8 professional-content">
-                    <h3>About this Professional</h3>
-                    <div class="description" v-html="professionalContent.description"></div>
-                    <p v-if="professionalContent.address || professionalContent.country">
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        Location: {{ professionalContent.address ? professionalContent.address : professionalContent.country }}
-                    </p>
-                    <ProfessionalProjects :projects="projects"></ProfessionalProjects>
+        <PageNotFound v-if="pageNotFound"></PageNotFound>
+        <div v-else>
+            <div class="container-fluid bg-color">
+                <div class="row">
+                    <img class="top-image" :src="professionalContent.cover_image" width="100%">
                 </div>
-                <ProfessionalReviews :professionalContent="professionalContent" :reviews="reviews" :totalReviews="professionalContent.review_count" />
+            </div>
+            <div class="container-fluid padding">
+                <div class="row">
+                    <div class="col-md-8 professional-content">
+                        <h3>About this Professional</h3>
+                        <div class="description" v-html="professionalContent.description"></div>
+                        <p v-if="professionalContent.address || professionalContent.country">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                            Location: {{ professionalContent.address ? professionalContent.address : professionalContent.country }}
+                        </p>
+                        <ProfessionalProjects :projects="projects"></ProfessionalProjects>
+                    </div>
+                    <ProfessionalReviews :professionalContent="professionalContent" :reviews="reviews" :totalReviews="professionalContent.review_count" />
+                </div>
             </div>
         </div>
     </div>
@@ -26,13 +29,15 @@
 import axios from 'axios';
 import ProfessionalReviews from './ProfessionalReviews';
 import ProfessionalProjects from './ProfessionalProjects';
+import PageNotFound from '../Public/PageNotFound';
 import {metaResolver} from "../../helpers";
 
 export default {
     name: "ProfessionalContent",
     components: {
         ProfessionalReviews,
-        ProfessionalProjects
+        ProfessionalProjects,
+        PageNotFound
     },
     metaInfo:metaResolver.bind('professionalContent'),
     data() {
@@ -40,7 +45,8 @@ export default {
             professional_slug: '',
             professionalContent: [],
             projects: [],
-            reviews: []
+            reviews: [],
+            pageNotFound: false
         }
     },
     methods: {
@@ -61,6 +67,7 @@ export default {
             })
             .catch(error => {
                 console.log(error);
+                this.pageNotFound = true;
             });
         }
     },

@@ -2,7 +2,26 @@
     <div class="container">
         <h6>Popular {{ this.category_name }} Searches</h6>
         <div class="row d-flex justify-content-between text-left pl-2">
-            <vueper-slides :dragging-distance="10" prevent-y-scroll class="tag-slider no-shadow" :visible-slides="6" slide-multiple :slide-ratio="1/4" arrows-outside :bullets="false" transition-speed="250" style="width:100%;">
+            <vueper-slides class="no-shadow px-5 mx-4 full-width" arrows-outside :visible-slides="6" slide-multiple :slide-ratio="1/4" :dragging-distance="400" :bullets="false" fixed-height="70px" :breakpoints="{ 800: { visibleSlides: 6 } }">
+                <template v-slot:arrow-left>
+                    <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
+                </template>
+                <template v-slot:arrow-right>
+                    <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;">
+                </template>
+                <vueper-slide
+                    v-for="tag in tags.data"
+                    :key="tag.id">
+                    <div slot="content">
+                        <router-link :key="tag.name" class="tag-link" :to="{ name: 'professionalsByTag', params: { category: raw_category_name ,tag_name: processTagName(tag.name) }}">
+                            <div class="block">
+                                <div class="tag-text">{{ tag.name }}</div>
+                            </div>
+                        </router-link>
+                    </div>
+                </vueper-slide>
+            </vueper-slides>
+            <!-- <vueper-slides :dragging-distance="10" prevent-y-scroll class="tag-slider no-shadow" :visible-slides="6" slide-multiple :slide-ratio="1/4" arrows-outside :bullets="false" transition-speed="250" style="width:100%;">
                 <div slot="arrowLeft" color="white" large class="hide"><img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px"></div>
                 <div slot="arrowRight" color="white" large v-if="tags.data.length<=6" :class="hide">
                 </div>
@@ -17,7 +36,7 @@
                         </router-link>
                     </div>
                 </vueper-slide>
-            </vueper-slides>
+            </vueper-slides> -->
         </div>
         <hr />
     </div>
@@ -127,12 +146,15 @@ h6
     letter-spacing: 1.2px;
     font-family: 'Open Sans';
     text-align: center;
-    padding: 12px 25px;
+    padding: 10px;
     text-transform: uppercase;
     border-radius: 5px;
     font-weight: bold;
     cursor: pointer;
-    margin-right:15px;
+    margin-right:10px;
+    min-height: 57px;
+    display: table;
+    width: 156px;
 }
 .hide
 {
@@ -153,4 +175,16 @@ h6
     background-color: #0B0B0B;
     color: #ffffff;
 }
+
+.full-width
+{
+    width: 100%;
+}
+
+.tag-text
+{
+    display: table-cell;
+    vertical-align: middle;
+}
+
 </style>

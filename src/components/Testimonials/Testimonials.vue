@@ -9,30 +9,22 @@
                     <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Path37.svg">
                 </div>
             </div>
-            <!-- <div class="row mb-4" v-for="testimonial in testimonials" :key="testimonial.id">
-                <div class="col-md-8 testimonial-body">
-                    {{ testimonial.body_text }}
-                </div>
-                <div class="col-sm-4 testimonial-avatar-div text-center">
-                    <img v-if="testimonial.profile_image" class="testimonial-avatar" :src="testimonial.profile_image">
-                    <img v-else class="testimonial-avatar" :src="image_src">
-                    <div class="testimonial-name text-center">{{ testimonial.name }}</div>
-                </div>
-            </div> -->
-            <vueper-slides class="testimonials no-shadow" arrows-outside :bullets="false" transition-speed="250">
-                <div slot="arrowLeft" color="white" large><img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px"></div>
-                <div slot="arrowRight" color="white" large><img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;"></div>
+            <vueper-slides class="no-shadow px-5 mx-5" arrows-outside :dragging-distance="70" :bullets="false" :breakpoints="{ 600: { visibleSlides: 1 } }">
+                <template v-slot:arrow-left>
+                    <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
+                </template>
+                <template v-slot:arrow-right><img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;"></template>
                 <vueper-slide
                     v-for="testimonial in testimonials"
-                    :key="testimonial.id"
-                    :title="testimonial.body_text">
-                    <div slot="slideContent">
-                        <div class="reviewer-name mt-5">
+                    :key="testimonial.id">
+                    <div slot="content">
+                        <div class="reviewer-name">
                             <div class="review-img">
+                                <div class="testimonial-body mb-3">{{testimonial.body_text}}</div>
                                 <img v-if="testimonial.profile_image" class="testimonial-avatar" :src="testimonial.profile_image" wid>
                                 <img v-else class="testimonial-avatar" :src="image_src">
                             </div>
-                            <div class="mt-3">{{ testimonial.name }}</div>
+                            <div class="mt-1">{{ testimonial.name }}</div>
                         </div>
                     </div>
                 </vueper-slide>
@@ -106,6 +98,17 @@ h1
     border-radius: 50%;
     object-fit: cover;
 
+}
+.testimonial-body
+{
+    font-family: 'Cormorant Garamond';
+    font-weight: normal;
+    font-size: 18px;
+    color: #26140E;
+
+    width: 100%;
+    text-align: center;
+    margin:auto;
 }
 .reviewer-name
 {

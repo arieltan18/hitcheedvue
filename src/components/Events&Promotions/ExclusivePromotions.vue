@@ -3,9 +3,9 @@
         <div class="container text-left mb-4">
             <h3>Promotions <span>Exclusive to Hitcheed Users</span></h3>
         </div>
-        <div class="container">
-            <div class="d-flex justify-content-between"> 
-                <div class="box" v-for="promotion in promotions.data" :key="promotion.id">
+        <div class="container mb-4">
+            <div class="row"> 
+                <div class="col-md-4 box" v-for="promotion in promotions.data" :key="promotion.id">
                     <router-link :to="{ name: 'promotions', params: { slug: promotion.slug }}">
                         <img class="mb-2" :src="promotion.cover_image" width="100%">
                         <div class="title line-clamp mb-2">{{ promotion.title }}</div>
@@ -13,6 +13,20 @@
                             <router-link target= '_blank' :to="{ name: 'professional', params: { slug: promotion.professional.slug }}" class="bold">{{ promotion.professional.name }}</router-link>
                         </div>
                         <div class="date mt-2">{{ date(promotion.valid_to) }}</div>
+                    </router-link>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row"> 
+                <div class="col-md-4 box" v-for="promotion2 in promotions2.data" :key="promotion2.id">
+                    <router-link :to="{ name: 'promotions', params: { slug: promotion2.slug }}">
+                        <img class="mb-2" :src="promotion2.cover_image" width="100%">
+                        <div class="title line-clamp mb-2">{{ promotion2.title }}</div>
+                        <div class="professionals">by 
+                            <router-link target= '_blank' :to="{ name: 'professional', params: { slug: promotion2.professional.slug }}" class="bold">{{ promotion2.professional.name }}</router-link>
+                        </div>
+                        <div class="date mt-2">{{ date(promotion2.valid_to) }}</div>
                     </router-link>
                 </div>
             </div>
@@ -29,6 +43,7 @@ export default {
     data() {
         return {
             promotions: [],
+            promotions2: []
         }
     },
     apollo: {
@@ -37,7 +52,21 @@ export default {
             variables() {
                 return {
                     promotion_for: 'exclusive',
-                    first: 3
+                    first: 3,
+                    page: 1
+                }
+            },
+            update(data){
+                return data.promotion_paginate;
+            }
+        },
+        promotions2: {
+            query: PROMOTION_PAGINATE,
+            variables() {
+                return {
+                    promotion_for: 'exclusive',
+                    first: 3,
+                    page: 2
                 }
             },
             update(data){

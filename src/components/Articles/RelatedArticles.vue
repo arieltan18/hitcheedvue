@@ -3,7 +3,7 @@
         <div class="row">
             <div class="related-articles-title">Related Articles</div>
         </div>
-        <div class="row">
+        <div class="row articles-slider">
             <!-- <div v-for="articleItem in articleItems" :key="articleItem.id" class="col-md-6 float-left mt-3 pl-0">
                 <div class="text-left mr-1">
                     <router-link :to="{ name: 'singleArticlePage', params: { slug: articleItem.slug }}" class="read-link">
@@ -25,13 +25,17 @@
                 </div>
             </div> -->
             <vueper-slides class="no-shadow" :visible-slides="2" slide-multiple :slide-ratio="1/4" arrows-outside :bullets="false" transition-speed="250" style="width:100%;">
-                <div slot="arrowLeft" color="white" large><img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px"></div>
-                <div slot="arrowRight" color="white" large><img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;"></div>
+                <template v-slot:arrow-left>
+                    <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
+                </template>
+                <template v-slot:arrow-right>
+                    <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;">
+                </template>
                 <vueper-slide
                     v-for="articleItem in articleItems"
                     :key="articleItem.id"
                     :title="articleItem.body_text">
-                    <div slot="slideContent">
+                    <div slot="content">
                         <router-link :to="{ name: 'singleArticlePage', params: { slug: articleItem.slug }}" class="read-link">
                             <div class="col-md-6 article-img">
                                 <img :src="'https:'+ articleItem.content.cover" width="100%"  height="173px">
@@ -149,6 +153,11 @@ export default {
     max-width: 255px;
 }
 
+.article-img img
+{
+    object-fit: cover;
+}
+
 .article-details
 {
     display: inline-block;
@@ -184,5 +193,9 @@ export default {
     letter-spacing: 0.5px;
     color: #26140E;
     opacity: 0.5;
+}
+.vueperslides__track-inner
+{
+    padding-top: 50px !important;
 }
 </style>
