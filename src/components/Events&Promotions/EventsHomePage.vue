@@ -23,12 +23,14 @@
                         </li>
                     </ul>
                 </nav>
-                <div>
-                    <vueper-slides class="no-shadow px-5 mx-5" arrows-outside :visible-slides="2" slide-multiple :slide-ratio="1/2" :dragging-distance="70" :bullets="false" :fixedHeight="false" :breakpoints="{ 600: { visibleSlides: 1 } }">
+                <div class="mx-lg-5 px-lg-5">
+                    <vueper-slides class="no-shadow" arrows-outside :visible-slides="2" slide-multiple :slide-ratio="1/2" :dragging-distance="70" :bullets="false" :fixedHeight="false" :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 5/4 } }">
                     <template v-slot:arrow-left>
-                        <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
+                        <img class="ml-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
                     </template>
-                    <template v-slot:arrow-right><img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;"></template>
+                    <template v-slot:arrow-right>
+                        <img class="mr-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;">
+                    </template>
                     <vueper-slide v-for="data of sliderItems.data" :key="data.id" :event="data" >
                         <template v-slot:content>
                             <EventPromotionSliderItem :data="data" />

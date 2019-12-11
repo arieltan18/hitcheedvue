@@ -1,7 +1,6 @@
 <template>
     <div class="m-3">
         <router-link :to="{ name: 'data', params: { slug: data.slug }}">
-            <div v-if="false" class="pink-text">Happening in 3 days</div>
             <img class="promotion-image mb-4" :src="resizedImageUrl(data.cover_image, 500, 300)" width="100%">
             <div class="title line-clamp mb-2">{{ data.title }}</div>
             <div class="professionals">by
