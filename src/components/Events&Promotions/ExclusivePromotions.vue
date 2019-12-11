@@ -3,9 +3,9 @@
         <div class="container text-left mb-4">
             <h3>Promotions <span>Exclusive to Hitcheed Users</span></h3>
         </div>
-        <div class="container">
-            <div class="d-flex justify-content-between"> 
-                <div class="box" v-for="promotion in promotions.data" :key="promotion.id">
+        <div class="container mb-4">
+            <div class="row"> 
+                <div class="col-md-4 box" v-for="promotion in promotions.data" :key="promotion.id">
                     <router-link :to="{ name: 'promotions', params: { slug: promotion.slug }}">
                         <img class="mb-2" :src="promotion.cover_image" width="100%">
                         <div class="title line-clamp mb-2">{{ promotion.title }}</div>
@@ -18,8 +18,8 @@
             </div>
         </div>
         <div class="container">
-            <div class="d-flex justify-content-between"> 
-                <div class="box" v-for="promotion2 in promotions2.data" :key="promotion2.id">
+            <div class="row"> 
+                <div class="col-md-4 box" v-for="promotion2 in promotions2.data" :key="promotion2.id">
                     <router-link :to="{ name: 'promotions', params: { slug: promotion2.slug }}">
                         <img class="mb-2" :src="promotion2.cover_image" width="100%">
                         <div class="title line-clamp mb-2">{{ promotion2.title }}</div>
