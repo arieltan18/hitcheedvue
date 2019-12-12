@@ -53,7 +53,7 @@ a:hover
 .image-holder
 {
     width: 100%;
-    height: 340px;
+    height: 406px;
     overflow: hidden;
 }
 
