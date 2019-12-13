@@ -1,3 +1,5 @@
+import moment from "moment";
+
 export const fileToBase64 = file => new Promise((resolve, reject) => {
     const reader = new FileReader();
     reader.readAsDataURL(file);
@@ -20,6 +22,14 @@ export function showAlertMessage( message, type='primary', timeout = 5000){
         autoHideDelay: timeout,
         appendToast: true,
     });
+}
+
+export function formatDate(date){
+    return moment(date).format('DD MMM YYYY');
+}
+
+export function formatTime(time){
+    return moment(time).format('HH:mm');
 }
 
 export const getUiAvatarUrl = (name, size=179, color="ffffff", background='64c3c0', rounded = true) => `https://ui-avatars.com/api/?name=${name}&size=${size}&color=${color}&background=${background}&rounded=${rounded}`;

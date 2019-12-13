@@ -1,7 +1,6 @@
-import { ChatManager, TokenProvider } from '@pusher/chatkit-client'
+import {ChatManager, TokenProvider} from '@pusher/chatkit-client'
 import store from '../store/index'
 import moment from 'moment';
-import defaultUserImage from '../assets/user.png';
 import {getUiAvatarUrl} from "../helpers";
 
 const INSTANCE_LOCATOR = process.env.VUE_APP_INSTANCE_LOCATOR;
@@ -32,6 +31,9 @@ async function connectUser() {
     currentUser = await chatManager.connect({
         onAddedToRoom,
         onRoomUpdated,
+        onPresenceChanged,
+        onUserLeftRoom,
+        onRemovedFromRoom: onUserLeftRoom
     });
 
     const rooms = currentUser.rooms;
@@ -51,6 +53,12 @@ function sendMessage(roomId, message){
         text: message
     }).then((messageId)=>{
         markAsRead(roomId, messageId);
+    })
+}
+
+function leaveRoom(roomId){
+    return currentUser.leaveRoom({
+        roomId,
     })
 }
 
@@ -77,6 +85,14 @@ function subscribeToRoom(room){
 
 function onAddedToRoom(room) {
     return subscribeToRoom(room);
+}
+
+function onUserLeftRoom(room) {
+    store.commit('leaveRoom', room.id);
+}
+
+function onPresenceChanged(status, user) {
+    store.commit('userStatusUpdated', user.id, status.current);
 }
 
 function onRoomUpdated(room){
@@ -116,6 +132,7 @@ function mapRoom(room){
     return {
         id: roomId,
         name: roomName,
+        otherUsers: room.users.map(u=>u.id).filter(id=>id!==userId),
         unreadCount,
         avatar: avatar || getUiAvatarUrl(userName),
         lastMessageAt: moment(lastMessageAt),
@@ -127,4 +144,5 @@ export default {
     markAsRead,
     disconnectUser,
     sendMessage,
+    leaveRoom
 }

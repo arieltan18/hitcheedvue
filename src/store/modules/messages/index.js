@@ -5,10 +5,19 @@ const state = {
     messages: [
     ],
     rooms: [
-    ]
+    ],
+    onlineUsers: [],
 };
 
 const mutations = {
+    userStatusUpdated(state, userId, status){
+        const index = state.onlineUsers.findIndex(id=> id === userId);
+        if(status!== 'online'){
+            if(index > -1) state.onlineUsers.splice(index, 1);
+        }else if(index < 0){
+            state.onlineUsers.push(userId);
+        }
+    },
     setMessagesLoading(state, loading){
         state.loading = loading;
     },
@@ -18,6 +27,12 @@ const mutations = {
     },
     addedToRoom(state, room){
         state.rooms.push(room)
+    },
+    leaveRoom(state, roomId){
+        const rooms = [...state.rooms];
+        const roomIndex = rooms.findIndex(r=>r.id === roomId);
+        if(roomIndex > -1) rooms.splice(roomIndex, 1);
+        state.rooms = rooms
     },
     roomUpdated(state, room){
         const rooms = state.rooms.filter(r=>r.id !== room.id);
@@ -66,8 +81,18 @@ const getters = {
     getChats(state){
         return state.rooms
     },
+
+    getChat(state){
+        return chatId => state.rooms.find(r=>r.id === chatId);
+    },
     isMessagesLoading(state){
         return state.loading
+    },
+    isOnline(state){
+        return userId=>state.onlineUsers.includes(userId);
+    },
+    areOnline(state){
+        return users=>!users.map(userId=>state.onlineUsers.includes(userId)).includes(false);
     }
 };
 

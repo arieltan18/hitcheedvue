@@ -2,15 +2,10 @@
     <div>
         <div class="container text-left">
             <div class="messaging">
-                <div class="inbox_msg">
-                    <div class="inbox_people">
-                        <div class="headind_srch">
-                            <div class="recent_heading">
-                                <h4>Messages</h4>
-                            </div>
-                        </div>
-                        <ChatList @changeActiveChatId="setActiveChatId" :active-chat-id="activeChatId"></ChatList>
-                    </div>
+                <div class="chat-list">
+                    <ChatList @changeActiveChatId="setActiveChatId" :active-chat-id="activeChatId"></ChatList>
+                </div>
+                <div class="chat-messages">
                     <ChatMessages v-if="activeChatId" :key="activeChatId" :chat-id="activeChatId"></ChatMessages>
                     <div class="p-5 text-center font-weight-bold" v-else>Please select a Conversation</div>
                 </div>
@@ -20,7 +15,6 @@
 </template>
 
 <script>
-    import '../../assets/css/messages.css'
     import ChatList from "./ChatList";
     import ChatMessages from "./ChatMessages";
 
@@ -35,13 +29,6 @@
                 activeChatId: null,
             })
         },
-        computed:{
-
-        }
-        ,
-        created: function () {
-
-        },
         methods: {
             setActiveChatId: function (chatId) {
                 this.activeChatId = chatId;
@@ -52,5 +39,22 @@
 </script>
 
 <style scoped>
+
+    .messaging{
+        height: calc(100vh - 250px);
+        max-height: 600px;
+        border: 1px solid #e8e8e8;
+        display: flex
+    }
+
+    .chat-list{
+        border-right: 1px solid #e8e8e8;
+        flex-grow: 1;
+        max-width: 348px;
+    }
+
+    .chat-messages{
+        flex-grow: 2.22;
+    }
 
 </style>

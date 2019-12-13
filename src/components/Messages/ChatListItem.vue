@@ -1,21 +1,34 @@
 <template>
-    <div class="chat_people">
-        <div class="chat_img"> <img class="rounded-circle" :src="resizedImageUrl(chat.avatar, 50,50)" alt="sunil"> </div>
-        <div class="chat_ib">
-            <h5 :class="{'font-weight-bold': chat.unreadCount}">{{chat.name}}<span class="chat_date">{{chat.date}}</span></h5>
-            <p v-if="lastMessage"><b>{{lastMessage.senderName}}:</b> {{lastMessage.text}}</p>
+    <div class="chat-list-item" :class="{active}">
+        <div class="checkbox">
+            <b-checkbox :checked="selected" @change="onSelect" :value="chat.id"></b-checkbox>
+        </div>
+        <div class="chat-details" @click="onClick">
+            <div class="list-item-avatar"> <img class="rounded-circle" :src="resizedImageUrl(chat.avatar, 50,50)" alt="sunil"></div>
+            <div>
+                <div class="date" :class="{'font-weight-bold': chat.unreadCount}">{{formatDate(chat.lastMessageAt)}}</div>
+                <div class="name" :class="{'font-weight-bold': chat.unreadCount}">{{chat.name}}</div>
+                <div class="last-message" v-if="lastMessage">{{lastMessage.senderName}}: {{lastMessage.text}}</div>
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-    import {resizedImageUrl} from "../../helpers";
+    import {formatDate, resizedImageUrl} from "../../helpers";
 
     export default {
-        props: ['chat'],
+        props: ['active', 'chat', 'selected'],
         name: "ChatListItem",
         methods:{
             resizedImageUrl,
+            formatDate,
+            onClick($event){
+                this.$emit('click', $event)
+            },
+            onSelect($event){
+                this.$emit('select', $event)
+            }
         },
         computed: {
             lastMessage: function () {
@@ -26,5 +39,53 @@
 </script>
 
 <style scoped>
+    .chat-list-item{
+        display: flex;
+        padding: 10px;
+        align-items: center;
+        border-bottom: 1px solid #e8e8e8;
+    }
 
+    .chat-list-item:hover{
+        background-color: #e7f6f544;
+    }
+
+    .chat-list-item.active{
+        background-color: #e7f6f5;
+    }
+
+
+    .checkbox{
+        width: 20px;
+    }
+
+    .chat-details{
+        cursor: pointer;
+        display: flex;
+        flex: 1;
+        align-items: center;
+    }
+
+    .list-item-avatar{
+        width: 50px;
+        margin: 10px;
+    }
+
+    .list-item-avatar img{
+        max-width: 100%;
+    }
+
+    .date{
+        color: #26140E;
+        font: Bold 10px/22px Open Sans;
+    }
+
+    .name{
+        font: Bold 12px/22px Open Sans;
+        text-transform: uppercase;
+    }
+    .last-message{
+        font: 14px/19px Open Sans;
+        color: rgb(145, 136, 133);
+    }
 </style>
