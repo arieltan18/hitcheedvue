@@ -75,7 +75,13 @@
             deleteSelectedRooms(){
 
 
-                this.$bvModal.msgBoxConfirm(`Are you sure you want to delete selected ${this.selectedChatIds.length} chats?`, {title: 'Delete Chat'})
+                this.$bvModal.msgBoxConfirm(`Are you sure you want to delete selected ${this.selectedChatIds.length} chats?`, {
+                    title: 'Delete Chat',
+                    okTitle: 'Yes',
+                    cancelTitle: 'No',
+                    okVariant: 'danger',
+                    centered: true
+                })
                     .then(confirmed => {
                         if(confirmed){
                             this.selectedChatIds.forEach((roomId)=>{
