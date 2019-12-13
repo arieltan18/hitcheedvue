@@ -42,6 +42,7 @@
         height: 50px;
         width: 50px;
         border-radius: 50%;
+        border: 1px solid #EFEFEF;
     }
 
     .bubble{

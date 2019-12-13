@@ -97,6 +97,7 @@
         width: 50px;
         height: 50px;
         margin-right: 10px;
+        border: 1px solid #EFEFEF;
     }
     .chat-title{
         font: Bold 18px/22px Cormorant Garamond;
@@ -129,7 +130,7 @@
 
     .message-input{
         flex: 1;
-        padding: 20px;
+        padding-left: 20px;
         border: none;
         outline: none;
     }

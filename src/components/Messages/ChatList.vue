@@ -1,10 +1,10 @@
 <template>
-    <div class="chat-list">
+    <div class="chat-list-wrapper">
         <ChatHeading style="justify-content: space-between">
             <b-checkbox v-show="chats.length" v-model="allSelected" @change="toggleSelectAll"></b-checkbox>
             <b-button v-show="selectedChatIds.length" @click="deleteSelectedRooms" class="delete-button" variant="outline-muted"><i class="fa fa-trash"></i></b-button>
         </ChatHeading>
-        <div v-if="chats.length">
+        <div class="chat-list" v-if="chats.length">
              <ChatListItem v-for="chat of chats" v-bind:key="chat.id" @select="toggleSelect(chat.id)" @click="changeActiveChatId(chat.id)" :selected="selectedChatIds" :active="chat.id === activeChatId" :chat="chat"></ChatListItem>
         </div>
         <div v-else-if="isLoading" class="text-center font-weight-bolder p-2"> <i class="fa fa-spinner fa-spin"></i> Loading Conversations...</div>
@@ -102,7 +102,15 @@
 </script>
 
 <style scoped>
+    .chat-list-wrapper{
+        display: flex;
+        height: 100%;
+        flex-direction: column;
+    }
+
     .chat-list{
+        flex:1;
+        overflow-y: auto;
     }
 
     .delete-button{

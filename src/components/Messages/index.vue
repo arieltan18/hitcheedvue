@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="container text-left">
+        <div class="container pb-3 text-left">
             <div class="messaging">
                 <div class="chat-list">
                     <ChatList @changeActiveChatId="setActiveChatId" :active-chat-id="activeChatId"></ChatList>
@@ -43,8 +43,10 @@
     .messaging{
         height: calc(100vh - 250px);
         max-height: 600px;
+        min-height: 100px;
         border: 1px solid #e8e8e8;
-        display: flex
+        display: flex;
+        border-radius: 6px;
     }
 
     .chat-list{

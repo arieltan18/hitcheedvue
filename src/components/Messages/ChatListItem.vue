@@ -73,6 +73,8 @@
 
     .list-item-avatar img{
         max-width: 100%;
+        border: 1px solid #EFEFEF;
+        border-radius: 50%;
     }
 
     .date{
