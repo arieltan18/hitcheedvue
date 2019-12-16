@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
     <div class="container-fluid" v-if="testimonials.length >0" >
         <div class="container">
             <div class="row mb-2">
@@ -9,7 +9,11 @@
                     <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Path37.svg">
                 </div>
             </div>
-            <vueper-slides class="no-shadow px-5 mx-5" arrows-outside :dragging-distance="70" :bullets="false" :breakpoints="{ 600: { visibleSlides: 1 } }">
+            <vueper-slides class="no-shadow mx-1 px-4 mx-md-5" arrows-outside :dragging-distance="70" :bullets="false"  :breakpoints="{
+                600: { visibleSlides: 1, slideRatio: 1.7 },
+                500: { visibleSlides: 1, slideRatio: 2.8 },
+                400: { visibleSlides: 1, slideRatio: 3.5 },
+            }">
                 <template v-slot:arrow-left>
                     <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
                 </template>
@@ -112,6 +116,9 @@ h1
 }
 .reviewer-name
 {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     font-size: 12px;
     letter-spacing: 0.6px;
     font-family: 'Open Sans';
