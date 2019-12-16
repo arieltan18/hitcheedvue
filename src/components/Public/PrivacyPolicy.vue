@@ -70,10 +70,10 @@
 <script>
 export default {
     name: "Privacy",
-    metaInfo:{
-      title: 'Hitcheed | Singapore Wedding Services | Wedding Planning Website',
-      titleTemplate: '%s'
-    }
+    // metaInfo:{
+    //   title: 'Hitcheed | Singapore Wedding Services | Wedding Planning Website',
+    //   titleTemplate: '%s'
+    // }
 }
 
 </script>
