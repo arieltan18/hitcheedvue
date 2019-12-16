@@ -1,7 +1,7 @@
 <template>
     <div>
-        <NavHeader :is-transparent="isTransparent"></NavHeader>
-        <NavMenu :is-transparent="isTransparent" :variant="variant" :theme="theme" :type="type"></NavMenu>
+        <NavHeader :fixed="fixHeader" :is-transparent="isTransparent"></NavHeader>
+        <NavMenu :fixed="fixHeader" :is-transparent="isTransparent" :variant="variant" :theme="theme" :type="type"></NavMenu>
     </div>
 </template>
 
@@ -14,6 +14,8 @@
         data(){
           return {
               isScrolled: false,
+              fixHeader: false,
+              lastScrollY: 0,
           }
         },
         computed:{
@@ -35,11 +37,18 @@
         },
         methods:{
             onScroll(){
-                if(!this.isScrolled && window.scrollY > 100){
+                if(!this.isScrolled && window.scrollY > 150){
                     this.isScrolled = true;
-                } else if(this .isScrolled && window.scrollY < 100){
+                } else if(this .isScrolled && window.scrollY < 150){
                     this.isScrolled = false;
                 }
+                const scrollY = window.scrollY;
+                if(scrollY < this.lastScrollY){
+                    this.fixHeader = true;
+                }else if(this.fixHeader){
+                    this.fixHeader = false;
+                }
+                this.lastScrollY = window.scrollY;
             }
         },
         mounted(){

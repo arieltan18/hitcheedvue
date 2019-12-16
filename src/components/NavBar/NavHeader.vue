@@ -1,5 +1,5 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
-    <div class="navheader">
+    <div class="navheader" :style="{position: fixed ? 'fixed' : 'absolute'}">
         <b-navbar id="navheader-bar" :class="{'white-header-top': isTransparent, 'brown-header-top': !isTransparent}">
             <div class="container">
                 <b-navbar-nav class="ml-auto">
@@ -136,7 +136,7 @@ import { mapGetters } from 'vuex';
 import {showAlertMessage} from "../../helpers";
 export default {
     name: 'NavHeader',
-    props: ['is-transparent'],
+    props: ['is-transparent', 'fixed'],
     data() {
         return {
             registerInput: {
@@ -304,7 +304,6 @@ export default {
 <style scoped>
 .navheader
 {
-    position: absolute;
     width: 100%;
     z-index: 1050;
 }

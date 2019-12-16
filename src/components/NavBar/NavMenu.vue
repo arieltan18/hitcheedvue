@@ -1,6 +1,6 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
     <div>
-        <b-navbar id="nav-menu" toggleable="lg" fixed="top" :type="type" variant="white" :class="['py-4', {transparent: isTransparent}, { 'border-bottom': !isTransparent }]">
+        <b-navbar id="nav-menu" toggleable="lg" :style="{position: fixed? 'fixed' : 'absolute'}" fixed="top" :type="type" variant="white" :class="['py-4', {transparent: isTransparent}, { 'border-bottom': !isTransparent }]">
             <div class="container">
             <b-navbar-brand to="/">
                 <img class="logo-img" alt="Hitcheed Private Limited [SG]" v-if="isTransparent" :src="whiteLogo" height="38px;"/>
@@ -90,7 +90,7 @@
         components:{
             SearchBar
         },
-        props: ['is-transparent', 'variant', 'theme', 'type'],
+        props: ['is-transparent', 'variant', 'theme', 'type', 'fixed'],
         data() {
             return {
                 logo: '/logo.png',
