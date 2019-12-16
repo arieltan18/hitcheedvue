@@ -52,8 +52,8 @@
 <style scoped>
 
     .messaging{
-        height: calc(100vh - 250px);
-        max-height: 600px;
+        height: calc(100vh - 175px);
+        /*max-height: 600px;*/
         min-height: 300px;
         border: 1px solid #e8e8e8;
         display: flex;

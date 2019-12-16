@@ -2,38 +2,3 @@
    outline: none;
    outline: none;
 }
-
-@media (min-width: 1000px) {
-  #nav-menu.transparent, #nav-menu.transparent .browse-dropdown{
-    background-color: transparent !important;
-  }
-
-  .browse-dropdown{
-    position: fixed !important;
-    border-width:1px 0;
-    border-radius: 0;
-    width: 100vw;
-    z-index: 10;
-    top: 138px;
-    left: 0;
-    right:0;
-    padding:20px calc(calc(100vw / 2) - 400px);
-    font-size: 13px;
-  }
-
-
-  .browse-dropdown .dropdown-item{
-    font-weight: 600;
-  }
-  .browse-dropdown li{
-    width:33%;
-    float:left;
-    padding: 10px 0;
-
-  }
-
-  .browse-dropdown li a:hover{
-    background-color: transparent;
-  }
-
-}

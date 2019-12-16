@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
     <div class="navheader">
         <b-navbar id="navheader-bar" :class="{'white-header-top': isTransparent, 'brown-header-top': !isTransparent}">
             <div class="container">
@@ -304,7 +304,7 @@ export default {
 <style scoped>
 .navheader
 {
-    position: fixed;
+    position: absolute;
     width: 100%;
     z-index: 1050;
 }

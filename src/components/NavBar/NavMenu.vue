@@ -113,11 +113,13 @@
 
 <style scoped>
     #nav-menu{
+        position: absolute;
         transition: all 0.25s;
     }
-    #nav-menu.transparent{
+    #nav-menu.transparent, #nav-menu.transparent >>> .browse-dropdown{
         background-color: transparent !important;
     }
+
     #nav-menu{
         margin-top: 45px;
     }
@@ -136,8 +138,38 @@
         font-family: Open Sans,serif;
     }
 
-    .navbar-dark {
+
+    @media (min-width: 992px) {
+        #nav-menu >>> .browse-dropdown{
+            position: absolute !important;
+            border-width:1px 0;
+            border-radius: 0;
+            width: 100vw;
+            z-index: 10;
+            top: 50px;
+            left: 0;
+            right:0;
+            margin-left: calc(250px - 50vw);
+            padding:20px calc(calc(100vw / 2) - 400px);
+            font-size: 13px;
+        }
+
+
+        #nav-menu >>> .browse-dropdown .dropdown-item{
+            font-weight: 600;
+        }
+        #nav-menu >>> .browse-dropdown li{
+            width:33%;
+            float:left;
+            padding: 10px 0;
+
+        }
+
+        #nav-menu >>> .browse-dropdown li a:hover{
+            background-color: transparent;
+        }
 
     }
+
 
 </style>
