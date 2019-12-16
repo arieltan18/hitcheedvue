@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <NavBar></NavBar>
+    <NavBar v-if="showHeader"></NavBar>
     <HeroImage v-if="this.$route.path=='/'" />
     <BrowseCategories :route-key="$route.params.category" v-if="(this.$route.name=='professionalsByCategory') || (this.$route.name=='professionalsByCategoryAll') || (this.$route.name=='professionalsByAllCategories') || (this.$route.name=='professionalsByTag')" style="padding-top:200px;"></BrowseCategories>
     <router-view
@@ -11,7 +11,7 @@
                 || (this.$route.name=='professionalsByAllCategories')
                 || (this.$route.name=='professionalsByTag') ? 'padding-top:50px;' : 'padding-top:162px;'"/>
     <router-view v-else />
-    <Footer />
+    <Footer v-if="showFooter" />
   </div>
 </template>
 
@@ -44,6 +44,14 @@ export default {
     BrowseCategories,
     Footer
   },
+    computed:{
+      showHeader(){
+          return this.$store.getters.showHeader;
+      },
+      showFooter(){
+          return this.$store.getters.showFooter;
+      }
+    },
   mounted: function () {
       chatkit.connectUser();
       this.$store.dispatch('getUser')

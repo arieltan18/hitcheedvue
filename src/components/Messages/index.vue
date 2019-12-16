@@ -37,6 +37,14 @@
                 this.aciveChatId = chatId;
             }
 
+        },
+        mounted(){
+            // this.$store.dispatch('hideHeader');
+            this.$store.dispatch('hideFooter');
+        },
+        beforeDestroy(){
+            // this.$store.dispatch('showHeader');
+            this.$store.dispatch('showFooter');
         }
     }
 </script>

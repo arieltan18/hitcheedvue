@@ -1,32 +1,39 @@
 const state = {
-    alertMessages:{},
+    showHeader:true,
+    showFooter:true,
 };
 
 const mutations = {
-    pushAlertMessage(state, message){
-        state.alertMessages.push(message);
-    }
+    setHeaderVisibility(state, visible){
+        state.showHeader = visible;
+    },
+    setFooterVisibility(state, visible){
+        state.showFooter = visible;
+    },
+
 };
 
 const actions = {
-    showAlertMessage(context, toaster, message, type='primary', timeout = 5000){
-        toaster.toast(message, {
-            autoHideDelay: timeout,
-            appendToast: true,
-        });
-
-        context.commit('pushAlertMessage',{
-            id: Math.random(),
-            message,
-            type,
-            timeout,
-        });
+    showHeader(context){
+        context.commit('setHeaderVisibility', true);
+    },
+    hideHeader(context){
+        context.commit('setHeaderVisibility', false);
+    },
+    showFooter(context){
+        context.commit('setFooterVisibility', true);
+    },
+    hideFooter(context){
+        context.commit('setFooterVisibility', false);
     }
 };
 
 const getters = {
-    messages(state){
-        return state.messages;
+    showHeader(state){
+        return state.showHeader;
+    },
+    showFooter(state){
+        return state.showFooter;
     }
 };
 
