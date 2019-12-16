@@ -1,6 +1,7 @@
 <template>
     <div class="conversation" :key="chatId">
         <ChatHeading>
+            <b-link :to="{name:'messages'}" class="back-button d-md-none"><i class="fa fa-chevron-left"></i></b-link>
             <img class="title-avatar" :src="chat.avatar" />
             <div>
                 <div class="chat-title">
@@ -92,6 +93,10 @@
 </script>
 
 <style scoped>
+    .back-button{
+        padding: 0 20px;
+    }
+
     .title-avatar{
         border-radius: 50%;
         width: 50px;

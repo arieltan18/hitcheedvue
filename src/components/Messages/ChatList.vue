@@ -36,13 +36,6 @@
                 return this.$store.getters.isMessagesLoading;
             }
         },
-        watch:{
-            chats:function () {
-                if(!this.activeChatId && this.chats.length > 0){
-                    this.changeActiveChatId(this.chats[0].id)
-                }
-            }
-        },
         created: function(){
             if(!this.activeChatId && this.chats.length > 0){
                 this.changeActiveChatId(this.chats[0].id)

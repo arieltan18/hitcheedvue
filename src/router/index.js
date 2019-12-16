@@ -76,7 +76,7 @@ export default new VueRouter({
         },
         {
             name: 'messages',
-            path: '/messages',
+            path: '/messages/:chatId?',
             component: Messages,
         },
         {

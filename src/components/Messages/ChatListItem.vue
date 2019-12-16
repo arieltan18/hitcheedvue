@@ -23,8 +23,8 @@
         methods:{
             resizedImageUrl,
             formatDate,
-            onClick($event){
-                this.$emit('click', $event)
+            onClick(){
+                this.$router.push({name: 'messages', params:{chatId: this.chat.id} });
             },
             onSelect($event){
                 this.$emit('select', $event)

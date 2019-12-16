@@ -2,10 +2,10 @@
     <div>
         <div class="container pb-3 text-left">
             <div class="messaging">
-                <div class="chat-list">
+                <div class="chat-list d-none d-md-block" :class="{'d-block': !isChatActive}">
                     <ChatList @changeActiveChatId="setActiveChatId" :active-chat-id="activeChatId"></ChatList>
                 </div>
-                <div class="chat-messages">
+                <div class="chat-messages d-none d-md-block" :class="{'d-block': isChatActive}">
                     <ChatMessages v-if="activeChatId" :key="activeChatId" :chat-id="activeChatId"></ChatMessages>
                     <div class="p-5 text-center font-weight-bold" v-else>Please select a Conversation</div>
                 </div>
@@ -24,14 +24,17 @@
           title: 'Messages',
         },
         components: {ChatMessages, ChatList},
-        data: function () {
-            return ({
-                activeChatId: null,
-            })
+        computed:{
+            activeChatId(){
+                return this.$route.params.chatId
+            },
+            isChatActive(){
+                return !!this.activeChatId;
+            }
         },
         methods: {
             setActiveChatId: function (chatId) {
-                this.activeChatId = chatId;
+                this.aciveChatId = chatId;
             }
 
         }
@@ -43,7 +46,7 @@
     .messaging{
         height: calc(100vh - 250px);
         max-height: 600px;
-        min-height: 100px;
+        min-height: 300px;
         border: 1px solid #e8e8e8;
         display: flex;
         border-radius: 6px;
@@ -52,7 +55,13 @@
     .chat-list{
         border-right: 1px solid #e8e8e8;
         flex-grow: 1;
-        max-width: 348px;
+
+    }
+
+    @media (min-width: 1200px ){
+        .chat-list {
+            max-width: 348px;
+        }
     }
 
     .chat-messages{
