@@ -2,8 +2,11 @@
     <div>
         <div class="container-fluid bg-color container-width">
             <div class="multiple-items project-slider" >
-                <vueper-slides class="no-shadow" :visible-slides="3" slide-multiple :slide-ratio="1/4" :dragging-distance="200" :breakpoints="{ 800: { visibleSlides: 2 } }">
-                    <vueper-slide class="mr-4" v-for="(image, i) in projectImages" :key="i" :image="image.slug"></vueper-slide>
+                <vueper-slides class="no-shadow" :visible-slides="3" slide-multiple :slide-ratio="1/4" :dragging-distance="200" :breakpoints="{
+                    800: { visibleSlides: 2 },
+                    600: { visibleSlides: 1 , slideRatio: 2/3}
+                }">
+                    <vueper-slide class="m-sm-2" v-for="(image, i) in projectImages" :key="i" :image="image.slug"></vueper-slide>
                 </vueper-slides>
             </div>
         </div>
@@ -119,11 +122,6 @@ h3
 .project-content
 {
     text-align: left;
-}
-
-.project-slider
-{
-    min-height: 300px;
 }
 
 .slider-pro
