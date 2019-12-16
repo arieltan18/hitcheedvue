@@ -44,7 +44,7 @@ export default {
 {
     background-image: url('https://d1qc9wtuffqlue.cloudfront.net/images/hero-image/cover%402x.png');
     background-repeat: no-repeat;
-    background-size:  cover;
+    background-size:  contain;
     background-position: center;
     max-width: 1096px;
 }
@@ -55,6 +55,13 @@ h4
     color: #26140E;
     line-height: 1.4em;
 }
+
+@media (max-width: 992px){
+    h4 {
+        font-size: 20px;
+    }
+}
+
 .left-section
 {
     padding-top: 25%;

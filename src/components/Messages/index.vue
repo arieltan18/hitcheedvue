@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="container pb-3 text-left">
+        <div class="container text-left">
             <div class="messaging">
                 <div class="chat-list d-none d-md-block" :class="{'d-block': !isChatActive}">
                     <ChatList @changeActiveChatId="setActiveChatId" :active-chat-id="activeChatId"></ChatList>
