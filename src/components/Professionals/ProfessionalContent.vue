@@ -3,9 +3,7 @@
         <PageNotFound v-if="pageNotFound"></PageNotFound>
         <div v-else>
             <div class="container-fluid bg-color">
-                <div class="row">
-                    <img class="top-image" :src="professionalContent.cover_image">
-                </div>
+                <img class="top-image" :src="professionalContent.cover_image">
             </div>
             <div class="container-fluid padding">
                 <div class="row">
