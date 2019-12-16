@@ -8,12 +8,12 @@
                 </div>
             </div>
             <div class="row no-gutters mt-5">
-                <div class="offset-1 col-5 offset-md-5 col-md-3 p-1 text-left">
+                <div class="offset-1 col-5 offset-md-5 col-md-3 p-2 p-md-4 text-left">
                     <a href="https://itunes.apple.com/us/app/hitcheed/id1168589159?mt=8">
                         <img src="https://hitcheed-rsvp.s3-ap-southeast-1.amazonaws.com/img/play.png" class="img" width="100%">
                     </a>
                 </div>
-                <div class=" col-5 col-md-3 p-1 text-left">
+                <div class=" col-5 col-md-3 p-2 p-md-4 text-left">
                     <a href="https://play.google.com/store/apps/details?id=com.hitcheed.android&amp;hl=en">
                         <img src="https://hitcheed-rsvp.s3-ap-southeast-1.amazonaws.com/img/google.png" class="img" width="100%">
                     </a>
