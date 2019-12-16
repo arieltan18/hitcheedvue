@@ -21,41 +21,78 @@ import BrowseCategories from './components/BrowseCategories/BrowseCategories.vue
 import Footer from './components/Footer/Footer.vue';
 import chatkit from "./services/Chatkit";
 import NavBar from "./components/NavBar";
+import axios from 'axios';
 
 export default {
   name: 'app',
-    metaInfo:{
-      title: 'Hitcheed | Singapore Wedding Services | Wedding Planning Website',
+  data() {
+    return {
+      metaTitle: '',
+      metaDescriptions: '',
+      ogImage: '' 
+    }
+  },
+  metaInfo(){
+    let metaTitle = this.metaTitle != undefined ? this.metaTitle : 'Hitcheed | Singapore Wedding Services | Wedding Planning Website';
+    let metaDescriptions = this.metaDescriptions != undefined ? this.metaDescriptions : 'Hitcheed is a wedding planning website that connects engaged couples with Singapore & overseas wedding professionals to make that dream wedding come true.';
+    let ogImage = this.ogImage != undefined ? this.ogImage : 'https://d1qc9wtuffqlue.cloudfront.net/images/hero-photo/image/1573708412-foto-pettine-756112-unsplash.png' ;
+    return {
+        title: metaTitle,
         meta:[
             {
                 name: 'description',
-                content: 'Hitcheed is a wedding planning website that connects engaged couples with Singapore &amp; overseas wedding professionals to make that dream wedding come true.'
+                content: metaDescriptions
             },
             {
                 name: 'og:image',
-                content: 'https://d1qc9wtuffqlue.cloudfront.net/images/hero-photo/image/1573708412-foto-pettine-756112-unsplash.png'
+                content: this.ogImage
             }
         ],
-      titleTemplate: '%s | Hitcheed.com'
-    },
+        titleTemplate: '%s | Hitcheed.com'
+    }
+  },
   components: {
     NavBar,
     HeroImage,
     BrowseCategories,
     Footer
   },
-    computed:{
-      showHeader(){
-          return this.$store.getters.showHeader;
-      },
-      showFooter(){
-          return this.$store.getters.showFooter;
-      }
+  computed:{
+    showHeader(){
+        return this.$store.getters.showHeader;
     },
+    showFooter(){
+        return this.$store.getters.showFooter;
+    }
+  },
   mounted: function () {
       chatkit.connectUser();
-      this.$store.dispatch('getUser')
-  }
+      this.$store.dispatch('getUser');
+      this.getSeoSettings();
+  },
+  methods: {
+    async getSeoSettings() {
+        const api = process.env.VUE_APP_HITCHEED_API +  '/v1/seo-settings';
+
+        axios.defaults.headers = {
+          'Content-Type': 'application/json',
+          'cache-control': 'no-cache'
+        }
+        await axios.get(api, {crossDomain: true})
+        .then((response) => {
+          //check if the seo settings exists
+          if(response.data.exist=="true")
+          {
+              this.metaTitle = response.data.meta_title;
+              this.metaDescriptions = response.data.meta_descriptions;
+              this.ogImage = response.data.og_image;
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  },
 }
 </script>
 

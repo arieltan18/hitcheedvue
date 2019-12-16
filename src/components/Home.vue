@@ -19,10 +19,10 @@ import DownloadApp from './DownloadApp/DownloadApp.vue';
 
 export default {
     name: "Home",
-    metaInfo:{
-      title: 'Hitcheed | Singapore Wedding Services | Wedding Planning Website',
-      titleTemplate: '%s'
-    },
+    // metaInfo:{
+    //   title: 'Hitcheed | Singapore Wedding Services | Wedding Planning Website',
+    //   titleTemplate: '%s'
+    // },
     components: {
         Explore,
         PopularSearches,
