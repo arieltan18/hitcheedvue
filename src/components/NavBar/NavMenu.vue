@@ -152,6 +152,7 @@
             margin-left: calc(250px - 50vw);
             padding:20px calc(calc(100vw / 2) - 400px);
             font-size: 13px;
+            outline: none;
         }
 
 
