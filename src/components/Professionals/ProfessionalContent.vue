@@ -4,7 +4,7 @@
         <div v-else>
             <div class="container-fluid bg-color">
                 <div class="row">
-                    <img class="top-image" :src="professionalContent.cover_image" width="100%">
+                    <img class="top-image" :src="professionalContent.cover_image">
                 </div>
             </div>
             <div class="container-fluid padding">
@@ -85,7 +85,7 @@ export default {
 
 
 <style scoped>
-.top-img
+.top-image
 {
     width: 100%;
 }
