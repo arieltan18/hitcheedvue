@@ -346,20 +346,26 @@ export const PROFESSIONALS_OTHER_COUNTRY_PAGINATE = gql`
 
 export const PROMOTIONS_BY_CATEGORY_PAGINATE = gql`
   query promotions_by_category_paginate($category_id: Int!, $first: Int!, $page: Int!){
-    data
-    {
-      id,
-      title,
-      slug,
-      cover_image,
-      promotion_image,
-      valid_to,
-      location,
-      professional
+    promotions_by_category_paginate(category_id: $category_id, first: $first, page: $page) {
+      paginatorInfo
+      {
+        total
+      }
+      data
       {
         id,
-        name,
-        slug
+        title,
+        slug,
+        cover_image,
+        promotion_image,
+        valid_to,
+        location,
+        professional
+        {
+          id,
+          name,
+          slug
+        }
       }
     }
   }
