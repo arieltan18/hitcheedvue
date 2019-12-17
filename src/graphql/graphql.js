@@ -28,6 +28,11 @@ export const PROFESSIONALS_BY_CATEGORY = gql`
 export const PROFESSIONALS_BY_CATEGORY_PAGINATE = gql`
   query professionals_by_category_paginate($category_id: Int!, $first: Int!, $page: Int!){
     professionals_by_category_paginate(category_id: $category_id, first: $first, page: $page) {
+      paginatorInfo
+      {
+        total
+        hasMorePages
+      }
       data {
         id
         name,
