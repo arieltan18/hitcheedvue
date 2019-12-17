@@ -10,8 +10,8 @@
         </div>
         <div v-if="this.category_name!='Other Countries'">
             <ProfessionalSection :category_id="this.category.id" :category_name="this.category_name" :first="8" :page="1"></ProfessionalSection>
-            <div class="promotions-section mb-5">
-                <PromotionsByCategory :category_id="this.category.id" :category_name="this.category_name"/>
+            <div class="promotions-section mb-5" v-if="this.promotions.data.length > 0">
+                <PromotionsByCategory :category_name="this.category_name" :promotions="this.promotions"/>
             </div>
             <ProfessionalSection :category_id="this.category.id" :category_name="this.category_name" :first="8" :page="2"></ProfessionalSection>
         </div>
@@ -35,6 +35,7 @@ import { CATEGORIES_FILTER } from '../../graphql/graphql.js';
 import PopularSearchesNav from "../PopularSearches/PopularSearchesNav.vue";
 import RelatedArticles from "../Articles/RelatedArticles.vue";
 import PromotionsByCategory from "../Events&Promotions/PromotionsByCategory.vue";
+import { PROMOTIONS_BY_CATEGORY_PAGINATE } from '../../graphql/graphql.js';
 
 export default {
     name: "ProfessionalsByCategory",
@@ -60,6 +61,7 @@ export default {
     data() {
         return {
             professionals: [],
+            promotions: [],
             category_name: '',
         }
     },
@@ -84,6 +86,20 @@ export default {
             update(data)
             {
                 return data.category_filter;
+            }
+        },
+        promotions: {
+            query: PROMOTIONS_BY_CATEGORY_PAGINATE,
+            variables() {
+                return {
+                    category_id: this.category.id,
+                    first: 2,
+                    page: 1
+                }
+            },
+            update(data)
+            {
+                return data.promotions_by_category_paginate;
             }
         }
     }

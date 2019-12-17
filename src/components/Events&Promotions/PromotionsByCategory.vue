@@ -4,7 +4,7 @@
             <div class="promotions-title">{{ this.category_name }} Promotions</div>
         </div>
         <div class="row">
-            <div class="col-md-4 box" v-for="promotion in promotions.data" :key="promotion.id">
+            <div class="col-md-4 box" v-for="promotion in this.promotions.data" :key="promotion.id">
                 <router-link :to="{ name: 'promotions', params: { slug: promotion.slug }}">
                     <img class="mb-2" :src="promotion.cover_image" width="100%">
                     <div class="title line-clamp mb-2">{{ promotion.title }}</div>
@@ -24,7 +24,7 @@ import moment from 'moment';
 
 export default {
     name: 'PromotionsByCategory',
-    props: [ 'category_id', 'category_name' ],
+    props: [ 'category_name', 'promotions' ],
     data() {
         return {
             promotions: []
@@ -33,29 +33,9 @@ export default {
     methods: {
         date: function (date) {
             return moment(date).format('Do MMMM YYYY');
-        },
-        hide()
-        {
-            document.getElementsByClassName('promotions-title').style.display = "hidden";
         }
     },
-    apollo:{
-        promotions: {
-            query: PROMOTIONS_BY_CATEGORY_PAGINATE,
-            variables() {
-                return {
-                    category_id: this.category_id,
-                    first: 2,
-                    page: 1
-                }
-            },
-            update(data)
-            {
-                this.hide();
-                return data.promotions_by_category_paginate;
-            }
-        }
-    }
+    
 }
 </script>
 
