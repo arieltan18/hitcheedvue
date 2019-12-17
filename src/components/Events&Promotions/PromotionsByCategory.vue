@@ -19,17 +19,11 @@
 </template>
 
 <script>
-import { PROMOTIONS_BY_CATEGORY_PAGINATE } from '../../graphql/graphql.js';
 import moment from 'moment';
 
 export default {
     name: 'PromotionsByCategory',
     props: [ 'category_name', 'promotions' ],
-    data() {
-        return {
-            promotions: []
-        }
-    },
     methods: {
         date: function (date) {
             return moment(date).format('Do MMMM YYYY');
