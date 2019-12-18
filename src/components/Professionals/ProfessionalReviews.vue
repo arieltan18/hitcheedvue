@@ -1,23 +1,38 @@
 <template>
     <div class="col-sm-4">
         <div class="text-center">
-            <router-link :to="{ name: 'professional', params: { slug: professionalContent.professional_slug }}">
-            <img class="img-circle" :src="professionalContent.profile_image" width="200px">
-            <h4 class="text-center professional-name">
-                {{ professionalContent.name }}
-            </h4>
+            <router-link v-if="this.$route.name=='professional'" :to="{ name: 'professional', params: { slug: professionalContent.slug }}">
+                <img class="img-circle" :src="professionalContent.profile_image" width="200px">
+                <h4 class="text-center professional-name">
+                    {{ professionalContent.name }}
+                </h4>
             </router-link>
-            <p class="review-rating-text text-center" v-if="reviews.length > 0">{{ totalReviews }} Reviews
-                <span v-for="(value, index) in this.professionalContent.rating" :key="index">
-                    <span class="rating-star fa fa-star"></span>
-                </span>
-            </p>
+            <router-link v-else-if="this.$route.name=='project'" :to="{ name: 'professional', params: { slug: professionalContent.professional.slug }}">
+                <img class="img-circle" :src="professionalContent.professional.profile_image" width="200px">
+                <h4 class="text-center professional-name">
+                    {{ professionalContent.professional.name }}
+                </h4>
+            </router-link>
+            <div v-if="this.$route.name=='professional'">
+                <p class="review-rating-text text-center" v-if="reviews.length > 0">{{ totalReviews }} Reviews
+                    <span v-for="(value, index) in parseInt(this.professionalContent.rating)" :key="index">
+                        <span class="rating-star fa fa-star"></span>
+                    </span>
+                </p>
+            </div>
+            <div v-else-if="this.$route.name=='project'">
+                <p class="review-rating-text text-center" v-if="reviews.length > 0">{{ totalReviews }} Reviews
+                    <span v-for="(value, index) in parseInt(this.professionalContent.professional.rating)" :key="index">
+                        <span class="rating-star fa fa-star"></span>
+                    </span>
+                </p>
+            </div>
         </div>
         <MessageProfessional v-if="loggedIn" :professional="professionalContent"></MessageProfessional>
         <div v-if="this.totalReviews>0">
             <h3>Reviews</h3>
             <hr>
-            <ProfessionalSingleReview v-for="review in reviews" :key="review.id" :review="review" />
+            <ProfessionalSingleReview v-for="review in this.reviews" :key="review.id" :review="review" />
         </div>
     </div>
 </template>

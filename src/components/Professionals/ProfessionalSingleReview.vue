@@ -2,7 +2,7 @@
     <div class="reviews">
         <div class="media">
             <div class="media-left mr-2">
-                <img v-if="review.user.profile_image" class="review-avatar" :src="review.user.profile_image" wid>
+                <img v-if="review.user.profile_picture" class="review-avatar" :src="review.user.profile_picture" wid>
                 <img v-else class="review-avatar" :src="image_src">
             </div>
             <div class="media-right">

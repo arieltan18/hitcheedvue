@@ -13,15 +13,15 @@
         <div class="container-fluid padding">
             <div class="row">
                 <div class="col-md-8 project-content">
-                    <h3>{{ projectContent.project_name }}</h3>
+                    <h3>{{ projectContent.name }}</h3>
                     <div v-html="projectContent.descriptions"></div>
                     <p v-if="projectContent.country">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        Location: {{ projectContent.country }}
+                        Location: {{ projectContent.country.name }}
                     </p>
                     <ProfessionalProjects :projects="otherProjects"></ProfessionalProjects>
                 </div>
-                <ProfessionalReviews :professionalContent="projectContent" :reviews="reviews" :totalReviews="totalReviews"/>
+                <ProfessionalReviews :professionalContent="this.projectContent" :reviews="reviews" :totalReviews="totalReviews"/>
             </div>
         </div>
 
@@ -35,6 +35,7 @@ import ProfessionalProjects from '../Professionals/ProfessionalProjects';
 import { VueperSlides, VueperSlide } from 'vueperslides'
 import 'vueperslides/dist/vueperslides.css'
 import {metaResolver} from "../../helpers";
+import { PROJECT_BY_SLUG } from '../../graphql/graphql.js';
 
 export default {
     name: "ProjectContent",
@@ -47,51 +48,38 @@ export default {
     },
     data() {
         return {
-            project_slug: '',
             projectImages: [],
             projectContent: [],
             otherProjects: [],
             reviews: [],
-            totalReviews: '',
+            totalReviews: 0,
         }
     },
-    created() {
-        this.project_slug = this.$route.params.slug;
-    },
-    methods: {
-        getProjectContent () {
-            const url =  process.env.VUE_APP_HITCHEED_API  + "/v1/projects/slug/" + this.project_slug;
-
-            axios.defaults.headers = {
-                'Content-Type': 'application/json',
-                'cache-control': 'no-cache'
-            }
-            axios.get(url)
-            .then((response) => {
-                this.projectContent = response.data.project;
-                this.projectImages = response.data.project_images;
-                this.otherProjects = response.data.other_projects;
-                this.totalReviews = response.data.total_reviews;
-                this.reviews = response.data.reviews;
-            })
-            .catch(error => {
-                console.log(error);
-            });
-        },
-
-    },
-    beforeMount() {
-        this.project_slug = this.$route.params.slug;
-        this.getProjectContent();
-    },
     beforeRouteUpdate(to,from,next) {
-        this.project_slug = to.params.slug;
-        this.getProjectContent();
         next();
     },
     computed: {
         navigationNext: function() { return `<i class="fas fa-chevron-right"></i>` },
         navigationPrev: function() { return `<i class="fas fa-chevron-left"></i>` },
+    },
+    apollo: {
+        project: {
+            query: PROJECT_BY_SLUG,
+            variables() {
+                return {
+                    slug: this.$route.params.slug
+                }
+            },
+            update(data) {
+                this.projectContent = data.project_by_slug;
+                this.projectImages = data.project_by_slug.project_images;
+                this.otherProjects = data.project_by_slug.professional.projects;
+                this.reviews = data.project_by_slug.professional.reviews;
+                this.totalReviews = this.reviews.length;  
+
+                return data.professional_by_slug;
+            }
+        }
     }
 
 }

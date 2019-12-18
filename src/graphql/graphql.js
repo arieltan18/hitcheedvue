@@ -422,11 +422,58 @@ export const PROFESSIONAL_BY_SLUG = gql`
 export const ATTACHMENTS_BY_PROFESSIONALS = gql`
   query attachments_by_professionals($id:Int!) {
     attachments_by_professionals(id:$id) {
+      id
       name
       attachments
       {
         title
         slug
+      }
+    }
+  }
+`
+
+export const PROJECT_BY_SLUG = gql`
+  query project_by_slug($slug:String!) {
+    project_by_slug(slug: $slug) {
+      id
+      name
+      descriptions
+      image
+      country 
+      {
+        id
+        name
+      }
+      project_images 
+      {
+        slug
+      }
+      professional 
+      {
+        id
+        name
+        slug
+        profile_image
+        rating
+        projects
+        {
+          id
+          name
+          slug
+          image
+        }
+        reviews 
+        {
+          id
+          body
+          rating
+          user
+          {
+            name
+            profile_picture
+          }
+        }
       }
     }
   }
