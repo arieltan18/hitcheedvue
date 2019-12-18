@@ -14,7 +14,7 @@
                             <i class="fa fa-map-marker" aria-hidden="true"></i>
                             Location: {{ professionalContent.address ? professionalContent.address : professionalContent.country.name }}
                         </p>
-                        <div class="rate-cards" v-if="professionalContent.attachments.length > 0">
+                        <div class="rate-cards" v-if="this.rateCardsLength > 0">
                             <p>Rate Cards:</p>
                             <ul class="list-unstyled" v-for="attachment in professionalContent.attachments" :key="attachment.id">
                                 <li>
@@ -54,6 +54,7 @@ export default {
             professionalContent: [],
             projects: [],
             reviews: [],
+            rateCardsLength: 0,
             pageNotFound: false
         }
     },
@@ -73,6 +74,7 @@ export default {
                 this.professionalContent = data.professional_by_slug;
                 this.projects = data.professional_by_slug.projects;
                 this.reviews = data.professional_by_slug.reviews;
+                this.rateCardsLength = this.professionalContent.attachments.length;
                 return data.professional_by_slug;
             }
         }
