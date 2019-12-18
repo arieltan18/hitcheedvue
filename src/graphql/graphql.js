@@ -370,3 +370,64 @@ export const PROMOTIONS_BY_CATEGORY_PAGINATE = gql`
     }
   }
 `
+
+export const PROFESSIONAL_BY_SLUG = gql`
+  query professional_by_slug($slug:String!) {
+    professional_by_slug(slug:$slug) {
+      id
+      name
+      slug
+      status
+      email
+      price_text
+      address
+      description
+      cover_image
+      profile_image
+      country{name}
+      instagram_name
+      rating
+      review_count
+      meta_title
+      meta_description
+      location
+      projects
+      {
+        id
+        slug
+        name
+        image
+      }
+      attachments
+      {
+        id
+        title 
+        slug
+      }
+      reviews
+      {
+        id 
+        rating
+        body
+        user
+        {
+          name 
+          profile_picture
+        }
+      }
+    }
+  }
+`
+
+export const ATTACHMENTS_BY_PROFESSIONALS = gql`
+  query attachments_by_professionals($id:Int!) {
+    attachments_by_professionals(id:$id) {
+      name
+      attachments
+      {
+        title
+        slug
+      }
+    }
+  }
+`

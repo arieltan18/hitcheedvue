@@ -9,11 +9,11 @@
             <PopularSearchesNav></PopularSearchesNav>
         </div>
         <div v-if="this.category_name!='Other Countries'">
-            <ProfessionalSection :category_id="this.category.id" :category_name="this.category_name" :first="8" :page="1"></ProfessionalSection>
+            <ProfessionalSection :category_id="this.category ? this.category.id : ''" :category_name="this.category_name" :first="8" :page="1"></ProfessionalSection>
             <div class="promotions-section mb-5" v-if="this.promotions.data.length > 0">
                 <PromotionsByCategory :category_name="this.category_name" :promotions="this.promotions"/>
             </div>
-            <ProfessionalSection :category_id="this.category.id" :category_name="this.category_name" :first="8" :page="2"></ProfessionalSection>
+            <ProfessionalSection :category_id="this.category ? this.category.id : ''" :category_name="this.category_name" :first="8" :page="2"></ProfessionalSection>
         </div>
         <div v-else >
             <ProfessionalSectionOthers :first="8" :page="1"></ProfessionalSectionOthers>

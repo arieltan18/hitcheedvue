@@ -1,15 +1,21 @@
 <template>
     <div class="reviews">
         <div class="media">
-            <h4>{{ review.name }}</h4>
-            <div class="rating-stars">
-                <span v-for="(value, index) in parseInt(this.review.rating)" :key="index">
-                    <span class="rating-star fa fa-star"></span>
-                </span>
+            <div class="media-left mr-2">
+                <img v-if="review.user.profile_image" class="review-avatar" :src="review.user.profile_image" wid>
+                <img v-else class="review-avatar" :src="image_src">
             </div>
-            <div class="review-text">
-                {{ review.body }}
+            <div class="media-right">
+                <h4>{{ review.user.name }}</h4>
+                <div class="rating-stars">
+                    <span v-for="(value, index) in parseInt(this.review.rating)" :key="index">
+                        <span class="rating-star fa fa-star"></span>
+                    </span>
+                </div>
             </div>
+        </div>
+        <div class="review-text">
+            {{ review.body }}
         </div>
         <hr>
     </div>
@@ -20,11 +26,22 @@ export default {
     name: 'ProfessionalSingleReview',
     props: [
         'review'
-    ]
+    ],
+    data() {
+        return {
+            image_src: '/default-582802f80278481224fa7ea8b58ec25671b81e16b5ed7b7cb266ed18fd2c3954.jpg'
+        }
+    },
 }
 </script>
 
 <style scoped>
+h4
+{
+    font-size: 18px;
+    font-weight: bold;
+}
+
 .reviews
 {
     text-align: left;
@@ -63,4 +80,23 @@ hr
     margin: 10px 0 0;
 }
 
+.media-left, .media-right
+{
+    display: table-cell;
+    vertical-align: top;
+}
+
+.media-left
+{
+    padding-right:20px
+}
+
+.review-avatar
+{
+    max-width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border-radius: 50%;
+    width: 60px;
+}
 </style>

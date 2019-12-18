@@ -101,7 +101,6 @@ h1
     height: 64px;
     border-radius: 50%;
     object-fit: cover;
-
 }
 .testimonial-body
 {

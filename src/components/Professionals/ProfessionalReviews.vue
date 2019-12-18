@@ -12,14 +12,13 @@
                     <span class="rating-star fa fa-star"></span>
                 </span>
             </p>
-
         </div>
-
         <MessageProfessional v-if="loggedIn" :professional="professionalContent"></MessageProfessional>
-
-        <h3>Reviews</h3>
-        <hr>
-        <ProfessionalSingleReview v-for="review in reviews" :key="review.id" :review="review" />
+        <div v-if="this.totalReviews>0">
+            <h3>Reviews</h3>
+            <hr>
+            <ProfessionalSingleReview v-for="review in reviews" :key="review.id" :review="review" />
+        </div>
     </div>
 </template>
 
@@ -97,6 +96,8 @@ span.fa-star
 h3
 {
     font-family: 'Cormorant Garamond';
+    color: #25130e;
+    font-size: 40px;
 }
 
 hr
