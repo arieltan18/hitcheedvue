@@ -5,11 +5,11 @@ export function getUser(){
 }
 
 export function requestPasswordReset(data){
-    return post('/create', data);
+    return post('/v1/create', data);
 }
 
 export function resetPassword(data){
-    return post('/reset', data);
+    return post('/v1/reset', data);
 }
 
 export function updateProfile(data){

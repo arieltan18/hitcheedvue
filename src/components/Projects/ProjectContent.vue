@@ -24,7 +24,6 @@
                 <ProfessionalReviews :professionalContent="this.projectContent" :reviews="reviews" :totalReviews="totalReviews"/>
             </div>
         </div>
-
     </div>
 </template>
 
