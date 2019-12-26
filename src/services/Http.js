@@ -8,6 +8,7 @@ const defaultHeaders = {
 };
 
 const mapData = r=>r.data;
+const handleError = e=>{throw(e && e.response && e.response.data)};
 
 export const post = (path, data, options={})=>{
     const headers = {
@@ -23,7 +24,9 @@ export const post = (path, data, options={})=>{
     return axios.post(url, data, {
         headers,
         ...options
-    }).then(mapData);
+    })
+        .then(mapData)
+        .catch(handleError);
 };
 
 export const put = (path, data, options={})=>{
@@ -40,7 +43,9 @@ export const put = (path, data, options={})=>{
     return axios.put(url, data, {
         headers,
         ...options
-    }).then(mapData);
+    })
+        .then(mapData)
+        .catch(handleError);
 };
 
 export const patch = (path, data, options={})=>{
@@ -57,7 +62,8 @@ export const patch = (path, data, options={})=>{
     return axios.patch(url, data, {
         headers,
         ...options
-    }).then(mapData);
+    }).then(mapData)
+        .catch(handleError);
 };
 
 export const get = (path, options={})=>{
@@ -74,7 +80,8 @@ export const get = (path, options={})=>{
     return axios.get(url, {
         headers,
         ...options
-    }).then(mapData);
+    }).then(mapData)
+        .catch(handleError);
 };
 
 export const Delete = (path, options={})=>{
@@ -91,7 +98,8 @@ export const Delete = (path, options={})=>{
     return axios.delete(url, {
         headers,
         ...options
-    }).then(mapData);
+    }).then(mapData)
+        .catch(handleError);
 };
 
 export const Http = {
