@@ -5,17 +5,14 @@
                 <h1>{{ this.category_name }}</h1>
             </div>
         </div>
-        <ProfessionalSection :category_id="this.category.id ? this.category.id : '1'" :first="40" :page="1"></ProfessionalSection>
-        <div class="container mt-5">
-            <a href="" class="see-more-link">See More {{ this.category_name }}</a>
-        </div>
+        <ProfessionalSection :category_id="this.category.id" :category_name="this.category_name" :first="40" :page="1"></ProfessionalSection>
     </div>
 </template>
 
 <script>
 import ProfessionalSection from './ProfessionalSection.vue';
 import { CATEGORIES_FILTER } from '../../graphql/graphql.js';
-import {metaResolver} from "../../helpers";
+import { metaResolver } from "../../helpers";
 
 export default {
     name: "ProfessionalsByCategory",
@@ -62,35 +59,7 @@ export default {
             {
                 return data.category_filter;
             }
-        },
-        // //query the first 8 professionals by category with pagination
-        // professionals: {
-        //     query: PROFESSIONALS_BY_CATEGORY_PAGINATE,
-        //     variables() {
-        //         return {
-        //             category_id: this.category.id,
-        //             first : 8,
-        //             page: 1,
-        //         }
-        //     },
-        //     update(data){
-        //         return data.professionals_by_category_paginate;
-        //     }
-        // },
-        // //query the second 8 professionals by category with pagination
-        // professionals2: {
-        //     query: PROFESSIONALS_BY_CATEGORY_PAGINATE,
-        //     variables() {
-        //         return {
-        //             category_id: this.category.id,
-        //             first : 8,
-        //             page: 2,
-        //         }
-        //     },
-        //     update(data){
-        //         return data.professionals_by_category_paginate;
-        //     }
-        // }
+        }
     }
 }
 </script>
@@ -122,17 +91,6 @@ h1
     color: black;
 }
 
-.see-more-link
-{
-    text-decoration: none;
-    color: #26140E;
-    font-style: italic;
-    font-size: 18px;
-    text-align: center;
-    font-family: 'Cormorant Garamond';
-    border-bottom: 0.5px solid #26140E;
-    text-transform: capitalize;
-}
 .articles-section
 {
     width: 100%;

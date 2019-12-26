@@ -28,6 +28,11 @@ export const PROFESSIONALS_BY_CATEGORY = gql`
 export const PROFESSIONALS_BY_CATEGORY_PAGINATE = gql`
   query professionals_by_category_paginate($category_id: Int!, $first: Int!, $page: Int!){
     professionals_by_category_paginate(category_id: $category_id, first: $first, page: $page) {
+      paginatorInfo
+      {
+        total
+        hasMorePages
+      }
       data {
         id
         name,
@@ -341,20 +346,134 @@ export const PROFESSIONALS_OTHER_COUNTRY_PAGINATE = gql`
 
 export const PROMOTIONS_BY_CATEGORY_PAGINATE = gql`
   query promotions_by_category_paginate($category_id: Int!, $first: Int!, $page: Int!){
-    data
-    {
-      id,
-      title,
-      slug,
-      cover_image,
-      promotion_image,
-      valid_to,
-      location,
-      professional
+    promotions_by_category_paginate(category_id: $category_id, first: $first, page: $page) {
+      paginatorInfo
+      {
+        total
+      }
+      data
       {
         id,
-        name,
+        title,
+        slug,
+        cover_image,
+        promotion_image,
+        valid_to,
+        location,
+        professional
+        {
+          id,
+          name,
+          slug
+        }
+      }
+    }
+  }
+`
+
+export const PROFESSIONAL_BY_SLUG = gql`
+  query professional_by_slug($slug:String!) {
+    professional_by_slug(slug:$slug) {
+      id
+      name
+      slug
+      status
+      email
+      price_text
+      address
+      description
+      cover_image
+      profile_image
+      country{name}
+      instagram_name
+      rating
+      review_count
+      meta_title
+      meta_description
+      location
+      projects
+      {
+        id
         slug
+        name
+        image
+      }
+      attachments
+      {
+        id
+        title 
+        slug
+      }
+      reviews
+      {
+        id 
+        rating
+        body
+        user
+        {
+          name 
+          profile_picture
+        }
+      }
+    }
+  }
+`
+
+export const ATTACHMENTS_BY_PROFESSIONALS = gql`
+  query attachments_by_professionals($id:Int!) {
+    attachments_by_professionals(id:$id) {
+      id
+      name
+      attachments
+      {
+        title
+        slug
+      }
+    }
+  }
+`
+
+export const PROJECT_BY_SLUG = gql`
+  query project_by_slug($slug:String!) {
+    project_by_slug(slug: $slug) {
+      id
+      name
+      descriptions
+      image
+      country 
+      {
+        id
+        name
+      }
+      project_images 
+      {
+        slug
+      }
+      professional 
+      {
+        id
+        name
+        slug
+        profile_image
+        rating
+        projects
+        {
+          id
+          name
+          slug
+          image
+        }
+        reviews 
+        {
+          id
+          body
+          rating
+          user
+          {
+            name
+            profile_picture
+          }
+        }
       }
     }
   }

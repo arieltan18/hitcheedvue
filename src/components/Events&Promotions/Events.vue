@@ -43,7 +43,7 @@
                                         <label for="phone">Contact Number</label>
                                         <input class="form-control" type="text" name="contact_number" v-model="contact_number"/>
                                     </div>
-                                    <input type="hidden" name="event_id" :value="event.id">
+                                    <input type="hidden" name="event_promotion_id" :value="event.id">
                                     <input type="hidden" name="professional_id" :value="event.professional.id">
                                     <input type="hidden" name="professional_name" :value="event.professional.name" >
                                     <b-button class="submit-btn" variant="primary" type="submit" >Submit</b-button>

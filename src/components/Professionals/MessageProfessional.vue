@@ -1,6 +1,6 @@
 <template>
     <div v-if="loggedIn">
-        <b-button class="my-3" variant="info" v-b-modal.modal-1>Send Message</b-button>
+        <b-button class="my-3 msg-btn" variant="info" v-b-modal.modal-1>Message Professionals</b-button>
 
         <b-modal hide-footer id="modal-1" :title="`Chat with ${professional.name}`">
             <b-alert :variant="hasErrors? 'danger' : 'primary'" :show="!!alertMessage">{{alertMessage}}</b-alert>
@@ -61,5 +61,11 @@
 </script>
 
 <style scoped>
-
+.msg-btn
+{
+    border-radius: 7px;
+    background-color: #8de4e2;
+    border: 1px solid #8de4e2;
+    font-weight: bold;
+}
 </style>
