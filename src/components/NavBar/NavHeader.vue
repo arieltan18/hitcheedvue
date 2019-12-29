@@ -180,28 +180,29 @@ export default {
     methods: {
         submitRegister()
         {
-            // if(this.registerInput.name == "")
-            // {
-            //     this.response.push("Username can't be blank");
-            // }
-            // if(this.registerInput.email == "")
-            // {
-            //     this.response.push("Email can't be blank");
-            // }
-            // if(this.registerInput.password == "")
-            // {
-            //     this.response.push("Password can't be blank");
-            // }
-            // if(this.registerInput.c_password == "")
-            // {
-            //     this.response.push("Password Confirmation can't be blank");
-            // }
-            //
-            // if(this.registerInput.password !== this.registerInput.c_password)
-            // {
-            //     this.response.push("Your password is not match!");
-            // }
-            // else
+            this.response = [];
+            if(this.registerInput.name == "")
+            {
+                this.response.push("Username can't be blank");
+            }
+            if(this.registerInput.email == "")
+            {
+                this.response.push("Email can't be blank");
+            }
+            if(this.registerInput.password == "")
+            {
+                this.response.push("Password can't be blank");
+            }
+            if(this.registerInput.c_password == "")
+            {
+                this.response.push("Password Confirmation can't be blank");
+            }
+
+            if(this.registerInput.password !== this.registerInput.c_password)
+            {
+                this.response.push("Your password is not match!");
+            }
+            else
             {
                 this.$store.dispatch('registerUser', this.registerInput)
                 .catch((response = {})=>{

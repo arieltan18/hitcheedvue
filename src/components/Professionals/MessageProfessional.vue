@@ -1,8 +1,8 @@
 <template>
-    <div v-if="loggedIn">
-        <b-button class="my-3 msg-btn" variant="info" v-b-modal.modal-1>Message Professionals</b-button>
+    <div >
+        <b-button class="my-3 msg-btn" variant="info" @click="showMessageDialogue">Message Professionals</b-button>
 
-        <b-modal hide-footer id="modal-1" :title="`Chat with ${professional.name}`">
+        <b-modal hide-footer id="send-message" :title="`Chat with ${professional.name}`">
             <b-alert :variant="hasErrors? 'danger' : 'primary'" :show="!!alertMessage">{{alertMessage}}</b-alert>
             <div>Make sure you share the following:</div>
             <ul class="pl">
@@ -42,6 +42,19 @@
             },
         },
         methods:{
+            showMessageDialogue(){
+                if(this.loggedIn) {
+                    this.$bvModal.show('send-message');
+                }else{
+                    this.$bvToast.toast("You need to be logged in to send message to Professional", {
+                        title: 'Please, Login to continue',
+                        variant: 'warning',
+                        autoHideDelay: 5000,
+                        appendToast: true,
+                    });
+                    this.$bvModal.show('login');
+                }
+            },
             sendMessage(){
                 this.sending = true;
                 this.$store.dispatch('sendMessageToProfessional', {

@@ -28,7 +28,7 @@
                 </p>
             </div>
         </div>
-        <MessageProfessional v-if="loggedIn" :professional="professionalContent"></MessageProfessional>
+        <MessageProfessional :professional="professionalContent"></MessageProfessional>
         <div v-if="this.totalReviews>0">
             <h3>Reviews</h3>
             <hr>
