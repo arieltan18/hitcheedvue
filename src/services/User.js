@@ -4,6 +4,14 @@ export function getUser(){
     return get('/v1/me');
 }
 
+export function login(data){
+    return post('/v1/login', data);
+}
+
+export function register(data){
+    return post('/v1/register', data);
+}
+
 export function requestPasswordReset(data){
     return post('/v1/create', data);
 }
@@ -21,6 +29,8 @@ export function facebookLogin(data){
 }
 
 const User = {
+    login,
+    register,
     getUser,
     requestPasswordReset,
     resetPassword,

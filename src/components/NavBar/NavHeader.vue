@@ -180,6 +180,7 @@ export default {
     methods: {
         submitRegister()
         {
+            this.response = [];
             if(this.registerInput.name == "")
             {
                 this.response.push("Username can't be blank");
@@ -204,8 +205,9 @@ export default {
             else
             {
                 this.$store.dispatch('registerUser', this.registerInput)
-                .then(response => {
-                    console.log(response);
+                .catch((response = {})=>{
+                    const { errors = {} } = response;
+                    this.response = Object.keys(errors).map(e=>errors[e][0])
                 });
             }
         },

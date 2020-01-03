@@ -43,40 +43,24 @@ const actions = {
     resetPassword(context, data){
         return User.resetPassword(data);
     },
-    registerUser(context,credentials)
+    registerUser(context,data)
     {
-        const signUpURL = process.env.VUE_APP_HITCHEED_API + "/v1/register";
+        return User.register(data)
+            .then(response => {
+                const token  = response.data.token;
+                const chat_id  = response.data.chat_id;
 
-        axios.defaults.headers = {
-            'Content-Type': 'application/json',
-            'cache-control': 'no-cache'
-        };
-        axios.post(signUpURL, {
-            name: credentials.name,
-            email: credentials.email,
-            password: credentials.password,
-            c_password: credentials.c_password,
-            user_role: credentials.user_role
-        }).then(response => {
-            const token  = response.data.success.token;
-            const chat_id  = response.data.chat_id;
+                localStorage.setItem('access_token', token);
+                localStorage.setItem('chat_id', chat_id);
+                chatkit.connectUser();
+                context.commit('registerUser',token);
+                context.dispatch('getUser');
 
-            localStorage.setItem('access_token', token);
-            localStorage.setItem('chat_id', chat_id);
-            chatkit.connectUser();
-            context.commit('registerUser',token);
-            context.dispatch('getUser');
-            console.log(response.data);
-            console.log("Successfully Register");
-
-            return response
-        }).catch(error => {
-            console.log(error);
-        });
+                return response
+            });
     },
     destroyToken(context)
     {
-        //axios.defaults.headers.common['Authorization'] = 'Bearer' + context.state.token
 
         if(context.getters.loggedIn)
         {
@@ -85,72 +69,43 @@ const actions = {
             chatkit.disconnectUser();
             context.commit('destroyToken');
             context.commit('resetMessages');
-
-            // const logoutURL = process.env.VUE_APP_HITCHEED_API + "/v1/logout";
-
-            // axios.defaults.headers = {
-            //     'Content-Type': 'application/json',
-            //     'cache-control': 'no-cache'
-            // }
-
-            // return new Promise((resolve, reject) => {
-            //     axios.post(logoutURL).then(response => {
-
-            //         localStorage.removeItem('access_token');
-            //         context.commit('destroyToken');
-            //         resolve(response);
-
-            //     }).catch(error => {
-            //         localStorage.removeItem('access_token');
-            //         context.commit('destroyToken');
-            //         reject(error);
-            //     });
-            // })
         }
     },
     facebookLogin(context, facebookCredentials){
-        return User.facebookLogin(facebookCredentials).then(data=>{
-            const token  = data.success.token;
-            const chat_id  = data.chat_id;
-            const username = data.username;
-
-            localStorage.setItem('access_token', token);
-            localStorage.setItem('chat_id', chat_id);
-            chatkit.connectUser();
-            context.commit('retrieveToken',token, username);
-            context.dispatch('getUser');
-            return data;
-        });
-    },
-    retrieveToken(context, credentials )
-    {
-        const loginURL = process.env.VUE_APP_HITCHEED_API + "/v1/login";
-
-        axios.defaults.headers = {
-            'Content-Type': 'application/json',
-            'cache-control': 'no-cache'
-        };
-
-        return new Promise((resolve, reject) => {
-            axios.post(loginURL, {
-                email: credentials.email,
-                password: credentials.password
-            }).then(response => {
-                const token  = response.data.success.token;
-                const chat_id  = response.data.chat_id;
-                const username = response.data.username;
+        return User.facebookLogin(facebookCredentials)
+            .then(({data})=>{
+                const token  = data.token;
+                const chat_id  = data.chat_id;
+                const username = data.username;
 
                 localStorage.setItem('access_token', token);
                 localStorage.setItem('chat_id', chat_id);
                 chatkit.connectUser();
                 context.commit('retrieveToken',token, username);
                 context.dispatch('getUser');
-                resolve(response);
-
-            }).catch(error => {
-                console.log(error);
-                reject(error);
+                return data;
             });
+    },
+    retrieveToken(context, credentials )
+    {
+        return new Promise((resolve, reject) => {
+            User.login(credentials)
+                .then(response => {
+                    const token  = response.data.token;
+                    const chat_id  = response.data.chat_id;
+                    const username = response.data.username;
+
+                    localStorage.setItem('access_token', token);
+                    localStorage.setItem('chat_id', chat_id);
+                    chatkit.connectUser();
+                    context.commit('retrieveToken',token, username);
+                    context.dispatch('getUser');
+                    resolve(response);
+
+                }).catch(error => {
+                    console.log(error);
+                    reject(error);
+                });
         })
     },
     updateProfile(context, data){
