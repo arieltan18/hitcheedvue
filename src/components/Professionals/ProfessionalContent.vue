@@ -9,7 +9,9 @@
                 <div class="row">
                     <div class="col-md-8 professional-content">
                         <h3>About this Professional</h3>
-                        <div class="description" v-html="professionalContent.description"></div>
+                        <div class="description" v-if="professionalContent.description">
+                            {{ professionalContent.description }}
+                        </div>
                         <p v-if="professionalContent.address || professionalContent.country">
                             <i class="fa fa-map-marker" aria-hidden="true"></i>
                             Location: {{ professionalContent.address ? professionalContent.address : professionalContent.country.name }}
@@ -117,6 +119,7 @@ h3
     color: #25130e;
     margin: 20px 0;
     font-family: 'Open Sans';
+    white-space: pre-line;
 }
 p
 {

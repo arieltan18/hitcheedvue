@@ -14,9 +14,11 @@
             <div class="row">
                 <div class="col-md-8 project-content">
                     <h3>{{ projectContent.name }}</h3>
-                    <div v-html="projectContent.descriptions"></div>
+                    <div class="description" v-if="projectContent.descriptions">
+                        {{ projectContent.descriptions }}
+                    </div>
                     <p v-if="projectContent.price_text">
-                        {{ projectContent.price_text }}
+                        Price: {{ projectContent.price_text }}
                     </p>
                     <p v-if="projectContent.country">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
@@ -135,5 +137,16 @@ p
 .container-width
 {
     width: 98%;
+}
+
+.description
+{
+    font-size: 14px;
+    letter-spacing: 1px;
+    line-height: 22px;
+    color: #25130e;
+    margin: 20px 0;
+    font-family: 'Open Sans';
+    white-space: pre-line;
 }
 </style>
