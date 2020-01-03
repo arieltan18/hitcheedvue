@@ -33,7 +33,8 @@ export const PROFESSIONALS_BY_CATEGORY_PAGINATE = gql`
         total
         hasMorePages
       }
-      data {
+      data 
+      {
         id
         name,
         slug,
@@ -440,6 +441,7 @@ export const PROJECT_BY_SLUG = gql`
       name
       descriptions
       image
+      price_text
       country 
       {
         id
@@ -474,6 +476,46 @@ export const PROJECT_BY_SLUG = gql`
             profile_picture
           }
         }
+      }
+    }
+  }
+`
+
+export const PROJECTS_BY_PROFESSIONAL_PAGINATE = gql`
+  query projects_by_professional_paginate($professional_id: Int!, $first: Int!, $page: Int!) {
+    projects_by_professional_paginate(professional_id: $professional_id, first: $first, page: $page)
+    {
+      paginatorInfo
+      {
+        total
+        hasMorePages
+      }
+      data
+      {
+        id
+        name
+        slug
+        image
+      }
+    }
+  }
+`
+
+export const OTHER_PROJECTS_BY_PROFESSIONAL_PAGINATE = gql`
+  query other_projects_by_professional_paginate($id: Int!,$professional_id: Int!, $first: Int!, $page: Int!) {
+    other_projects_by_professional_paginate(id: $id, professional_id: $professional_id, first: $first, page: $page)
+    {
+      paginatorInfo
+      {
+        total
+        hasMorePages
+      }
+      data
+      {
+        id
+        name
+        slug
+        image
       }
     }
   }

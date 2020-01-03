@@ -15,6 +15,9 @@
                 <div class="col-md-8 project-content">
                     <h3>{{ projectContent.name }}</h3>
                     <div v-html="projectContent.descriptions"></div>
+                    <p v-if="projectContent.price_text">
+                        {{ projectContent.price_text }}
+                    </p>
                     <p v-if="projectContent.country">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         Location: {{ projectContent.country.name }}
@@ -50,6 +53,7 @@ export default {
             projectImages: [],
             projectContent: [],
             otherProjects: [],
+            professional: [],
             reviews: [],
             totalReviews: 0,
         }
@@ -72,6 +76,7 @@ export default {
             update(data) {
                 this.projectContent = data.project_by_slug;
                 this.projectImages = data.project_by_slug.project_images;
+                this.professional = data.project_by_slug.professional;
                 this.otherProjects = data.project_by_slug.professional.projects;
                 this.reviews = data.project_by_slug.professional.reviews;
                 this.totalReviews = this.reviews.length;  
@@ -104,6 +109,11 @@ h3
     line-height: 30px;
     color: #25130e;
     margin: 30px 0;
+}
+
+p
+{
+    color: #25130e;
 }
 
 .project-content

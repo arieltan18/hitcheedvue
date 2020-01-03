@@ -31,6 +31,7 @@
                                     <b-list-group-item class="mt-0 p-1" v-for="item in index.hits" :key="item.id" :to="`/${index.index}/${item.slug}`">
                                         <div class="w-100">
                                             <h6 class="m-0 p-0 mt-1"><ais-highlight class="title" attribute="name" :hit="item"/></h6>
+                                            <div class="text-left"><small>{{item.category}}</small></div>
                                             <div class="text-left"><small>{{item.country}}</small></div>
                                         </div>
                                     </b-list-group-item>
