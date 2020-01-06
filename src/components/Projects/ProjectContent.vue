@@ -24,7 +24,7 @@
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         Location: {{ projectContent.country.name }}
                     </p>
-                    <ProfessionalProjects :projects="otherProjects"></ProfessionalProjects>
+                    <ProfessionalProjects :project_id="projectContent.id" :professional_id="this.professional.id"></ProfessionalProjects>
                 </div>
                 <ProfessionalReviews :professionalContent="this.projectContent" :reviews="reviews" :totalReviews="totalReviews"/>
             </div>

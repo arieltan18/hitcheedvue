@@ -27,7 +27,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <ProfessionalProjects :projects="projects"></ProfessionalProjects>
+                        <ProfessionalProjects :project_id=0 :professional_id="this.professionalContent.id"></ProfessionalProjects>
                     </div>
                     <ProfessionalReviews :professionalContent="professionalContent" :reviews="reviews" :totalReviews="professionalContent.review_count" />
                 </div>

@@ -439,6 +439,7 @@ export const PROJECT_BY_SLUG = gql`
     project_by_slug(slug: $slug) {
       id
       name
+      slug
       descriptions
       image
       price_text

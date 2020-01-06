@@ -121,7 +121,7 @@ export default {
                     email: this.email,
                     partner_name: this.partner_name,
                     contact_number: this.contact_number,
-                    event_id: this.event.id,
+                    event_promotion_id: this.event.id,
                     professional_id: this.event.professional.id,
                     professional_name: this.event.professional.name
                 })
