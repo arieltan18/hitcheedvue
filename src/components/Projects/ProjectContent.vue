@@ -1,7 +1,10 @@
 <template>
     <div>
         <div class="container-fluid bg-color container-width">
-            <div class="multiple-items project-slider" >
+            <div v-if="this.videoLink">
+                <iframe :src="this.videoLink" width="100%" height="800" frameborder="0" allow="autoplay; fullscreen" allowfullscreen data-ready="true" tabindex="-1"></iframe>
+            </div>
+            <div class="multiple-items project-slider" v-else>
                 <vueper-slides class="no-shadow" :visible-slides="3" slide-multiple :slide-ratio="1/4" :dragging-distance="200" :breakpoints="{
                     800: { visibleSlides: 2 },
                     600: { visibleSlides: 1 , slideRatio: 2/3}
@@ -53,6 +56,8 @@ export default {
     data() {
         return {
             projectImages: [],
+            projectVideos: [],
+            videoLink: '',
             projectContent: [],
             otherProjects: [],
             professional: [],
@@ -82,9 +87,29 @@ export default {
                 this.otherProjects = data.project_by_slug.professional.projects;
                 this.reviews = data.project_by_slug.professional.reviews;
                 this.totalReviews = this.reviews.length;  
+                this.projectVideos = data.project_by_slug.project_videos;
+
+                if(Object.keys(this.projectVideos).length != 0)
+                {
+                    if(this.projectVideos[0].video_type==='youtube')
+                    {
+                        this.videoLink = 'https://www.youtube.com/embed/' + this.projectVideos[0].video_id;
+                    }
+
+                    if(this.projectVideos[0].video_type==='vimeo')
+                    {
+                        this.videoLink = 'https://player.vimeo.com/video/'+ + this.projectVideos[0].video_id +'?title=0&amp;byline=0&amp;portrait=0&amp;app_id=122963' ;
+                    }
+                    
+                }
 
                 return data.professional_by_slug;
             }
+        }
+    },
+    methods: {
+        displayImageModal() {
+            console.log('hey');
         }
     }
 

@@ -452,6 +452,12 @@ export const PROJECT_BY_SLUG = gql`
       {
         slug
       }
+      project_videos 
+      {
+        id
+        video_type
+        video_id
+      }
       professional 
       {
         id
