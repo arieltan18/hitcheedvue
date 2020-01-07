@@ -28,7 +28,7 @@
                     <div class="description" v-if="projectContent.descriptions">
                         {{ projectContent.descriptions }}
                     </div>
-                    <p v-if="projectContent.price_text">
+                    <p v-if="projectContent.price_text && projectContent.price_text!=0">
                         Price: {{ projectContent.price_text }}
                     </p>
                     <p v-if="projectContent.country">
@@ -116,11 +116,10 @@ export default {
         }
     },
     methods: {
-        displayImageModal(index) {
-
+        displayImageModal(index) 
+        {
             $('[data-fancybox="gallery"]').fancybox();
-            //  $('#imagepreview').attr('src', this.projectImages[index].slug); // here asign the image to the modal when the user click the enlarge link
-            // $('#imagemodal').show;
+            console.log(Object.keys(this.otherProjects).length);
         }
     }
 

@@ -95,7 +95,7 @@
     outline:0 !important;
   }
   
-  .vueperslides__bullet--active {background-color: #42b983 !important;outline:0 !important;}
+  .vueperslides__bullet--active {background-color:#25130E !important;outline:0 !important;}
   
   .vueperslides__bullet span {
     display: block !important;

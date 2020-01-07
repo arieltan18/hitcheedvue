@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3>Other Projects by Professionals</h3>
+        <h3 v-if="Object.keys(this.otherProjects.data).length > 0 && Object.keys(this.allOtherProjects.data).length > 0">Other Projects by Professionals</h3>
         <div class="row projects" v-if="this.project_id!=0">
             <div class="col-sm-4" v-for="project in otherProjects.data" :key="project.id">
                 <div class="thumbnail">
