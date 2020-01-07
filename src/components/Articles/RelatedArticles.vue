@@ -4,26 +4,6 @@
             <div class="related-articles-title">Related Articles</div>
         </div>
         <div class="row articles-slider">
-            <!-- <div v-for="articleItem in articleItems" :key="articleItem.id" class="col-md-6 float-left mt-3 pl-0">
-                <div class="text-left mr-1">
-                    <router-link :to="{ name: 'singleArticlePage', params: { slug: articleItem.slug }}" class="read-link">
-                        <div class="col-md-6 article-img">
-                            <img :src="'https:'+ articleItem.content.cover" width="100%"  height="173px">
-                        </div>
-                        <div class="col-md-6 article-details">
-                            <div class="tag text-left" v-if="articleItem.tag_list">
-                                <router-link class="article-tag-btn mr-2"  v-for="tag in articleItem.tag_list" :key="tag" :to="{ name: 'articlesTag', query: { tag: tag }}">
-                                    {{ tag }}
-                                </router-link>
-                            </div>
-                            <div class="name mt-2 mb-4">{{ articleItem.name }}</div>
-                            <div class="article-date text-left">
-                                {{ date(articleItem.first_published_at) }}
-                            </div>
-                        </div>
-                    </router-link>
-                </div>
-            </div> -->
             <vueper-slides class="no-shadow" :visible-slides="2" slide-multiple :slide-ratio="1/4" arrows-outside :bullets="false" transition-speed="250" style="width:100%;">
                 <template v-slot:arrow-left>
                     <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
@@ -75,15 +55,44 @@ export default {
     data() {
         return {
             articleItems: [],
-            category_name: ''
+            category_name: '',
+            articleTag: ''
         }
     },
     methods: {
-        getArticles () {
+        getArticlesWithTag () 
+        {
             //get the current timestamp
             const date = Date.now();
 
-            const url = process.env.VUE_APP_STORYBLOK_API + '&page=1&per_page=12&starts_with=blog&cv=' + date;
+            var articleTagList = {
+                "0" : "Bridal Studios",
+                "1" : "caterers",
+                "2" : "Gowns %26 Suits ",
+                "3" : "Hair %26 Makeup",
+                "4" : "Hotels/Venues",
+                "5" : "Ideas We Love",
+                "6" : "Others",
+                "7" : "Photographers/Videographers",
+                "8" : "Photoshoot/Videoshoot Ideas",
+                "9" : "Reception And Venues",
+                "10" : "Wedding Advice"
+            }
+
+            for (var index in articleTagList)
+            {
+                if(articleTagList[index].includes(this.category_name))
+                {
+                    this.articleTag = articleTagList[index];
+                }
+            }
+
+            if(this.category_name=='Bridal Studios')
+            {
+                this.articleTag = articleTagList[2];
+            }
+
+            const url = process.env.VUE_APP_STORYBLOK_API + '&page=1&per_page=20&starts_with=blog&with_tag=' + this.articleTag + '&cv=' + date;
 
             axios.defaults.headers = {
                 'Content-Type': 'application/json',
@@ -111,8 +120,6 @@ export default {
     },
     mounted()
     {
-        this.getArticles();
-
         this.category_name = this.$route.params.category;
 
         if(this.$route.params.category.includes('-'))
@@ -121,6 +128,8 @@ export default {
         }
 
         this.category_name = this.capitalizeText(this.category_name);
+
+        this.getArticlesWithTag();
     }
 
 }
