@@ -1,8 +1,8 @@
 <template>
     <div class="container">
         <h6>Popular {{ this.category_name }} Searches</h6>
-        <div class="row d-flex justify-content-between text-left pl-2">
-            <vueper-slides class="no-shadow px-5 mx-4 full-width" arrows-outside :visible-slides="6" slide-multiple :slide-ratio="1/4" :dragging-distance="400" :bullets="false" fixed-height="70px" :breakpoints="{ 800: { visibleSlides: 6 } }">
+        <div class="">
+            <!-- <vueper-slides class="no-shadow px-5 mx-4 full-width" arrows-outside :visible-slides="6" slide-multiple :slide-ratio="1/4" :dragging-distance="400" :bullets="false" fixed-height="70px" :breakpoints="{ 800: { visibleSlides: 6 } }">
                 <template v-slot:arrow-left>
                     <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
                 </template>
@@ -20,23 +20,24 @@
                         </router-link>
                     </div>
                 </vueper-slide>
-            </vueper-slides>
-            <!-- <vueper-slides :dragging-distance="10" prevent-y-scroll class="tag-slider no-shadow" :visible-slides="6" slide-multiple :slide-ratio="1/4" arrows-outside :bullets="false" transition-speed="250" style="width:100%;">
-                <div slot="arrowLeft" color="white" large class="hide"><img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px"></div>
-                <div slot="arrowRight" color="white" large v-if="tags.data.length<=6" :class="hide">
-                </div>
-                <vueper-slide
-                    v-for="tag in tags.data"
-                    :key="tag.id">
-                    <div slot="slideContent">
+            </vueper-slides> -->
+            <vueper-slides class="no-shadow" arrows-outside :visible-slides="6" slide-multiple :slide-ratio="1/4" :dragging-distance="70" :bullets="false" fixedHeight="70px" :breakpoints="{ 600: { visibleSlides: 2, arrowsOutside: true, slideRatio: 5/4 } }">
+                <template v-slot:arrow-left>
+                    <img class="ml-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
+                </template>
+                <template v-slot:arrow-right>
+                    <img class="mr-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;">
+                </template>
+                <vueper-slide v-for="tag in tags.data" :key="tag.id" >
+                    <template v-slot:content>
                         <router-link :key="tag.name" class="tag-link" :to="{ name: 'professionalsByTag', params: { category: raw_category_name ,tag_name: processTagName(tag.name) }}">
                             <div class="block">
-                                {{ tag.name }}
+                                <div class="tag-text">{{ tag.name }}</div>
                             </div>
                         </router-link>
-                    </div>
+                    </template>
                 </vueper-slide>
-            </vueper-slides> -->
+            </vueper-slides>
         </div>
         <hr />
     </div>
