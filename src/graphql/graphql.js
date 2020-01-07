@@ -113,7 +113,7 @@ export const PROMOTIONS = gql`
 
 export const PROMOTIONS_PAGINATE = gql`
   query promotions_paginate($first: Int!, $page: Int!){
-    promotions_paginate(first: $first, page: $page, orderBy: [{field: "valid_to", order: DESC}]){
+    promotions_paginate(first: $first, page: $page, orderBy: [{field: "valid_to", order: ASC}]){
       data
       {
         id,
@@ -199,7 +199,7 @@ export const CATEGORY = gql`
 
 export const EVENT_PROMOTIONS_PAGINATE = gql`
   query event_promotions_paginate($first: Int!, $page: Int!){
-    event_promotions_paginate(first: $first, page: $page, orderBy: [{field: "valid_to", order: DESC}]){
+    event_promotions_paginate(first: $first, page: $page, orderBy: [{field: "valid_to", order: ASC}]){
      data
       {
         id,
@@ -251,7 +251,7 @@ export const PROMOTION_FILTER = gql`
 
 export const PROMOTION_PAGINATE = gql`
   query promotion_paginate($promotion_for: String! ,$first: Int!, $page: Int!){
-    promotion_paginate(promotion_for: $promotion_for ,first: $first, page:$page , orderBy: [{field: "valid_to", order: DESC}]){
+    promotion_paginate(promotion_for: $promotion_for ,first: $first, page:$page , orderBy: [{field: "valid_to", order: ASC}]){
       data
       {
         id,
@@ -319,7 +319,8 @@ export const PROFESSIONALS_BY_TAG = gql`
           profile_image,
           tag_name,
           rating,
-          country{name}
+          country{name},
+          status
         }
       }
     }

@@ -18,7 +18,7 @@
                         <img class="mr-3" src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/Group1076%402x.png" width="20px">
                         {{ event.location }}
                     </div>
-                    <div class="happening mt-2 ">Happening in 3 days</div>
+                    <div class="happening mt-2 ">Happening in {{ event.end }} days</div>
                     <div class="desc mt-4 mb-4">{{ event.description }}</div>
                     <div>
                         <b-button class="rsvp-btn" variant="primary" v-b-modal.rsvp>RSVP NOW</b-button>
@@ -165,6 +165,19 @@ export default {
                 }
             },
             update(data){
+                var results = data.event_promotion_filter;
+                const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+
+                //current date
+                var date = new Date();
+                var valid_to = new Date(results.valid_to);
+
+                //calculate the difference of the days
+                var difference = Math.round(Math.abs((valid_to - date) / oneDay));
+
+                //store the difference to the results
+                results.end = difference;
+
                 return data.event_promotion_filter;
             }
         }

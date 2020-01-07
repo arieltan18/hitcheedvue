@@ -10,7 +10,7 @@
                 <div class="col-md-8 ">
                     <h3>{{ promotion.title }}</h3>
                     <div class="subtitle">by <span class="bold">{{ promotion.professional.name }}</span></div>
-                    <div class="ending mt-2">Ending in 3 days</div>
+                    <div class="ending mt-2">Ending in {{ promotion.end }} days</div>
                     <div class="desc mt-3 mb-4">{{ promotion.description }}</div>
                     <hr />
                     <div class="validity-period">Validity Period: {{ date(promotion.date_from) }} - {{ date(promotion.valid_to) }}</div>
@@ -87,6 +87,20 @@ export default {
                 }
             },
             update(data){
+                var results = data.promotion_filter;
+                const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+
+                //current date
+                var date = new Date();
+                var valid_to = new Date(results.valid_to);
+
+                //calculate the difference of the days
+                var difference = Math.round(Math.abs((valid_to - date) / oneDay));
+
+                //store the difference to the results
+                results.end = difference;
+                    
+
                 return data.promotion_filter;
             }
         }

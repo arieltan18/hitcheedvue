@@ -69,7 +69,6 @@ export default {
             },
             loadingKey: 'loading',
             update(data) {
-                // console.log(data.projects_by_professional_paginate.paginatorInfo.total);
                 this.totalCount = data.projects_by_professional_paginate.paginatorInfo.total;
                 this.hasMorePages = data.projects_by_professional_paginate.paginatorInfo.hasMorePages;
                 
@@ -94,10 +93,7 @@ export default {
             },
             update(data) 
             {
-                // console.log(data.other_projects_by_professional_paginate.paginatorInfo.total);
-                // this.totalCount = data.other_projects_by_professional_paginate.paginatorInfo.total;
-                // this.hasMorePages = data.other_projects_by_professional_paginate.paginatorInfo.hasMorePages;
-                
+
                 return data.other_projects_by_professional_paginate;
             }
         },

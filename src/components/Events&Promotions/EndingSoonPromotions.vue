@@ -4,9 +4,9 @@
             <h3>Promotions <span>Ending Soon</span></h3>
         </div>
         <div class="container">
-            <div class="pl-0 pr-5 col-md-6 inline box" v-for="promotion in promotions.data" :key="promotion.id">
+            <div class="pl-0 pr-5 col-md-6 inline box" v-for="promotion in promotions" :key="promotion.id">
                 <router-link :to="{ name: 'promotions', params: { slug: promotion.slug }}">
-                    <div class="pink-text">Ending in 3 days</div>
+                    <div class="pink-text">Ending in {{ promotion.end }} days</div>
                     <img class="promotion-image mb-4" :src="promotion.cover_image" width="100%">
                     <div class="title line-clamp mb-2">{{ promotion.title }}</div>
                     <div class="professionals">by 
@@ -28,7 +28,6 @@ export default {
     data() {
         return {
             promotions: [],
-            promotions2: [],
         }
     },
     apollo: {
@@ -41,42 +40,32 @@ export default {
                 }
             },
             update(data){
-                return data.promotions_paginate;
+                var results = data.promotions_paginate.data;
+                const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+
+                //loop the results 
+                Object.keys(results).forEach(function(index){
+                    //current date
+                    var date = new Date();
+                    var valid_to = new Date(results[index].valid_to);
+
+                    //calculate the difference of the days
+                    var difference = Math.round(Math.abs((valid_to - date) / oneDay));
+
+                    //store the difference to the results
+                    results[index].end = difference;
+                    
+                });
+
+                return data.promotions_paginate.data;
             }
-        },
-        promotions2: {
-            query: PROMOTIONS_PAGINATE,
-            variables() {
-                return {
-                    first: 20,
-                    page: 1
-                }
-            },
-            update(data){
-                return data.promotions_paginate;
-            }
-        },
+        }
     },
     methods: {
         date: function (date) {
             return moment(date).format('D MMMM YYYY');
-        },
-        checkPromotions()
-        {
-            // console.log(this.promotions2);
-            // Object.keys(this.promotions2).forEach(key => {
-            //     console.log(this.promotions2[key]);
-            //     // for(i=0; i<this.promotions2[key].length;i++)
-            //     // {
-            //     //     console.log(this.promotions2[key][i]);
-            //     // }
-            // })
-
         }
-    },
-    mounted: function () {
-      this.checkPromotions();
-  }
+    }
 }
 </script>
 

@@ -4,9 +4,9 @@
             <h3>Events <span>Happening Soon</span></h3>
         </div>
         <div class="container text-left">
-            <div class="pl-0 pr-5 col-md-6 inline box" v-for="event in events.data" :key="event.id">
+            <div class="pl-0 pr-5 col-md-6 inline box" v-for="event in events" :key="event.id">
                 <router-link :to="{ name: 'events', params: { slug: event.slug }}">
-                    <div class="pink-text">Happening in 3 days</div>
+                    <div class="pink-text">Happening in {{ event.end }} days</div>
                     <img class="promotion-image mb-4" :src="event.cover_image" width="100%">
                     <div class="title line-clamp mb-2">{{ event.title }}</div>
                     <div class="professionals">by 
@@ -48,7 +48,24 @@ export default {
                 }
             },
             update(data){
-                return data.event_promotions_paginate;
+                var results = data.event_promotions_paginate.data;
+                const oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
+
+                //loop the results 
+                Object.keys(results).forEach(function(index){
+                    //current date
+                    var date = new Date();
+                    var valid_to = new Date(results[index].valid_to);
+
+                    //calculate the difference of the days
+                    var difference = Math.round(Math.abs((valid_to - date) / oneDay));
+
+                    //store the difference to the results
+                    results[index].end = difference;
+                    
+                });
+
+                return data.event_promotions_paginate.data;
             }
         }
     },
