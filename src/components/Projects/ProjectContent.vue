@@ -5,11 +5,19 @@
                 <iframe :src="this.videoLink" width="100%" height="800" frameborder="0" allow="autoplay; fullscreen" allowfullscreen data-ready="true" tabindex="-1"></iframe>
             </div>
             <div class="multiple-items project-slider" v-else>
-                <vueper-slides class="no-shadow" :visible-slides="3" slide-multiple :slide-ratio="1/4" :dragging-distance="200" :breakpoints="{
+                <vueper-slides class="no-shadow" :visible-slides="3" :touchable="false" slide-multiple :slide-ratio="1/4" :dragging-distance="200" :breakpoints="{
                     800: { visibleSlides: 2 },
                     600: { visibleSlides: 1 , slideRatio: 2/3}
                 }">
-                    <vueper-slide class="m-sm-2" v-for="(image, i) in projectImages" :key="i" :image="image.slug"></vueper-slide>
+                    <vueper-slide class="m-sm-2" v-for="(image, i) in projectImages" :key="i" >
+                        <template v-slot:content>
+                            <div style="width:100%;height:100%;cursor:pointer;" @click="displayImageModal(i)">
+                                <a class="grouped_elements" data-fancybox="gallery" rel="group1" :href="image.slug">
+                                    <img :src="image.slug" class="slider-image"/>
+                                </a>
+                            </div>
+                        </template>
+                    </vueper-slide>
                 </vueper-slides>
             </div>
         </div>
@@ -108,8 +116,11 @@ export default {
         }
     },
     methods: {
-        displayImageModal() {
-            console.log('hey');
+        displayImageModal(index) {
+
+            $('[data-fancybox="gallery"]').fancybox();
+            //  $('#imagepreview').attr('src', this.projectImages[index].slug); // here asign the image to the modal when the user click the enlarge link
+            // $('#imagemodal').show;
         }
     }
 
@@ -173,5 +184,18 @@ p
     margin: 20px 0;
     font-family: 'Open Sans';
     white-space: pre-line;
+}
+
+.multiple-items
+{
+    width: 95%;
+    margin: auto;
+}
+
+.slider-image
+{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 </style>
