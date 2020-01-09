@@ -2,7 +2,7 @@
     <div class="mb-5" >
         <div class="mb-2">
             <div class="col-sm-12 text-center">
-                <h1>{{ this.$route.params.category }}</h1>
+                <h1>{{ this.category_name }}</h1>
             </div>
         </div>
         <div class="container">

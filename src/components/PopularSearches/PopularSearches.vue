@@ -10,27 +10,27 @@
                 <nav class="mb-4">
                     <ul class="nav nav-tabs nav-fill justify-content-center" id="nav-tab" role="tablist">
                         <li>
-                            <a class="nav-item nav-link active" id="nav-hotels-tab" data-toggle="tab" href="#nav-hotels" role="tab" aria-controls="nav-hotels" aria-selected="true">
+                            <a class="popular-nav-item nav-link active" id="nav-hotels-tab" data-toggle="tab" href="#nav-hotels" role="tab" aria-controls="nav-hotels" aria-selected="true">
                                 <span class="nav-text-link">Hotels</span>
                             </a>
                         </li>
                         <li>
-                            <a class="nav-item nav-link" id="nav-venues-tab" data-toggle="tab" href="#nav-venues" role="tab" aria-controls="nav-venues" aria-selected="false">
+                            <a class="popular-nav-item nav-link" id="nav-venues-tab" data-toggle="tab" href="#nav-venues" role="tab" aria-controls="nav-venues" aria-selected="false">
                                 <span class="nav-text-link">Venues</span>
                             </a>
                         </li>
                         <li>
-                            <a class="nav-item nav-link" id="nav-bridals-tab" data-toggle="tab" href="#nav-bridals" role="tab" aria-controls="nav-bridals" aria-selected="false">
+                            <a class="popular-nav-item nav-link" id="nav-bridals-tab" data-toggle="tab" href="#nav-bridals" role="tab" aria-controls="nav-bridals" aria-selected="false">
                                 <span class="nav-text-link">Bridal Studios</span>
                             </a>
                         </li>
                         <li>
-                            <a class="nav-item nav-link" id="nav-photographers-tab" data-toggle="tab" href="#nav-photographers" role="tab" aria-controls="nav-photographers" aria-selected="false">
+                            <a class="popular-nav-item nav-link" id="nav-photographers-tab" data-toggle="tab" href="#nav-photographers" role="tab" aria-controls="nav-photographers" aria-selected="false">
                                 <span class="nav-text-link">Photographers</span>
                             </a>
                         </li>
                         <li>
-                            <a class="nav-item nav-link" id="nav-others-tab" data-toggle="tab" href="#nav-others" role="tab" aria-controls="nav-others" aria-selected="false">
+                            <a class="popular-nav-item nav-link" id="nav-others-tab" data-toggle="tab" href="#nav-others" role="tab" aria-controls="nav-others" aria-selected="false">
                                <span class="nav-text-link">Other Countries</span>
                             </a>
                         </li>
@@ -38,7 +38,7 @@
                 </nav>
                 <div class="tab-content popular-searches py-3 px-3 px-sm-0" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-hotels" role="tabpanel" aria-labelledby="nav-hotels-tab">
-                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :slide-ratio="1/4" :gap="3" :bullets="false" :fixedHeight="340" :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 5/4 } }">
+                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :slide-ratio="1/4" :gap="3" :bullets="false" fixedHeight="360px" :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 5/4 } }">
                             <template v-slot:arrow-left>
                                 <img class="ml-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
                             </template>
@@ -58,14 +58,14 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="nav-venues" role="tabpanel" aria-labelledby="nav-venues-tab">
-                        <vueper-slides class="no-shadow px-5 mx-4" arrows-outside :visible-slides="3" slide-multiple :slide-ratio="1/4" :dragging-distance="400" :bullets="false" :fixedHeight="true" :breakpoints="{ 800: { visibleSlides: 3 } }">
+                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :slide-ratio="1/4" :gap="3" :bullets="false" fixedHeight="360px" :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 5/4 } }">
                             <template v-slot:arrow-left>
-                                <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
+                                <img class="ml-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
                             </template>
                             <template v-slot:arrow-right>
-                                <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;">
+                                <img class="mr-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;">
                             </template>
-                            <vueper-slide class="mr-3" style="width:300px;" v-for="venue in venues" :key="venue.id" :image="venue.cover_photo"  >
+                            <vueper-slide v-for="venue in venues" :key="venue.id" :image="venue.cover_photo"  >
                                 <template v-slot:content>
                                     <div class="slider-white-box">{{ venue.name }}</div>
                                 </template>
@@ -78,14 +78,14 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="nav-bridals" role="tabpanel" aria-labelledby="nav-bridals-tab">
-                        <vueper-slides class="no-shadow px-5 mx-4" arrows-outside :visible-slides="3" slide-multiple :slide-ratio="1/4" :dragging-distance="400" :bullets="false" :fixedHeight="true" :breakpoints="{ 800: { visibleSlides: 3 } }">
+                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :slide-ratio="1/4" :gap="3" :bullets="false" fixedHeight="360px" :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 5/4 } }">
                             <template v-slot:arrow-left>
-                                <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
+                                <img class="ml-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
                             </template>
                             <template v-slot:arrow-right>
-                                <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;">
+                                <img class="mr-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;">
                             </template>
-                            <vueper-slide class="mr-3" style="width:300px;" v-for="bridal in bridals" :key="bridal.id" :image="bridal.cover_photo"  >
+                            <vueper-slide v-for="bridal in bridals" :key="bridal.id" :image="bridal.cover_photo"  >
                                 <template v-slot:content>
                                     <div class="slider-white-box">{{ bridal.name }}</div>
                                 </template>
@@ -98,14 +98,14 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="nav-photographers" role="tabpanel" aria-labelledby="nav-photographers-tab">
-                        <vueper-slides class="no-shadow px-5 mx-4" arrows-outside :visible-slides="3" slide-multiple :slide-ratio="1/4" :dragging-distance="400" :bullets="false" :fixedHeight="true" :breakpoints="{ 800: { visibleSlides: 3 } }">
+                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :slide-ratio="1/4" :gap="3" :bullets="false" fixedHeight="360px" :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 5/4 } }">
                             <template v-slot:arrow-left>
-                                <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
+                                <img class="ml-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
                             </template>
                             <template v-slot:arrow-right>
-                                <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;">
+                                <img class="mr-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;">
                             </template>
-                            <vueper-slide class="mr-3" style="width:300px;" v-for="photographer in photographers" :key="photographer.id" :image="photographer.cover_photo"  >
+                            <vueper-slide v-for="photographer in photographers" :key="photographer.id" :image="photographer.cover_photo"  >
                                 <template v-slot:content>
                                     <div class="slider-white-box">{{ photographer.name }}</div>
                                 </template>
@@ -113,20 +113,19 @@
                         </vueper-slides>
                         <div class="text-center mt-5">
                             <div class="link">
-                                <a class="link-text" href="">See All Photographers</a>
                                 <router-link class="link-text" to="/category/photographers/all">See More Photographers</router-link>
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="nav-others" role="tabpanel" aria-labelledby="nav-others-tab">
-                        <vueper-slides class="no-shadow px-5 mx-4" arrows-outside :visible-slides="3" slide-multiple :slide-ratio="1/4" :dragging-distance="400" :bullets="false" :fixedHeight="true" :breakpoints="{ 800: { visibleSlides: 3 } }">
+                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :slide-ratio="1/4" :gap="3" :bullets="false" fixedHeight="360px" :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 5/4 } }">
                             <template v-slot:arrow-left>
-                                <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
+                                <img class="ml-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
                             </template>
                             <template v-slot:arrow-right>
-                                <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;">
+                                <img class="mr-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;">
                             </template>
-                            <vueper-slide class="mr-3" style="width:300px;" v-for="other in others" :key="other.id" :image="other.cover_photo"  >
+                            <vueper-slide v-for="other in others" :key="other.id" :image="other.cover_photo"  >
                                 <template v-slot:content>
                                     <div class="slider-white-box">{{ other.name }}</div>
                                 </template>
@@ -134,7 +133,6 @@
                         </vueper-slides>
                         <div class="text-center mt-5">
                             <div class="link">
-                                <a class="link-text" href="">See All Other Countries</a>
                                 <router-link class="link-text" to="/category/others/all">See More Other Countries</router-link>
                             </div>
                         </div>
@@ -163,7 +161,7 @@ export default {
             bridalId: 1,
             venuesId: 5,
             photographersId: 2,
-            others: []
+            others: [],
         }
     },
     apollo: {
@@ -215,10 +213,10 @@ export default {
     methods: {
         tabBar()
         {
-            $('.nav-item').click(function (e){
+            $('.popular-nav-item').click(function (e){
                 e.preventDefault();
                 e.stopImmediatePropagation();
-                $('.nav-item').removeClass("active");
+                $('.popular-nav-item').removeClass("active");
                 $(this).addClass("active");
                 $('.tab-pane').removeClass("active");
                 $('.tab-pane').removeClass("show");
@@ -252,7 +250,6 @@ h1
 .vueperslides--fixed-height
 {
     height: 360px;
-    width: 96% !important;
 }
 
 .slider-white-box
@@ -269,8 +266,10 @@ h1
     width: 180px;
     margin: auto;
     position: absolute;
-    bottom:0;
-    left:21%;
+    bottom:0px;
+    right:25%;
+    left:50%;
+    margin-left:-90px;
 }
 #nav-tab
 {
@@ -289,7 +288,6 @@ h1
 {
   display: block !important;
   height: 0 !important;
-  overflow: hidden;
 }
 .tab-content > .active
 {
@@ -309,7 +307,7 @@ button:focus, button:active
     outline: none !important;
     box-shadow: none !important;
 }
-a.nav-item.nav-link.active,
+a.popular-nav-item.nav-link.active,
 .nav-tabs .nav-link.active
 {
     font-weight: bold;
@@ -323,7 +321,7 @@ a.nav-item.nav-link.active,
 {
     border: none;
 }
-.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link
+.nav-tabs .nav-link.active, .nav-tabs .popular-nav-item.show .nav-link
 {
     color:#26140E;
     border:none;
@@ -337,7 +335,7 @@ li
 li:before { content: "/"; padding-right: 3px; }
 li:first-child:before { content: ""; padding-right: 0; }
 
-.nav-fill .nav-item
+.nav-fill .popular-nav-item
 {
     display: inline !important;
 }
@@ -364,5 +362,6 @@ li:first-child:before { content: ""; padding-right: 0; }
     text-decoration: none;
     text-transform: capitalize;
 }
+
 
 </style>
