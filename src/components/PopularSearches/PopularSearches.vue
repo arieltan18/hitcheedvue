@@ -38,14 +38,14 @@
                 </nav>
                 <div class="tab-content popular-searches py-3 px-3 px-sm-0" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-hotels" role="tabpanel" aria-labelledby="nav-hotels-tab">
-                        <vueper-slides class="no-shadow px-5 mx-4" arrows-outside :visible-slides="3" slide-multiple :slide-ratio="1/4" :dragging-distance="400" :bullets="false" :fixedHeight="true" :breakpoints="{ 800: { visibleSlides: 3 } }">
+                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :slide-ratio="1/4" :gap="3" :bullets="false" :fixedHeight="340" :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 5/4 } }">
                             <template v-slot:arrow-left>
-                                <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
+                                <img class="ml-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
                             </template>
                             <template v-slot:arrow-right>
-                                <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;">
+                                <img class="mr-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;">
                             </template>
-                            <vueper-slide class="mr-3" style="width:300px;" v-for="hotel in hotels" :key="hotel.id" :image="hotel.cover_photo"  >
+                            <vueper-slide v-for="hotel in hotels" :key="hotel.id" :image="hotel.cover_photo"  >
                                 <template v-slot:content>
                                     <div class="slider-white-box">{{ hotel.name }}</div>
                                 </template>

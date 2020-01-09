@@ -103,3 +103,8 @@
     font-size: 10px !important;
     opacity: 0.8 !important;
   }
+
+.popular-searches .vueperslides__inner
+{
+    width: 90% !important;
+}

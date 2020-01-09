@@ -33,8 +33,8 @@
                             <b-dropdown-item :variant="variant" :to="{ name: 'professionalsByCategory', params: { category: 'florists' }}">
                                 Florists
                             </b-dropdown-item>
-                            <b-dropdown-item :variant="variant" :to="{ name: 'professionalsByCategory', params: { category: 'invitation-and-wedding-favours' }}">
-                                Invitation & wedding favours
+                            <b-dropdown-item :variant="variant" :to="{ name: 'professionalsByCategory', params: { category: 'invitation-and-wedding-favors' }}">
+                                Invitation & wedding favors
                             </b-dropdown-item>
                             <b-dropdown-item :variant="variant" :to="{ name: 'professionalsByCategory', params: { category: 'event-styling-and-rental' }}">
                                 event styling & rental

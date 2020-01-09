@@ -35,8 +35,8 @@
                         </router-link>
                     </li>
                     <li>
-                        <router-link :to="{ name: 'professionalsByCategory', params: { category: 'invitation-and-wedding-favours' }}" class="nav-item nav-link" id="nav-invitation-tab" data-category-name="invitation-and-wedding-favours">
-                            <span class="nav-text-link">invitation & wedding favours</span>
+                        <router-link :to="{ name: 'professionalsByCategory', params: { category: 'invitation-and-wedding-favors' }}" class="nav-item nav-link" id="nav-invitation-tab" data-category-name="invitation-and-wedding-favors">
+                            <span class="nav-text-link">invitation & wedding favors</span>
                         </router-link>
                     </li>
                     <li>
