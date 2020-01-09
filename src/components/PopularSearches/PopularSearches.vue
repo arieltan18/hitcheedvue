@@ -38,7 +38,8 @@
                 </nav>
                 <div class="tab-content popular-searches py-3 px-3 px-sm-0" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-hotels" role="tabpanel" aria-labelledby="nav-hotels-tab">
-                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :touchable="false" :slide-ratio="1/4" :gap="3" :bullets="false" fixedHeight="360px" :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 5/4 } }">
+                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :touchable="false" :slide-ratio="1/4" :gap="3" :bullets="false" fixedHeight="360px" 
+                            :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 1/4 } }">
                             <template v-slot:arrow-left>
                                 <img class="ml-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
                             </template>
@@ -58,7 +59,8 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="nav-venues" role="tabpanel" aria-labelledby="nav-venues-tab">
-                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :touchable="false" :slide-ratio="1/4" :gap="3" :bullets="false" fixedHeight="360px" :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 5/4 } }">
+                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :touchable="false" :slide-ratio="1/4" :gap="3" :bullets="false" fixedHeight="360px" 
+                            :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 1/4 } }">
                             <template v-slot:arrow-left>
                                 <img class="ml-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
                             </template>
@@ -78,7 +80,8 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="nav-bridals" role="tabpanel" aria-labelledby="nav-bridals-tab">
-                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :touchable="false" :slide-ratio="1/4" :gap="3" :bullets="false" fixedHeight="360px" :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 5/4 } }">
+                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :touchable="false" :slide-ratio="1/4" :gap="3" :bullets="false" fixedHeight="360px" 
+                            :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 1/4 } }">
                             <template v-slot:arrow-left>
                                 <img class="ml-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
                             </template>
@@ -98,7 +101,8 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="nav-photographers" role="tabpanel" aria-labelledby="nav-photographers-tab">
-                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :touchable="false" :slide-ratio="1/4" :gap="3" :bullets="false" fixedHeight="360px" :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 5/4 } }">
+                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :touchable="false" :slide-ratio="1/4" :gap="3" :bullets="false" fixedHeight="360px" 
+                            :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 1/4 } }">
                             <template v-slot:arrow-left>
                                 <img class="ml-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
                             </template>
@@ -118,7 +122,8 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="nav-others" role="tabpanel" aria-labelledby="nav-others-tab">
-                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :touchable="false" :slide-ratio="1/4" :gap="3" :bullets="false" fixedHeight="360px" :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 5/4 } }">
+                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :touchable="false" :slide-ratio="1/4" :gap="3" :bullets="false" fixedHeight="360px" 
+                            :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 1/4 } }">
                             <template v-slot:arrow-left>
                                 <img class="ml-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
                             </template>

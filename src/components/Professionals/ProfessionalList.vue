@@ -1,8 +1,8 @@
 <template>
     <div>
         <router-link class="professional-img" :to="{ name: 'professional', params: { slug: this.professional.slug }}">
-            <img v-if="professional.around_image" class="ar-image" :src="resizedImageUrl(professional.around_image, 400, 400)" alt="professional">
-            <img v-else-if="professional.cover_image" class="ar-image" :src="resizedImageUrl(professional.cover_image, 400, 400)" alt="professional">
+            <img v-if="professional.around_image != ''" class="ar-image" :src="resizedImageUrl(professional.around_image, 400, 400)" alt="professional">
+            <img v-else-if="professional.cover_image !=''" class="ar-image" :src="resizedImageUrl(professional.cover_image, 400, 400)" alt="professional">
             <img v-else class="ar-image" :alt="professional.name">
         </router-link>
         <router-link class="link bottom-centered text-center" :to="{ name: 'professional', params: { slug: this.professional.slug }}">

@@ -5,9 +5,6 @@
                 <h1>{{ this.category_name }}</h1>
             </div>
         </div>
-        <div class="container">
-            <PopularSearchesNav></PopularSearchesNav>
-        </div>
         <ProfessionalSectionOthers :first="8" :page="1"></ProfessionalSectionOthers>
         <ProfessionalSectionOthers :first="8" :page="2"></ProfessionalSectionOthers>
         <div class="articles-section">

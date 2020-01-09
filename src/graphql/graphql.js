@@ -340,7 +340,8 @@ export const PROFESSIONALS_OTHER_COUNTRY_PAGINATE = gql`
         profile_image,
         tag_name,
         rating,
-        country{name}
+        country{name},
+        status
       }
     }
   }

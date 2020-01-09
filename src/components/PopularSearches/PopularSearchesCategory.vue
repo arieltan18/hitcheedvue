@@ -1,6 +1,6 @@
 <template>
-    <div class="container" v-if="this.tags.data.length > 0">
-        <h6>Popular {{ this.category_name }} Searches</h6>
+    <div class="container">
+        <h6>Popular {{ this.categoryName }} Searches</h6>
         <vueper-slides class="no-shadow"
             arrows-outside :visible-slides="6" slide-multiple :slide-ratio="1/4" :dragging-distance="70" :bullets="false" fixedHeight="70px" :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: false, slideRatio: 1/4,  slideMultiple:false, infinite:false } }">
             <template v-slot:arrow-left>
@@ -11,7 +11,7 @@
             </template>
             <vueper-slide v-for="tag in tags.data" :key="tag.id">
                 <template v-slot:content>
-                    <router-link :key="tag.name" class="tag-link" :to="{ name: 'professionalsByTag', params: { category: raw_category_name ,tag_name: processTagName(tag.name) }}">
+                    <router-link :key="tag.name" class="tag-link" :to="{ name: 'professionalsByTag', params: { category: categoryName ,tag_name: processTagName(tag.name) }}">
                         <div class="block">
                             <div class="tag-text">{{ tag.name }}</div>
                         </div>
@@ -19,7 +19,6 @@
                 </template>
             </vueper-slide>
         </vueper-slides>
-        <hr />
     </div>
 </template>
 
@@ -30,67 +29,66 @@ import { VueperSlides, VueperSlide } from 'vueperslides'
 import { TAG_FILTER } from '../../graphql/graphql.js';
 
 export default {
-    name: 'PopularSearchesNav',
+    name: 'PopularSearchesCategory',
     components: {
         VueperSlides,
         VueperSlide
     },
+    props: ['categoryName','categoryId'],
     data() {
         return {
-            category_name:'',
             category: [],
-            tags: [],
-            raw_category_name: this.$route.params.category
+            tags: []
         }
     },
     mounted() {
+        
+        // if(this.$route.params.category)
+        // {
+        //     this.category_name = this.$route.params.category;
 
-        if(this.$route.params.category)
-        {
-            this.category_name = this.$route.params.category;
+        //     if(this.$route.params.category.includes('-'))
+        //     {
+        //         this.category_name = this.$route.params.category.replace(/-/g, ' ');
+        //     }
 
-            if(this.$route.params.category.includes('-'))
-            {
-                this.category_name = this.$route.params.category.replace(/-/g, ' ');
-            }
-
-            this.category_name = this.capitalizeText(this.category_name);
-        }
+        //     this.category_name = this.capitalizeText(this.category_name);
+        // }
     },
     methods: {
-        capitalizeText(text) {
-            text = text.toLowerCase()
-                .split(' ')
-                .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
-                .join(' ');
+        // capitalizeText(text) {
+        //     text = text.toLowerCase()
+        //         .split(' ')
+        //         .map((s) => s.charAt(0).toUpperCase() + s.substring(1))
+        //         .join(' ');
 
-            return text;
-        },
+        //     return text;
+        // },
         processTagName(text) {
             text = text.replace(/\s+/g,'-').toLowerCase();;
 
             return text;
-        }
+        },
     },
     apollo: {
-        category: {
-            query: CATEGORIES_FILTER,
-            variables() {
-                return {
-                    name: this.category_name
-                }
-            },
-            update(data)
-            {
-                return data.category_filter;
-            }
-        },
+        // category: {
+        //     query: CATEGORIES_FILTER,
+        //     variables() {
+        //         return {
+        //             name: this.category_name
+        //         }
+        //     },
+        //     update(data)
+        //     {
+        //         return data.category_filter;
+        //     }
+        // },
         //query the first 6 tags by category with pagination
         tags: {
             query: TAGS_BY_CATEGORY_BY_PAGINATE,
             variables() {
                 return {
-                    category_id: this.category.id,
+                    category_id: this.categoryId,
                     first : 20,
                     page: 1,
                 }
@@ -118,6 +116,7 @@ h6
     font-size: 20px;
     color: #26140E;
     margin-bottom: 16px;
+    text-transform: capitalize;
 }
 .block
 {

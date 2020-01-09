@@ -13,6 +13,7 @@ import ResetPassword from '../components/ResetPassword'
 import ProfessionalsByCategory from '../components/Professionals/ProfessionalsByCategory'
 import ProfessionalsByCategoryAll from '../components/Professionals/ProfessionalsByCategoryAll'
 import ProfessionalsByAllCategories from '../components/Professionals/ProfessionalsByAllCategories'
+import ProfessionalsByOtherCountries from '../components/Professionals/ProfessionalsByOtherCountries'
 import ProjectContent from '../components/Projects/ProjectContent'
 import ProfessionalsByTag from '../components/Professionals/ProfessionalsByTag'
 import Messages from '../components/Messages'
@@ -93,6 +94,11 @@ export default new VueRouter({
             name: 'professionalsByAllCategories',
             path: '/all/category',
             component: ProfessionalsByAllCategories
+        },
+        {
+            name: 'professionalsByOtherCountries',
+            path: '/others-countries/category',
+            component: ProfessionalsByOtherCountries
         },
         {
             name: 'professionalsByTag',

@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container mt-3">
         <div class="row">
             <div v-for="professional in professionals.data" :key="professional.id" class="col-md-3 professional-padding mb-5">
                 <ProfessionalList :professional="professional" />
