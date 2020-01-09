@@ -1,34 +1,30 @@
 <template>
     <div class="mb">
-        <div class="container text-left mb-4">
+        <div class="container text-left mb-4 header">
             <h3>Promotions <span>Exclusive to Hitcheed Users</span></h3>
         </div>
-        <div class="container mb-4">
-            <div class="row"> 
-                <div class="col-md-4 box" v-for="promotion in promotions.data" :key="promotion.id">
-                    <router-link :to="{ name: 'promotions', params: { slug: promotion.slug }}">
-                        <img class="mb-2" :src="promotion.cover_image" width="100%">
-                        <div class="title line-clamp mb-2">{{ promotion.title }}</div>
-                        <div class="professionals">by 
-                            <router-link target= '_blank' :to="{ name: 'professional', params: { slug: promotion.professional.slug }}" class="bold">{{ promotion.professional.name }}</router-link>
-                        </div>
-                        <div class="date mt-2">{{ date(promotion.valid_to) }}</div>
-                    </router-link>
-                </div>
+        <div class="container text-left mb-4">
+            <div class="col-md-4 inline mb-2" v-for="promotion in promotions.data" :key="promotion.id">
+                <router-link :to="{ name: 'promotions', params: { slug: promotion.slug }}">
+                    <img class="mb-2" :src="promotion.cover_image" width="100%">
+                    <div class="title line-clamp mb-2">{{ promotion.title }}</div>
+                    <div class="professionals">by 
+                        <router-link target= '_blank' :to="{ name: 'professional', params: { slug: promotion.professional.slug }}" class="bold">{{ promotion.professional.name }}</router-link>
+                    </div>
+                    <div class="date mt-2">{{ date(promotion.valid_to) }}</div>
+                </router-link>
             </div>
         </div>
-        <div class="container">
-            <div class="row"> 
-                <div class="col-md-4 box" v-for="promotion2 in promotions2.data" :key="promotion2.id">
-                    <router-link :to="{ name: 'promotions', params: { slug: promotion2.slug }}">
-                        <img class="mb-2" :src="promotion2.cover_image" width="100%">
-                        <div class="title line-clamp mb-2">{{ promotion2.title }}</div>
-                        <div class="professionals">by 
-                            <router-link target= '_blank' :to="{ name: 'professional', params: { slug: promotion2.professional.slug }}" class="bold">{{ promotion2.professional.name }}</router-link>
-                        </div>
-                        <div class="date mt-2">{{ date(promotion2.valid_to) }}</div>
-                    </router-link>
-                </div>
+        <div class="container text-left mb-4">
+            <div class="col-md-4 inline" v-for="promotion2 in promotions2.data" :key="promotion2.id">
+                <router-link :to="{ name: 'promotions', params: { slug: promotion2.slug }}">
+                    <img class="mb-2" :src="promotion2.cover_image" width="100%">
+                    <div class="title line-clamp mb-2">{{ promotion2.title }}</div>
+                    <div class="professionals">by 
+                        <router-link target= '_blank' :to="{ name: 'professional', params: { slug: promotion2.professional.slug }}" class="bold">{{ promotion2.professional.name }}</router-link>
+                    </div>
+                    <div class="date mt-2">{{ date(promotion2.valid_to) }}</div>
+                </router-link>
             </div>
         </div>
     </div>
@@ -147,14 +143,20 @@ a
     text-align: left;
 }
 
-.box
-{
-    width: 32%;
-}
+
 
 .mb
 {
     margin-bottom: 6em;
 }
 
+.inline
+{
+    display: inline-block;
+}
+
+.header
+{
+    padding-left: 2rem;
+}
 </style>

@@ -1,10 +1,10 @@
 <template>
     <div class="mb">
-        <div class="container text-left mb-4">
+        <div class="container text-left header">
             <h3>Events <span>Happening Soon</span></h3>
         </div>
-        <div class="container text-left">
-            <div class="pl-0 pr-5 col-md-6 inline box" v-for="event in events" :key="event.id">
+        <div class="container">
+            <div class="p-3 col-md-6 inline box" v-for="event in events" :key="event.id">
                 <router-link :to="{ name: 'events', params: { slug: event.slug }}">
                     <div class="pink-text">Happening in {{ event.end }} days</div>
                     <img class="promotion-image mb-4" :src="event.cover_image" width="100%">
@@ -176,5 +176,10 @@ a
     margin-top: 20px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px; 
+}
+
+.header
+{
+    padding-left: 2rem;
 }
 </style>

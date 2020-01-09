@@ -1,10 +1,10 @@
 <template>
     <div class="mb">
-        <div class="container text-left">
+        <div class="container text-left header">
             <h3>Promotions <span>Ending Soon</span></h3>
         </div>
         <div class="container">
-            <div class="pl-0 pr-5 col-md-6 inline box" v-for="promotion in promotions" :key="promotion.id">
+            <div class="p-3 col-md-6 inline box" v-for="promotion in promotions" :key="promotion.id">
                 <router-link :to="{ name: 'promotions', params: { slug: promotion.slug }}">
                     <div class="pink-text">Ending in {{ promotion.end }} days</div>
                     <img class="promotion-image mb-4" :src="promotion.cover_image" width="100%">
@@ -168,5 +168,10 @@ a
     margin-top: 20px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px; 
+}
+
+.header
+{
+    padding-left: 2rem;
 }
 </style>

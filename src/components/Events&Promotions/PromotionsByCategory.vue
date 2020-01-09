@@ -1,10 +1,10 @@
 <template>
     <div class="container">
-        <div class="row mb-2">
+        <div class="containter text-left mb-2 header">
             <div class="promotions-title">{{ this.category_name }} Promotions</div>
         </div>
-        <div class="row">
-            <div class="col-md-4 box" v-for="promotion in this.promotions.data" :key="promotion.id">
+        <div class="text-left mb-4">
+            <div class="col-md-4 inline mb-2" v-for="promotion in this.promotions.data" :key="promotion.id">
                 <router-link :to="{ name: 'promotions', params: { slug: promotion.slug }}">
                     <img class="mb-2" :src="promotion.cover_image" width="100%">
                     <div class="title line-clamp mb-2">{{ promotion.title }}</div>
@@ -99,13 +99,18 @@ a
     text-align: left;
 }
 
-.box
-{
-    width: 32%;
-}
-
 .mb
 {
     margin-bottom: 6em;
+}
+
+.inline
+{
+    display: inline-block;
+}
+
+.header
+{
+    padding-left: 1rem;
 }
 </style>

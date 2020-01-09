@@ -1,10 +1,17 @@
 <template>
     <div class="container">
-        <div class="row">
-            <div class="related-articles-title">Related Articles</div>
-        </div>
-        <div class="row articles-slider">
-            <vueper-slides class="no-shadow" :visible-slides="2" slide-multiple :slide-ratio="1/4" arrows-outside :bullets="false" transition-speed="250" style="width:100%;">
+        <div class="related-articles-title">Related Articles</div>
+        <div class="articles-slider">
+            <vueper-slides
+                class="no-shadow" 
+                :visible-slides="2" 
+                slide-multiple 
+                :slide-ratio="1/4" 
+                arrows-outside 
+                :bullets="false" 
+                transition-speed="250" 
+                style="width:100%;"
+                :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: false, slideRatio: 1/4,  slideMultiple:false, infinite:false, fixedHeight: '400px' } }">
                 <template v-slot:arrow-left>
                     <img src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
                 </template>
@@ -18,7 +25,7 @@
                     <div slot="content">
                         <router-link :to="{ name: 'singleArticlePage', params: { slug: articleItem.slug }}" class="read-link">
                             <div class="col-md-6 article-img">
-                                <img :src="'https:'+ articleItem.content.cover" width="100%"  height="173px">
+                                <img :src="'https:'+ articleItem.content.cover" width="100%">
                             </div>
                             <div class="col-md-6 article-details">
                                 <div class="tag text-left" v-if="articleItem.tag_list">
@@ -148,6 +155,8 @@ export default {
     font-size: 20px;
     text-align: left;
     color: #26140E;
+    margin-right:10px;
+    margin-left:10px;
 }
 
 .article-img
@@ -165,6 +174,8 @@ export default {
 .article-img img
 {
     object-fit: cover;
+    min-height:180px;
+    margin-bottom:10px;
 }
 
 .article-details
@@ -203,8 +214,10 @@ export default {
     color: #26140E;
     opacity: 0.5;
 }
-.vueperslides__track-inner
-{
-    padding-top: 50px !important;
+
+.ex--center-mode {
+  width: 600px;
+  max-width: 100%;
+  margin: auto;
 }
 </style>
