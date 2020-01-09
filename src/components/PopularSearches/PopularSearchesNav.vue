@@ -1,26 +1,24 @@
 <template>
     <div class="container">
         <h6>Popular {{ this.category_name }} Searches</h6>
-        <div class="">
-            <vueper-slides class="no-shadow" @ready="centerMode()"
-                arrows-outside :visible-slides="6" slide-multiple :slide-ratio="1/4" :dragging-distance="70" :bullets="false" fixedHeight="70px" :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: false, slideRatio: 1/4,  slideMultiple:false, infinite:false } }">
-                <template v-slot:arrow-left>
-                    <img class="ml-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
+        <vueper-slides class="no-shadow" @ready="centerMode()"
+            arrows-outside :visible-slides="6" slide-multiple :slide-ratio="1/4" :dragging-distance="70" :bullets="false" fixedHeight="70px" :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: false, slideRatio: 1/4,  slideMultiple:false, infinite:false } }">
+            <template v-slot:arrow-left>
+                <img class="ml-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
+            </template>
+            <template v-slot:arrow-right>
+                <img class="mr-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;">
+            </template>
+            <vueper-slide v-for="tag in tags.data" :key="tag.id" @click.native="$refs.vueperslides2 && $refs.vueperslides2.goToSlide(i - 1)">
+                <template v-slot:content>
+                    <router-link :key="tag.name" class="tag-link" :to="{ name: 'professionalsByTag', params: { category: raw_category_name ,tag_name: processTagName(tag.name) }}">
+                        <div class="block">
+                            <div class="tag-text">{{ tag.name }}</div>
+                        </div>
+                    </router-link>
                 </template>
-                <template v-slot:arrow-right>
-                    <img class="mr-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;">
-                </template>
-                <vueper-slide v-for="tag in tags.data" :key="tag.id" @click.native="$refs.vueperslides2 && $refs.vueperslides2.goToSlide(i - 1)">
-                    <template v-slot:content>
-                        <router-link :key="tag.name" class="tag-link" :to="{ name: 'professionalsByTag', params: { category: raw_category_name ,tag_name: processTagName(tag.name) }}">
-                            <div class="block">
-                                <div class="tag-text">{{ tag.name }}</div>
-                            </div>
-                        </router-link>
-                    </template>
-                </vueper-slide>
-            </vueper-slides>
-        </div>
+            </vueper-slide>
+        </vueper-slides>
         <hr />
     </div>
 </template>

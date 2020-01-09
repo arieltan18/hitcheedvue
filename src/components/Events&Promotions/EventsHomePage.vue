@@ -31,7 +31,7 @@
                     <template v-slot:arrow-right>
                         <img class="mr-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;">
                     </template>
-                    <vueper-slide v-for="data of sliderItems.data" :key="data.id" :event="data" >
+                    <vueper-slide v-for="data of sliderItems.data" :key="data.id" :event="data" :link="data.link">
                         <template v-slot:content>
                             <EventPromotionSliderItem :data="data" />
                         </template>
@@ -92,6 +92,17 @@ export default {
                 }
             },
             update(data){
+                var results = data.event_promotions_paginate.data;
+
+                //loop the results 
+                Object.keys(results).forEach(function(index){
+                    var slug = results[index].slug;
+                    
+                    //store the link
+                    results[index].link = 'events/' + slug;
+                    
+                });
+
                 return data.event_promotions_paginate;
             }
         },
@@ -104,6 +115,18 @@ export default {
                 }
             },
             update(data){
+
+                var results = data.promotions_paginate.data;
+
+                //loop the results 
+                Object.keys(results).forEach(function(index){
+                    var slug = results[index].slug;
+                    
+                    //store the link
+                    results[index].link = 'promotions/' + slug;
+                    
+                });
+
                 return data.promotions_paginate;
             }
         }
@@ -196,5 +219,9 @@ li:first-child:before { content: ""; padding-right: 0; }
     color: #26140E;
     text-decoration: none;
     text-transform: capitalize;
+}
+
+a:hover{
+    text-decoration: none;
 }
 </style>

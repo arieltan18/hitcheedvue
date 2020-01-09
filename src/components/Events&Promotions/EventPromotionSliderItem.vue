@@ -1,10 +1,10 @@
 <template>
     <div class="m-3">
-        <router-link :to="{ name: 'data', params: { slug: data.slug }}">
+        <!-- <router-link :to="{ name: 'data', params: { slug: data.link }}"> -->
             <img class="promotion-image mb-4" :src="resizedImageUrl(data.cover_image, 500, 300)" width="100%">
             <div class="title line-clamp mb-2">{{ data.title }}</div>
             <div class="professionals">by
-                <router-link target= '_blank' :to="{ name: 'professional', params: { slug: data.professional.slug }}" class="bold">{{ data.professional.name }}</router-link>
+                {{ data.professional.name }}
             </div>
             <div class="date mt-2">
                 <i class="fa fa-calendar mr-2" aria-hidden="true"></i>
@@ -14,7 +14,7 @@
                 <img src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/home-page/Group47.svg">
                 {{ data.location }}
             </div>
-        </router-link>
+        <!-- </router-link> -->
     </div>
 </template>
 

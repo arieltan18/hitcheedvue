@@ -36,7 +36,9 @@
             </div>
             <div class="text-center">
                 <div class="link">
-                    <a class="link-text" href="">See All Categories</a>
+                    <router-link :to="{ name: 'professionalsByAllCategories'}" class="link-text" >
+                        See All Categories
+                    </router-link>
                 </div>
             </div>
         </div>

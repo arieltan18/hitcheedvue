@@ -38,14 +38,14 @@
                 </nav>
                 <div class="tab-content popular-searches py-3 px-3 px-sm-0" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="nav-hotels" role="tabpanel" aria-labelledby="nav-hotels-tab">
-                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :slide-ratio="1/4" :gap="3" :bullets="false" fixedHeight="360px" :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 5/4 } }">
+                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :touchable="false" :slide-ratio="1/4" :gap="3" :bullets="false" fixedHeight="360px" :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 5/4 } }">
                             <template v-slot:arrow-left>
                                 <img class="ml-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
                             </template>
                             <template v-slot:arrow-right>
                                 <img class="mr-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;">
                             </template>
-                            <vueper-slide v-for="hotel in hotels" :key="hotel.id" :image="hotel.cover_photo"  >
+                            <vueper-slide v-for="hotel in hotels" :key="hotel.id" :image="hotel.cover_photo" :link="hotel.link" >
                                 <template v-slot:content>
                                     <div class="slider-white-box">{{ hotel.name }}</div>
                                 </template>
@@ -58,14 +58,14 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="nav-venues" role="tabpanel" aria-labelledby="nav-venues-tab">
-                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :slide-ratio="1/4" :gap="3" :bullets="false" fixedHeight="360px" :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 5/4 } }">
+                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :touchable="false" :slide-ratio="1/4" :gap="3" :bullets="false" fixedHeight="360px" :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 5/4 } }">
                             <template v-slot:arrow-left>
                                 <img class="ml-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
                             </template>
                             <template v-slot:arrow-right>
                                 <img class="mr-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;">
                             </template>
-                            <vueper-slide v-for="venue in venues" :key="venue.id" :image="venue.cover_photo"  >
+                            <vueper-slide v-for="venue in venues" :key="venue.id" :image="venue.cover_photo" :link="venue.link" >
                                 <template v-slot:content>
                                     <div class="slider-white-box">{{ venue.name }}</div>
                                 </template>
@@ -78,14 +78,14 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="nav-bridals" role="tabpanel" aria-labelledby="nav-bridals-tab">
-                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :slide-ratio="1/4" :gap="3" :bullets="false" fixedHeight="360px" :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 5/4 } }">
+                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :touchable="false" :slide-ratio="1/4" :gap="3" :bullets="false" fixedHeight="360px" :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 5/4 } }">
                             <template v-slot:arrow-left>
                                 <img class="ml-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
                             </template>
                             <template v-slot:arrow-right>
                                 <img class="mr-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;">
                             </template>
-                            <vueper-slide v-for="bridal in bridals" :key="bridal.id" :image="bridal.cover_photo"  >
+                            <vueper-slide v-for="bridal in bridals" :key="bridal.id" :image="bridal.cover_photo"  :link="bridal.link">
                                 <template v-slot:content>
                                     <div class="slider-white-box">{{ bridal.name }}</div>
                                 </template>
@@ -98,14 +98,14 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="nav-photographers" role="tabpanel" aria-labelledby="nav-photographers-tab">
-                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :slide-ratio="1/4" :gap="3" :bullets="false" fixedHeight="360px" :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 5/4 } }">
+                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :touchable="false" :slide-ratio="1/4" :gap="3" :bullets="false" fixedHeight="360px" :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 5/4 } }">
                             <template v-slot:arrow-left>
                                 <img class="ml-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
                             </template>
                             <template v-slot:arrow-right>
                                 <img class="mr-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;">
                             </template>
-                            <vueper-slide v-for="photographer in photographers" :key="photographer.id" :image="photographer.cover_photo"  >
+                            <vueper-slide v-for="photographer in photographers" :key="photographer.id" :image="photographer.cover_photo" :link="photographer.link">
                                 <template v-slot:content>
                                     <div class="slider-white-box">{{ photographer.name }}</div>
                                 </template>
@@ -118,14 +118,14 @@
                         </div>
                     </div>
                     <div class="tab-pane fade" id="nav-others" role="tabpanel" aria-labelledby="nav-others-tab">
-                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :slide-ratio="1/4" :gap="3" :bullets="false" fixedHeight="360px" :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 5/4 } }">
+                        <vueper-slides class="no-shadow" arrows-outside :visible-slides="3" slide-multiple :touchable="false" :slide-ratio="1/4" :gap="3" :bullets="false" fixedHeight="360px" :breakpoints="{ 600: { visibleSlides: 1, arrowsOutside: true, slideRatio: 5/4 } }">
                             <template v-slot:arrow-left>
                                 <img class="ml-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group29.svg" alt="left-arrow" width="25px">
                             </template>
                             <template v-slot:arrow-right>
                                 <img class="mr-4" src="https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group28.svg" alt="right-arrow" width="25px;">
                             </template>
-                            <vueper-slide v-for="other in others" :key="other.id" :image="other.cover_photo"  >
+                            <vueper-slide v-for="other in others" :key="other.id" :image="other.cover_photo" :link="other.link">
                                 <template v-slot:content>
                                     <div class="slider-white-box">{{ other.name }}</div>
                                 </template>
@@ -173,6 +173,19 @@ export default {
                 }
             },
             update(data){
+                var results = data.tags_by_category;
+
+                //loop the results 
+                Object.keys(results).forEach(function(index){
+                    var tag_name = results[index].name;
+
+                    tag_name = tag_name.replace(/\s+/g, '-').toLowerCase();
+                    
+                    //store the tag link
+                    results[index].link = 'category/hotels/' + tag_name;
+                    
+                });
+
                 return data.tags_by_category;
             }
         },
@@ -184,6 +197,19 @@ export default {
                 }
             },
             update(data){
+                var results = data.tags_by_category;
+
+                //loop the results 
+                Object.keys(results).forEach(function(index){
+                    var tag_name = results[index].name;
+
+                    tag_name = tag_name.replace(/\s+/g, '-').toLowerCase();
+                    
+                    //store the tag link
+                    results[index].link = 'category/bridal-studios/' + tag_name;
+                    
+                });
+
                 return data.tags_by_category;
             }
         },
@@ -195,6 +221,19 @@ export default {
                 }
             },
             update(data){
+                var results = data.tags_by_category;
+
+                //loop the results 
+                Object.keys(results).forEach(function(index){
+                    var tag_name = results[index].name;
+
+                    tag_name = tag_name.replace(/\s+/g, '-').toLowerCase();
+                    
+                    //store the tag link
+                    results[index].link = 'category/venues/' + tag_name;
+                    
+                });
+
                 return data.tags_by_category;
             }
         },
@@ -206,6 +245,19 @@ export default {
                 }
             },
             update(data){
+                var results = data.tags_by_category;
+
+                //loop the results 
+                Object.keys(results).forEach(function(index){
+                    var tag_name = results[index].name;
+
+                    tag_name = tag_name.replace(/\s+/g, '-').toLowerCase();
+                    
+                    //store the tag link
+                    results[index].link = 'category/photographers/' + tag_name;
+                    
+                });
+
                 return data.tags_by_category;
             }
         },

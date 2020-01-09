@@ -28,7 +28,7 @@
 
 .vueperslides__arrows--outside .vueperslides__arrow--next
 {
-    right: -65px !important;
+    right: -60px !important;
     box-shadow: none;
     outline: none;
 }
@@ -107,4 +107,14 @@
 .popular-searches .vueperslides__inner
 {
     width: 90% !important;
+}
+
+.popular-searches .vueperslides__arrows--outside .vueperslides__arrow--prev
+{
+    left: -80px !important;
+}
+
+.popular-searches .vueperslides__arrows--outside .vueperslides__arrow--next
+{
+    right: -80px !important;
 }
