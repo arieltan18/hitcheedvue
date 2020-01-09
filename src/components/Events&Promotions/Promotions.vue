@@ -121,7 +121,7 @@ h3
 {
     font-weight: 500;
     font-family: 'Cormorant Garamond';
-    font-size: 40px;
+    font-size: 30px;
     line-height: 30px;
     color: #26140E;
     margin: 30px 0;

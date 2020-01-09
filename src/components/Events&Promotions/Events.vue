@@ -209,7 +209,7 @@ h3
 {
     font-weight: 500;
     font-family: 'Cormorant Garamond';
-    font-size: 40px;
+    font-size: 30px;
     line-height: 30px;
     color: #26140E;
     margin: 30px 0;
@@ -425,8 +425,26 @@ input
 .date-time, .location
 {
     color: #26140E;
-    font-size: 18px;
+    font-size: 16px;
     letter-spacing: 0.9px;
     font-family: 'Open Sans';
+}
+
+@media only screen and (max-width: 600px) {
+::v-deep  #rsvp .modal-header
+{
+    border-bottom: 0px;
+    padding-top: 2rem;
+    padding-left: 2rem;
+    padding-right: 1rem;
+}
+
+::v-deep #rsvp .modal-body
+{
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+}
+
 }
 </style>
