@@ -55,7 +55,14 @@ export default {
             this.category_name = this.$route.params.category.replace(/-/g, ' ');
         }
 
+        if(this.$route.params.category === 'photo-booth')
+        {
+            this.category_name = 'Photo Booth and Reception Services';
+        }
+
+
         this.category_name = this.capitalizeText(this.category_name);
+
 
     },
     data() {
