@@ -16,7 +16,7 @@
                     </router-link>
                     <router-link id="bridal-studios" class="row1 mr-2 header-link" :to="{ name: 'professionalsByCategory', params: { category: 'bridal-studios' }}">
                         <div class="icon-block">
-                            <img class="icon" src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/hotel-icon.png" alt="">
+                            <img class="icon" src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/bridal-icon.png" alt="">
                             <div class="icon-text mt-2">Bridal Studios</div>
                         </div>
                     </router-link>
@@ -24,13 +24,21 @@
                 <div class="d-flex justify-content-center" style="width:100%;">
                     <router-link id="venues" class="row2 mr-2 header-link" :to="{ name: 'professionalsByCategory', params: { category: 'venues' }}">
                         <div class="icon-block">
-                            <img class="icon" src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/hotel-icon.png" alt="">
+                            <img class="icon" src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/venue-icon.png" alt="">
                             <div class="icon-text mt-2">Venues</div>
                         </div>
                     </router-link>
                     <router-link id="photographers" class="row2 mr-2 header-link" :to="{ name: 'professionalsByCategory', params: { category: 'photographers' }}">
+                        <div class="icon-block">
+                            <img class="icon" src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/photographer-icon.png" alt="">
+                            <div class="icon-text mt-2">Photographers</div>
+                        </div>
                     </router-link>
                     <router-link id="other-countries" class="row2 mr-2 header-link" :to="{ name: 'professionalsByCategory', params: { category: 'other-countries' }}">
+                        <div class="icon-block">
+                            <img class="icon" src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/other-icon.png" alt="">
+                            <div class="icon-text mt-2">Others</div>
+                        </div>
                     </router-link>
                 </div>
             </div>
@@ -43,19 +51,27 @@
                 </router-link>
                 <router-link id="bridal-studios" class="image header-link" :to="{ name: 'professionalsByCategory', params: { category: 'bridal-studios' }}">
                     <div class="icon-block">
-                        <img class="icon" src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/hotel-icon.png" alt="">
+                        <img class="icon" src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/bridal-icon.png" alt="">
                         <div class="icon-text mt-2">Bridal Studios</div>
                     </div>
                 </router-link>
                 <router-link id="venues" class="image header-link" :to="{ name: 'professionalsByCategory', params: { category: 'venues' }}">
                     <div class="icon-block">
-                        <img class="icon" src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/hotel-icon.png" alt="">
+                        <img class="icon" src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/venue-icon.png" alt="">
                         <div class="icon-text mt-2">Venues</div>
                     </div>
                 </router-link>
                 <router-link id="photographers" class="image header-link" :to="{ name: 'professionalsByCategory', params: { category: 'photographers' }}">
+                    <div class="icon-block">
+                        <img class="icon" src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/photographer-icon.png" alt="">
+                        <div class="icon-text mt-2">Photographers</div>
+                    </div>
                 </router-link>
                 <router-link id="other-countries" class="image header-link" :to="{ name: 'professionalsByCategory', params: { category: 'other-countries' }}">
+                    <div class="icon-block">
+                        <img class="icon" src="https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/other-icon.png" alt="">
+                        <div class="icon-text mt-2">Others</div>
+                    </div>
                 </router-link>
             </div>
             <div class="text-center">
@@ -126,7 +142,7 @@ h1
 }
 #venues
 {
-    background-image: url('https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/banquet-beautiful-catering.jpg');
+    background-image: url('https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/sweet-ice-cream-photography.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -134,7 +150,7 @@ h1
 }
 #photographers
 {
-    background-image: url('https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group1098%402x.png');
+    background-image: url('https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/bouquet-bride-bride-and-groom.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -142,7 +158,7 @@ h1
 }
 #other-countries
 {
-    background-image: url('https://d1qc9wtuffqlue.cloudfront.net/images/home-page/Group1097%402x.png');
+    background-image: url('https://hitcheed-laravel.s3-ap-southeast-1.amazonaws.com/images/woman-wearing-white-dress-with-black-manicure.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
