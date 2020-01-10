@@ -228,43 +228,44 @@ export default {
         }
     },
     methods:{
-        scroll () {
-        window.onscroll = () => {
-            let bottomOfWindow = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight === document.documentElement.offsetHeight
-                this.isloading = true;
-                if (bottomOfWindow) 
-                {
-                    if(this.load2===false)
+        scroll () 
+        {
+            window.onscroll = () => {
+                let bottomOfWindow = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight > document.documentElement.offsetHeight - 300
+                    this.isloading = true;
+                    if (bottomOfWindow) 
                     {
-                        this.load2 = true;
-                        this.isloading = false;
+                        if(this.load2===false)
+                        {
+                            this.load2 = true;
+                            this.isloading = false;
+                        }
+                        else if(this.load3===false)
+                        {
+                            this.load3 = true;
+                            this.isloading = false;
+                        }
+                        else if(this.load4===false)
+                        {
+                            this.load4 = true;
+                            this.isloading = false;
+                        }
+                        else if(this.load5===false)
+                        {
+                            this.load5 = true;
+                            this.isloading = false;
+                        }
+                        else if(this.load6===false)
+                        {
+                            this.load6 = true;
+                            this.isloading = false;
+                        }
+                        else if(this.load7===false)
+                        {
+                            this.load7 = true;
+                            this.isloading = false;
+                        }
                     }
-                    else if(this.load3===false)
-                    {
-                        this.load3 = true;
-                        this.isloading = false;
-                    }
-                    else if(this.load4===false)
-                    {
-                        this.load4 = true;
-                        this.isloading = false;
-                    }
-                    else if(this.load5===false)
-                    {
-                        this.load5 = true;
-                        this.isloading = false;
-                    }
-                    else if(this.load6===false)
-                    {
-                        this.load6 = true;
-                        this.isloading = false;
-                    }
-                    else if(this.load7===false)
-                    {
-                        this.load7 = true;
-                        this.isloading = false;
-                    }
-                }
             }
         }
     },
