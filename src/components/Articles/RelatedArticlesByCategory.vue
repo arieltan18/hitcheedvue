@@ -53,7 +53,8 @@ import moment from 'moment';
 import { VueperSlides, VueperSlide } from 'vueperslides'
 
 export default {
-    name: 'RelatedArticles',
+    name: 'RelatedArticlesByCategory',
+    props: [ 'categoryName' ],
     components: {
         ArticleItems,
         VueperSlides,
@@ -62,7 +63,6 @@ export default {
     data() {
         return {
             articleItems: [],
-            category_name: '',
             articleTag: ''
         }
     },
@@ -88,7 +88,7 @@ export default {
 
             for (var index in articleTagList)
             {
-                if(articleTagList[index].includes(this.category_name))
+                if(articleTagList[index].includes(this.categoryName))
                 {
                     this.articleTag = articleTagList[index];
                 }
@@ -127,18 +127,8 @@ export default {
     },
     mounted()
     {
-        this.category_name = this.$route.params.category;
-
-        if(this.$route.params.category.includes('-'))
-        {
-            this.category_name = this.$route.params.category.replace(/-/g, ' ');
-        }
-
-        this.category_name = this.capitalizeText(this.category_name);
-
         this.getArticlesWithTag();
     }
-    
 }
 </script>
 

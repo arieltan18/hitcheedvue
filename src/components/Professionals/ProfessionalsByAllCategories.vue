@@ -8,7 +8,7 @@
         <ProfessionalSection :category_id="14" :first="8" :page="1"></ProfessionalSection>
         <div class="articles-section">
             <PopularSearchesCategory categoryName="hotels" :categoryId="14"></PopularSearchesCategory>
-            <!-- <RelatedArticles></RelatedArticles> -->
+            <RelatedArticlesByCategory categoryName='Hotels'></RelatedArticlesByCategory>
         </div>
         <div class="container mt-5">
             <router-link class="see-more-link" to="/category/hotels">See More Hotels</router-link>
@@ -21,6 +21,7 @@
         <ProfessionalSection :category_id="5" :first="8" :page="1"></ProfessionalSection>
         <div class="articles-section">
             <PopularSearchesCategory categoryName="venues" :categoryId="5"></PopularSearchesCategory>
+            <RelatedArticlesByCategory categoryName='Venues'></RelatedArticlesByCategory>
         </div>
         <div class="container mt-5">
             <router-link class="see-more-link" to="/category/venues">See More Venues</router-link>
@@ -31,14 +32,14 @@
 <script>
 import ProfessionalSection from './ProfessionalSection.vue';
 import { CATEGORIES_FILTER } from '../../graphql/graphql.js';
-import RelatedArticles from "../Articles/RelatedArticles.vue";
+import RelatedArticlesByCategory from "../Articles/RelatedArticlesByCategory.vue";
 import PopularSearchesCategory from "../PopularSearches/PopularSearchesCategory.vue";
 
 export default {
     name: 'ProfessionalsByAllCategories',
     components: {
         ProfessionalSection,
-        RelatedArticles,
+        RelatedArticlesByCategory,
         PopularSearchesCategory
     },
     apollo: {
