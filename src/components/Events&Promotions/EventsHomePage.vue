@@ -51,7 +51,7 @@
 <script>
 import '../../assets/css/vueper-slider.css';
 import { VueperSlides, VueperSlide } from 'vueperslides'
-import { EVENT_PROMOTIONS_PAGINATE } from '../../graphql/graphql.js';
+import { EVENT_PROMOTIONS_PAGINATE_ASC } from '../../graphql/graphql.js';
 import { PROMOTIONS_PAGINATE } from '../../graphql/graphql.js';
 import EventPromotionSliderItem from "./EventPromotionSliderItem";
 
@@ -84,7 +84,7 @@ export default {
     },
     apollo: {
         events: {
-            query: EVENT_PROMOTIONS_PAGINATE,
+            query: EVENT_PROMOTIONS_PAGINATE_ASC,
             variables() {
                 return {
                     first: 10,
