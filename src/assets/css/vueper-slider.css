@@ -97,11 +97,10 @@
   
   .vueperslides__bullet--active {background-color:#25130E !important;outline:0 !important;}
   
-  .vueperslides__bullet span {
-    display: block !important;
-    color: #fff !important;
-    font-size: 10px !important;
-    opacity: 0.8 !important;
+  .vueperslides__bullet .default
+  {
+      border:none !important;
+      border-radius: 0px !important;
   }
 
 .popular-searches .vueperslides__inner

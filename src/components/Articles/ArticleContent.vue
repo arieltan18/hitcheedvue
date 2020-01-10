@@ -8,7 +8,7 @@
             </div>
 
         </div>
-        <div v-if="isLoading"><i class="fa fa-spinner fa-spin"></i></div>
+        <div class="mt-2" v-if="isLoading"><i class="fa fa-spinner fa-spin"></i></div>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
