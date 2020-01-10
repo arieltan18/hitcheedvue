@@ -113,5 +113,13 @@ p
     text-decoration: none;
 }
 
+@media screen and (max-width:415px) {
+    .link
+    {
+        padding-left: 2em;
+        padding-right: 2em;
+        display: block;
+    }
+}
 </style>
 
