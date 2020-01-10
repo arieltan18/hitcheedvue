@@ -197,9 +197,32 @@ export const CATEGORY = gql`
   }
 `
 
-export const EVENT_PROMOTIONS_PAGINATE = gql`
+export const EVENT_PROMOTIONS_PAGINATE_ASC = gql`
   query event_promotions_paginate($first: Int!, $page: Int!){
     event_promotions_paginate(first: $first, page: $page, orderBy: [{field: "valid_to", order: ASC}]){
+     data
+      {
+        id,
+        title,
+        slug,
+        date_from,
+        valid_to,
+        cover_image,
+        location,
+        professional
+        {
+          id,
+          name,
+          slug
+        }
+      }
+    }
+  }
+`
+
+export const EVENT_PROMOTIONS_PAGINATE_DESC = gql`
+  query event_promotions_paginate($first: Int!, $page: Int!){
+    event_promotions_paginate(first: $first, page: $page, orderBy: [{field: "valid_to", order: DESC}]){
      data
       {
         id,

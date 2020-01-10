@@ -4,7 +4,7 @@
             <h3><span>More Events</span></h3>
         </div>
         <div class="container text-left mb-4">
-            <div class="col-md-4 inline mb-4" href="" v-for="event in events.data" :key="event.id">
+            <div class="col-md-4 inline mb-4" v-for="event in events.data" :key="event.id">
                 <router-link :to="{ name: 'events', params: { slug: event.slug }}">
                     <img class="mb-2" :src="event.cover_image" width="100%">
                     <div class="title line-clamp mb-2">{{ event.title }}</div>
@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { EVENT_PROMOTIONS_PAGINATE } from '../../graphql/graphql.js';
+import { EVENT_PROMOTIONS_PAGINATE_DESC } from '../../graphql/graphql.js';
 import { PROMOTIONS_PAGINATE } from '../../graphql/graphql.js';
 import moment from 'moment';
 
@@ -39,7 +39,7 @@ export default {
     },
     apollo: {
         events: {
-            query: EVENT_PROMOTIONS_PAGINATE,
+            query: EVENT_PROMOTIONS_PAGINATE_DESC,
             variables() {
                 return {
                     first: 3,
